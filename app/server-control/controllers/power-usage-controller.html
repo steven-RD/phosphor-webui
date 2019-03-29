@@ -1,45 +1,189 @@
-<loader loading="loading"></loader>
-<div id="power-usage">
-  <div class="row column">
-    <h1>Manage Power Usage</h1>
-  </div>
-  <form class="power-usage__form" role="form" action="">
-    <section class="row column">
-      <div class="page-header">
-        <h2 class="bold">Power information</h2>
-      </div>
-      <fieldset>
-          <ul class="power-usage__metadata-wrapper">
-            <li class="power-usage__metadata-block">
-              <p class="content-label">Power Consumption</p>
-              <p class="courier-bold">{{power_consumption}}</p>
-            </li>
-            <li class="power-usage__metadata-block">
-              <div class="toggle inline">
-                <input id="toggle__switch-round"
-                        class="toggle-switch toggle-switch__round-flat"
-                        type="checkbox"
-                        tabindex="0"
-                        ng-model="power_cap.PowerCapEnable"
-                        ng-checked="power_cap.PowerCapEnable">
-                <label for="toggle__switch-round" tabindex="0">Server power cap setting is <span class="uid-switch__status">{{power_cap.PowerCapEnable ? "on" : "off"}}</span></label>
-              </div>
-              <div class="power-usage__switch-label inline">
-                <p>Server power cap setting is <span class="uid-switch__status">{{power_cap.PowerCapEnable ? "on" : "off"}}</span></p>
-                <p>Set a power cap to keep power consumption at or below the specified value in watts.</p>
-              </div>
-              <div class="small-12 large-4">
-                <p class="content-label power-cap-value-label">POWER CAP VALUE IN WATTS</p>
-                <input id="power-cap" type="number" min="100" max="10000" step="1" ng-disabled="!power_cap.PowerCapEnable"  ng-model="power_cap.PowerCap"/>
-              </div>
-            </li>
-          </ul>
-      </fieldset>
-      <div class="power-usage__submit-wrapper">
-        <button type="button" class="btn-primary inline" ng-click="setPowerCap()">Save settings</button>
-        <button type="button" class="btn-secondary inline" ng-click="refresh()">Cancel</button>
-      </div>
-    </section>
-  </form>
-</div>
 
+<!--
+ * @author USI Steven
+ * @date   20181130
+ * @brief  ssd inventory operations modify base the file of power usage controller
+-->
+
+<loader loading="loading"></loader>
+<div id="ssd-info">
+    <div class="row column">
+        <h1>Virtual sensor information</h1>
+    </div>
+
+	<div class="row column header-row">
+		<table align="center" bordercolor="#FFFFFF">
+			<tr align="center" height=100>
+				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('ssd')">SSD information</td>
+				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('slot')">Slot information</td>
+				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('swconfig')">Swconfig information</td>
+				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('s9546')">S9546 information</td>
+				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('swstatus')">Swstatus information</td>
+				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('ps')">Power supply information</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="row column header-row" ng-show="ssdFlag == true">
+		<table align="center" border="2" bordercolor="#0000FF">
+			<caption align=”center” font size="medium">SSD information</caption>
+			<thead align=”center”>
+				<tr >
+					<th align=”center” font size="medium">SSD NO.</th>
+					<th align=”center” font size="medium">Address</th>
+					<th align=”center” font size="medium">Type</th>
+					<th align=”center” font size="medium">Link Speed</th>
+					<th align=”center” font size="medium">Status</th>
+					<th align=”center” font size="medium">Link Width</th>
+				<!--<th align=”center” font size="medium">CfgWidth</th>
+					<th align=”center” font size="medium">Resered</th>-->
+					<th align=”center” font size="medium">Par Id</th>
+					<th align=”center” font size="medium">Inserted</th>
+					<th align=”center” font size="medium">Link Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr align=”center” ng-repeat="ssd in ssdInfo">
+					<td align=”center” font size="medium">{{ssd.title}}</td>
+					<td align=”center” font size="medium">{{ssd.ssd_addr}}</td>
+					<td align=”center” font size="medium">{{ssd.ssd_type}}</td>
+					<td align=”center” font size="medium">{{ssd.link_sp}}</td>
+					<td align=”center” font size="medium">{{ssd.status}}</td>
+					<td align=”center” font size="medium">{{ssd.link_wd}}</td>
+				<!--<td align=”center” font size="medium">{{ssd.cfg_wd}}</td>
+					<td align=”center” font size="medium">{{ssd.resered}}</td>-->
+					<td align=”center” font size="medium">{{ssd.par_id}}</td>
+					<td align=”center” font size="medium">{{ssd.inserted}}</td>
+					<td align=”center” font size="medium">{{ssd.link_st}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="row column header-row" ng-show="slotFlag == true">
+		<table  align="center" border="2" bordercolor="#0000FF">
+			<caption align=”center” font size="medium">Slot information</caption>
+			<thead align=”center”>
+				<tr>
+					<th align=”center” font size="medium">Slot NO.</th>
+					<th align=”center” font size="medium">Slot Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr align=”center” ng-repeat="slot in slotInfo">
+					<td align=”center” font size="medium">{{slot.title}}</td>
+					<td align=”center” font size="medium">{{slot.slot_status}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="row column header-row" ng-show="s9546Flag == true">
+		<table  align="center" border="2" bordercolor="#0000FF">
+			<caption align=”center” font size="medium">S9546 information</caption>
+			<thead align=”center”>
+				<tr>
+					<th align=”center” font size="medium">S9546 Title</th>
+					<th align=”center” font size="medium">S9546 Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr align=”center”>
+					<td align=”center” font size="medium">{{s9546Info.title}}</td>
+					<td align=”center” font size="medium">{{s9546Info.status}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="row column header-row" ng-show="cabledmodFlag == true">
+		<table  align="center" border="2" bordercolor="#0000FF">
+			<caption align=”center” font size="medium">Cabledmod information </caption>
+			<thead align=”center”>
+				<tr>
+					<th align=”center” font size="medium">Cabledmod Title</th>
+					<th align=”center” font size="medium">Cabledmod Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr align=”center”>
+					<td align=”center” font size="medium">{{cabledmodInfo.title}}</td>
+					<td align=”center” font size="medium">{{cabledmodInfo.cabled_mod}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="row column header-row" ng-show="swconfigFlag == true">
+		<table  align="center" border="2" bordercolor="#0000FF">
+			<caption align=”center” font size="medium">Swconfig information </caption>
+			<thead align=”center”>
+				<tr>
+					<th align=”center” font size="medium">Swconfig Title</th>
+					<th align=”center” font size="medium">Swconfig Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr align=”center”>
+					<td align=”center” font size="medium">{{swconfigInfo.title}}</td>
+					<td align=”center” font size="medium">{{swconfigInfo.EMA_status}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="row column header-row" ng-show="swstatusFlag == true">
+		<table  align="center" border="2" bordercolor="#0000FF">
+			<caption align=”center” font size="medium">Swstatus information </caption>
+			<thead align=”center”>
+				<tr>
+					<th align=”center” font size="medium">Swstatus Title</th>
+					<th align=”center” font size="medium">Swstatus Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr align=”center”>
+					<td align=”center” font size="medium">{{swstatusInfo.title}}</td>
+					<td align=”center” font size="medium">{{swstatusInfo.MRPC_status}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="row column header-row" ng-show="psFlag == true">
+		<table  align="center" border="2" bordercolor="#0000FF">
+			<caption align=”center” font size="medium">Power supply information </caption>
+			<thead align=”center”>
+				<tr>
+					<th align=”center” font size="medium">Title</th>
+					<th align=”center” font size="medium">V_out</th>
+					<th align=”center” font size="medium">I_out/P_out</th>
+					<th align=”center” font size="medium">Input</th>
+					<th align=”center” font size="medium">Fans</th>
+					<th align=”center” font size="medium">Off</th>
+					<th align=”center” font size="medium">V_Out_OV</th>
+					<th align=”center” font size="medium">I_Out_OC</th>
+					<th align=”center” font size="medium">V_In_UV</th>
+					<th align=”center” font size="medium">Temperature</th>
+					<th align=”center” font size="medium">Power supply</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr align=”center” ng-repeat="ps in psInfo">
+					<td align=”center” font size="medium">{{ps.title}}</td>
+					<td align=”center” font size="medium">{{ps.ps_vout}}</td>
+					<td align=”center” font size="medium">{{ps.ps_iout}}</td>
+					<td align=”center” font size="medium">{{ps.ps_input}}</td>
+					<td align=”center” font size="medium">{{ps.ps_fans}}</td>
+					<td align=”center” font size="medium">{{ps.ps_off}}</td>
+					<td align=”center” font size="medium">{{ps.ps_vout_ov}}</td>
+					<td align=”center” font size="medium">{{ps.ps_iout_oc}}</td>
+					<td align=”center” font size="medium">{{ps.ps_vin_uv}}</td>
+					<td align=”center” font size="medium">{{ps.ps_temperature}}</td>
+					<td align=”center” font size="medium">{{ps.ps_sensor}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</div>

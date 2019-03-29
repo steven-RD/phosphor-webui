@@ -117,8 +117,18 @@ window.angular && (function(angular) {
 
       $scope.loadSensorData = function() {
         $scope.loading = true;
+		var sensorData = [];
         APIUtils.getAllSensorStatus(function(data, originalData) {
-          $scope.data = data;
+		  /* Modified by USISH Steven 20181221  start*/
+		    for(var i = 0; i < data.length; i++){
+			    if(data[i].title.indexOf('Switch') == -1 && data[i].title.indexOf('Sensor') == -1){
+					sensorData.push(data[i]);
+				}
+		    }
+			console.log(sensorData);
+			$scope.data = sensorData;
+		  /* Modified by USISH Steven 20181221  end*/
+          //$scope.data = data;
           $scope.originalData = originalData;
           $scope.export_data = JSON.stringify(originalData);
           $scope.loading = false;

@@ -10,126 +10,406 @@ window.angular && (function(angular) {
   'use strict';
 
   angular.module('app.configuration').controller('snmpController', [
-    '$scope', '$window', 'APIUtils', '$route', '$q', 'toastService',
-    function($scope, $window, APIUtils, $route, $q, toastService) {
-      $scope.managers = [];
-      $scope.loading = true;
-      $scope.managersToDelete = [];
+    '$scope', '$window', 'APIUtils', 'dataService', '$location',
+    '$anchorScroll', 'Constants', '$interval', '$q', '$timeout', '$interpolate',
+    function(
+        $scope, $window, APIUtils, dataService, $location, $anchorScroll,
+        Constants, $interval, $q, $timeout, $interpolate) {			
+        $scope.dataService = dataService;
+		
+        //Scroll to target anchor
+		$scope.gotoAnchor = function() {
+			$location.hash('upload');
+			$anchorScroll();
+		};
 
-      var getSNMPManagers = APIUtils.getSNMPManagers().then(
-          function(data) {
-            // Convert to array of objects from an object of objects, easier
-            // to manipulate (e.g. add/remove). Convert key to a path property.
-            for (var key in data.data) {
-              $scope.managers.push({
-                path: key,
-                port: data.data[key].Port,
-                updatePort: false,
-                address: data.data[key].Address,
-                updateAddress: false
-              })
-            }
-          },
-          function(error) {
-            toastService.error('Unable to load SNMP settings.');
-            console.log(JSON.stringify(error));
-          });
+		$scope.switchInfo = {switchActivedVersion: '', toBeActiveVersion: '', switchActivatedStatus: '', switchUpdateStatus: ''};
+        $scope.firmwares = [];
+        $scope.switchActiveVersion = '';
+        //$scope.hostActiveVersion = '';
+        $scope.display_error = false;
+        $scope.activate_confirm = false;
+        $scope.delete_image_id = '';
+        $scope.delete_image_version = '';
+        $scope.activate_image_id = '';
+        $scope.activate_image_version = '';
+        $scope.activate_image_type = '';
+        $scope.priority_image_id = '';
+        $scope.priority_image_version = '';
+        $scope.priority_from = -1;
+        $scope.priority_to = -1;
+        $scope.confirm_priority = false;
+        $scope.file_empty = true;
+        $scope.uploading = false;
+        $scope.upload_success = false;
+        $scope.activate = {reboot: true};
+        $scope.download_error_msg = '';
+        $scope.download_success = false;
 
-      getSNMPManagers.finally(function() {
-        $scope.loading = false;
-      });
+        var pollActivationTimer = undefined;
+        var pollDownloadTimer = undefined;
 
-      $scope.addNewSNMPManager = function() {
-        $scope.managers.push({address: '', port: ''});
-      };
+        $scope.error = {modal_title: '', title: '', desc: '', type: 'warning'};
 
-      $scope.removeSNMPManager = function(index) {
-        // If the SNMP Manager has a path it exists on the backend and we
-        // need to make a call to remove it
-        if ($scope.managers[index].path) {
-          $scope.managersToDelete.push($scope.managers[index].path);
-        }
-        $scope.managers.splice(index, 1);
-      };
+        $scope.activateImage = function(imageId, imageVersion, imageType) {
+			$scope.activate_image_id = imageId;
+			$scope.activate_image_version = imageVersion;
+			$scope.activate_image_type = imageType;
+			$scope.activate_confirm = true;
+        };
 
-      $scope.refresh = function() {
-        $route.reload();
-      };
+        $scope.displayError = function(data) {
+			$scope.error = data;
+			$scope.display_error = true;
+        };
 
-      $scope.setSNMP = function() {
-        $scope.loading = true;
-        var promises = [];
-
-        // Interate in reverse so can splice
-        // https://stackoverflow.com/questions/9882284/looping-through-array-and-removing-items-without-breaking-for-loop
-        var i = $scope.managers.length;
-        while (i--) {
-          // Remove any SNMP Manager with an empty address and port
-          if (!$scope.managers[i].address && !$scope.managers[i].port) {
-            $scope.removeSNMPManager(i);
-            continue;
-          }
-
-          // Throw an error if only 1 of the fields is filled out
-          if (!$scope.managers[i].address || !$scope.managers[i].port) {
-            // TODO: Highlight the field that is empty
-            $scope.loading = false;
-            toastService.error('All fields are required.');
-            return;
-          }
-
-          // If the manager does not have a 'path', it is a new manager
-          // and needs to be created
-          if (!$scope.managers[i].path) {
-            promises.push(addManager(
-                $scope.managers[i].address, $scope.managers[i].port));
-          } else {
-            if ($scope.managers[i].updateAddress) {
-              promises.push(setManagerAddress(
-                  $scope.managers[i].path, $scope.managers[i].address));
-            }
-            if ($scope.managers[i].updatePort) {
-              promises.push(setManagerPort(
-                  $scope.managers[i].path, $scope.managers[i].port));
-            }
-          }
-        }
-
-        // Add delete promises last since we might be adding to
-        // managersToDelete above
-        for (var i in $scope.managersToDelete) {
-          promises.push(deleteManager($scope.managersToDelete[i]));
+        function waitForActive(imageId) {
+			var deferred = $q.defer();
+			var startTime = new Date();
+			pollActivationTimer = $interval(function() {
+            APIUtils.getActivation(imageId).then(
+				function(state) {
+					//@TODO: display an error message if image "Failed"
+					if (((/\.Active$/).test(state.data)) ||
+						((/\.Failed$/).test(state.data))) {
+						$interval.cancel(pollActivationTimer);
+						pollActivationTimer = undefined;
+						deferred.resolve(state);
+					}
+				},
+				function(error) {
+					$interval.cancel(pollActivationTimer);
+					pollActivationTimer = undefined;
+					console.log(error);
+					deferred.reject(error);
+				});
+				var now = new Date();
+				if ((now.getTime() - startTime.getTime()) >=
+				  Constants.TIMEOUT.ACTIVATION) {
+					$interval.cancel(pollActivationTimer);
+					pollActivationTimer = undefined;
+					console.log('Time out activating image, ' + imageId);
+					deferred.reject('Time out. Image did not activate in allotted time.');
+				}
+            }, Constants.POLL_INTERVALS.ACTIVATION);
+			return deferred.promise;
         }
 
-        $q.all(promises)
+        $scope.activateConfirmed = function() {
+			APIUtils.activateImage($scope.activate_image_id)
             .then(
-                function() {
-                  toastService.success('SNMP Managers set.');
+                function(state) {  ///activate sucdess
+                    $scope.loadFirmwares();
+                    return state;
                 },
-                function(errors) {
-                  toastService.error('Unable to set SNMP Managers.');
-                  console.log(JSON.stringify(errors));
+                function(error) {  ///activate fail
+                    $scope.displayError({
+						modal_title: 'Error during activation call',
+						title: 'Error during activation call',
+						desc: JSON.stringify(error.data),
+						type: 'Error'
+                    });
                 })
-            .finally(function() {
-              $scope.loading = false;
+            .then(function(activationState) { ///wait For activate
+                waitForActive($scope.activate_image_id)
+                .then(
+                    function(state) {
+                        $scope.loadFirmwares();
+                    },
+                    function(error) {
+                        $scope.displayError({
+                            modal_title: 'Error during image activation',
+                            title: 'Error during image activation',
+                            desc: JSON.stringify(error.data),
+                            type: 'Error'
+                        });
+                    })
+                .then(function(state) {
+                    if ($scope.activate.reboot &&
+                       ($scope.activate_image_type == 'Switch')) {
+                        $timeout(function() {
+                        APIUtils.bmcReboot(
+                            function(response) {},
+                            function(error) {
+                              $scope.displayError({
+                                modal_title: 'Error during Switch reboot',
+                                title: 'Error during Switch reboot',
+                                desc: JSON.stringify(error.data),
+                                type: 'Error'
+                              });
+                            });
+                      }, 10000);
+                    }
+                });
             });
-      };
+			$scope.activate_confirm = false;
+        };
+     
+      
+		$scope.upload = function() {
+			if ($scope.file) {
+				$scope.uploading = true;
+				$scope.upload_success = false;
+				APIUtils.uploadImage($scope.file)
+				.then(
+					function(response) {
+						$scope.file = '';
+						$scope.uploading = false;
+						$scope.upload_success = true;
+						APIUtils.updateImage(0);  ///置0
+						APIUtils.runImage(0);     ///置0
+						$scope.loadFirmwares();
+						$scope.loadSwitchUpdateStatus();
+						$scope.loadSwitchActivatedStatus();
+					},
+					function(error) {
+						$scope.uploading = false;
+						console.log(error);
+						$scope.displayError({
+						modal_title: 'Error during image upload',
+						title: 'Error during image upload',
+						desc: error,
+						type: 'Error'
+					});
+				});
+			}
+		};
 
-      function addManager(address, port) {
-        return APIUtils.addSNMPManager(address, port);
-      }
+        function waitForDownload() {
+			var deferred = $q.defer();
+			var startTime = new Date();
+			pollDownloadTimer = $interval(function() {
+				var now = new Date();
+				if ((now.getTime() - startTime.getTime()) >=
+					Constants.TIMEOUT.DOWNLOAD_IMAGE) {
+					$interval.cancel(pollDownloadTimer);
+					pollDownloadTimer = undefined;
+					deferred.reject(
+					new Error(Constants.MESSAGES.POLL.DOWNLOAD_IMAGE_TIMEOUT));
+				}
 
-      function deleteManager(path) {
-        return APIUtils.deleteObject(path);
-      }
+				APIUtils.getFirmwares().then(
+					function(response) {
+						if (response.data.length === $scope.firmwares.length + 1) {
+							$interval.cancel(pollDownloadTimer);
+							pollDownloadTimer = undefined;
+							deferred.resolve(response.data);
+						}
+					},
+					function(error) {
+						$interval.cancel(pollDownloadTimer);
+						pollDownloadTimer = undefined;
+						deferred.reject(error);
+					});
+			}, Constants.POLL_INTERVALS.DOWNLOAD_IMAGE);
+			
+			return deferred.promise;
+        }
 
-      function setManagerAddress(path, address) {
-        return APIUtils.setSNMPManagerAddress(path, address);
-      }
+        $scope.download = function() {
+			$scope.download_success = false;
+			$scope.download_error_msg = '';
+			if (!$scope.download_host || !$scope.download_filename) {
+				$scope.download_error_msg = 'Field is required!';
+				return false;
+			}
+			$scope.downloading = true;
+			APIUtils.getFirmwares()
+			.then(function(response) {
+				$scope.firmwares = response.data;
+			})
+			.then(function() {
+				return APIUtils
+					.downloadImage($scope.download_host, $scope.download_filename)
+					.then(function(downloadStatus) {
+					return downloadStatus;
+				});
+			})
+			.then(function(downloadStatus) {
+			  return waitForDownload();
+			})
+			.then(
+				function(newFirmwareList) {
+				    $scope.download_host = '';
+				    $scope.download_filename = '';
+				    $scope.downloading = false;
+				    $scope.download_success = true;
+				    $scope.loadFirmwares();
+				},
+				function(error) {
+				    console.log(error);
+				    $scope.displayError({
+						modal_title: 'Error during downloading Image',
+						title: 'Error during downloading Image',
+						desc: error,
+						type: 'Error'
+				    });
+				    $scope.downloading = false;
+				});
+        };
 
-      function setManagerPort(path, port) {
-        return APIUtils.setSNMPManagerPort(path, port);
-      }
+	   /* $scope.changePriority = function(imageId, imageVersion, from, to) {
+			$scope.priority_image_id = imageId;
+			$scope.priority_image_version = imageVersion;
+			$scope.priority_from = from;
+			$scope.priority_to = to;
+			$scope.confirm_priority = true;
+	    };
+
+        $scope.confirmChangePriority = function() {
+			$scope.loading = true;
+			APIUtils.changePriority($scope.priority_image_id, $scope.priority_to)
+            .then(function(response) {
+                $scope.loading = false;
+                if (response.status == 'error') {
+					$scope.displayError({
+					modal_title: response.data.description,
+					title: response.data.description,
+                  desc: response.data.exception,
+                  type: 'Error'
+                });
+              } else {
+                $scope.loadFirmwares();
+              }
+            });
+			$scope.confirm_priority = false;
+        };*/
+	  
+        $scope.deleteImage = function(imageId, imageVersion) {
+			$scope.delete_image_id = imageId;
+			$scope.delete_image_version = imageVersion;
+			$scope.confirm_delete = true;
+		};
+		
+        $scope.confirmDeleteImage = function() {
+			$scope.loading = true;
+			APIUtils.deleteImage($scope.delete_image_id).then(function(response) {
+				$scope.loading = false;
+				if (response.status == 'error') {
+					$scope.displayError({
+						modal_title: response.data.description,
+						title: response.data.description,
+						desc: response.data.exception,
+						type: 'Error'
+					});
+				} else {
+					$scope.loadFirmwares();
+				}
+			});
+			$scope.confirm_delete = false;
+		};
+			
+		$scope.fileNameChanged = function() {
+			$scope.file_empty = false;
+		};
+
+        $scope.filters = {bmc: {imageType: 'BMC'}, Switch: {imageType: 'Host'}};
+
+        $scope.loadFirmwares = function() {
+			APIUtils.getFirmwares().then(function(result) {
+				$scope.firmwares = result.data;
+				//$scope.switchActiveVersion = result.hostActiveVersion;
+            });
+        };
+		
+		
+		$scope.loadSwitchActiveVersion = function() {
+			APIUtils.getSwitchActiveVersion(function(data, originalData) {
+				//console.log(data);
+				/*var date = data%100000000;
+				var front = Math.floor(data/100000000);
+				var temp = front/10;
+				var ver = parseFloat(temp).toFixed(1);
+				var version = 'v' + ver.toString() + '-' + date.toString();
+				$scope.switchActiveVersion = version;*/
+				var toBeActiveVer = 'v' + (data%100).toString();
+				var switchActiveVer = 'v' + parseInt(data/100).toString();
+				$scope.switchInfo.switchActivedVersion = switchActiveVer;
+				if(toBeActiveVer == 'v0'){
+					$scope.switchInfo.toBeActiveVersion = 'none';
+				} else {
+					$scope.switchInfo.toBeActiveVersion = toBeActiveVer;
+				}
+					
+			});
+        };
+		
+		$scope.loadSwitchUpdateStatus = function(){
+			APIUtils.getSwitchUpdateStatus(function(data, originalData) {
+				//console.log(data);
+				var UpdateStatus = data.toString();
+				$scope.switchInfo.switchUpdateStatus = UpdateStatus;
+				//console.log(switchInfo);
+			});
+		};
+		
+		$scope.loadSwitchActivatedStatus = function(){
+			APIUtils.getSwitchActivatedStatus(function(data, originalData) {
+				//console.log(data);
+				var ActivatedStatus = data.toString();
+				$scope.switchInfo.switchActivatedStatus = ActivatedStatus;
+				//console.log(switchInfo);
+			});
+		};
+		
+		$scope.updateImage = function(imageId, imageVersion, imageType) {
+			$scope.activate_image_id = imageId;
+			$scope.activate_image_version = imageVersion;
+			$scope.activate_image_type = imageType;
+			APIUtils.updateImage(1)
+            .then(
+                function(state) {  ///update success
+					APIUtils.deleteImage($scope.activate_image_id); ///update success delete image
+                    $scope.loadFirmwares();
+					$scope.loadSwitchActiveVersion();
+					$scope.loadSwitchUpdateStatus();
+					$scope.loadSwitchActivatedStatus();
+                    return state;
+                },
+                function(error) {  ///update fail
+                    $scope.displayError({
+						modal_title: 'Error during update call',
+						title: 'Error during update call',
+						desc: JSON.stringify(error.data),
+						type: 'Error'
+                    });
+                });
+        };			
+		
+		$scope.runImage = function(imageId, imageVersion, imageType) {
+			$scope.activate_image_id = imageId;
+			$scope.activate_image_version = imageVersion;
+			$scope.activate_image_type = imageType;
+			$scope.activate_confirm = true;
+			
+        };
+
+		$scope.runConfirmed = function() {
+			APIUtils.runImage(1)
+            .then(
+                function(state) {  ///run success
+                    $scope.loadFirmwares();
+					$scope.loadSwitchActiveVersion();
+					$scope.loadSwitchUpdateStatus();
+					$scope.loadSwitchActivatedStatus();
+                    return state;
+                },
+                function(error) {  ///run fail
+                    $scope.displayError({
+						modal_title: 'Error during activation call',
+						title: 'Error during activation call',
+						desc: JSON.stringify(error.data),
+						type: 'Error'
+                    });
+                });
+            
+			$scope.activate_confirm = false;
+        };
+				
+       $scope.loadFirmwares();
+	   $scope.loadSwitchActiveVersion();
+	   $scope.loadSwitchUpdateStatus();
+	   $scope.loadSwitchActivatedStatus();
     }
   ]);
 })(angular);

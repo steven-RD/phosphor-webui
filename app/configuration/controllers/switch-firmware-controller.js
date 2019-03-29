@@ -11,11 +11,10 @@ window.angular && (function(angular) {
 
   angular.module('app.configuration').controller('firmwareController', [
     '$scope', '$window', 'APIUtils', 'dataService', '$location',
-    '$anchorScroll', 'Constants', '$interval', '$q', '$timeout', '$interpolate',
-    'toastService',
+    '$anchorScroll', 'Constants', '$interval', '$q', '$timeout',
     function(
         $scope, $window, APIUtils, dataService, $location, $anchorScroll,
-        Constants, $interval, $q, $timeout, $interpolate, toastService) {
+        Constants, $interval, $q, $timeout) {
       $scope.dataService = dataService;
 
       // Scroll to target anchor
@@ -27,6 +26,7 @@ window.angular && (function(angular) {
       $scope.firmwares = [];
       $scope.bmcActiveVersion = '';
       $scope.hostActiveVersion = '';
+      $scope.display_error = false;
       $scope.activate_confirm = false;
       $scope.delete_image_id = '';
       $scope.delete_image_version = '';
@@ -40,7 +40,10 @@ window.angular && (function(angular) {
       $scope.confirm_priority = false;
       $scope.file_empty = true;
       $scope.uploading = false;
+      $scope.upload_success = false;
       $scope.activate = {reboot: true};
+      $scope.download_error_msg = '';
+      $scope.download_success = false;
 
       var pollActivationTimer = undefined;
       var pollDownloadTimer = undefined;
@@ -52,6 +55,11 @@ window.angular && (function(angular) {
         $scope.activate_image_version = imageVersion;
         $scope.activate_image_type = imageType;
         $scope.activate_confirm = true;
+      };
+
+      $scope.displayError = function(data) {
+        $scope.error = data;
+        $scope.display_error = true;
       };
 
       function waitForActive(imageId) {
@@ -95,8 +103,12 @@ window.angular && (function(angular) {
                   return state;
                 },
                 function(error) {
-                  console.log(JSON.stringify(error));
-                  toastService.error('Unable to activate image');
+                  $scope.displayError({
+                    modal_title: 'Error during activation call',
+                    title: 'Error during activation call',
+                    desc: JSON.stringify(error.data),
+                    type: 'Error'
+                  });
                 })
             .then(function(activationState) {
               waitForActive($scope.activate_image_id)
@@ -105,10 +117,15 @@ window.angular && (function(angular) {
                         $scope.loadFirmwares();
                       },
                       function(error) {
-                        console.log(JSON.stringify(error));
-                        toastService.error('Unable to activate image');
+                        $scope.displayError({
+                          modal_title: 'Error during image activation',
+                          title: 'Error during image activation',
+                          desc: JSON.stringify(error.data),
+                          type: 'Error'
+                        });
                       })
                   .then(function(state) {
+                    // Only look at reboot if it's a BMC image
                     if ($scope.activate.reboot &&
                         ($scope.activate_image_type == 'BMC')) {
                       // Despite the new image being active, issue,
@@ -125,77 +142,41 @@ window.angular && (function(angular) {
                         APIUtils.bmcReboot(
                             function(response) {},
                             function(error) {
-                              console.log(JSON.stringify(error));
-                              toastService.error('Unable to reboot BMC');
+                              $scope.displayError({
+                                modal_title: 'Error during BMC reboot',
+                                title: 'Error during BMC reboot',
+                                desc: JSON.stringify(error.data),
+                                type: 'Error'
+                              });
                             });
                       }, 10000);
-                    }
-                    if ($scope.activate.reboot &&
-                        ($scope.activate_image_type == 'Host')) {
-                      // If image type being activated is a host image, the
-                      // current power status of the server determines if the
-                      // server should power on or reboot.
-                      if ($scope.isServerOff()) {
-                        powerOn();
-                      } else {
-                        warmReboot();
-                      }
                     }
                   });
             });
         $scope.activate_confirm = false;
       };
-      function powerOn() {
-        dataService.setUnreachableState();
-        APIUtils.hostPowerOn()
-            .then(function(response) {
-              return response;
-            })
-            .then(function(lastStatus) {
-              return APIUtils.pollHostStatusTillOn();
-            })
-            .catch(function(error) {
-              console.log(JSON.stringify(error));
-              toastService.error(Constants.MESSAGES.POWER_OP.POWER_ON_FAILED);
-            });
-      };
-      function warmReboot() {
-        $scope.uploading = true;
-        dataService.setUnreachableState();
-        APIUtils.hostReboot()
-            .then(function(response) {
-              return response;
-            })
-            .then(function(lastStatus) {
-              return APIUtils.pollHostStatusTilReboot();
-            })
-            .catch(function(error) {
-              console.log(JSON.stringify(error));
-              toastService.error(
-                  Constants.MESSAGES.POWER_OP.WARM_REBOOT_FAILED);
-            });
-      };
-      $scope.isServerOff = function() {
-        return dataService.server_state === Constants.HOST_STATE_TEXT.off;
-      };
 
       $scope.upload = function() {
         if ($scope.file) {
           $scope.uploading = true;
+          $scope.upload_success = false;
           APIUtils.uploadImage($scope.file)
               .then(
                   function(response) {
-                    $scope.uploading = false;
-                    toastService.success(
-                        'Image file "' + $scope.file.name +
-                        '" has been uploaded');
                     $scope.file = '';
+                    $scope.uploading = false;
+                    $scope.upload_success = true;
                     $scope.loadFirmwares();
                   },
                   function(error) {
                     $scope.uploading = false;
                     console.log(error);
-                    toastService.error('Unable to upload image file');
+                    $scope.displayError({
+                      modal_title: 'Error during image upload',
+                      title: 'Error during image upload',
+                      desc: error,
+                      type: 'Error'
+                    });
                   });
         }
       };
@@ -236,9 +217,10 @@ window.angular && (function(angular) {
       }
 
       $scope.download = function() {
+        $scope.download_success = false;
+        $scope.download_error_msg = '';
         if (!$scope.download_host || !$scope.download_filename) {
-          toastService.error(
-              'TFTP server IP address and file name are required!');
+          $scope.download_error_msg = 'Field is required!';
           return false;
         }
 
@@ -262,14 +244,17 @@ window.angular && (function(angular) {
                   $scope.download_host = '';
                   $scope.download_filename = '';
                   $scope.downloading = false;
-                  toastService.success('Download complete');
+                  $scope.download_success = true;
                   $scope.loadFirmwares();
                 },
                 function(error) {
                   console.log(error);
-                  toastService.error(
-                      'Image file from TFTP server "' + $scope.download_host +
-                      '" could not be downloaded');
+                  $scope.displayError({
+                    modal_title: 'Error during downloading Image',
+                    title: 'Error during downloading Image',
+                    desc: error,
+                    type: 'Error'
+                  });
                   $scope.downloading = false;
                 });
       };
@@ -288,7 +273,12 @@ window.angular && (function(angular) {
             .then(function(response) {
               $scope.loading = false;
               if (response.status == 'error') {
-                toastService.error('Unable to update boot priority');
+                $scope.displayError({
+                  modal_title: response.data.description,
+                  title: response.data.description,
+                  desc: response.data.exception,
+                  type: 'Error'
+                });
               } else {
                 $scope.loadFirmwares();
               }
@@ -305,7 +295,12 @@ window.angular && (function(angular) {
         APIUtils.deleteImage($scope.delete_image_id).then(function(response) {
           $scope.loading = false;
           if (response.status == 'error') {
-            toastService.error('Unable to delete image');
+            $scope.displayError({
+              modal_title: response.data.description,
+              title: response.data.description,
+              desc: response.data.exception,
+              type: 'Error'
+            });
           } else {
             $scope.loadFirmwares();
           }
@@ -322,9 +317,7 @@ window.angular && (function(angular) {
         APIUtils.getFirmwares().then(function(result) {
           $scope.firmwares = result.data;
           $scope.bmcActiveVersion = result.bmcActiveVersion;
-		  /*  Modified by USISH Steven 20190117 start */
           $scope.hostActiveVersion = result.hostActiveVersion;
-		  /*  Modified by USISH Steven 20190117 end */
         });
       };
 

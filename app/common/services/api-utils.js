@@ -1881,6 +1881,118 @@ window.angular && (function(angular) {
                 return response.data;
               });
         },
+
+		/*  Modified by USISH Steven 20190122 start */
+		getSwitchUpdateStatus: function(callback) {
+			$http({
+            method: 'GET',
+            url: DataService.getHost() +
+                '/xyz/openbmc_project/sensors/switch/update',
+            withCredentials: true
+          })
+              .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+                    var dataClone = JSON.parse(JSON.stringify(content.data));
+					var switchUpdateStatus = content.data.Value;
+
+                    callback(switchUpdateStatus, dataClone);
+                  },
+                  function(error) {
+                    console.log(error);
+                  });
+		},
+
+		getSwitchActivatedStatus: function(callback) {
+			$http({
+            method: 'GET',
+            url: DataService.getHost() +
+                '/xyz/openbmc_project/sensors/switch/activate',
+            withCredentials: true
+          })
+              .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+                    var dataClone = JSON.parse(JSON.stringify(content.data));
+					var switchActivatedStatus = content.data.Value;
+
+                    callback(switchActivatedStatus, dataClone);
+                  },
+                  function(error) {
+                    console.log(error);
+                  });
+		},
+
+		getSwitchActiveVersion: function(callback) {
+          $http({
+            method: 'GET',
+            url: DataService.getHost() +
+                '/xyz/openbmc_project/sensors/switch/version',
+            withCredentials: true
+          })
+              .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+                    var dataClone = JSON.parse(JSON.stringify(content.data));
+					var versionInfo = content.data.Value;
+
+                    callback(versionInfo, dataClone);
+                  },
+                  function(error) {
+                    console.log(error);
+                  });
+        },
+
+		updateImage: function(val) {
+          var deferred = $q.defer();
+          $http({
+            method: 'PUT',
+            url: DataService.getHost() + '/xyz/openbmc_project/sensors/switch/update/attr/Value',
+            withCredentials: true,
+            data:
+                JSON.stringify({'data': val})
+          })
+              .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+                    deferred.resolve(content);
+                  },
+                  function(error) {
+                    console.log(error);
+                    deferred.reject(error);
+                  });
+
+          return deferred.promise;
+        },
+
+		runImage: function(val) {
+          var deferred = $q.defer();
+          $http({
+            method: 'PUT',
+            url: DataService.getHost() + '/xyz/openbmc_project/sensors/switch/activate/attr/Value',
+            withCredentials: true,
+            data:
+                JSON.stringify({'data': val})
+          })
+              .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+                    deferred.resolve(content);
+                  },
+                  function(error) {
+                    console.log(error);
+                    deferred.reject(error);
+                  });
+
+          return deferred.promise;
+        },
+		/*  Modified by USISH Steven 20190122 end */
+
       };
       return SERVICE;
     }

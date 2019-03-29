@@ -77,11 +77,10 @@
       </fieldset>
     </section>
     <section class="row column">
-      <div class="column small-12 page-header">
+      <!--<div class="column small-12 page-header">
         <h2 class="inline">DNS settings</h2>
       </div>
       <fieldset>
-        <!-- Call Nameservers "DNS Servers" on the GUI -->
         <fieldset class="net-config__static-ip-wrap" ng-repeat="dns in interface.Nameservers track by $index">
           <div class="column small-12">
             <label for="net-config__prime-dns{{$index+1}}">DNS Server {{$index+1}}</label>
@@ -94,7 +93,7 @@
             <button type="button" class="btn-primary inline dns_add" ng-click="addDNSField()">Add DNS server</button>
           </div>
         </div>
-      </fieldset>
+      </fieldset>-->
       <div class="network-config__submit-wrapper">
         <button type="button" class="btn-primary inline" ng-click="confirmSettings=true;">Save settings</button>
         <button type="button" class="btn-secondary inline" ng-click="refresh()">Cancel</button>
