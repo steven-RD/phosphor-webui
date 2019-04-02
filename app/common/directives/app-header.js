@@ -111,7 +111,7 @@ window.angular && (function(angular) {
               $scope.loadServerStatus();
               $scope.loadNetworkInfo();
               $scope.loadServerHealth();
-              //$scope.loadSystemName();
+              $scope.loadSystemName();
             }
 
             loadData();
