@@ -1,12 +1,12 @@
-<div id="header__wrapper">
+<header id="header" class="header">
   <!-- HEADER -->
-  <header id="header">
+  <div id="header__info-section">
 	<!-- Modified by USISH Steven 20181219 start-->
-    <span class="header__title float-left">JBOF Manage GUI</span>
+    <span class="header__title">JBOF Manage GUI</span>
 	<!-- Modified by USISH Steven 20181219 end-->
     <a href="" class="header__logout" ng-click="logout()">Log out</a>
-  </header>
-  <div class="header__functions-wrapper" role="heading">
+  </div>
+  <div class="header__functions-section">
     <div class="logo__wrapper"><img src="../../assets/images/logo.svg" class="header__logo" alt="company logo"/></div>
     <div class="inline header__server-name">
       <p class="header__hostname">{{dataService.hostname}}</p>
@@ -29,4 +29,4 @@
       </button>
     </div>
   </div>
-</div>
+</header>
