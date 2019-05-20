@@ -1711,7 +1711,7 @@ window.angular && (function(angular) {
           $http({
             method: 'GET',
             url: DataService.getHost() +
-                '/xyz/openbmc_project/sensors/switch/version',
+                '/xyz/openbmc_project/ssdarray/firmware/functional',
             withCredentials: true
           })
               .then(
@@ -1730,10 +1730,36 @@ window.angular && (function(angular) {
 
 		updateImage: function(val) {
           var deferred = $q.defer();
+		  console.log("updateImage val");
+		  console.log(val);
           $http({
             method: 'PUT',
-			//ssdarray/firmware/update/attr/Imageid
             url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/Imageid',
+            withCredentials: true,
+            data:
+                JSON.stringify({'data': val})
+          })
+              .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+                    deferred.resolve(content);
+                  },
+                  function(error) {
+                    console.log(error);
+                    deferred.reject(error);
+                  });
+
+          return deferred.promise;
+        },
+
+		updateImageStatus: function(val) {
+          var deferred = $q.defer();
+		  console.log("updateImageStatus val");
+		  console.log(val);
+          $http({
+            method: 'PUT',
+            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/value',
             withCredentials: true,
             data:
                 JSON.stringify({'data': val})
@@ -1758,7 +1784,7 @@ window.angular && (function(angular) {
 		  console.log(val);
           $http({
             method: 'PUT',
-            url: DataService.getHost() + '/xyz/openbmc_project/ssdaray/firmware/activate',
+            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/activate',
             withCredentials: true,
             data:
                 JSON.stringify({'data': val})

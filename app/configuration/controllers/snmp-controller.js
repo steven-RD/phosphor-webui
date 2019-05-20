@@ -353,12 +353,46 @@ window.angular && (function(angular) {
 		};
 		
 		$scope.updateImage = function(imageId, imageVersion, imageType) {
+			/*
+				1. First set the value of imageid.
+				2. Then set the status of update to 1, then firmware start to update.
+			*/
 			$scope.activate_image_id = imageId;
 			$scope.activate_image_version = imageVersion;
 			$scope.activate_image_type = imageType;
-			APIUtils.updateImage(1)
+			APIUtils.updateImage(imageId)
             .then(
-                function(state) {  ///update success
+					function(state) {	// update ImageId success
+						APIUtils.updateImageStatus(1)	// update status success
+						.then(
+							function(state){
+								APIUtils.deleteImage($scope.activate_image_id); // update success delete image
+								$scope.loadFirmwares();
+								$scope.loadSwitchActiveVersion();
+								$scope.loadSwitchUpdateStatus();
+								$scope.loadSwitchActivatedStatus();
+								return state;
+							},
+							function(error){
+								$scope.displayError({
+									modal_title: 'Error during update process',
+									title: 'Error during update process',
+									desc: JSON.stringify(error.data),
+									type: 'Error'
+								});
+							}
+						)
+					},
+					function(error){
+						$scope.displayError({
+							modal_title: 'Error during update imageid',
+							title: 'Error during update imageid',
+							desc: JSON.stringify(error.data),
+							type: 'Error'
+						});
+					}
+                );
+				/* function(state) {  ///update success
 					APIUtils.deleteImage($scope.activate_image_id); ///update success delete image
                     $scope.loadFirmwares();
 					$scope.loadSwitchActiveVersion();
@@ -373,7 +407,7 @@ window.angular && (function(angular) {
 						desc: JSON.stringify(error.data),
 						type: 'Error'
                     });
-                });
+                } */
         };			
 		
 		$scope.runImage = function(imageId, imageVersion, imageType) {
