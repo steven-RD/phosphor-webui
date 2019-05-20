@@ -1733,7 +1733,7 @@ window.angular && (function(angular) {
           $http({
             method: 'PUT',
 			//ssdarray/firmware/update/attr/Imageid
-            url: DataService.getHost() + '/xyz/openbmc_project/sensors/switch/update/attr/Value',
+            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/Imageid',
             withCredentials: true,
             data:
                 JSON.stringify({'data': val})
@@ -1754,9 +1754,11 @@ window.angular && (function(angular) {
 
 		runImage: function(val) {
           var deferred = $q.defer();
+		  console.log('runImage val');
+		  console.log(val);
           $http({
             method: 'PUT',
-            url: DataService.getHost() + '/xyz/openbmc_project/sensors/switch/activate/attr/Value',
+            url: DataService.getHost() + '/xyz/openbmc_project/ssdaray/firmware/activate',
             withCredentials: true,
             data:
                 JSON.stringify({'data': val})
