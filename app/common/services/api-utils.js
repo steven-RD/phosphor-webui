@@ -1669,7 +1669,7 @@ window.angular && (function(angular) {
 			$http({
             method: 'GET',
             url: DataService.getHost() +
-                '/xyz/openbmc_project/sensors/switch/update',
+                '/xyz/openbmc_project/ssdarray/firmware/update',
             withCredentials: true
           })
               .then(
@@ -1690,7 +1690,7 @@ window.angular && (function(angular) {
 			$http({
             method: 'GET',
             url: DataService.getHost() +
-                '/xyz/openbmc_project/sensors/switch/activate',
+                '/xyz/openbmc_project/ssdarray/firmware/activate',
             withCredentials: true
           })
               .then(
@@ -1732,6 +1732,7 @@ window.angular && (function(angular) {
           var deferred = $q.defer();
           $http({
             method: 'PUT',
+			//ssdarray/firmware/update/attr/Imageid
             url: DataService.getHost() + '/xyz/openbmc_project/sensors/switch/update/attr/Value',
             withCredentials: true,
             data:
