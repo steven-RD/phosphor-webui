@@ -1759,8 +1759,9 @@ window.angular && (function(angular) {
 		  console.log(val);
           $http({
             method: 'PUT',
-            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/value',
+            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/Value',
             withCredentials: true,
+			timeout: 36000,
             data:
                 JSON.stringify({'data': val})
           })
