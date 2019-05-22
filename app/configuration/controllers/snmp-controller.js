@@ -373,15 +373,28 @@ window.angular && (function(angular) {
 							function(state){
 								console.log("state");
 								console.log(state);
-								$scope.loadSwitchUpdateStatus(); // Get status after update
-								console.log($scope.switchInfo.switchUpdateStatus);
-								if ($scope.switchInfo.switchUpdateStatus == '2'){ // 2 update status success 
+								var updateStatus = '';
+								APIUtils.getSwitchUpdateStatus(function(data, originalData) {
+									console.log("getSwitchUpdateStatus");
+									updateStatus = data.toString();
+									console.log(updateStatus);
+								});
+								if (updateStatus == 3){ // 3 update status success
+									console.log("3");
+									$scope.displayError({
+										modal_title: state['Imageid'] + 'Update fail',
+										title: 'Update fail, value 3',
+										desc: JSON.stringify(state),
+										type: 'Error'
+									});
+								}
+								if (updateStatus == '2'){ // 2 update status success
 									console.log("2");
 									APIUtils.deleteImage($scope.activate_image_id); // delete image
 									$scope.loadData();
 									return state;
 								}
-								if ($scope.switchInfo.switchUpdateStatus == '3'){ // 3 update status fail
+								if (updateStatus == '3'){ // 3 update status fail
 									console.log("switchUpdateStatus 3");
 									$scope.displayError({
 										modal_title: state['Imageid'] + 'Update fail',
