@@ -61,6 +61,8 @@ window.angular && (function(angular) {
         $scope.displayError = function(data) {
 			$scope.error = data;
 			$scope.display_error = true;
+			console.log("displayError");
+			console.log($scope.error);
         };
 
         function waitForActive(imageId) {
@@ -336,8 +338,9 @@ window.angular && (function(angular) {
 		
 		$scope.loadSwitchUpdateStatus = function(){
 			APIUtils.getSwitchUpdateStatus(function(data, originalData) {
-				//console.log(data);
+				console.log("loadSwitchUpdateStatus");
 				var UpdateStatus = data.toString();
+				console.log(UpdateStatus);
 				$scope.switchInfo.switchUpdateStatus = UpdateStatus;
 				//console.log(switchInfo);
 			});
@@ -356,34 +359,49 @@ window.angular && (function(angular) {
 			/*
 				1. First set the value of imageid.
 				2. Then set the status of update to 1, then firmware start to update.
+				   if update ok, the update status maybe success or fail.
 			*/
 			$scope.activate_image_id = imageId;
 			$scope.activate_image_version = imageVersion;
 			$scope.activate_image_type = imageType;
+
 			APIUtils.updateImage(imageId)
             .then(
 					function(state) {	// update ImageId success
-						APIUtils.updateImageStatus(1)	// update status success
+						APIUtils.updateImageStatus(1)	// update process success
 						.then(
 							function(state){
-								APIUtils.deleteImage($scope.activate_image_id); // update success delete image
-								$scope.loadFirmwares();
-								$scope.loadSwitchActiveVersion();
-								$scope.loadSwitchUpdateStatus();
-								$scope.loadSwitchActivatedStatus();
-								return state;
+								console.log("state");
+								console.log(state);
+								$scope.loadSwitchUpdateStatus(); // Get status after update
+								console.log($scope.switchInfo.switchUpdateStatus);
+								if ($scope.switchInfo.switchUpdateStatus == '2'){ // 2 update status success 
+									console.log("2");
+									APIUtils.deleteImage($scope.activate_image_id); // delete image
+									$scope.loadData();
+									return state;
+								}
+								if ($scope.switchInfo.switchUpdateStatus == '3'){ // 3 update status fail
+									console.log("switchUpdateStatus 3");
+									$scope.displayError({
+										modal_title: state['Imageid'] + 'Update fail',
+										title: 'Update fail, value 3',
+										desc: JSON.stringify(state),
+										type: 'Error'
+									});
+								}
 							},
-							function(error){
+							function(error){	// update process error
 								$scope.displayError({
-									modal_title: 'Error during update process',
-									title: 'Error during update process',
+									modal_title: 'Error during update status process',
+									title: 'Error during update status process',
 									desc: JSON.stringify(error.data),
 									type: 'Error'
 								});
 							}
 						)
 					},
-					function(error){
+					function(error){	// update imageid error
 						$scope.displayError({
 							modal_title: 'Error during update imageid',
 							title: 'Error during update imageid',
@@ -392,22 +410,6 @@ window.angular && (function(angular) {
 						});
 					}
                 );
-				/* function(state) {  ///update success
-					APIUtils.deleteImage($scope.activate_image_id); ///update success delete image
-                    $scope.loadFirmwares();
-					$scope.loadSwitchActiveVersion();
-					$scope.loadSwitchUpdateStatus();
-					$scope.loadSwitchActivatedStatus();
-                    return state;
-                },
-                function(error) {  ///update fail
-                    $scope.displayError({
-						modal_title: 'Error during update call',
-						title: 'Error during update call',
-						desc: JSON.stringify(error.data),
-						type: 'Error'
-                    });
-                } */
         };			
 		
 		$scope.runImage = function(imageId, imageVersion, imageType) {
