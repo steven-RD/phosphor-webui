@@ -386,7 +386,7 @@ window.angular && (function(angular) {
             .then(
                 function(state) {  ///run success
                     $scope.loadFirmwares();
-					$scope.loadSwitchActiveVersion();
+					$scope.loadSwitchActivedVersion();
 					$scope.loadSwitchUpdateStatus();
 					$scope.loadSwitchActivatedStatus();
                     return state;
