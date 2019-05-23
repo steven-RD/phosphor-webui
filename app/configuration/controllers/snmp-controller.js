@@ -23,7 +23,10 @@ window.angular && (function(angular) {
 			$anchorScroll();
 		};
 
-		$scope.switchInfo = {switchActivedVersion: '', toBeActiveVersion: '', switchActivatedStatus: '', switchUpdateStatus: ''};
+		$scope.switchInfo = {switchActivedVersion: '', configurationFile: '',
+							 toBeActiveVersion: '', type: '',
+							 switchActivatedStatus: '',
+							 switchUpdateStatus: ''};
         $scope.firmwares = [];
         $scope.switchActiveVersion = '';
         //$scope.hostActiveVersion = '';
@@ -61,8 +64,7 @@ window.angular && (function(angular) {
         $scope.displayError = function(data) {
 			$scope.error = data;
 			$scope.display_error = true;
-			console.log("displayError");
-			console.log($scope.error);
+			console.log(data);
         };
 
         function waitForActive(imageId) {
@@ -105,7 +107,12 @@ window.angular && (function(angular) {
                     return state;
                 },
                 function(error) {  ///activate fail
-					toastService.error('Error during activation call');
+                    $scope.displayError({
+						modal_title: 'Error during activation call',
+						title: 'Error during activation call',
+						desc: JSON.stringify(error.data),
+						type: 'Error'
+                    });
                 })
             .then(function(activationState) { ///wait For activate
                 waitForActive($scope.activate_image_id)
@@ -114,7 +121,12 @@ window.angular && (function(angular) {
                         $scope.loadFirmwares();
                     },
                     function(error) {
-						toastService.error('Error during image activation');
+                        $scope.displayError({
+                            modal_title: 'Error during image activation',
+                            title: 'Error during image activation',
+                            desc: JSON.stringify(error.data),
+                            type: 'Error'
+                        });
                     })
                 .then(function(state) {
                     if ($scope.activate.reboot &&
@@ -123,7 +135,12 @@ window.angular && (function(angular) {
                         APIUtils.bmcReboot(
                             function(response) {},
                             function(error) {
-								toastService.error('Error during Switch reboot');
+                              $scope.displayError({
+                                modal_title: 'Error during Switch reboot',
+                                title: 'Error during Switch reboot',
+                                desc: JSON.stringify(error.data),
+                                type: 'Error'
+                              });
                             });
                       }, 10000);
                     }
@@ -152,8 +169,12 @@ window.angular && (function(angular) {
 					function(error) {
 						$scope.uploading = false;
 						console.log(error);
-						toastService.error('Error during image upload');
-					}
+						$scope.displayError({
+						modal_title: 'Error during image upload',
+						title: 'Error during image upload',
+						desc: error,
+						type: 'Error'
+					});
 				});
 			}
 		};
@@ -291,11 +312,12 @@ window.angular && (function(angular) {
         $scope.loadFirmwares = function() {
 			APIUtils.getFirmwares().then(function(result) {
 				$scope.firmwares = result.data;
+				console.log("loadFirmwares");
+				console.log($scope.firmwares);
 				//$scope.switchActiveVersion = result.hostActiveVersion;
             });
         };
-		
-		
+
 		$scope.loadSwitchBeingActiveVersion = function() {
 			APIUtils.getSwitchBeingActiveVersion(function(version, type) {
 				$scope.switchInfo.toBeActiveVersion = version;
@@ -309,17 +331,15 @@ window.angular && (function(angular) {
 				$scope.switchInfo.configurationFile = configurationFile;
 			});
         };
-		
+
 		$scope.loadSwitchUpdateStatus = function(){
 			APIUtils.getSwitchUpdateStatus(function(data, originalData) {
-				console.log("loadSwitchUpdateStatus");
 				var UpdateStatus = data.toString();
-				console.log(UpdateStatus);
 				$scope.switchInfo.switchUpdateStatus = UpdateStatus;
 				//console.log(switchInfo);
 			});
 		};
-		
+
 		$scope.loadSwitchActivatedStatus = function(){
 			APIUtils.getSwitchActivatedStatus(function(data, originalData) {
 				//console.log(data);
@@ -372,13 +392,12 @@ window.angular && (function(angular) {
 					}
                 );
         };			
-		
+
 		$scope.runImage = function(imageId, imageVersion, imageType) {
 			$scope.activate_image_id = imageId;
 			$scope.activate_image_version = imageVersion;
 			$scope.activate_image_type = imageType;
 			$scope.activate_confirm = true;
-			
         };
 
 		$scope.runConfirmed = function() {
@@ -390,6 +409,7 @@ window.angular && (function(angular) {
 					$scope.loadSwitchUpdateStatus();
 					$scope.loadSwitchActivatedStatus();
                     return state;
+
                 },
                 function(error) {  ///run fail
                     $scope.displayError({
@@ -402,12 +422,13 @@ window.angular && (function(angular) {
             
 			$scope.activate_confirm = false;
         };
-				
-       $scope.loadFirmwares();
-	   $scope.loadSwitchBeingActiveVersion();
-	   $scope.loadSwitchActivedVersion();
-	   $scope.loadSwitchUpdateStatus();
-	   $scope.loadSwitchActivatedStatus();
+
+		$scope.loadFirmwares();
+		$scope.loadSwitchBeingActiveVersion();
+		$scope.loadSwitchActivedVersion();
+		$scope.loadSwitchUpdateStatus();
+		$scope.loadSwitchActivatedStatus();
+
     }
   ]);
 })(angular);
