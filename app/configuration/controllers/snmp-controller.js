@@ -336,7 +336,6 @@ window.angular && (function(angular) {
 			APIUtils.getSwitchUpdateStatus(function(data, originalData) {
 				var UpdateStatus = data.toString();
 				$scope.switchInfo.switchUpdateStatus = UpdateStatus;
-				//console.log(switchInfo);
 			});
 		};
 
@@ -375,10 +374,8 @@ window.angular && (function(angular) {
 										return state;
 									}
 									if (updateStatus == '3'){ // 3 update status fail
-										console.log("updateStatus start");
 										$scope.loadSwitchUpdateStatus();
 										toastService.error(imageId + ' update fail, value 3');
-										console.log("updateStatus");
 									}
 								});
 							},
@@ -403,23 +400,27 @@ window.angular && (function(angular) {
 		$scope.runConfirmed = function() {
 			APIUtils.runImage(1)
             .then(
-                function(state) {  ///run success
-                    $scope.loadFirmwares();
-					$scope.loadSwitchActivedVersion();
-					$scope.loadSwitchUpdateStatus();
-					$scope.loadSwitchActivatedStatus();
-                    return state;
-
+                function(state) {  // active success
+					APIUtils.getSwitchActivatedStatus(function(data, originalData) {
+						var activatedStatus = data.toString();
+						if (activatedStatus == '2'){
+							console.log("runConfirmed 2");
+							$scope.loadFirmwares();
+							$scope.loadSwitchActivedVersion();
+							$scope.loadSwitchActivatedStatus();
+							toastService.success('Active OK');
+							return state;
+						}
+						if (activatedStatus == '3'){
+							console.log("runConfirmed 3");
+							$scope.loadSwitchActivatedStatus();
+							toastService.error('Error during activation status');
+						}
+					});
                 },
-                function(error) {  ///run fail
-                    $scope.displayError({
-						modal_title: 'Error during activation call',
-						title: 'Error during activation call',
-						desc: JSON.stringify(error.data),
-						type: 'Error'
-                    });
+                function(error) {  // active fail
+					toastService.error('Error during activation call');
                 });
-            
 			$scope.activate_confirm = false;
         };
 
@@ -428,7 +429,6 @@ window.angular && (function(angular) {
 		$scope.loadSwitchActivedVersion();
 		$scope.loadSwitchUpdateStatus();
 		$scope.loadSwitchActivatedStatus();
-
     }
   ]);
 })(angular);

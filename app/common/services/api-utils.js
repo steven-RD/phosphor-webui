@@ -1744,10 +1744,11 @@ window.angular && (function(angular) {
                     var json = JSON.stringify(response.data);
                     var content = JSON.parse(json);
 					// Judy modify 20190521 start
-					var FirmwareVersion = content.Version.FirmwareImage;
-					var ConfigurationFile = content.Version.ConfigurationFile;
 					console.log("ConfigurationFile");
 					console.log(content);
+					console.log(content.Version);
+					var FirmwareVersion = content.Version.FirmwareImage;
+					var ConfigurationFile = content.Version.ConfigurationFile;
 					console.log(FirmwareVersion, ConfigurationFile);
                     callback(FirmwareVersion, ConfigurationFile);
 					// Judy modify 20190521 end
