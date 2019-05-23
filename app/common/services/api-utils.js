@@ -1664,7 +1664,7 @@ window.angular && (function(angular) {
               });
         },
 
-		/*  Modified by USISH Steven 20190122 start */
+		/*  Modified by USISH Steven20190122/Judy20190521 start */
 		getSwitchUpdateStatus: function(callback) {
 			$http({
             method: 'GET',
@@ -1832,7 +1832,7 @@ window.angular && (function(angular) {
 
           return deferred.promise;
         },
-		/*  Modified by USISH Steven 20190122 end */
+		/*  Modified by USISH Steven20190122/Judy20190521 end */
 
       };
       return SERVICE;

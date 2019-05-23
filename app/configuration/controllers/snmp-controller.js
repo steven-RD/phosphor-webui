@@ -377,7 +377,7 @@ window.angular && (function(angular) {
 									if (updateStatus == '3'){ // 3 update status fail
 										console.log("updateStatus start");
 										$scope.loadSwitchUpdateStatus();
-										toastService.error(imageid + ' update fail, value 3');
+										toastService.error(imageId + ' update fail, value 3');
 										console.log("updateStatus");
 									}
 								});
