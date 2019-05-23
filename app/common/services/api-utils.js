@@ -1707,7 +1707,32 @@ window.angular && (function(angular) {
                   });
 		},
 
-		getSwitchActiveVersion: function(callback) {
+		// Judy modify 20190521 start
+		getSwitchBeingActiveVersion: function(callback) {
+          $http({
+            method: 'GET',
+            url: DataService.getHost() +
+                '/xyz/openbmc_project/ssdarray/firmware/ready',
+            withCredentials: true
+          })
+              .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+					var version = content.data['Version'];
+					var type = content.data['Type'];
+					console.log("version");
+					console.log(content);
+					console.log(version, type);
+                    callback(version, type);
+                  },
+                  function(error) {
+                    console.log(error);
+                  });
+        },
+		// Judy modify 20190521 end
+
+		getSwitchActivedVersion: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() +
@@ -1718,10 +1743,14 @@ window.angular && (function(angular) {
                   function(response) {
                     var json = JSON.stringify(response.data);
                     var content = JSON.parse(json);
-                    var dataClone = JSON.parse(JSON.stringify(content.data));
-					var versionInfo = content.data.Value;
-
-                    callback(versionInfo, dataClone);
+					// Judy modify 20190521 start
+					var FirmwareVersion = content.Version.FirmwareImage;
+					var ConfigurationFile = content.Version.ConfigurationFile;
+					console.log("ConfigurationFile");
+					console.log(content);
+					console.log(FirmwareVersion, ConfigurationFile);
+                    callback(FirmwareVersion, ConfigurationFile);
+					// Judy modify 20190521 end
                   },
                   function(error) {
                     console.log(error);
