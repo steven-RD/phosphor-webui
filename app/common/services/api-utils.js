@@ -1746,9 +1746,9 @@ window.angular && (function(angular) {
 					// Judy modify 20190521 start
 					console.log("ConfigurationFile");
 					console.log(content);
-					console.log(content['Version']);
-					var FirmwareVersion = content['Version']['FirmwareImage'];
-					var ConfigurationFile = content['Version']['ConfigurationFile'];
+					console.log(content.data['Version']);
+					var FirmwareVersion = content.data['Version']['FirmwareImage'];
+					var ConfigurationFile = content.data['Version']['ConfigurationFile'];
 					console.log(FirmwareVersion, ConfigurationFile);
                     callback(FirmwareVersion, ConfigurationFile);
 					// Judy modify 20190521 end

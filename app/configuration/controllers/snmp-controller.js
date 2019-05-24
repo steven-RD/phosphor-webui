@@ -161,7 +161,7 @@ window.angular && (function(angular) {
 						$scope.uploading = false;
 						$scope.upload_success = true;
 						APIUtils.updateImageStatus(0);  ///置0
-						APIUtils.runImage(0);     ///置0
+						//APIUtils.runImage(0);     ///置0
 						$scope.loadFirmwares();
 						$scope.loadSwitchUpdateStatus();
 						$scope.loadSwitchActivatedStatus();
