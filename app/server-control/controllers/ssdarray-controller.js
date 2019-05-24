@@ -80,7 +80,6 @@ window.angular && (function(angular) {
 				var psinfo = data['data'];
 				if (psinfo.hasOwnProperty('Status')){
 					$scope.psinfo = psinfo['Status'];
-					console.log($scope.psinfo);
 				}
 			},
 			function(error) {
