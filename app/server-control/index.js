@@ -37,6 +37,12 @@ window.angular && (function(angular) {
                 'controller': 'powerUsageController',
                 authenticated: true
               })
+			  .when('/server-control/ssdarray', {
+                'template':
+                    require('./controllers/ssdarray-controller.html'),
+                'controller': 'ssdArrayController',
+                authenticated: true
+              })
               .when('/server-control/remote-console', {
                 'template':
                     require('./controllers/remote-console-controller.html'),

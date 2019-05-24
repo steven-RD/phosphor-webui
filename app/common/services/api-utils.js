@@ -1833,6 +1833,39 @@ window.angular && (function(angular) {
 
           return deferred.promise;
         },
+
+		getSsdArrayInfo: function(){
+			return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/xyz/openbmc_project/ssdarray/info',
+                   withCredentials: true
+                 })
+				.then(function(response) {
+				   var json = JSON.stringify(response.data);
+				   var content = JSON.parse(json);
+				   return content;
+				},
+				function(error) {
+				   console.log(error);
+				});
+		},
+		getPowerSupplyInfo: function(){
+			return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/xyz/openbmc_project/ssdarray/powersupply',
+                   withCredentials: true
+                 })
+				.then(function(response) {
+				   var json = JSON.stringify(response.data);
+				   var content = JSON.parse(json);
+				   return content;
+				},
+				function(error) {
+				   console.log(error);
+				});
+		},
 		/*  Modified by USISH Steven20190122/Judy20190521 end */
 
       };
