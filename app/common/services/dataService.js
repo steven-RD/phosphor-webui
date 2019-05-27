@@ -18,6 +18,7 @@ window.angular && (function(angular) {
       this.server_status = -2;
       this.chassis_state = 'On';
       this.LED_state = Constants.LED_STATE_TEXT.off;
+	  this.switch_state = 'Power On';
       this.last_updated = new Date();
 
       this.loading = false;

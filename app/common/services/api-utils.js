@@ -710,6 +710,44 @@ window.angular && (function(angular) {
             data: JSON.stringify({'data': state})
           })
         },
+		setPowerSwitchState: function(state) {
+		  var deferred = $q.defer();
+          $http({
+              method: 'PUT',
+              url: DataService.getHost() +
+                '/xyz/openbmc_project/ssdarray/control/attr/Command',
+              withCredentials: true,
+              data: JSON.stringify({'data': state})
+          })
+		  .then(
+			  function(response) {
+				var json = JSON.stringify(response.data);
+				var content = JSON.parse(json);
+				deferred.resolve(content.status);
+			  },
+			  function(error) {
+				deferred.reject(error);
+			  });
+          return deferred.promise;
+        },
+		getPowerSwitchStatus: function() {
+		  var deferred = $q.defer();
+          $http({
+              method: 'GET',
+              url: DataService.getHost() + '/xyz/openbmc_project/ssdaray/powerswitch',
+              withCredentials: true
+          })
+		  .then(
+			  function(response) {
+				var json = JSON.stringify(response.data);
+				var content = JSON.parse(json);
+				deferred.resolve(content.data);
+			  },
+			  function(error) {
+				deferred.reject(error);
+			  });
+          return deferred.promise;
+        },
         bmcReboot: function(callback) {
           $http({
             method: 'PUT',
