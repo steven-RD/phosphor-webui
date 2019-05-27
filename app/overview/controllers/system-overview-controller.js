@@ -136,17 +136,18 @@ window.angular && (function(angular) {
         APIUtils.setLEDState(toggleState, function(status) {});
       };
 
+	  // Judy modified at 20190527 start
 	  $scope.toggleSwitchPower = function() {
-        var toggleState = (dataService.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
-        // dataService.switch_state = (dataService.switch_state == 'on') ? 'off' : 'on';
-        APIUtils.setPowerSwitchState(toggleState).then(
+		  /*
+			Set power switch state.
+			if success, get power switch status and update.
+		  */
+        var toggleState =
+		  (dataService.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
+		APIUtils.setPowerSwitchState(toggleState).then(
             function(data) {
-			  console.log("setPowerSwitchState");
-              console.log(data);
 			  APIUtils.getPowerSwitchStatus().then(
 				  function(info){
-					console.log("getPowerSwitchStatus");
-					console.log(info);
 					 dataService.switch_state = info.Status;
 				  },
 				  function(error) {
@@ -157,6 +158,7 @@ window.angular && (function(angular) {
               console.log(JSON.stringify(error));
             });
       };
+	  // Judy modified at 20190527 end
 
       $scope.saveHostname = function(hostname) {
         $scope.edit_hostname = false;
