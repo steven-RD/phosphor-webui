@@ -734,7 +734,7 @@ window.angular && (function(angular) {
 		  var deferred = $q.defer();
           $http({
               method: 'GET',
-              url: DataService.getHost() + '/xyz/openbmc_project/ssdaray/powerswitch',
+              url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/powerswitch',
               withCredentials: true
           })
 		  .then(
