@@ -36,7 +36,7 @@ window.angular && (function(angular) {
               console.log(JSON.stringify(error));
               toastService.error('Unable to reboot BMC.');
             });
-        });
+        };
       };
     }
   ]);
