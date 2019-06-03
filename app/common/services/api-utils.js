@@ -1640,7 +1640,7 @@ window.angular && (function(angular) {
                     var content = JSON.parse(json);
                     var dataClone = JSON.parse(JSON.stringify(content.data));
 					var switchUpdateStatus = content.data.Value;
-
+					console.log("getSwitchUpdateStatus");
                     callback(switchUpdateStatus, dataClone);
                   },
                   function(error) {
@@ -1745,36 +1745,40 @@ window.angular && (function(angular) {
           return deferred.promise;
         },
 
-		updateImageStatus: function(val) {
+        updateImageStatus: function(val) {
           var deferred = $q.defer();
-		  console.log("updateImageStatus val");
-		  console.log(val);
+          console.log("updateImageStatus val");
+          console.log(val);
           $http({
             method: 'PUT',
             url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/Value',
             withCredentials: true,
-			timeout: 36000,
+            timeout: 5 * 60 * 1000,
             data:
                 JSON.stringify({'data': val})
           })
-              .then(
+           .then(
                   function(response) {
                     var json = JSON.stringify(response.data);
                     var content = JSON.parse(json);
                     deferred.resolve(content);
+					console.log("updateImageStatus success");
+					console.log(content);
                   },
                   function(error) {
                     console.log(error);
                     deferred.reject(error);
-                  });
-
+                  }
+                );
+		  console.log("deferred.promise");
+		  console.log(deferred.promise);
           return deferred.promise;
         },
 
-		runImage: function(val) {
+        runImage: function(val) {
           var deferred = $q.defer();
-		  console.log('runImage val');
-		  console.log(val);
+          console.log('runImage val');
+          console.log(val);
           $http({
             method: 'PUT',
             url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/activate',

@@ -359,11 +359,13 @@ window.angular && (function(angular) {
 
 			APIUtils.updateImage(imageId)
             .then(
-					function(imageState) {	// update ImageId success
-						APIUtils.updateImageStatus(1)	// update process success
+					function(imageState) {  // update ImageId success
+						APIUtils.updateImageStatus(1)    // update process success
 						.then(
 							function(state){
 								APIUtils.getSwitchUpdateStatus(function(data, originalData) {
+									consoloe.log("APIUtils.getSwitchUpdateStatus call")
+									consoloe.log(data)
 									var updateStatus = data.toString();
 									if (updateStatus == '2'){ // 2 update status success
 										APIUtils.deleteImage($scope.activate_image_id); // delete image
