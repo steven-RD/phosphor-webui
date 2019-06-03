@@ -132,7 +132,7 @@ window.angular && (function(angular) {
                     if ($scope.activate.reboot &&
                        ($scope.activate_image_type == 'Switch')) {
                         $timeout(function() {
-                        APIUtils.bmcReboot(
+                        APIUtils.bmcReboot().then(
                             function(response) {},
                             function(error) {
                               $scope.displayError({

@@ -154,13 +154,13 @@ window.angular && (function(angular) {
 				  },
 				  function(error) {
 					console.log(JSON.stringify(error));
-				  });
+                  });
             },
             function(error) {
               console.log(JSON.stringify(error));
             });
       };
-	  // Judy modified at 20190527 end
+      // Judy modified at 20190527 end
 
       $scope.saveHostname = function(hostname) {
         $scope.edit_hostname = false;

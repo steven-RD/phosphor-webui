@@ -123,9 +123,9 @@ window.angular && (function(angular) {
                       // passed.
                       $timeout(function() {
                         APIUtils.bmcReboot().then(
-							function(response) {
-								toastService.success('BMC is rebooting.');
-							},
+                            function(response) {
+                                toastService.success('BMC is rebooting.');
+                            },
                             function(error) {
                               console.log(JSON.stringify(error));
                               toastService.error('Unable to reboot BMC.');

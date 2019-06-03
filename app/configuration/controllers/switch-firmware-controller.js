@@ -139,7 +139,7 @@ window.angular && (function(angular) {
                       // TODO: remove this timeout after sufficient time has
                       // passed.
                       $timeout(function() {
-                        APIUtils.bmcReboot(
+                        APIUtils.bmcReboot().then(
                             function(response) {},
                             function(error) {
                               $scope.displayError({

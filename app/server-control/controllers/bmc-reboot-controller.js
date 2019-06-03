@@ -28,9 +28,9 @@ window.angular && (function(angular) {
         $scope.confirm = true;
       };
       $scope.reboot = function() {
-        APIUtils.bmcReboot.then(
-			function(response) {
-			  toastService.success('BMC is rebooting.');
+        APIUtils.bmcReboot().then(
+            function(response) {
+              toastService.success('BMC is rebooting.');
             },
             function(error) {
               console.log(JSON.stringify(error));
