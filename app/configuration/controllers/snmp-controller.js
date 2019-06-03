@@ -146,10 +146,9 @@ window.angular && (function(angular) {
                     }
                 });
             });
-			$scope.activate_confirm = false;
+            $scope.activate_confirm = false;
         };
-     
-      
+
 		$scope.upload = function() {
 			if ($scope.file) {
 				$scope.uploading = true;
