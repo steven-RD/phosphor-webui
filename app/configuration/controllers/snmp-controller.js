@@ -403,6 +403,8 @@ window.angular && (function(angular) {
             .then(
                 function(state) {  // active success
 					APIUtils.getSwitchActivatedStatus(function(data, originalData) {
+						console.log("getSwitchActivatedStatus");
+						console.log(data);
 						var activatedStatus = data.toString();
 						if (activatedStatus == '2'){
 							console.log("runConfirmed 2");
@@ -415,12 +417,12 @@ window.angular && (function(angular) {
 						if (activatedStatus == '3'){
 							console.log("runConfirmed 3");
 							$scope.loadSwitchActivatedStatus();
-							toastService.error('Error during activation status');
+							toastService.error('Error during activate status');
 						}
 					});
                 },
                 function(error) {  // active fail
-					toastService.error('Error during activation call');
+					toastService.error('Error during run image.');
                 });
 			$scope.activate_confirm = false;
         };

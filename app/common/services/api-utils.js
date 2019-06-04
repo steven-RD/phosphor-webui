@@ -1640,7 +1640,7 @@ window.angular && (function(angular) {
                     var content = JSON.parse(json);
                     var dataClone = JSON.parse(JSON.stringify(content.data));
 					var switchUpdateStatus = content.data.Value;
-					console.log("getSwitchUpdateStatus");
+
                     callback(switchUpdateStatus, dataClone);
                   },
                   function(error) {
@@ -1771,7 +1771,7 @@ window.angular && (function(angular) {
                   }
                 );
 		  console.log("deferred.promise");
-		  console.log(deferred.promise);
+		  console.log(deferred.promise)
           return deferred.promise;
         },
 
@@ -1781,7 +1781,7 @@ window.angular && (function(angular) {
           console.log(val);
           $http({
             method: 'PUT',
-            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/activate',
+            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/activate/attr/Value',
             withCredentials: true,
             data:
                 JSON.stringify({'data': val})
