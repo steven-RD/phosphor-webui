@@ -364,8 +364,8 @@ window.angular && (function(angular) {
 						.then(
 							function(state){
 								APIUtils.getSwitchUpdateStatus(function(data, originalData) {
-									consoloe.log("APIUtils.getSwitchUpdateStatus call")
-									consoloe.log(data)
+									console.log("APIUtils.getSwitchUpdateStatus call")
+									console.log(data)
 									var updateStatus = data.toString();
 									if (updateStatus == '2'){ // 2 update status success
 										APIUtils.deleteImage($scope.activate_image_id); // delete image
@@ -385,11 +385,11 @@ window.angular && (function(angular) {
 							}
 						)
 					},
-					function(error){	// update imageid error
+					function(error){    // update imageid error
 						toastService.error('Error during update imageid');
 					}
                 );
-        };			
+        };
 
 		$scope.runImage = function(imageId, imageVersion, imageType) {
 			$scope.activate_image_id = imageId;

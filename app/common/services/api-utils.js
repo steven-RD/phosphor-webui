@@ -1762,8 +1762,8 @@ window.angular && (function(angular) {
                     var json = JSON.stringify(response.data);
                     var content = JSON.parse(json);
                     deferred.resolve(content);
-					console.log("updateImageStatus success");
-					console.log(content);
+                    console.log("updateImageStatus success");
+                    console.log(content);
                   },
                   function(error) {
                     console.log(error);
