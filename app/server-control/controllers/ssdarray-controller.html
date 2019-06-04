@@ -33,7 +33,7 @@
 					<th align=”center” font size="medium">SSD NO.</th>
 					<th align=”center” font size="medium">Address</th>
 					<th align=”center” font size="medium">Type</th>
-					<th align=”center” font size="medium">Value</th>
+					<!--<th align=”center” font size="medium">Value</th>-->
 					<th align=”center” font size="medium">Status</th>
 					<th align=”center” font size="medium">Link Speed</th>
 					<th align=”center” font size="medium">Link Width</th>
@@ -48,7 +48,7 @@
 					<td align=”center” font size="medium">{{ssdNo}}</td>
 					<td align=”center” font size="medium">{{detail.SlotAddr}}</td>
 					<td align=”center” font size="medium">{{detail.Type}}</td>
-					<td align=”center” font size="medium">{{detail.Value}}</td>
+					<!--<td align=”center” font size="medium">{{detail.Value}}</td>-->
 					<td align=”center” font size="medium">{{detail.Status}}</td>
 					<td align=”center” font size="medium">{{detail.LinkSpeed}}</td>
 					<td align=”center” font size="medium">{{detail.LinkStatus}}</td>
@@ -68,14 +68,14 @@
 			<tr>
 				<th align=”center” font size="medium">Title</th>
 				<th align=”center” font size="medium">Status</th>
-				<th align=”center” font size="medium">Value</th>
+				<!--<th align=”center” font size="medium">Value</th>-->
 				<th align=”center” font size="medium">CableType</th>
 				<th align=”center” font size="medium">SlotAddr</th>
 				<th align=”center” font size="medium">PartitionID</th>
-				<th align=”center” font size="medium">linkStatus</th>
+				<th align=”center” font size="medium">LinkStatus</th>
 				<th align=”center” font size="medium">LinkActive</th>
 				<th align=”center” font size="medium">LinkWidth</th>
-				<th align=”center” font size="medium">Invalid</th>
+				<th align=”center” font size="medium">PhysicalPort</th>
 				<th align=”center” font size="medium">UspDsp</th>
 				<th align=”center” font size="medium">Present</th>
 			</tr>
@@ -84,14 +84,14 @@
 			<tr align=”center” ng-repeat="(cable, detail) in cableinfo" ng-show="cableinfo != 'None'">
 				<td align=”center” font size="medium">{{cable}}</td>
 				<td align=”center” font size="medium">{{detail.Status}}</td>
-				<td align=”center” font size="medium">{{detail.Value}}</td>
+				<!--<td align=”center” font size="medium">{{detail.Value}}</td>-->
 				<td align=”center” font size="medium">{{detail.CableType}}</td>
 				<td align=”center” font size="medium">{{detail.SlotAddr}}</td>
 				<td align=”center” font size="medium">{{detail.PartitionID}}</td>
-				<td align=”center” font size="medium">{{detail.linkStatus}}</td>
+				<td align=”center” font size="medium">{{detail.LinkStatus}}</td>
 				<td align=”center” font size="medium">{{detail.LinkActive}}</td>
 				<td align=”center” font size="medium">{{detail.LinkWidth}}</td>
-				<td align=”center” font size="medium">{{detail.Invalid}}</td>
+				<td align=”center” font size="medium">{{detail.PhysicalPort}}</td>
 				<td align=”center” font size="medium">{{detail.UspDsp}}</td>
 				<td align=”center” font size="medium">{{detail.Present}}</td>
 			</tr>
