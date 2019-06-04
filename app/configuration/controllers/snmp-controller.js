@@ -311,6 +311,8 @@ window.angular && (function(angular) {
         $scope.loadFirmwares = function() {
 			APIUtils.getFirmwares().then(function(result) {
 				$scope.firmwares = result.data;
+                $scope.loadSwitchBeingActiveVersion();
+                $scope.loadSwitchActivedVersion();
 				console.log("loadFirmwares");
 				console.log($scope.firmwares);
 				//$scope.switchActiveVersion = result.hostActiveVersion;

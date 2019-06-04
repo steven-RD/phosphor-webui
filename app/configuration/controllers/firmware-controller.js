@@ -320,6 +320,8 @@ window.angular && (function(angular) {
       $scope.loadFirmwares = function() {
         APIUtils.getFirmwares().then(function(result) {
           $scope.firmwares = result.data;
+          console.log("$scope.firmwares");
+          console.log($scope.firmwares);
           $scope.bmcActiveVersion = result.bmcActiveVersion;
 		  /*  Modified by USISH Steven 20190117 start */
           $scope.hostActiveVersion = result.hostActiveVersion;

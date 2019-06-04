@@ -1170,7 +1170,8 @@ window.angular && (function(angular) {
                     console.log(error);
                     deferred.reject(error);
                   });
-
+          console.log("getFirmwares");
+          console.log(deferred.promise);
           return deferred.promise;
         },
         changePriority: function(imageId, priority) {
