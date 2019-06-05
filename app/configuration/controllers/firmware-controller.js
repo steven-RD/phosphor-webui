@@ -11,11 +11,10 @@ window.angular && (function(angular) {
 
   angular.module('app.configuration').controller('firmwareController', [
     '$scope', '$window', 'APIUtils', 'dataService', '$location',
-    '$anchorScroll', 'Constants', '$interval', '$q', '$timeout', '$interpolate',
-    'toastService',
+    '$anchorScroll', 'Constants', '$interval', '$q', '$timeout', 'toastService',
     function(
         $scope, $window, APIUtils, dataService, $location, $anchorScroll,
-        Constants, $interval, $q, $timeout, $interpolate, toastService) {
+        Constants, $interval, $q, $timeout, toastService) {
       $scope.dataService = dataService;
 
       // Scroll to target anchor
@@ -88,6 +87,7 @@ window.angular && (function(angular) {
                 'Time out. Image did not activate in allotted time.');
           }
         }, Constants.POLL_INTERVALS.ACTIVATION);
+        console.log("waitForActive end")
         return deferred.promise;
       }
 
@@ -96,6 +96,7 @@ window.angular && (function(angular) {
             .then(
                 function(state) {
                   $scope.loadFirmwares();
+                  console.log("activateConfirmed");
                   return state;
                 },
                 function(error) {
@@ -128,7 +129,7 @@ window.angular && (function(angular) {
                       $timeout(function() {
                         APIUtils.bmcReboot().then(
                             function(response) {
-                                toastService.success('BMC is rebooting.');
+                              toastService.success('BMC is rebooting.')
                             },
                             function(error) {
                               console.log(JSON.stringify(error));
@@ -136,6 +137,9 @@ window.angular && (function(angular) {
                             });
                       }, 10000);
                     }
+                    console.log("BMC is rebooting end");
+                    console.log($scope.activate.reboot);
+                    console.log($scope.activate_image_type);
                     if ($scope.activate.reboot &&
                         ($scope.activate_image_type == 'Host')) {
                       // If image type being activated is a host image, the
@@ -324,8 +328,6 @@ window.angular && (function(angular) {
       $scope.loadFirmwares = function() {
         APIUtils.getFirmwares().then(function(result) {
           $scope.firmwares = result.data;
-          console.log("$scope.firmwares");
-          console.log($scope.firmwares);
           $scope.bmcActiveVersion = result.bmcActiveVersion;
 		  /*  Modified by USISH Steven 20190117 start */
           $scope.hostActiveVersion = result.hostActiveVersion;
