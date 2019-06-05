@@ -1211,6 +1211,8 @@ window.angular && (function(angular) {
                        {'data': Constants.FIRMWARE.ACTIVATE_FIRMWARE})
                  })
               .then(function(response) {
+                console.log("activateImage");
+                console.log(response);
                 return response.data;
               });
         },

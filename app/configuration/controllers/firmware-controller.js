@@ -52,6 +52,10 @@ window.angular && (function(angular) {
         $scope.activate_image_version = imageVersion;
         $scope.activate_image_type = imageType;
         $scope.activate_confirm = true;
+        console.log("activateImage");
+        console.log(imageId);
+        console.log(imageVersion);
+        console.log(imageType);
       };
 
       function waitForActive(imageId) {
