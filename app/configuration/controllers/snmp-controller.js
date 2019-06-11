@@ -309,14 +309,19 @@ window.angular && (function(angular) {
         $scope.filters = {bmc: {imageType: 'BMC'}, Switch: {imageType: 'Host'}};
 
         $scope.loadFirmwares = function() {
-			APIUtils.getFirmwares().then(function(result) {
-				$scope.firmwares = result.data;
-                $scope.loadSwitchBeingActiveVersion();
-                $scope.loadSwitchActivedVersion();
-				console.log("loadFirmwares");
-				console.log($scope.firmwares);
-				//$scope.switchActiveVersion = result.hostActiveVersion;
-            });
+            APIUtils.getFirmwares()
+            .then(
+                function(result) {
+                    $scope.firmwares = result.data;
+                    $scope.loadSwitchBeingActiveVersion();
+                    $scope.loadSwitchActivedVersion();
+                    console.log("loadFirmwares");
+                    console.log($scope.firmwares);
+                    //$scope.switchActiveVersion = result.hostActiveVersion;
+                },
+                function(error) {
+                    console.log(error);
+                });
         };
 
 		$scope.loadSwitchBeingActiveVersion = function() {
@@ -359,74 +364,74 @@ window.angular && (function(angular) {
 			$scope.activate_image_version = imageVersion;
 			$scope.activate_image_type = imageType;
 
-			APIUtils.updateImage(imageId)
+            APIUtils.updateImage(imageId)
             .then(
-					function(imageState) {  // update ImageId success
-						APIUtils.updateImageStatus(1)    // update process success
-						.then(
-							function(state){
-								APIUtils.getSwitchUpdateStatus(function(data, originalData) {
-									console.log("APIUtils.getSwitchUpdateStatus call")
-									console.log(data)
-									var updateStatus = data.toString();
-									if (updateStatus == '2'){ // 2 update status success
-										APIUtils.deleteImage($scope.activate_image_id); // delete image
-										$scope.loadData();
-										toastService.success('Update success');
-										console.log('Update success');
-										return state;
-									}
-									if (updateStatus == '3'){ // 3 update status fail
-										$scope.loadSwitchUpdateStatus();
-										toastService.error(imageId + ' update fail, value 3');
-									}
-								});
-							},
-							function(error){	// update process error
-								toastService.error('Error during update status process');
-							}
-						)
-					},
-					function(error){    // update imageid error
-						toastService.error('Error during update imageid');
-					}
-                );
+                function(imageState) {  // update ImageId success
+                    APIUtils.updateImageStatus(1)    // update process success
+                    .then(
+                        function(state){
+                            APIUtils.getSwitchUpdateStatus(function(data, originalData) {
+                                console.log("APIUtils.getSwitchUpdateStatus call")
+                                console.log(data)
+                                var updateStatus = data.toString();
+                                if (updateStatus == '2'){ // 2 update status success
+                                    APIUtils.deleteImage($scope.activate_image_id); // delete image
+                                    $scope.loadData();
+                                    toastService.success('Update success');
+                                    console.log('Update success');
+                                    return state;
+                                }
+                                if (updateStatus == '3'){ // 3 update status fail
+                                    $scope.loadSwitchUpdateStatus();
+                                    toastService.error(imageId + ' update fail, value 3');
+                                }
+                            });
+                        },
+                        function(error){    // update process error
+                            toastService.error('Error during update status process');
+                        }
+                    )
+                },
+                function(error){    // update imageid error
+                    toastService.error('Error during update imageid');
+                }
+            );
         };
 
-		$scope.runImage = function(imageId, imageVersion, imageType) {
-			$scope.activate_image_id = imageId;
-			$scope.activate_image_version = imageVersion;
-			$scope.activate_image_type = imageType;
-			$scope.activate_confirm = true;
+        $scope.runImage = function(imageId, imageVersion, imageType) {
+            $scope.activate_image_id = imageId;
+            $scope.activate_image_version = imageVersion;
+            $scope.activate_image_type = imageType;
+            $scope.activate_confirm = true;
         };
 
-		$scope.runConfirmed = function() {
-			APIUtils.runImage(1)
+        $scope.runConfirmed = function() {
+            APIUtils.runImage(1)
             .then(
                 function(state) {  // active success
-					APIUtils.getSwitchActivatedStatus(function(data, originalData) {
-						console.log("getSwitchActivatedStatus");
-						console.log(data);
-						var activatedStatus = data.toString();
-						if (activatedStatus == '2'){
-							console.log("runConfirmed 2");
-							$scope.loadFirmwares();
-							$scope.loadSwitchActivedVersion();
-							$scope.loadSwitchActivatedStatus();
-							toastService.success('Active OK');
-							return state;
-						}
-						if (activatedStatus == '3'){
-							console.log("runConfirmed 3");
-							$scope.loadSwitchActivatedStatus();
-							toastService.error('Error during activate status');
-						}
-					});
+                    APIUtils.getSwitchActivatedStatus(function(data, originalData) {
+                        console.log("getSwitchActivatedStatus");
+                        console.log(data);
+                        var activatedStatus = data.toString();
+                        if (activatedStatus == '2'){
+                            console.log("runConfirmed 2");
+                            $scope.loadFirmwares();
+                            $scope.loadSwitchActivedVersion();
+                            $scope.loadSwitchActivatedStatus();
+                            toastService.success('Active OK');
+                            return state;
+                        }
+                        if (activatedStatus == '3'){
+                            console.log("runConfirmed 3");
+                            $scope.loadSwitchActivatedStatus();
+                            toastService.error('Error during activate status');
+                        }
+                    });
                 },
                 function(error) {  // active fail
-					toastService.error('Error during run image.');
+                    toastService.error('Error during run image.');
                 });
-			$scope.activate_confirm = false;
+            $scope.activate_confirm = false;
         };
 
 		$scope.loadFirmwares();

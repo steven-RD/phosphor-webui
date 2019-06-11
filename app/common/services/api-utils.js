@@ -1165,6 +1165,8 @@ window.angular && (function(angular) {
                       bmcActiveVersion: bmcActiveVersion,
                       hostActiveVersion: hostActiveVersion
                     });
+                    console.log("getFirmwares success");
+                    console.log(data);
                   },
                   function(error) {
                     console.log(error);
@@ -1723,10 +1725,10 @@ window.angular && (function(angular) {
                   });
         },
 
-		updateImage: function(val) {
+        updateImage: function(val) {
           var deferred = $q.defer();
-		  console.log("updateImage val");
-		  console.log(val);
+          console.log("updateImage val");
+          console.log(val);
           $http({
             method: 'PUT',
             url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/Imageid',
@@ -1734,17 +1736,18 @@ window.angular && (function(angular) {
             data:
                 JSON.stringify({'data': val})
           })
-              .then(
-                  function(response) {
-                    var json = JSON.stringify(response.data);
-                    var content = JSON.parse(json);
-                    deferred.resolve(content);
-                  },
-                  function(error) {
-                    console.log(error);
-                    deferred.reject(error);
-                  });
-
+          .then(
+              function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                deferred.resolve(content);
+              },
+              function(error) {
+                console.log(error);
+                deferred.reject(error);
+              });
+          console.log("updateImage deferred.promise");
+          console.log(deferred.promise);
           return deferred.promise;
         },
 
@@ -1773,8 +1776,8 @@ window.angular && (function(angular) {
                     deferred.reject(error);
                   }
                 );
-		  console.log("deferred.promise");
-		  console.log(deferred.promise)
+          console.log("updateImageStatus deferred.promise");
+          console.log(deferred.promise);
           return deferred.promise;
         },
 
@@ -1789,17 +1792,18 @@ window.angular && (function(angular) {
             data:
                 JSON.stringify({'data': val})
           })
-              .then(
-                  function(response) {
-                    var json = JSON.stringify(response.data);
-                    var content = JSON.parse(json);
-                    deferred.resolve(content);
-                  },
-                  function(error) {
-                    console.log(error);
-                    deferred.reject(error);
-                  });
-
+          .then(
+              function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                deferred.resolve(content);
+              },
+              function(error) {
+                console.log(error);
+                deferred.reject(error);
+              });
+          console.log("runImage deferred.promise");
+          console.log(deferred.promise)
           return deferred.promise;
         },
 
