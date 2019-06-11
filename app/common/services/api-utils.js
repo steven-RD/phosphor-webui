@@ -1759,7 +1759,7 @@ window.angular && (function(angular) {
             method: 'PUT',
             url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/Value',
             withCredentials: true,
-            timeout: 5 * 60 * 1000,
+            timeout: 60 * 1000, // 60s
             data:
                 JSON.stringify({'data': val})
           })
@@ -1772,6 +1772,7 @@ window.angular && (function(angular) {
                     console.log(content);
                   },
                   function(error) {
+                    console.log("updateImageStatus error");
                     console.log(error);
                     deferred.reject(error);
                   }

@@ -75,15 +75,15 @@
 			</div>
 			<div ng-if="title == 'Switch images'">
 				<button class="firmware__action-link" ng-show="version.switchUpdateStatus == '0'" ng-click="update(firmware.imageId, firmware.Version, firmware.imageType)">Update</button>	
-				<div ng-if="version.switchUpdateStatus == '2'">
+                <div ng-if="version.switchUpdateStatus == '2'">
 					<button class="firmware__action-link" ng-show="version.switchActivatedStatus == '0'" ng-click="run(firmware.imageId, firmware.Version, firmware.imageType)">Active</button>
 				</div>
 				<button class="firmware__action-link" ng-show="firmware.activationStatus != 'Functional'" ng-click="delete(firmware.imageId, firmware.Version)">Delete</button>
 			</div>
 			<!--  Modified by USISH Steven 20190117 end -->
-
         </div>
       </div>
     </div>
+    <div class="inline uploading" ng-show="updating">Update in progress...</div>
   </div>
 </div>

@@ -44,6 +44,7 @@ window.angular && (function(angular) {
         $scope.confirm_priority = false;
         $scope.file_empty = true;
         $scope.uploading = false;
+        $scope.updating = false; // Judy add
         $scope.upload_success = false;
         $scope.activate = {reboot: true};
         $scope.download_error_msg = '';
@@ -363,6 +364,7 @@ window.angular && (function(angular) {
 			$scope.activate_image_id = imageId;
 			$scope.activate_image_version = imageVersion;
 			$scope.activate_image_type = imageType;
+            $scope.updating = true;
 
             APIUtils.updateImage(imageId)
             .then(
@@ -370,6 +372,7 @@ window.angular && (function(angular) {
                     APIUtils.updateImageStatus(1)    // update process success
                     .then(
                         function(state){
+                            $scope.updating = false;
                             APIUtils.getSwitchUpdateStatus(function(data, originalData) {
                                 console.log("APIUtils.getSwitchUpdateStatus call")
                                 console.log(data)
@@ -388,7 +391,8 @@ window.angular && (function(angular) {
                             });
                         },
                         function(error){    // update process error
-                            toastService.error('Error during update status process');
+                            $scope.updating = false;
+                            toastService.error('Error during update status process' + error);
                         }
                     )
                 },
