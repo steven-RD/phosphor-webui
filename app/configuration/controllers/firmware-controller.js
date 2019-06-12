@@ -333,8 +333,8 @@ window.angular && (function(angular) {
           $scope.hostActiveVersion = result.hostActiveVersion;
         /*  Modified by USISH Steven 20190117 end */
           console.log('bmcActiveVersion');
-          console.log($scope.bmcActiveVersion);
-          console.log(scope.hostActiveVersion);
+          console.log(result.bmcActiveVersion);
+          console.log(result.hostActiveVersion);
         });
       };
 
