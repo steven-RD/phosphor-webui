@@ -329,12 +329,12 @@ window.angular && (function(angular) {
         APIUtils.getFirmwares().then(function(result) {
           $scope.firmwares = result.data;
           $scope.bmcActiveVersion = result.bmcActiveVersion;
-		  /*  Modified by USISH Steven 20190117 start */
+        /*  Modified by USISH Steven 20190117 start */
           $scope.hostActiveVersion = result.hostActiveVersion;
-		  /*  Modified by USISH Steven 20190117 end */
+        /*  Modified by USISH Steven 20190117 end */
           console.log('bmcActiveVersion');
-          console.log(bmcActiveVersion);
-          console.log(hostActiveVersion);
+          console.log($scope.bmcActiveVersion);
+          console.log(scope.hostActiveVersion);
         });
       };
 

@@ -1631,51 +1631,51 @@ window.angular && (function(angular) {
               });
         },
 
-		/*  Modified by USISH Steven20190122/Judy20190521 start */
-		getSwitchUpdateStatus: function(callback) {
-			$http({
+        /*  Modified by USISH Steven20190122/Judy20190521 start */
+        getSwitchUpdateStatus: function(callback) {
+          $http({
             method: 'GET',
             url: DataService.getHost() +
                 '/xyz/openbmc_project/ssdarray/firmware/update',
             withCredentials: true
           })
-              .then(
-                  function(response) {
-                    var json = JSON.stringify(response.data);
-                    var content = JSON.parse(json);
-                    var dataClone = JSON.parse(JSON.stringify(content.data));
-					var switchUpdateStatus = content.data.Value;
+          .then(
+              function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                var dataClone = JSON.parse(JSON.stringify(content.data));
+                var switchUpdateStatus = content.data.Value;
 
-                    callback(switchUpdateStatus, dataClone);
-                  },
-                  function(error) {
-                    console.log(error);
-                  });
-		},
+                callback(switchUpdateStatus, dataClone);
+              },
+              function(error) {
+                console.log(error);
+              });
+        },
 
-		getSwitchActivatedStatus: function(callback) {
-			$http({
+        getSwitchActivatedStatus: function(callback) {
+          $http({
             method: 'GET',
             url: DataService.getHost() +
                 '/xyz/openbmc_project/ssdarray/firmware/activate',
             withCredentials: true
           })
-              .then(
-                  function(response) {
-                    var json = JSON.stringify(response.data);
-                    var content = JSON.parse(json);
-                    var dataClone = JSON.parse(JSON.stringify(content.data));
-					var switchActivatedStatus = content.data.Value;
+          .then(
+              function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                var dataClone = JSON.parse(JSON.stringify(content.data));
+                var switchActivatedStatus = content.data.Value;
 
-                    callback(switchActivatedStatus, dataClone);
-                  },
-                  function(error) {
-                    console.log(error);
-                  });
-		},
+                callback(switchActivatedStatus, dataClone);
+              },
+              function(error) {
+                console.log(error);
+              });
+        },
 
-		// Judy modify 20190521 start
-		getSwitchBeingActiveVersion: function(callback) {
+        // Judy modify 20190521 start
+        etSwitchBeingActiveVersion: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() +
@@ -1686,20 +1686,20 @@ window.angular && (function(angular) {
                   function(response) {
                     var json = JSON.stringify(response.data);
                     var content = JSON.parse(json);
-					var version = content.data['Version'];
-					var type = content.data['Type'];
-					console.log("version");
-					console.log(content);
-					console.log(version, type);
+                    var version = content.data['Version'];
+                    var type = content.data['Type'];
+                    console.log("version");
+                    console.log(content);
+                    console.log(version, type);
                     callback(version, type);
                   },
                   function(error) {
                     console.log(error);
                   });
         },
-		// Judy modify 20190521 end
+        // Judy modify 20190521 end
 
-		getSwitchActivedVersion: function(callback) {
+        getSwitchActivedVersion: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() +
@@ -1710,15 +1710,15 @@ window.angular && (function(angular) {
                   function(response) {
                     var json = JSON.stringify(response.data);
                     var content = JSON.parse(json);
-					// Judy modify 20190521 start
-					console.log("ConfigurationFile");
-					console.log(content);
-					console.log(content.data['Version']);
-					var FirmwareVersion = content.data['Version']['FirmwareImage'];
-					var ConfigurationFile = content.data['Version']['ConfigurationFile'];
-					console.log(FirmwareVersion, ConfigurationFile);
+                    // Judy modify 20190521 start
+                    console.log("ConfigurationFile");
+                    console.log(content);
+                    console.log(content.data['Version']);
+                    var FirmwareVersion = content.data['Version']['FirmwareImage'];
+                    var ConfigurationFile = content.data['Version']['ConfigurationFile'];
+                    console.log(FirmwareVersion, ConfigurationFile);
                     callback(FirmwareVersion, ConfigurationFile);
-					// Judy modify 20190521 end
+                    // Judy modify 20190521 end
                   },
                   function(error) {
                     console.log(error);
@@ -1727,8 +1727,6 @@ window.angular && (function(angular) {
 
         updateImage: function(val) {
           var deferred = $q.defer();
-          console.log("updateImage val");
-          console.log(val);
           $http({
             method: 'PUT',
             url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/Imageid',
@@ -1746,8 +1744,6 @@ window.angular && (function(angular) {
                 console.log(error);
                 deferred.reject(error);
               });
-          console.log("updateImage deferred.promise");
-          console.log(deferred.promise);
           return deferred.promise;
         },
 
@@ -1842,10 +1838,10 @@ window.angular && (function(angular) {
 				   console.log(error);
 				});
 		},
-		/*  Modified by USISH Steven20190122/Judy20190521 end */
-		// Judy modified at 20190527 start
-		setPowerSwitchState: function(state) {
-		  var deferred = $q.defer();
+        /*  Modified by USISH Steven20190122/Judy20190521 end */
+        // Judy modified at 20190527 start
+        setPowerSwitchState: function(state) {
+          var deferred = $q.defer();
           $http({
               method: 'PUT',
               url: DataService.getHost() +
@@ -1853,36 +1849,36 @@ window.angular && (function(angular) {
               withCredentials: true,
               data: JSON.stringify({'data': state})
           })
-		  .then(
-			  function(response) {
-				var json = JSON.stringify(response.data);
-				var content = JSON.parse(json);
-				deferred.resolve(content.status);
-			  },
-			  function(error) {
-				deferred.reject(error);
-			  });
+          .then(
+              function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                deferred.resolve(content.status);
+              },
+              function(error) {
+                deferred.reject(error);
+              });
           return deferred.promise;
         },
-		getPowerSwitchStatus: function() {
-		  var deferred = $q.defer();
+        getPowerSwitchStatus: function() {
+          var deferred = $q.defer();
           $http({
               method: 'GET',
               url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/powerswitch',
               withCredentials: true
           })
-		  .then(
-			  function(response) {
-				var json = JSON.stringify(response.data);
-				var content = JSON.parse(json);
-				deferred.resolve(content.data);
-			  },
-			  function(error) {
-				deferred.reject(error);
-			  });
+          .then(
+              function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                deferred.resolve(content.data);
+              },
+              function(error) {
+                deferred.reject(error);
+              });
           return deferred.promise;
         },
-		// Judy modified at 20190527 end
+        // Judy modified at 20190527 end
 
       };
       return SERVICE;
