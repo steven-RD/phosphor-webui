@@ -1675,7 +1675,7 @@ window.angular && (function(angular) {
         },
 
         // Judy modify 20190521 start
-        etSwitchBeingActiveVersion: function(callback) {
+        getSwitchBeingActiveVersion: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() +
