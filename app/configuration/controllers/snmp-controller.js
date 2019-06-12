@@ -329,21 +329,30 @@ window.angular && (function(angular) {
 			APIUtils.getSwitchBeingActiveVersion(function(version, type) {
 				$scope.switchInfo.toBeActiveVersion = version;
 				$scope.switchInfo.type = type;
-			});
+			},
+            function(error){
+                console.log(error)
+            });
         };
 
 		$scope.loadSwitchActivedVersion = function() {
 			APIUtils.getSwitchActivedVersion(function(firmwareVersion, configurationFile) {
 				$scope.switchInfo.switchActivedVersion = firmwareVersion;
 				$scope.switchInfo.configurationFile = configurationFile;
-			});
+			},
+            function(error){
+                console.log(error)
+            });
         };
 
 		$scope.loadSwitchUpdateStatus = function(){
 			APIUtils.getSwitchUpdateStatus(function(data, originalData) {
 				var UpdateStatus = data.toString();
 				$scope.switchInfo.switchUpdateStatus = UpdateStatus;
-			});
+			},
+            function(error){
+                console.log(error)
+            });
 		};
 
 		$scope.loadSwitchActivatedStatus = function(){
@@ -352,23 +361,26 @@ window.angular && (function(angular) {
 				var ActivatedStatus = data.toString();
 				$scope.switchInfo.switchActivatedStatus = ActivatedStatus;
 				//console.log(switchInfo);
-			});
-		};
-		
-		$scope.updateImage = function(imageId, imageVersion, imageType) {
-			/*
-				1. First set the value of imageid.
-				2. Then set the status of update to 1, then firmware start to update.
-				   if update ok, the update status maybe success or fail.
-			*/
-			$scope.activate_image_id = imageId;
-			$scope.activate_image_version = imageVersion;
-			$scope.activate_image_type = imageType;
+			},
+            function(error) {
+              console.log(error);
+            });
+        };
+
+        $scope.updateImage = function(imageId, imageVersion, imageType) {
+            /*
+                1. First set the value of imageid.
+                2. Then set the status of update to 1, then firmware start to update.
+                    if update ok, the update status maybe success or fail.
+            */
+            $scope.activate_image_id = imageId;
+            $scope.activate_image_version = imageVersion;
+            $scope.activate_image_type = imageType;
             $scope.updating = true;
 
             APIUtils.updateImage(imageId)
             .then(
-                function(imageState) {  // update ImageId success
+                function(imageState) {    // update ImageId success
                     APIUtils.updateImageStatus(1)    // update process success
                     .then(
                         function(state){
@@ -377,14 +389,14 @@ window.angular && (function(angular) {
                                 console.log("APIUtils.getSwitchUpdateStatus call")
                                 console.log(data)
                                 var updateStatus = data.toString();
-                                if (updateStatus == '2'){ // 2 update status success
-                                    APIUtils.deleteImage($scope.activate_image_id); // delete image
+                                if (updateStatus == '2'){    // 2 update status success
+                                    APIUtils.deleteImage($scope.activate_image_id);    // delete image
                                     $scope.loadData();
                                     toastService.success('Update success');
                                     console.log('Update success');
                                     return state;
                                 }
-                                if (updateStatus == '3'){ // 3 update status fail
+                                if (updateStatus == '3'){    // 3 update status fail
                                     $scope.loadSwitchUpdateStatus();
                                     toastService.error(imageId + ' update fail, value 3');
                                 }
@@ -400,6 +412,8 @@ window.angular && (function(angular) {
                     toastService.error('Error during update imageid');
                 }
             );
+            console.log('updateImage $scope.updating');
+            console.log($scope.updating);
         };
 
         $scope.runImage = function(imageId, imageVersion, imageType) {
@@ -412,7 +426,7 @@ window.angular && (function(angular) {
         $scope.runConfirmed = function() {
             APIUtils.runImage(1)
             .then(
-                function(state) {  // active success
+                function(state) {    // active success
                     APIUtils.getSwitchActivatedStatus(function(data, originalData) {
                         console.log("getSwitchActivatedStatus");
                         console.log(data);
@@ -430,6 +444,9 @@ window.angular && (function(angular) {
                             $scope.loadSwitchActivatedStatus();
                             toastService.error('Error during activate status');
                         }
+                    },
+                    function(error) {
+                      console.log('Error during get switch activated status.');
                     });
                 },
                 function(error) {  // active fail
@@ -438,11 +455,11 @@ window.angular && (function(angular) {
             $scope.activate_confirm = false;
         };
 
-		$scope.loadFirmwares();
-		$scope.loadSwitchBeingActiveVersion();
-		$scope.loadSwitchActivedVersion();
-		$scope.loadSwitchUpdateStatus();
-		$scope.loadSwitchActivatedStatus();
+        $scope.loadFirmwares();
+        $scope.loadSwitchBeingActiveVersion();
+        $scope.loadSwitchActivedVersion();
+        $scope.loadSwitchUpdateStatus();
+        $scope.loadSwitchActivatedStatus();
     }
   ]);
 })(angular);

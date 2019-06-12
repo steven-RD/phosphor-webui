@@ -332,6 +332,9 @@ window.angular && (function(angular) {
 		  /*  Modified by USISH Steven 20190117 start */
           $scope.hostActiveVersion = result.hostActiveVersion;
 		  /*  Modified by USISH Steven 20190117 end */
+          console.log('bmcActiveVersion');
+          console.log(bmcActiveVersion);
+          console.log(hostActiveVersion);
         });
       };
 

@@ -3,14 +3,16 @@
     <p class="inline">{{title}}</p>
     <!--  Modified by USISH Steven20190117/Judy20190521 start -->
     <div ng-if="title == 'BMC images'">
-      <p class="inline firmware__active-version">Firmware version: {{bmcActiveVersion}}</p>
+      <p class="inline firmware__active-version">Firmware version: {{version}}</p>
     </div>
     <div ng-if="title == 'Server images'">
-      <p class="inline firmware__active-version">Server version: {{hostActiveVersion}}</p>
+      <p class="inline firmware__active-version">Server version: {{version}}</p>
     </div>
     <div ng-if="title == 'Switch images'">
-      <p class="inline firmware__active-version">Functional version: {{version.configurationFile}};{{version.switchActivedVersion}}</p><br>
-      <p class="inline firmware__active-version">To be activate version: {{version.toBeActiveVersion}};{{version.type}}</p>
+      <p class="inline firmware__active-version">To be activate version: {{version.toBeActiveVersion}};{{version.type}}</p><br>
+      <p class="inline firmware__active-version">Functional version:
+        ConfigurationFile:{{version.configurationFile}}; FirmwareImage: {{version.switchActivedVersion}}
+      </p>
     </div>
     <!--  Modified by USISH Steven20190117/Judy20190521 end -->
   </div>

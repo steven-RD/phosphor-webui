@@ -1772,6 +1772,8 @@ window.angular && (function(angular) {
                     console.log(content);
                   },
                   function(error) {
+                    // ToDo
+                    // Has 403 forbidden now. But can execute
                     console.log("updateImageStatus error");
                     console.log(error);
                     deferred.reject(error);
