@@ -87,7 +87,7 @@
                     <p>{{version.toBeActiveVersion}}</p>
                     <p>{{version.exist_toBeActiveVersion}}</p>
                 </div>
-                <div ng-if="firmware.imageId == version.toBeActiveVersion">
+                <div ng-if="firmware.Version == version.toBeActiveVersion">
                     <div ng-if="version.switchUpdateStatus == '2'">
                         <button class="firmware__action-link"
                             ng-show="version.switchActivatedStatus == '0' || version.switchActivatedStatus == '2'"
@@ -98,7 +98,7 @@
                         <p>Update error.</p>
                     </div>
                 </div>
-                <div ng-if="firmware.imageId != version.toBeActiveVersion">
+                <div ng-if="firmware.Version != version.toBeActiveVersion">
                     <div ng-if="version.switchUpdateStatus == '0' || version.switchActivatedStatus == '2'">
                         <button class="firmware__action-link"
                             ng-show="version.exist_toBeActiveVersion == false"

@@ -389,6 +389,18 @@ window.angular && (function(angular) {
             $scope.activate_image_type = imageType;
             $scope.updating = true;
 
+            // Check whether image has already been actived.
+            APIUtils.getSwitchActivedVersion(function(fwVersion, confFile) {
+                if (fwVersion == imageVersion){
+                    toastService.error('This image has already been actived!');
+                    return
+                }
+            },
+            function(error) {
+              console.log(error);
+            });
+            console.log("fwVersion");
+
             APIUtils.updateImage(imageId)
             .then(
                 function(imageState) {    // update ImageId success
