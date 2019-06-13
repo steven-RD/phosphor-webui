@@ -162,8 +162,8 @@ window.angular && (function(angular) {
                         $scope.file = '';
                         $scope.uploading = false;
                         $scope.upload_success = true;
-                        APIUtils.updateImageStatus(0);    // initial set 0
-                        APIUtils.runImage(0);    // initial set 0
+                        // APIUtils.updateImageStatus(0);    // initial set 0
+                        // APIUtils.runImage(0);    // initial set 0
                         $scope.loadFirmwares();
                         $scope.loadSwitchUpdateStatus();
                         $scope.loadSwitchActivatedStatus();
@@ -330,8 +330,10 @@ window.angular && (function(angular) {
                 console.log(version);
                 // if exist to be active version, exist_toBeActiveVersion true
                 if (version != 'None'){
+                    console.log("$scope.switchInfo.exist_toBeActiveVersion");
                     $scope.switchInfo.exist_toBeActiveVersion = true;
                 }
+                console.log($scope.switchInfo.exist_toBeActiveVersion);
             },
             function(error){
                 console.log(error)
