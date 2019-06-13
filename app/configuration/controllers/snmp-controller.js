@@ -18,10 +18,10 @@ window.angular && (function(angular) {
         $scope.dataService = dataService;
 
         //Scroll to target anchor
-		$scope.gotoAnchor = function() {
-			$location.hash('upload');
-			$anchorScroll();
-		};
+        $scope.gotoAnchor = function() {
+            $location.hash('upload');
+            $anchorScroll();
+        };
 
         // Judy add 20190612
         $scope.switchInfo = {switchActivedVersion: '', configurationFile: '',
@@ -249,60 +249,33 @@ window.angular && (function(angular) {
 				});
         };
 
-	   /* $scope.changePriority = function(imageId, imageVersion, from, to) {
-			$scope.priority_image_id = imageId;
-			$scope.priority_image_version = imageVersion;
-			$scope.priority_from = from;
-			$scope.priority_to = to;
-			$scope.confirm_priority = true;
-	    };
+        $scope.deleteImage = function(imageId, imageVersion) {
+            $scope.delete_image_id = imageId;
+            $scope.delete_image_version = imageVersion;
+            $scope.confirm_delete = true;
+        };
 
-        $scope.confirmChangePriority = function() {
-			$scope.loading = true;
-			APIUtils.changePriority($scope.priority_image_id, $scope.priority_to)
-            .then(function(response) {
+        $scope.confirmDeleteImage = function() {
+            $scope.loading = true;
+            APIUtils.deleteImage($scope.delete_image_id).then(function(response) {
                 $scope.loading = false;
                 if (response.status == 'error') {
-					$scope.displayError({
-					modal_title: response.data.description,
-					title: response.data.description,
-                  desc: response.data.exception,
-                  type: 'Error'
-                });
-              } else {
-                $scope.loadFirmwares();
-              }
+                    $scope.displayError({
+                        modal_title: response.data.description,
+                        title: response.data.description,
+                        desc: response.data.exception,
+                        type: 'Error'
+                    });
+                } else {
+                    $scope.loadFirmwares();
+                }
             });
-			$scope.confirm_priority = false;
-        };*/
-	  
-        $scope.deleteImage = function(imageId, imageVersion) {
-			$scope.delete_image_id = imageId;
-			$scope.delete_image_version = imageVersion;
-			$scope.confirm_delete = true;
-		};
-		
-        $scope.confirmDeleteImage = function() {
-			$scope.loading = true;
-			APIUtils.deleteImage($scope.delete_image_id).then(function(response) {
-				$scope.loading = false;
-				if (response.status == 'error') {
-					$scope.displayError({
-						modal_title: response.data.description,
-						title: response.data.description,
-						desc: response.data.exception,
-						type: 'Error'
-					});
-				} else {
-					$scope.loadFirmwares();
-				}
-			});
-			$scope.confirm_delete = false;
-		};
-			
-		$scope.fileNameChanged = function() {
-			$scope.file_empty = false;
-		};
+            $scope.confirm_delete = false;
+        };
+
+        $scope.fileNameChanged = function() {
+            $scope.file_empty = false;
+        };
 
         $scope.filters = {bmc: {imageType: 'BMC'}, Switch: {imageType: 'Host'}};
 
@@ -313,9 +286,6 @@ window.angular && (function(angular) {
                     $scope.firmwares = result.data;
                     $scope.loadSwitchBeingActiveVersion();
                     $scope.loadSwitchActivedVersion();
-                    console.log("loadFirmwares");
-                    console.log($scope.firmwares);
-                    //$scope.switchActiveVersion = result.hostActiveVersion;
                 },
                 function(error) {
                     console.log(error);
@@ -326,11 +296,9 @@ window.angular && (function(angular) {
             APIUtils.getSwitchBeingActiveVersion(function(version, type) {
                 $scope.switchInfo.toBeActiveVersion = version;
                 $scope.switchInfo.type = type;
-                console.log("switchInfo.toBeActiveVersion");
-                console.log(version);
+
                 // if exist to be active version, exist_toBeActiveVersion true
                 if (version != 'None'){
-                    console.log("$scope.switchInfo.exist_toBeActiveVersion");
                     $scope.switchInfo.exist_toBeActiveVersion = true;
                 }
                 console.log($scope.switchInfo.exist_toBeActiveVersion);
@@ -391,6 +359,9 @@ window.angular && (function(angular) {
 
             // Check whether image has already been actived.
             APIUtils.getSwitchActivedVersion(function(fwVersion, confFile) {
+                console.log('fwVersion == imageVersion');
+                console.log(fwVersion);
+                console.log(imageVersion);
                 if (fwVersion == imageVersion){
                     toastService.error('This image has already been actived!');
                     return
@@ -454,20 +425,16 @@ window.angular && (function(angular) {
             .then(
                 function(state) {    // active success
                     APIUtils.getSwitchActivatedStatus(function(data, originalData) {
-                        console.log("getSwitchActivatedStatus");
-                        console.log(data);
                         var activatedStatus = data.toString();
                         if (activatedStatus == '2'){
-                            console.log("runConfirmed 2");
                             APIUtils.deleteImage($scope.activate_image_id);    // delete image
                             $scope.loadFirmwares();
                             $scope.loadSwitchActivedVersion();
                             $scope.loadSwitchActivatedStatus();
-                            toastService.success('Active OK');
+                            $window.location.reload();
                             return state;
                         }
                         if (activatedStatus == '3'){
-                            console.log("runConfirmed 3");
                             $scope.loadSwitchActivatedStatus();
                             toastService.error('Error during activate status');
                         }
