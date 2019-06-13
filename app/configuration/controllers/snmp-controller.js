@@ -10,10 +10,10 @@ window.angular && (function(angular) {
   'use strict';
 
   angular.module('app.configuration').controller('snmpController', [
-    '$scope', '$window', 'APIUtils', 'dataService', '$location',
+    '$scope', '$window', 'APIUtils', 'dataService', '$location', '$route',
     '$anchorScroll', 'Constants', '$interval', '$q', '$timeout', '$interpolate', 'toastService',
     function(
-        $scope, $window, APIUtils, dataService, $location, $anchorScroll,
+        $scope, $window, APIUtils, dataService, $location, $route, $anchorScroll,
         Constants, $interval, $q, $timeout, $interpolate, toastService) {
         $scope.dataService = dataService;
 
@@ -360,9 +360,12 @@ window.angular && (function(angular) {
             // Check whether image has already been actived.
             APIUtils.getSwitchActivedVersion(function(fwVersion, confFile) {
                 console.log('fwVersion == imageVersion');
-                console.log(fwVersion);
+                if (confFile != ""){
+                    confFile = 'v' + confFile;
+                }
+                console.log(confFile);
                 console.log(imageVersion);
-                if (fwVersion == imageVersion){
+                if (confFile == imageVersion){
                     toastService.error('This image has already been actived!');
                     return
                 }
@@ -401,6 +404,7 @@ window.angular && (function(angular) {
                         },
                         function(error){    // update process error
                             $scope.updating = false;
+                            $route.reload();
                             toastService.error('Error during update status process' + error);
                         }
                     )
@@ -431,7 +435,7 @@ window.angular && (function(angular) {
                             $scope.loadFirmwares();
                             $scope.loadSwitchActivedVersion();
                             $scope.loadSwitchActivatedStatus();
-                            $window.location.reload();
+                            $route.reload();
                             return state;
                         }
                         if (activatedStatus == '3'){
