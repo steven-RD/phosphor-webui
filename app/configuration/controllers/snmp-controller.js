@@ -401,7 +401,6 @@ window.angular && (function(angular) {
                                 console.log(data)
                                 var updateStatus = data.toString();
                                 if (updateStatus == '2'){    // 2 update status success
-                                    APIUtils.deleteImage($scope.activate_image_id);    // delete image
                                     $scope.loadSwitchBeingActiveVersion();
                                     $scope.loadSwitchUpdateStatus();
                                     toastService.success('Update image success');
@@ -448,6 +447,7 @@ window.angular && (function(angular) {
                         var activatedStatus = data.toString();
                         if (activatedStatus == '2'){
                             console.log("runConfirmed 2");
+                            APIUtils.deleteImage($scope.activate_image_id);    // delete image
                             $scope.loadFirmwares();
                             $scope.loadSwitchActivedVersion();
                             $scope.loadSwitchActivatedStatus();
