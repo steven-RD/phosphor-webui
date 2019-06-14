@@ -342,21 +342,6 @@ window.angular && (function(angular) {
         };
 
         $scope.updateImage = function(imageId, imageVersion, imageType) {
-            /*
-                1. First set the value of imageid.
-                2. Then set the status of update to 1, then firmware start to update.
-                    if update status ok, the update status maybe success or fail.
-                        if success, return 2:
-                            Update switch BeingActiveVersion;
-                            Update SwitchUpdateStatus.
-                        if fail, return 3:
-                            Update SwitchUpdateStatus.
-            */
-            $scope.activate_image_id = imageId;
-            $scope.activate_image_version = imageVersion;
-            $scope.activate_image_type = imageType;
-            $scope.updating = true;
-
             // Check whether image has already been actived.
             APIUtils.getSwitchActivedVersion(function(fwVersion, confFile) {
                 console.log('fwVersion == imageVersion');
@@ -374,6 +359,28 @@ window.angular && (function(angular) {
               console.log(error);
             });
             console.log("fwVersion");
+
+            // Realize
+            $scope.updateImageDetail(imageId, imageVersion, imageType);
+            // reload page
+            $route.reload();
+        }
+
+        $scope.updateImageDetail = function(imageId, imageVersion, imageType) {
+            /*
+                1. First set the value of imageid.
+                2. Then set the status of update to 1, then firmware start to update.
+                    if update status ok, the update status maybe success or fail.
+                        if success, return 2:
+                            Update switch BeingActiveVersion;
+                            Update SwitchUpdateStatus.
+                        if fail, return 3:
+                            Update SwitchUpdateStatus.
+            */
+            $scope.activate_image_id = imageId;
+            $scope.activate_image_version = imageVersion;
+            $scope.activate_image_type = imageType;
+            $scope.updating = true;
 
             APIUtils.updateImage(imageId)
             .then(
@@ -404,7 +411,6 @@ window.angular && (function(angular) {
                         },
                         function(error){    // update process error
                             $scope.updating = false;
-                            $route.reload();
                             toastService.error('Error during update status process' + error);
                         }
                     )
@@ -425,6 +431,13 @@ window.angular && (function(angular) {
         };
 
         $scope.runConfirmed = function() {
+            // Realize
+            $scope.runConfirmedDetail();
+            // reload page
+            $route.reload();
+        }
+
+        $scope.runConfirmedDetail = function() {
             APIUtils.runImage(1)
             .then(
                 function(state) {    // active success
@@ -435,7 +448,6 @@ window.angular && (function(angular) {
                             $scope.loadFirmwares();
                             $scope.loadSwitchActivedVersion();
                             $scope.loadSwitchActivatedStatus();
-                            $route.reload();
                             return state;
                         }
                         if (activatedStatus == '3'){
