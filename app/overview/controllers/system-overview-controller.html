@@ -7,7 +7,7 @@
   <section class="row">
     <div class="column large-8">
       <!-- Server Metadata -->
-	  <!--  Modified by USISH Steven 20181130  start -->
+      <!--  Modified by USISH Steven 20181130  start -->
       <!--<div class="row overview__server-metadata">
         <div class="column large-4">
           <h2 class="h3">Server information</h2>
@@ -41,7 +41,7 @@
           </ul>
         </div>
       </div> -->
-	  <!--  Modified by USISH Steven 20181130  end -->
+      <!--  Modified by USISH Steven 20181130  end -->
       <!-- BMC Metadata -->
       <div class="row overview__server-metadata">
         <div class="column large-4">
@@ -77,8 +77,8 @@
         </div>
       </div>
       <!-- Power metadata -->
-	  <!--  Modified by USISH Steven 20181219  start -->
-	  <!--
+      <!--  Modified by USISH Steven 20181219  start -->
+      <!--
       <div class="row overview__server-metadata">
         <div class="column large-4">
           <h2 class="h3">Power information</h2>
@@ -100,15 +100,15 @@
           </ul>
         </div>
       </div>
-	  -->
-	<!--  Modified by USISH Steven 20181219  end -->
+      -->
+      <!--  Modified by USISH Steven 20181219  end -->
       <!-- Power metadata -->
     </div>
     <div class="column large-4 no-padding">
       <div class="quick-links">
         <a href="#/server-health/event-log/high" class="quick-links__item quick-links__events event-log__events"
-		  ng-show="logs.length">
-		  <!-- link to event log filtered to the high priority events -->
+          ng-show="logs.length">
+          <!-- link to event log filtered to the high priority events -->
           <p class="inline quick-links__event-copy">View {{logs.length}} high priority events</p>
         </a>
         <dl class="quick-links__item no-icon">
@@ -123,15 +123,15 @@
               tabindex="0" ng-click="toggleLED()" ng-checked="dataService.LED_state == 'on'"
               ng-disabled="dataService.server_unreachable">
             <label for="toggle__switch-round" tabindex="0">Server LED is <span
-			    class="led-switch__status">{{dataService.LED_state}}</span></label>
+                class="led-switch__status">{{dataService.LED_state}}</span></label>
           </div>
         </div>
-		<!-- Judy modified at 20190527 start -->
-		<div class="quick-links__item no-icon">
+        <!-- Judy modified at 20190527 start -->
+        <div class="quick-links__item no-icon">
           <p class="inline quick-links__label">
-			Power <span ng-if="dataService.switch_state == 'Power Off'">on</span>
-			<span ng-if="dataService.switch_state == 'Power On'">off</span> switch.
-		  </p>
+            Power <span ng-if="dataService.switch_state == 'Power Off'">on</span>
+            <span ng-if="dataService.switch_state == 'Power On'">off</span> switch.
+          </p>
           <div class="toggle inline float-right">
             <input id="toggle__powerswitch-round"
                 class="toggle-switch toggle-powerswitch__round-flat"
@@ -141,11 +141,11 @@
                 ng-checked="dataService.switch_state == 'Power On'"
                 ng-disabled="dataService.server_unreachable">
             <label for="toggle__powerswitch-round" tabindex="0">
-			    Switch power is <span>{{dataService.switch_state}}</span>
-			</label>
+                Switch power is <span>{{dataService.switch_state}}</span>
+            </label>
           </div>
         </div>
-		<!-- Judy modified at 20190527 end -->
+        <!-- Judy modified at 20190527 end -->
 
         <a href="#/server-control/remote-console" class="no-icon quick-links__item">
           <p class="inline quick-links__label">Serial over LAN console</p>
@@ -168,7 +168,7 @@
       <a href="#/server-health/event-log/high" ng-repeat="event in logs|orderBy:'-Id'|limitTo : 5">
         <div class="row column event-log__single-event">
           <div class="row">
-		    <!-- click will go to specific event in event log page-->
+            <!-- click will go to specific event in event log page-->
             <div class="column small-9 large-10 event-log__event-info" ng-click="">
               <p class="inline event__id">#{{event.Id}}</p>
               <p class="inline event__priority high-priority">High</p>
@@ -207,7 +207,7 @@
             <path
               d="M16 2C8.269 2 2 8.269 2 16s6.269 14 14 14 14-6.269 14-14S23.731 2 16 2zm0 26C9.383 28 4 22.617 4 16S9.383 4 16 4s12 5.383 12 12-5.383 12-12 12z" />
           </svg></span>
-		Edit hostname
+        Edit hostname
       </h2>
     </div>
     <div class="modal__content">

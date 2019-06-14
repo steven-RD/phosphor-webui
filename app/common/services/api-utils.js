@@ -1758,7 +1758,7 @@ window.angular && (function(angular) {
                   },
                   function(error) {
                     // ToDo
-                    // Has 403 forbidden now. But can execute
+                    // Has 403 forbidden now. But can execute actually.
                     console.log("updateImageStatus error");
                     console.log(error);
                     deferred.reject(error);
@@ -1823,6 +1823,7 @@ window.angular && (function(angular) {
                    console.log(error);
                 });
         },
+
         setPowerSwitchState: function(state) {
           var deferred = $q.defer();
           $http({

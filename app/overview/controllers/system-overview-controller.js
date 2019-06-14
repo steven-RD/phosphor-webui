@@ -24,7 +24,7 @@ window.angular && (function(angular) {
       $scope.bmc_ip_addresses = [];
       $scope.loading = false;
       $scope.edit_hostname = false;
-	  $scope.newHostname = '';
+      $scope.newHostname = '';
 
       loadOverviewData();
 
@@ -104,7 +104,7 @@ window.angular && (function(angular) {
               // TODO: openbmc/openbmc#3150 Support IPV6 when
               // officially supported by the backend
               $scope.bmc_ip_addresses = data.formatted_data.ip_addresses.ipv4;
-			  $scope.newHostname = data.hostname;
+              $scope.newHostname = data.hostname;
             },
             function(error) {
               console.log(JSON.stringify(error));
@@ -138,22 +138,22 @@ window.angular && (function(angular) {
         APIUtils.setLEDState(toggleState, function(status) {});
       };
 
-	  // Judy modified at 20190527 start
-	  $scope.toggleSwitchPower = function() {
-		  /*
-			Set power switch state.
-			if success, get power switch status and update.
-		  */
+      // Judy modified at 20190527 start
+      $scope.toggleSwitchPower = function() {
+          /*
+            Set power switch state.
+            if success, get power switch status and update.
+          */
         var toggleState =
-		  (dataService.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
-		APIUtils.setPowerSwitchState(toggleState).then(
+          (dataService.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
+        APIUtils.setPowerSwitchState(toggleState).then(
             function(data) {
-			  APIUtils.getPowerSwitchStatus().then(
-				  function(info){
-					 dataService.switch_state = info.Status;
-				  },
-				  function(error) {
-					console.log(JSON.stringify(error));
+              APIUtils.getPowerSwitchStatus().then(
+                  function(info){
+                     dataService.switch_state = info.Status;
+                  },
+                  function(error) {
+                    console.log(JSON.stringify(error));
                   });
             },
             function(error) {
