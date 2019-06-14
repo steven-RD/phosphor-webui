@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div ng-if="firmware.Version != version.toBeActiveVersion">
-                    <div ng-if="version.switchUpdateStatus == '0' || version.switchActivatedStatus == '2'">
+                    <div ng-if="version.switchUpdateStatus == '0' || version.switchActivatedStatus == '2' || version.switchActivatedStatus == '3'">
                         <button class="firmware__action-link"
                             ng-show="version.exist_toBeActiveVersion == false"
                             ng-click="update(firmware.imageId, firmware.Version, firmware.imageType)">Update
