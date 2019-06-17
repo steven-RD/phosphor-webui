@@ -29,9 +29,6 @@ window.angular && (function(angular) {
       this.mac_address = '';
       this.defaultgateway = '';
 
-      this.displayErrorModal = false;
-      this.errorModalDetails = {};
-
       this.ignoreHttpError = false;
       this.systemName = '';
 
