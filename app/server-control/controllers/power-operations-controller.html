@@ -19,11 +19,11 @@
         </div>
         <span class="inactive-message" ng-show="dataService.server_state == 'Unreachable'">There are no power operations to display while a power operation is in progress. When complete, any new power operations will be displayed here.</span>
         <!-- Power on displays only when server is shutdown -->
-        <div class="row column power-option" ng-hide="dataService.server_state == 'Running' || dataService.server_state == 'Quiesced' || dataService.server_state == 'Unreachable'" ng-class="{disabled: dataService.server_unreachable || (confirm && !powerConfirm) || dataService.loading, transitionAll: confirm && powerConfirm}">
+        <div class="row column power-option" ng-hide="dataService.server_state == 'Running' || dataService.server_state == 'Quiesced' || dataService.server_state == 'Unreachable'" ng-class="{disabled: dataService.server_unreachable || confirm || dataService.loading, transitionAll: confirm}">
             <button id="power__power-on" class="btn-secondary inline" ng-click="powerOn()" role="button" ng-disabled="dataService.server_unreachable"><img src="../../assets/images/icon-power.svg" alt="power on" aria-hidden="true">Power on</button>
             <p class="inline">Attempts to power on the server</p>
         </div>
-		<!--  Modified by USISH Steven 20181226 start -->
+        <!--  Modified by USISH Steven 20181226 start -->
         <div class="column power-option" ng-hide="dataService.server_state == 'Off' || dataService.server_state == 'Unreachable'" ng-class="{disabled: dataService.server_unreachable || (confirm && !confirmOrderlyShutdown) || dataService.loading, transitionAll: confirm && confirmOrderlyShutdown}">
             <button id="power__soft-shutdown" class="btn-secondary inline" ng-click="orderlyShutdownConfirm()" role="button" ng-disabled="dataService.server_unreachable"><img aria-hidden="true" src="../../assets/images/icon-power.svg" />Power off</button>
             <p class="inline">Attempts to power off switch</p>
@@ -50,6 +50,6 @@
             <p class="inline">Removes power from the server without waiting for software to stop</p>
             <confirm title="immediate shutdown" confirm="confirmImmediateShutdown" ng-show="confirmImmediateShutdown" cancel="immediatelyShutdownCancel" callback="immediateShutdown"></confirm>
         </div>-->
-		<!--  Modified by USISH Steven 20181226 end -->
+        <!--  Modified by USISH Steven 20181226 end -->
     </div>
 </div>
