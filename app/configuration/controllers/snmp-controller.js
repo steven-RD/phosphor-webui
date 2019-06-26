@@ -342,28 +342,12 @@ window.angular && (function(angular) {
         };
 
         $scope.updateImage = function(imageId, imageVersion, imageType) {
-            // Check whether image has already been actived.
-            APIUtils.getSwitchActivedVersion(function(fwVersion, confFile) {
-                console.log('fwVersion == imageVersion');
-                if (confFile != ""){
-                    confFile = 'v' + confFile;
-                }
-                console.log(confFile);
-                console.log(imageVersion);
-                if (confFile == imageVersion){
-                    toastService.error('This image has already been actived!');
-                    return
-                }
-            },
-            function(error) {
-              console.log(error);
-            });
-            console.log("fwVersion");
-
             // Realize
             $scope.updateImageDetail(imageId, imageVersion, imageType);
             // reload page
-            $route.reload();
+            $timeout(function() {
+                $route.reload();
+            }, 40*1000);
         }
 
         $scope.updateImageDetail = function(imageId, imageVersion, imageType) {
@@ -382,6 +366,24 @@ window.angular && (function(angular) {
             $scope.activate_image_type = imageType;
             $scope.updating = true;
 
+            // Check whether image has already been actived.
+            APIUtils.getSwitchActivedVersion(function(fwVersion, confFile) {
+                console.log('fwVersion == imageVersion');
+                if (confFile != ""){
+                    confFile = 'v' + confFile;
+                }
+                console.log(confFile);
+                console.log(imageVersion);
+                if (confFile == imageVersion){
+                    toastService.error('This image has already been actived!');
+                    return
+                }
+            },
+            function(error) {
+              console.log(error);
+            });
+            console.log("fwVersion");
+
             APIUtils.updateImage(imageId)
             .then(
                 function(imageState) {    // update ImageId success
@@ -397,7 +399,6 @@ window.angular && (function(angular) {
                                     $scope.loadSwitchBeingActiveVersion();
                                     $scope.loadSwitchUpdateStatus();
                                     toastService.success('Update image success');
-                                    console.log('Update success');
                                     return state;
                                 }
                                 if (updateStatus == '3'){    // 3 update status fail
@@ -411,6 +412,8 @@ window.angular && (function(angular) {
                         },
                         function(error){    // update process error
                             $scope.updating = false;
+                            console.log("Update Status process error:")
+                            console.log(error);
                             toastService.error('Error during update status process' + error);
                         }
                     )
@@ -428,6 +431,8 @@ window.angular && (function(angular) {
             $scope.activate_image_version = imageVersion;
             $scope.activate_image_type = imageType;
             $scope.activate_confirm = true;
+
+            $scope.delete_image_id = imageId; // for delete usage
         };
 
         $scope.runConfirmed = function() {
@@ -444,7 +449,15 @@ window.angular && (function(angular) {
                     APIUtils.getSwitchActivatedStatus(function(data, originalData) {
                         var activatedStatus = data.toString();
                         if (activatedStatus == '2'){
-                            APIUtils.deleteImage($scope.activate_image_id);    // delete image
+                            console.log('$scope.delete_image_id');
+                            console.log($scope.delete_image_id);
+                            APIUtils.deleteImage($scope.delete_image_id).then(function(response){
+                                if (response.status == 'error') {
+                                    toastService.error(response.data.description);
+                                } else {
+                                    console.log('Delete switch image success.');
+                                }
+                            });    // delete image
                             $scope.loadFirmwares();
                             $scope.loadSwitchActivedVersion();
                             $scope.loadSwitchActivatedStatus();
