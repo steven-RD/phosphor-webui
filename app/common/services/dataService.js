@@ -16,7 +16,6 @@ window.angular && (function(angular) {
       this.server_health = Constants.SERVER_HEALTH.unknown;
       this.server_state = 'Unreachable';
       this.LED_state = Constants.LED_STATE_TEXT.off;
-      this.switch_state = 'Power On'; // Judy add
       this.last_updated = new Date();
 
       this.loading = false;

@@ -126,11 +126,11 @@
                 class="led-switch__status">{{dataService.LED_state}}</span></label>
           </div>
         </div>
-        <!-- Judy modified at 20190527 start -->
+        <!-- Judy modified at 20190627 start -->
         <div class="quick-links__item no-icon">
           <p class="inline quick-links__label">
-            Power <span ng-if="dataService.switch_state == 'Power Off'">on</span>
-            <span ng-if="dataService.switch_state == 'Power On'">off</span> switch.
+            Power <span ng-if="switch_state == 'Power Off'">on</span>
+            <span ng-if="switch_state == 'Power On'">off</span> switch.
           </p>
           <div class="toggle inline float-right">
             <input id="toggle__powerswitch-round"
@@ -138,14 +138,14 @@
                 type="checkbox"
                 tabindex="0"
                 ng-click="toggleSwitchPower()"
-                ng-checked="dataService.switch_state == 'Power On'"
-                ng-disabled="dataService.server_unreachable">
+                ng-checked="switch_state == 'Power On'"
+                ng-disabled="server_unreachable">
             <label for="toggle__powerswitch-round" tabindex="0">
-                Switch power is <span>{{dataService.switch_state}}</span>
+                Switch power is <span>{{switch_state}}</span>
             </label>
           </div>
         </div>
-        <!-- Judy modified at 20190527 end -->
+        <!-- Judy modified at 20190627 end -->
 
         <a href="#/server-control/remote-console" class="no-icon quick-links__item">
           <p class="inline quick-links__label">Serial over LAN console</p>

@@ -110,6 +110,17 @@ window.angular && (function(angular) {
               console.log(JSON.stringify(error));
             });
 
+        // Judy modified at 20190627 start
+        // Get power switch state when loading overview page.
+        var getSwitchPowerStatePromise = APIUtils.getPowerSwitchStatus().then(
+            function(info){
+              $scope.switch_state = info.Status;
+            },
+            function(error) {
+              console.log(JSON.stringify(error));
+            });
+        // Judy modified at 20190627 end
+
         var promises = [
           getLogsPromise,
           getFirmwaresPromise,
@@ -119,6 +130,7 @@ window.angular && (function(angular) {
           getPowerConsumptionPromise,
           getPowerCapPromise,
           getNetworkInfoPromise,
+          getSwitchPowerStatePromise, // Judy add at 20190627
         ];
 
         $q.all(promises).finally(function() {
@@ -145,12 +157,12 @@ window.angular && (function(angular) {
             if success, get power switch status and update.
           */
         var toggleState =
-          (dataService.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
+          ($scope.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
         APIUtils.setPowerSwitchState(toggleState).then(
             function(data) {
               APIUtils.getPowerSwitchStatus().then(
                   function(info){
-                     dataService.switch_state = info.Status;
+                     $scope.switch_state = info.Status;
                   },
                   function(error) {
                     console.log(JSON.stringify(error));
