@@ -12,35 +12,35 @@
     </div>
 
     <div class="row column header-row">
-        <table align="center" bordercolor="#FFFFFF">
-            <tr align="center" height=100>
-                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('ssd')">SSD information</td>
-                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('cable')">Cable information</td>
-                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('swinfo')">Swinfo information</td>
-                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('dsp')">dspinfo information</td>
-                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('patopo')">patopo information</td>
-                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('bind')">bindinfo information</td>
-                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('ps')">Power supply information</td>
+        <table id='ssd-info-header'>
+            <tr>
+                <td ng-mouseover="changeStatus('ssd')">SSD information</td>
+                <td ng-mouseover="changeStatus('cable')">Cable information</td>
+                <td ng-mouseover="changeStatus('swinfo')">Swinfo information</td>
+                <td ng-mouseover="changeStatus('dsp')">dspinfo information</td>
+                <td ng-mouseover="changeStatus('patopo')">patopo information</td>
+                <td ng-mouseover="changeStatus('bind')">bindinfo information</td>
+                <td ng-mouseover="changeStatus('ps')">Power supply information</td>
             </tr>
         </table>
     </div>
 
     <div class="row column header-row" ng-show="ssdFlag == true">
-        <table align="center" border="2" bordercolor="#0000FF">
-            <caption align=”center” font size="medium">SSD information</caption>
-            <thead align=”center”>
-                <tr >
-                    <th align=”center” font size="medium">SSD NO.</th>
-                    <th align=”center” font size="medium">Address</th>
-                    <th align=”center” font size="medium">Type</th>
-                    <!--<th align=”center” font size="medium">Value</th>-->
-                    <th align=”center” font size="medium">Status</th>
-                    <th align=”center” font size="medium">Link Speed</th>
-                    <th align=”center” font size="medium">Link Width</th>
-                    <th align=”center” font size="medium">Par Id</th>
-                    <th align=”center” font size="medium">Inserted</th>
-                    <th align=”center” font size="medium">Link Status</th>
-                    <th align=”center” font size="medium">ConfigureWidth</th>
+        <table id='ssd-info-body'>
+            <caption>SSD information</caption>
+            <thead class="ssd-body-header">
+                <tr>
+                    <th>SSD NO.</th>
+                    <th>Address</th>
+                    <th>Type</th>
+                    <!--<th>Value</th>-->
+                    <th>Status</th>
+                    <th>Link Speed</th>
+                    <th>Link Width</th>
+                    <th>Par Id</th>
+                    <th>Inserted</th>
+                    <th>Link Status</th>
+                    <th>ConfigureWidth</th>
                 </tr>
             </thead>
             <tbody>

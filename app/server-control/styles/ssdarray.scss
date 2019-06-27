@@ -1,0 +1,35 @@
+// SSD Array
+#ssd-info-header{
+  text-align: center;
+  border-color: #FFFFFF;
+}
+#ssd-info-header tr {
+  text-align: center;
+  height: 100%;
+}
+#ssd-info-header tr td {
+  width: 100%;
+  background: #B088FF;
+  font-size: 1em;
+  text-align: center;
+}
+#ssd-info-header tr td:hover{
+  background: #FF704D;
+}
+
+#ssd-info-body {
+  text-align: center;
+  border: 2px solid;
+  border-color: #0000FF;
+}
+
+.ssd-body-header {
+  text-align: center;
+}
+.ssd-body-header caption {
+  text-align: center;
+}
+.ssd-body-header tr th {
+  font-size: 0.8em;
+  text-align: center;
+}
