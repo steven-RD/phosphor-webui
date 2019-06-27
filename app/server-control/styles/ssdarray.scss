@@ -5,10 +5,10 @@
 }
 #ssd-info-header tr {
   text-align: center;
-  height: 100px;
+  height: 85px;
 }
 #ssd-info-header tr td {
-  width: 150px;
+  width: 140px;
   background: #B088FF;
   font-size: 1em;
   text-align: center;
@@ -21,6 +21,13 @@
   text-align: center;
   border: 2px solid;
   border-color: #0000FF;
+  position: relative;
+  left: 200px;
+}
+
+.ssd-info-body-right {
+  position: relative;
+  right: 150px;
 }
 
 .ssd-body-header {
