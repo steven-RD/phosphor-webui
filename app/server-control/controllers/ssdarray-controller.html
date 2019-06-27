@@ -11,203 +11,203 @@
         <h1>JBOF inventory information</h1>
     </div>
 
-	<div class="row column header-row">
-		<table align="center" bordercolor="#FFFFFF">
-			<tr align="center" height=100>
-				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('ssd')">SSD information</td>
-				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('cable')">Cable information</td>
-				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('swinfo')">Swinfo information</td>
-				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('dsp')">dspinfo information</td>
-				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('patopo')">patopo information</td>
-				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('bind')">bindinfo information</td>
-				<td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('ps')">Power supply information</td>
-			</tr>
-		</table>
-	</div>
+    <div class="row column header-row">
+        <table align="center" bordercolor="#FFFFFF">
+            <tr align="center" height=100>
+                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('ssd')">SSD information</td>
+                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('cable')">Cable information</td>
+                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('swinfo')">Swinfo information</td>
+                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('dsp')">dspinfo information</td>
+                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('patopo')">patopo information</td>
+                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('bind')">bindinfo information</td>
+                <td width=100 bgcolor="#B088FF" ng-mouseover="changeStatus('ps')">Power supply information</td>
+            </tr>
+        </table>
+    </div>
 
-	<div class="row column header-row" ng-show="ssdFlag == true">
-		<table align="center" border="2" bordercolor="#0000FF">
-			<caption align=”center” font size="medium">SSD information</caption>
-			<thead align=”center”>
-				<tr >
-					<th align=”center” font size="medium">SSD NO.</th>
-					<th align=”center” font size="medium">Address</th>
-					<th align=”center” font size="medium">Type</th>
-					<!--<th align=”center” font size="medium">Value</th>-->
-					<th align=”center” font size="medium">Status</th>
-					<th align=”center” font size="medium">Link Speed</th>
-					<th align=”center” font size="medium">Link Width</th>
-					<th align=”center” font size="medium">Par Id</th>
-					<th align=”center” font size="medium">Inserted</th>
-					<th align=”center” font size="medium">Link Status</th>
-					<th align=”center” font size="medium">ConfigureWidth</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr align=”center” ng-repeat="(ssdNo, detail) in ssdinfo" ng-show="ssdinfo != 'None'">
-					<td align=”center” font size="medium">{{ssdNo}}</td>
-					<td align=”center” font size="medium">{{detail.SlotAddr}}</td>
-					<td align=”center” font size="medium">{{detail.Type}}</td>
-					<!--<td align=”center” font size="medium">{{detail.Value}}</td>-->
-					<td align=”center” font size="medium">{{detail.Status}}</td>
-					<td align=”center” font size="medium">{{detail.LinkSpeed}}</td>
-					<td align=”center” font size="medium">{{detail.LinkStatus}}</td>
-					<td align=”center” font size="medium">{{detail.LinkWidth}}</td>
-					<td align=”center” font size="medium">{{detail.PartitionID}}</td>
-					<td align=”center” font size="medium">{{detail.Inserted}}</td>
-					<td align=”center” font size="medium">{{detail.ConfigureWidth}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+    <div class="row column header-row" ng-show="ssdFlag == true">
+        <table align="center" border="2" bordercolor="#0000FF">
+            <caption align=”center” font size="medium">SSD information</caption>
+            <thead align=”center”>
+                <tr >
+                    <th align=”center” font size="medium">SSD NO.</th>
+                    <th align=”center” font size="medium">Address</th>
+                    <th align=”center” font size="medium">Type</th>
+                    <!--<th align=”center” font size="medium">Value</th>-->
+                    <th align=”center” font size="medium">Status</th>
+                    <th align=”center” font size="medium">Link Speed</th>
+                    <th align=”center” font size="medium">Link Width</th>
+                    <th align=”center” font size="medium">Par Id</th>
+                    <th align=”center” font size="medium">Inserted</th>
+                    <th align=”center” font size="medium">Link Status</th>
+                    <th align=”center” font size="medium">ConfigureWidth</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr align=”center” ng-repeat="(ssdNo, detail) in ssdinfo" ng-show="ssdinfo != 'None'">
+                    <td align=”center” font size="medium">{{ssdNo}}</td>
+                    <td align=”center” font size="medium">{{detail.SlotAddr}}</td>
+                    <td align=”center” font size="medium">{{detail.Type}}</td>
+                    <!--<td align=”center” font size="medium">{{detail.Value}}</td>-->
+                    <td align=”center” font size="medium">{{detail.Status}}</td>
+                    <td align=”center” font size="medium">{{detail.LinkSpeed}}</td>
+                    <td align=”center” font size="medium">{{detail.LinkStatus}}</td>
+                    <td align=”center” font size="medium">{{detail.LinkWidth}}</td>
+                    <td align=”center” font size="medium">{{detail.PartitionID}}</td>
+                    <td align=”center” font size="medium">{{detail.Inserted}}</td>
+                    <td align=”center” font size="medium">{{detail.ConfigureWidth}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-	<div class="row column header-row" ng-show="cableinfoFlag == true">
-	<table  align="center" border="2" bordercolor="#0000FF">
-		<caption align=”center” font size="medium">Cable information </caption>
-		<thead align=”center”>
-			<tr>
-				<th align=”center” font size="medium">Title</th>
-				<th align=”center” font size="medium">Status</th>
-				<!--<th align=”center” font size="medium">Value</th>-->
-				<th align=”center” font size="medium">CableType</th>
-				<th align=”center” font size="medium">SlotAddr</th>
-				<th align=”center” font size="medium">PartitionID</th>
-				<th align=”center” font size="medium">LinkStatus</th>
-				<th align=”center” font size="medium">LinkActive</th>
-				<th align=”center” font size="medium">LinkWidth</th>
-				<th align=”center” font size="medium">PhysicalPort</th>
-				<th align=”center” font size="medium">UspDsp</th>
-				<th align=”center” font size="medium">Present</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr align=”center” ng-repeat="(cable, detail) in cableinfo" ng-show="cableinfo != 'None'">
-				<td align=”center” font size="medium">{{cable}}</td>
-				<td align=”center” font size="medium">{{detail.Status}}</td>
-				<!--<td align=”center” font size="medium">{{detail.Value}}</td>-->
-				<td align=”center” font size="medium">{{detail.CableType}}</td>
-				<td align=”center” font size="medium">{{detail.SlotAddr}}</td>
-				<td align=”center” font size="medium">{{detail.PartitionID}}</td>
-				<td align=”center” font size="medium">{{detail.LinkStatus}}</td>
-				<td align=”center” font size="medium">{{detail.LinkActive}}</td>
-				<td align=”center” font size="medium">{{detail.LinkWidth}}</td>
-				<td align=”center” font size="medium">{{detail.PhysicalPort}}</td>
-				<td align=”center” font size="medium">{{detail.UspDsp}}</td>
-				<td align=”center” font size="medium">{{detail.Present}}</td>
-			</tr>
-		</tbody>
-	</table>
-	</div>
+    <div class="row column header-row" ng-show="cableinfoFlag == true">
+    <table  align="center" border="2" bordercolor="#0000FF">
+        <caption align=”center” font size="medium">Cable information </caption>
+        <thead align=”center”>
+            <tr>
+                <th align=”center” font size="medium">Title</th>
+                <th align=”center” font size="medium">Status</th>
+                <!--<th align=”center” font size="medium">Value</th>-->
+                <th align=”center” font size="medium">CableType</th>
+                <th align=”center” font size="medium">SlotAddr</th>
+                <th align=”center” font size="medium">PartitionID</th>
+                <th align=”center” font size="medium">LinkStatus</th>
+                <th align=”center” font size="medium">LinkActive</th>
+                <th align=”center” font size="medium">LinkWidth</th>
+                <th align=”center” font size="medium">PhysicalPort</th>
+                <th align=”center” font size="medium">UspDsp</th>
+                <th align=”center” font size="medium">Present</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr align=”center” ng-repeat="(cable, detail) in cableinfo" ng-show="cableinfo != 'None'">
+                <td align=”center” font size="medium">{{cable}}</td>
+                <td align=”center” font size="medium">{{detail.Status}}</td>
+                <!--<td align=”center” font size="medium">{{detail.Value}}</td>-->
+                <td align=”center” font size="medium">{{detail.CableType}}</td>
+                <td align=”center” font size="medium">{{detail.SlotAddr}}</td>
+                <td align=”center” font size="medium">{{detail.PartitionID}}</td>
+                <td align=”center” font size="medium">{{detail.LinkStatus}}</td>
+                <td align=”center” font size="medium">{{detail.LinkActive}}</td>
+                <td align=”center” font size="medium">{{detail.LinkWidth}}</td>
+                <td align=”center” font size="medium">{{detail.PhysicalPort}}</td>
+                <td align=”center” font size="medium">{{detail.UspDsp}}</td>
+                <td align=”center” font size="medium">{{detail.Present}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
 
-	<div class="row column header-row" ng-show="swinfoFlag == true">
-		<table  align="center" border="2" bordercolor="#0000FF">
-			<caption align=”center” font size="medium">Swinfo information </caption>
-			<thead align=”center”>
-				<tr>
-					<th align=”center” font size="medium">Item</th>
-					<th align=”center” font size="medium">Value</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr align=”center” ng-repeat="(item, value) in swinfo" ng-show="swinfo != 'None'">
-					<td align=”center” font size="medium">{{item}}</td>
-					<td align=”center” font size="medium">{{value}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+    <div class="row column header-row" ng-show="swinfoFlag == true">
+        <table  align="center" border="2" bordercolor="#0000FF">
+            <caption align=”center” font size="medium">Swinfo information </caption>
+            <thead align=”center”>
+                <tr>
+                    <th align=”center” font size="medium">Item</th>
+                    <th align=”center” font size="medium">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr align=”center” ng-repeat="(item, value) in swinfo" ng-show="swinfo != 'None'">
+                    <td align=”center” font size="medium">{{item}}</td>
+                    <td align=”center” font size="medium">{{value}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-	<div class="row column header-row" ng-show="patopoFlag == true">
-	  <table>
-	    <tr>
-			<table  align="center" border="2" bordercolor="#0000FF">
-				<caption align=”center” font size="medium">Partition information </caption>
-				<thead align=”center”>
-					<tr>
-						<th align=”center” font size="medium">Item</th>
-						<th align=”center” font size="medium">Value</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr align=”center” ng-repeat="(item, value) in patopoinfo['Partition(0)']" ng-show="patopoinfo != 'None'">
-						<td align=”center” font size="medium">{{item}}</td>
-						<td align=”center” font size="medium">{{value}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</tr>
-		<tr>
-			<table align="center" border="2" bordercolor="#0000FF">
-				<caption align=”center” font size="medium">Patopohader information </caption>
-				<thead align=”center”>
-					<tr>
-						<th align=”center” font size="medium">Item</th>
-						<th align=”center” font size="medium">Value</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr align=”center” ng-repeat="(item, value) in patopoinfo.Patopohader" ng-show="patopoinfo != 'None'">
-						<td align=”center” font size="medium">{{item}}</td>
-						<td align=”center” font size="medium">{{value}}</td>
-					</tr>
-				</tbody>
-			</table>
-		</tr>
-	  </table>
-	</div>
+    <div class="row column header-row" ng-show="patopoFlag == true">
+      <table>
+        <tr>
+            <table  align="center" border="2" bordercolor="#0000FF">
+                <caption align=”center” font size="medium">Partition information </caption>
+                <thead align=”center”>
+                    <tr>
+                        <th align=”center” font size="medium">Item</th>
+                        <th align=”center” font size="medium">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align=”center” ng-repeat="(item, value) in patopoinfo['Partition(0)']" ng-show="patopoinfo != 'None'">
+                        <td align=”center” font size="medium">{{item}}</td>
+                        <td align=”center” font size="medium">{{value}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </tr>
+        <tr>
+            <table align="center" border="2" bordercolor="#0000FF">
+                <caption align=”center” font size="medium">Patopohader information </caption>
+                <thead align=”center”>
+                    <tr>
+                        <th align=”center” font size="medium">Item</th>
+                        <th align=”center” font size="medium">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr align=”center” ng-repeat="(item, value) in patopoinfo.Patopohader" ng-show="patopoinfo != 'None'">
+                        <td align=”center” font size="medium">{{item}}</td>
+                        <td align=”center” font size="medium">{{value}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </tr>
+      </table>
+    </div>
 
-	<div class="row column header-row" ng-show="dspFlag == true">
-		<table align="center" border="2" bordercolor="#0000FF">
-			<caption align=”center” font size="medium">dspinfo information</caption>
-			<thead align=”center”>
-				<tr>
-					<th align=”center” font size="medium">Item</th>
-					<th align=”center” font size="medium">Value</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr align=”center” ng-repeat="(item, value) in dspinfo" ng-show="dspinfo != 'None'">
-					<td align=”center” font size="medium">{{item}}</td>
-					<td align=”center” font size="medium">{{value}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+    <div class="row column header-row" ng-show="dspFlag == true">
+        <table align="center" border="2" bordercolor="#0000FF">
+            <caption align=”center” font size="medium">dspinfo information</caption>
+            <thead align=”center”>
+                <tr>
+                    <th align=”center” font size="medium">Item</th>
+                    <th align=”center” font size="medium">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr align=”center” ng-repeat="(item, value) in dspinfo" ng-show="dspinfo != 'None'">
+                    <td align=”center” font size="medium">{{item}}</td>
+                    <td align=”center” font size="medium">{{value}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-	<div class="row column header-row" ng-show="bindinfoFlag == true">
-		<table  align="center" border="2" bordercolor="#0000FF">
-			<caption align=”center” font size="medium">bindinfo information </caption>
-			<thead align=”center”>
-				<tr>
-					<th align=”center” font size="medium">bindinfo Result</th>
-					<th align=”center” font size="medium">bindinfo Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr align=”center” ng-show="bindinfo != 'None'">
-					<td align=”center” font size="medium">{{bindinfo.BindResult}}</td>
-					<td align=”center” font size="medium">{{bindinfo.BindStatus}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+    <div class="row column header-row" ng-show="bindinfoFlag == true">
+        <table  align="center" border="2" bordercolor="#0000FF">
+            <caption align=”center” font size="medium">bindinfo information </caption>
+            <thead align=”center”>
+                <tr>
+                    <th align=”center” font size="medium">bindinfo Result</th>
+                    <th align=”center” font size="medium">bindinfo Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr align=”center” ng-show="bindinfo != 'None'">
+                    <td align=”center” font size="medium">{{bindinfo.BindResult}}</td>
+                    <td align=”center” font size="medium">{{bindinfo.BindStatus}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-	<div class="row column header-row" ng-show="psFlag == true">
-		<table  align="center" border="2" bordercolor="#0000FF">
-			<caption align=”center” font size="medium">ps info</caption>
-			<thead align=”center”>
-				<tr>
-					<th align=”center” font size="medium">Name</th>
-					<th align=”center” font size="medium">Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr align=”center” ng-repeat="(ps, detail) in psinfo">
-					<td align=”center” font size="medium">{{ps}}</td>
-					<td align=”center” font size="medium">{{detail}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+    <div class="row column header-row" ng-show="psFlag == true">
+        <table  align="center" border="2" bordercolor="#0000FF">
+            <caption align=”center” font size="medium">ps info</caption>
+            <thead align=”center”>
+                <tr>
+                    <th align=”center” font size="medium">Name</th>
+                    <th align=”center” font size="medium">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr align=”center” ng-repeat="(ps, detail) in psinfo">
+                    <td align=”center” font size="medium">{{ps}}</td>
+                    <td align=”center” font size="medium">{{detail}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </div>
