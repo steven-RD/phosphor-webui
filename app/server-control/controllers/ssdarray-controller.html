@@ -118,42 +118,21 @@
     </div>
 
     <div class="row column header-row" ng-show="patopoFlag == true">
-      <table>
-        <tr>
-            <table id='ssd-info-body'>
-                <caption>Partition information </caption>
-                <thead class="ssd-body-header">
-                    <tr>
-                        <th>Item</th>
-                        <th>Value</th>
-                    </tr>
-                </thead>
-                <tbody class="ssd-body-tbody">
-                    <tr ng-repeat="(item, value) in patopoinfo['Partition(0)']" ng-show="patopoinfo != 'None'">
-                        <td>{{item}}</td>
-                        <td>{{value}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </tr>
-        <tr>
-            <table id='ssd-info-body' class="ssd-info-body-right">
-                <caption>Patopohader information </caption>
-                <thead class="ssd-body-header">
-                    <tr>
-                        <th>Item</th>
-                        <th>Value</th>
-                    </tr>
-                </thead>
-                <tbody class="ssd-body-tbody">
-                    <tr ng-repeat="(item, value) in patopoinfo.Patopohader" ng-show="patopoinfo != 'None'">
-                        <td>{{item}}</td>
-                        <td>{{value}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </tr>
-      </table>
+        <table id='ssd-info-body' ng-repeat="(key, info) in patopoinfo">
+            <caption>{{key}} information </caption>
+            <thead class="ssd-body-header">
+                <tr>
+                    <th>Item</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody class="ssd-body-tbody">
+                <tr ng-repeat="(item, value) in info" ng-show="patopoinfo != 'None'">
+                    <td>{{item}}</td>
+                    <td>{{value}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="row column header-row" ng-show="dspFlag == true">

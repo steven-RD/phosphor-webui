@@ -346,7 +346,9 @@ window.angular && (function(angular) {
             $scope.updateImageDetail(imageId, imageVersion, imageType);
             // reload page
             $scope.$on('update-image-detail', function() {
-                $route.reload();
+                $timeout(function() {
+                    $route.reload();
+                }, 40*1000);
             })
         }
 
@@ -437,7 +439,7 @@ window.angular && (function(angular) {
             // Realize
             $scope.runConfirmedDetail();
             // reload page
-            $scope.on('run-confirmed-success', function() {
+            $scope.$on('run-confirmed-success', function() {
                 $route.reload();
             })
         }
