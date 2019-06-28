@@ -345,9 +345,9 @@ window.angular && (function(angular) {
             // Realize
             $scope.updateImageDetail(imageId, imageVersion, imageType);
             // reload page
-            $timeout(function() {
+            $scope.$on('update-image-detail', function() {
                 $route.reload();
-            }, 40*1000);
+            })
         }
 
         $scope.updateImageDetail = function(imageId, imageVersion, imageType) {
@@ -382,7 +382,6 @@ window.angular && (function(angular) {
             function(error) {
               console.log(error);
             });
-            console.log("fwVersion");
 
             APIUtils.updateImage(imageId)
             .then(
@@ -392,8 +391,6 @@ window.angular && (function(angular) {
                         function(state){
                             $scope.updating = false;
                             APIUtils.getSwitchUpdateStatus(function(data, originalData) {
-                                console.log("APIUtils.getSwitchUpdateStatus call")
-                                console.log(data)
                                 var updateStatus = data.toString();
                                 if (updateStatus == '2'){    // 2 update status success
                                     $scope.loadSwitchBeingActiveVersion();
@@ -413,8 +410,8 @@ window.angular && (function(angular) {
                         function(error){    // update process error
                             $scope.updating = false;
                             console.log("Update Status process error:")
-                            console.log(error);
-                            toastService.error('Error during update status process' + error);
+                            toastService.error('Error during update status process');
+                            $scope.$emit('update-image-detail', {});
                         }
                     )
                 },
@@ -424,6 +421,7 @@ window.angular && (function(angular) {
             );
             console.log('updateImage $scope.updating');
             console.log($scope.updating);
+            $scope.$emit('update-image-detail', {});
         };
 
         $scope.runImage = function(imageId, imageVersion, imageType) {
@@ -439,7 +437,9 @@ window.angular && (function(angular) {
             // Realize
             $scope.runConfirmedDetail();
             // reload page
-            $route.reload();
+            $scope.on('run-confirmed-success', function() {
+                $route.reload();
+            })
         }
 
         $scope.runConfirmedDetail = function() {
@@ -476,6 +476,7 @@ window.angular && (function(angular) {
                     toastService.error('Error during run image.');
                 });
             $scope.activate_confirm = false;
+            $scope.$emit('run-confirmed-success', {});
         };
 
         $scope.loadFirmwares();
