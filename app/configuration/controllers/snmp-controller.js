@@ -301,7 +301,7 @@ window.angular && (function(angular) {
                                 console.log("$scope.firmwares");
                                 console.log($scope.firmwares);
                             }
-                        }
+                        },
                         angular.forEach($scope.firmwares, function(member){
                             console.log("forEach firmwares");
                             console.log(member);
