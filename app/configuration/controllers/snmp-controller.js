@@ -283,7 +283,7 @@ window.angular && (function(angular) {
             APIUtils.getFirmwares()
             .then(
                 function(result) {
-                    toBeActiveData = {'Version': '', 'Type': '', 'activationStatus': ''}
+                    var toBeActiveData = {'Version': '', 'Type': '', 'activationStatus': ''}
                     $scope.loadSwitchBeingActiveVersion();
                     APIUtils.getSwitchBeingActiveVersion(function(version, type) {
                         $scope.switchInfo.toBeActiveVersion = version;
