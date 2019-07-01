@@ -28,7 +28,8 @@ window.angular && (function(angular) {
                              toBeActiveVersion: '', type: '',
                              switchActivatedStatus: '',
                              switchUpdateStatus: '',
-                             exist_toBeActiveVersion: false};
+                             exist_toBeActiveVersion: false,
+                             updating: false};
         $scope.firmwares = [];
         $scope.switchActiveVersion = '';
         //$scope.hostActiveVersion = '';
@@ -46,7 +47,6 @@ window.angular && (function(angular) {
         $scope.confirm_priority = false;
         $scope.file_empty = true;
         $scope.uploading = false;
-        $scope.updating = false; // Judy add
         $scope.upload_success = false;
         $scope.activate = {reboot: true};
         $scope.download_error_msg = '';
@@ -163,11 +163,9 @@ window.angular && (function(angular) {
                 function(result) {
                     $scope.firmwares = result.data;
                     angular.forEach($scope.firmwares, function(member){
-                        console.log("getFirmwares upload");
-                        console.log(member.imageType);
-                        console.log($scope.switchInfo.toBeActiveVersion);
                         if (member.imageType == 'Host' || $scope.switchInfo.toBeActiveVersion != 'None'){
                             upload_flag = false;
+                            $scope.uploading = false;
                             toastService.error("Upload image error. Exist toBeActive image.");
                         }
                     })
@@ -317,19 +315,12 @@ window.angular && (function(angular) {
 
                             angular.forEach($scope.firmwares, function(member){
                                 if (member.Version == $scope.switchInfo.toBeActiveVersion){
-                                    console.log("member.Version");
                                     console.log(member.Version);
                                 }else{
                                     $scope.firmwares.push(toBeActiveData)
-                                    console.log("$scope.firmwares");
-                                    console.log($scope.firmwares);
                                 }
                             })
                         }
-                        angular.forEach($scope.firmwares, function(member){
-                            console.log("forEach firmwares");
-                            console.log(member);
-                        })
                     })
                     $scope.loadSwitchActivedVersion();
                     $scope.$emit('loadFirmwares_success', {});
@@ -396,7 +387,7 @@ window.angular && (function(angular) {
             $scope.$on('update-image-detail', function() {
                 $timeout(function() {
                     $route.reload();
-                }, 40*1000);
+                }, 60*1000);
             })
         }
 
@@ -414,7 +405,7 @@ window.angular && (function(angular) {
             $scope.activate_image_id = imageId;
             $scope.activate_image_version = imageVersion;
             $scope.activate_image_type = imageType;
-            $scope.updating = true;
+            $scope.switchInfo.updating = true;
 
             // Check whether image has already been actived.
             APIUtils.getSwitchActivedVersion(function(fwVersion, confFile) {
@@ -439,7 +430,7 @@ window.angular && (function(angular) {
                     APIUtils.updateImageStatus(1)    // update process success
                     .then(
                         function(state){
-                            $scope.updating = false;
+                            $scope.switchInfo.updating = false;
                             APIUtils.getSwitchUpdateStatus(function(data, originalData) {
                                 var updateStatus = data.toString();
                                 if (updateStatus == '2'){    // 2 update status success
@@ -458,8 +449,9 @@ window.angular && (function(angular) {
                             });
                         },
                         function(error){    // update process error
-                            $scope.updating = false;
-                            console.log("Update Status process error:")
+                            $scope.switchInfo.updating = false;
+                            console.log('updateImage $scope.updating');
+                            console.log($scope.updating);
                             toastService.error('Error during update status process');
                             $scope.$emit('update-image-detail', {});
                         }
@@ -469,8 +461,6 @@ window.angular && (function(angular) {
                     toastService.error('Error during update imageid');
                 }
             );
-            console.log('updateImage $scope.updating');
-            console.log($scope.updating);
             $scope.$emit('update-image-detail', {});
         };
 

@@ -83,24 +83,16 @@
             </div>
             <div ng-if="title == 'Switch images'">
                 <!--  Display button: Active, Update, Delete in different scene. -->
-                <div ng-if="firmware.Version == version.toBeActiveVersion">
-                    <div ng-if="version.switchUpdateStatus == '2'">
-                        <button class="firmware__action-link"
-                            ng-show="version.switchActivatedStatus == '0' || version.switchActivatedStatus == '2'"
-                            ng-click="run(firmware.imageId, firmware.Version, firmware.imageType)">Active
-                        </button>
-                    </div>
-                    <div ng-if="version.switchUpdateStatus != '2'">
-                        <p>Update error.</p>
-                    </div>
+                <div ng-if="version.switchUpdateStatus == '2' || version.toBeActiveVersion != 'None'">
+                    <button class="firmware__action-link"
+                        ng-show="version.switchActivatedStatus != '2'"
+                        ng-click="run(firmware.imageId, firmware.Version, firmware.imageType)">Active
+                    </button>
                 </div>
-                <div ng-if="firmware.Version != version.toBeActiveVersion">
-                    <div ng-if="version.switchUpdateStatus == '0' || version.switchActivatedStatus == '2' || version.switchActivatedStatus == '3'">
-                        <button class="firmware__action-link"
-                            ng-show="version.exist_toBeActiveVersion == false"
-                            ng-click="update(firmware.imageId, firmware.Version, firmware.imageType)">Update
-                        </button>
-                    </div>
+                <div ng-if="firmware.imageType == 'Host' && version.switchUpdateStatus != '2'">
+                    <button class="firmware__action-link"
+                        ng-click="update(firmware.imageId, firmware.Version, firmware.imageType)">update
+                    </button>
                     <button class="firmware__action-link"
                         ng-click="delete(firmware.imageId, firmware.Version)">Delete
                     </button>
@@ -111,6 +103,6 @@
       </div>
     </div>
     <!--  Judy add 20190612 -->
-    <div class="inline uploading" ng-show="updating">Update in progress...</div>
+    <div class="inline uploading" ng-show="version.updating">Update in progress...</div>
   </div>
 </div>
