@@ -285,18 +285,13 @@ window.angular && (function(angular) {
                 function(result) {
                     var toBeActiveData = {'Version': '', 'Type': '', 'activationStatus': ''}
                     $scope.loadSwitchBeingActiveVersion();
-                    APIUtils.getSwitchBeingActiveVersion(function(version, type) {
-                        $scope.switchInfo.toBeActiveVersion = version;
-                        $scope.switchInfo.type = type;
-
-                        toBeActiveData["Version"] = version;
-                        toBeActiveData["Type"] = type;
+                    $scope.$on('exist_toBeActiveVersion', function() {
+                        toBeActiveData["Version"] = $scope.switchInfo.toBeActiveVersion;
+                        toBeActiveData["Type"] = $scope.switchInfo.type;
                         toBeActiveData["activationStatus"] = 'Ready';
                         result.data.push(toBeActiveData)
-                    },
-                    function(error){
-                        console.log(error)
-                    });
+                    })
+
                     $scope.firmwares = result.data;
                     console.log("$scope.firmwares");
                     console.log($scope.firmwares);
@@ -321,6 +316,7 @@ window.angular && (function(angular) {
                     $scope.switchInfo.exist_toBeActiveVersion = true;
                 }
                 console.log($scope.switchInfo.exist_toBeActiveVersion);
+                $scope.$emit('exist_toBeActiveVersion', {});
             },
             function(error){
                 console.log(error)
