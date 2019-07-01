@@ -156,7 +156,7 @@ window.angular && (function(angular) {
             if ($scope.file) {
                 $scope.uploading = true;
                 $scope.upload_success = false;
-                upload_flag = true;
+                var upload_flag = true;
 
                 APIUtils.getFirmwares()
                 .then(
