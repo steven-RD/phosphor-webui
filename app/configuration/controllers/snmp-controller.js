@@ -153,45 +153,49 @@ window.angular && (function(angular) {
         };
 
         $scope.upload = function() {
-            if ($scope.file) {
-                $scope.uploading = true;
-                $scope.upload_success = false;
-                var upload_flag = true;
+          if ($scope.file) {
+            $scope.uploading = true;
+            $scope.upload_success = false;
+            var upload_flag = true;
 
-                APIUtils.getFirmwares()
-                .then(
-                    function(result) {
-                        $scope.firmwares = result.data;
-                        angular.forEach($scope.firmwares, function(member){
-                            console.log("getFirmwares upload");
-                            console.log(member.imageType);
-                            console.log($scope.switchInfo.toBeActiveVersion);
-                            if (member.imageType == 'Host' || $scope.switchInfo.toBeActiveVersion != 'None'){
-                                upload_flag = false;
-                                toastService.error("Upload image error. Exist toBeActive image.");
-                            }
-                        })
-                    });
-                if (upload_flag) {
-                  APIUtils.uploadImage($scope.file)
-                  .then(
-                    function(response) {
-                        $scope.file = '';
-                        $scope.uploading = false;
-                        $scope.upload_success = true;
-                        // APIUtils.updateImageStatus(0);    // initial set 0
-                        // APIUtils.runImage(0);    // initial set 0
-                        $scope.loadFirmwares();
-                        $scope.loadSwitchUpdateStatus();
-                        $scope.loadSwitchActivatedStatus();
-                    },
-                    function(error) {
-                        $scope.uploading = false;
-                        toastService.error("Upload image error");
+            APIUtils.getFirmwares()
+            .then(
+                function(result) {
+                    $scope.firmwares = result.data;
+                    angular.forEach($scope.firmwares, function(member){
+                        console.log("getFirmwares upload");
+                        console.log(member.imageType);
+                        console.log($scope.switchInfo.toBeActiveVersion);
+                        if (member.imageType == 'Host' || $scope.switchInfo.toBeActiveVersion != 'None'){
+                            upload_flag = false;
+                            toastService.error("Upload image error. Exist toBeActive image.");
+                        }
+                    })
+                    if (upload_flag) {
+                      APIUtils.uploadImage($scope.file)
+                      .then(
+                        function(response) {
+                            $scope.file = '';
+                            $scope.uploading = false;
+                            $scope.upload_success = true;
+                            // APIUtils.updateImageStatus(0);    // initial set 0
+                            // APIUtils.runImage(0);    // initial set 0
+                            $scope.loadFirmwares();
+                            $scope.loadSwitchUpdateStatus();
+                            $scope.loadSwitchActivatedStatus();
+                        },
+                        function(error) {
+                            $scope.uploading = false;
+                            toastService.error("Upload image error");
+                        });
                     }
-                  );
+                },
+                function(error) {
+                    $scope.uploading = false;
+                    toastService.error("Upload image error");
                 }
-            }
+            );
+          }
         };
 
         function waitForDownload() {
