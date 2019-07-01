@@ -165,6 +165,16 @@ window.angular && (function(angular) {
                         // APIUtils.updateImageStatus(0);    // initial set 0
                         // APIUtils.runImage(0);    // initial set 0
                         $scope.loadFirmwares();
+                        $scope.$on('loadFirmwares_success', function(){
+                            angular.forEach($scope.firmwares, function(member){
+                                console.log("loadFirmwares_success member.Version");
+                                console.log(member.imageType);
+                                console.log($scope.switchInfo.toBeActiveVersion);
+                                if (member.imageType == 'Host' || $scope.switchInfo.toBeActiveVersion != 'None'){
+                                    toastService.error("Upload image error. Exist toBeActive image.");
+                                }
+                            })
+                        })
                         $scope.loadSwitchUpdateStatus();
                         $scope.loadSwitchActivatedStatus();
                     },
@@ -310,6 +320,7 @@ window.angular && (function(angular) {
                         })
                     })
                     $scope.loadSwitchActivedVersion();
+                    $scope.$emit('loadFirmwares_success', {});
                 },
                 function(error) {
                     console.log(error);
