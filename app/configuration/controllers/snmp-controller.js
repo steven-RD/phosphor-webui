@@ -156,8 +156,25 @@ window.angular && (function(angular) {
             if ($scope.file) {
                 $scope.uploading = true;
                 $scope.upload_success = false;
-                APIUtils.uploadImage($scope.file)
+                upload_flag = true;
+
+                APIUtils.getFirmwares()
                 .then(
+                    function(result) {
+                        $scope.firmwares = result.data;
+                        angular.forEach($scope.firmwares, function(member){
+                            console.log("getFirmwares upload");
+                            console.log(member.imageType);
+                            console.log($scope.switchInfo.toBeActiveVersion);
+                            if (member.imageType == 'Host' || $scope.switchInfo.toBeActiveVersion != 'None'){
+                                upload_flag = false;
+                                toastService.error("Upload image error. Exist toBeActive image.");
+                            }
+                        })
+                    });
+                if (upload_flag) {
+                  APIUtils.uploadImage($scope.file)
+                  .then(
                     function(response) {
                         $scope.file = '';
                         $scope.uploading = false;
@@ -165,16 +182,6 @@ window.angular && (function(angular) {
                         // APIUtils.updateImageStatus(0);    // initial set 0
                         // APIUtils.runImage(0);    // initial set 0
                         $scope.loadFirmwares();
-                        $scope.$on('loadFirmwares_success', function(){
-                            angular.forEach($scope.firmwares, function(member){
-                                console.log("loadFirmwares_success member.Version");
-                                console.log(member.imageType);
-                                console.log($scope.switchInfo.toBeActiveVersion);
-                                if (member.imageType == 'Host' || $scope.switchInfo.toBeActiveVersion != 'None'){
-                                    toastService.error("Upload image error. Exist toBeActive image.");
-                                }
-                            })
-                        })
                         $scope.loadSwitchUpdateStatus();
                         $scope.loadSwitchActivatedStatus();
                     },
@@ -182,7 +189,8 @@ window.angular && (function(angular) {
                         $scope.uploading = false;
                         toastService.error("Upload image error");
                     }
-                );
+                  );
+                }
             }
         };
 
