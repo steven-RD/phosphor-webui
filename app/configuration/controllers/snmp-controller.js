@@ -289,11 +289,19 @@ window.angular && (function(angular) {
                     $scope.$on('exist_toBeActiveVersion', function() {
                         toBeActiveData["Version"] = $scope.switchInfo.toBeActiveVersion;
                         toBeActiveData["Type"] = $scope.switchInfo.type;
+                        toBeActiveData["imageType"] = 'Host';
                         toBeActiveData["activationStatus"] = 'Ready';
 
-                        $scope.firmwares.push(toBeActiveData)
-                        console.log($scope.firmwares);
-
+                        angular.forEach($scope.firmwares, function(member){
+                            if (member.Version == $scope.switchInfo.toBeActiveVersion && member.Version != 'None'){
+                                console.log("member.Version");
+                                console.log(member.Version);
+                            }else{
+                                $scope.firmwares.push(toBeActiveData)
+                                console.log("$scope.firmwares");
+                                console.log($scope.firmwares);
+                            }
+                        }
                         angular.forEach($scope.firmwares, function(member){
                             console.log("forEach firmwares");
                             console.log(member);
