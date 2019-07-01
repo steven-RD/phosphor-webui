@@ -287,21 +287,23 @@ window.angular && (function(angular) {
                     var toBeActiveData = {'Version': '', 'Type': '', 'activationStatus': ''}
                     $scope.loadSwitchBeingActiveVersion();
                     $scope.$on('exist_toBeActiveVersion', function() {
-                        toBeActiveData["Version"] = $scope.switchInfo.toBeActiveVersion;
-                        toBeActiveData["Type"] = $scope.switchInfo.type;
-                        toBeActiveData["imageType"] = 'Host';
-                        toBeActiveData["activationStatus"] = 'Ready';
+                        if ($scope.switchInfo.toBeActiveVersion != 'None'){
+                            toBeActiveData["Version"] = $scope.switchInfo.toBeActiveVersion;
+                            toBeActiveData["Type"] = $scope.switchInfo.type;
+                            toBeActiveData["imageType"] = 'Host';
+                            toBeActiveData["activationStatus"] = 'Ready';
 
-                        angular.forEach($scope.firmwares, function(member){
-                            if (member.Version == $scope.switchInfo.toBeActiveVersion && member.Version != 'None'){
-                                console.log("member.Version");
-                                console.log(member.Version);
-                            }else{
-                                $scope.firmwares.push(toBeActiveData)
-                                console.log("$scope.firmwares");
-                                console.log($scope.firmwares);
-                            }
-                        })
+                            angular.forEach($scope.firmwares, function(member){
+                                if (member.Version == $scope.switchInfo.toBeActiveVersion){
+                                    console.log("member.Version");
+                                    console.log(member.Version);
+                                }else{
+                                    $scope.firmwares.push(toBeActiveData)
+                                    console.log("$scope.firmwares");
+                                    console.log($scope.firmwares);
+                                }
+                            })
+                        }
                         angular.forEach($scope.firmwares, function(member){
                             console.log("forEach firmwares");
                             console.log(member);
