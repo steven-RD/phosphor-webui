@@ -283,8 +283,27 @@ window.angular && (function(angular) {
             APIUtils.getFirmwares()
             .then(
                 function(result) {
-                    $scope.firmwares = result.data;
+                    toBeActiveData = {'Version': '', 'Type': '', 'activationStatus': ''}
                     $scope.loadSwitchBeingActiveVersion();
+                    APIUtils.getSwitchBeingActiveVersion(function(version, type) {
+                        $scope.switchInfo.toBeActiveVersion = version;
+                        $scope.switchInfo.type = type;
+
+                        toBeActiveData["Version"] = version;
+                        toBeActiveData["Type"] = type;
+                        toBeActiveData["activationStatus"] = 'Ready';
+                        result.data.push(toBeActiveData)
+                    },
+                    function(error){
+                        console.log(error)
+                    });
+                    $scope.firmwares = result.data;
+                    console.log("$scope.firmwares");
+                    console.log($scope.firmwares);
+                    angular.forEach($scope.firmwares, function(member){
+                        console.log("forEach firmwares");
+                        console.log(member);
+                    })
                     $scope.loadSwitchActivedVersion();
                 },
                 function(error) {
