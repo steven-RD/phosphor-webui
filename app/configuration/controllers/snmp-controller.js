@@ -29,7 +29,8 @@ window.angular && (function(angular) {
                              switchActivatedStatus: '',
                              switchUpdateStatus: '',
                              exist_toBeActiveVersion: false,
-                             updating: false};
+                             updating: false,
+                             image_state: ''};
         $scope.firmwares = [];
         $scope.switchActiveVersion = '';
         //$scope.hostActiveVersion = '';
@@ -158,6 +159,7 @@ window.angular && (function(angular) {
             $scope.uploading = true;
             $scope.upload_success = false;
             var upload_flag = true;
+            $scope.switchInfo.image_state = 'Uploaded';
 
             APIUtils.getFirmwares()
               .then(
@@ -395,6 +397,7 @@ window.angular && (function(angular) {
                 $timeout(function() {
                     $scope.switchInfo.updating = false;
                     $scope.confirm_updating = false;
+                    $scope.switchInfo.image_state = 'Ready';
                     $route.reload();
                 }, 2*60*1000);
             })
@@ -454,8 +457,6 @@ window.angular && (function(angular) {
                             });
                         },
                         function(error){    // update process error
-                            //$scope.switchInfo.updating = false;
-                            //$scope.confirm_updating = false;
                             toastService.error('Error during update status process');
                             $scope.$emit('update-image-detail', {});
                         }
@@ -482,6 +483,7 @@ window.angular && (function(angular) {
             $scope.runConfirmedDetail();
             // reload page
             $scope.$on('run-confirmed-success', function() {
+                $scope.switchInfo.image_state = 'Actived';
                 $route.reload();
             })
         }

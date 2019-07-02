@@ -48,7 +48,10 @@
         </div>
         <div class="table__cell firmware__active">
           <span class="table__cell-label">Image state:</span>
-          <span>{{firmware.activationStatus}}</span>
+          <!--  Judy modified 20190702 start -->
+          <span ng-if="title == 'BMC images'">{{firmware.activationStatus}}</span>
+          <span ng-if="title == 'Switch images'">{{version.image_state}}</span>
+          <!--  Judy modified 20190702 end -->
         </div>
         <div class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
           <span class="table__cell-label">Version:</span>{{firmware.Version}}
