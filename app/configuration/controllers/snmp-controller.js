@@ -159,14 +159,16 @@ window.angular && (function(angular) {
             var upload_flag = true;
 
             APIUtils.getFirmwares()
-            .then(
+              .then(
                 function(result) {
                     $scope.firmwares = result.data;
+                    // If exist one switch image, can't upload another one.
                     angular.forEach($scope.firmwares, function(member){
-                        if (member.imageType == 'Host' || $scope.switchInfo.toBeActiveVersion != 'None'){
+                        if (member.imageType == 'Host' ||
+                          $scope.switchInfo.toBeActiveVersion != 'None'){
                             upload_flag = false;
                             $scope.uploading = false;
-                            toastService.error("Upload image error. Exist toBeActive image.");
+                            toastService.error("Upload image fail. Exist toBeActive image.");
                         }
                     })
                     if (upload_flag) {
@@ -176,8 +178,6 @@ window.angular && (function(angular) {
                             $scope.file = '';
                             $scope.uploading = false;
                             $scope.upload_success = true;
-                            // APIUtils.updateImageStatus(0);    // initial set 0
-                            // APIUtils.runImage(0);    // initial set 0
                             $scope.loadFirmwares();
                             $scope.loadSwitchUpdateStatus();
                             $scope.loadSwitchActivatedStatus();
@@ -192,7 +192,7 @@ window.angular && (function(angular) {
                     $scope.uploading = false;
                     toastService.error("Upload image error");
                 }
-            );
+              );
           }
         };
 
@@ -300,11 +300,14 @@ window.angular && (function(angular) {
         $scope.filters = {bmc: {imageType: 'BMC'}, Switch: {imageType: 'Host'}};
 
         $scope.loadFirmwares = function() {
-            APIUtils.getFirmwares()
+          APIUtils.getFirmwares()
             .then(
                 function(result) {
                     $scope.firmwares = result.data;
+                    // Add ready switch firmware to firmwares,
+                    // to resolve no to be active record after reboot(update but not active).
                     var toBeActiveData = {'Version': '', 'Type': '', 'activationStatus': ''}
+                    var exist_toBeActiveSwitchImage = false;
                     $scope.loadSwitchBeingActiveVersion();
                     $scope.$on('exist_toBeActiveVersion', function() {
                         if ($scope.switchInfo.toBeActiveVersion != 'None'){
@@ -313,13 +316,15 @@ window.angular && (function(angular) {
                             toBeActiveData["imageType"] = 'Host';
                             toBeActiveData["activationStatus"] = 'Ready';
 
-                            angular.forEach($scope.firmwares, function(member){
-                                if (member.Version == $scope.switchInfo.toBeActiveVersion){
-                                    console.log(member.Version);
-                                }else{
-                                    $scope.firmwares.push(toBeActiveData)
+                            angular.forEach($scope.firmwares, function(fw){
+                              if ((fw.hasOwnProperty("imageType") && fw.imageType == 'Host') ||
+                                  (fw.Version == $scope.switchInfo.toBeActiveVersion)){
+                                    exist_toBeActiveSwitchImage = true;
                                 }
                             })
+                            if (!exist_toBeActiveSwitchImage){
+                                $scope.firmwares.push(toBeActiveData) // Add toBeActive record
+                            }
                         }
                     })
                     $scope.loadSwitchActivedVersion();
@@ -327,7 +332,8 @@ window.angular && (function(angular) {
                 },
                 function(error) {
                     console.log(error);
-                });
+                }
+            );
         };
 
         $scope.loadSwitchBeingActiveVersion = function() {
@@ -387,7 +393,7 @@ window.angular && (function(angular) {
             $scope.$on('update-image-detail', function() {
                 $timeout(function() {
                     $route.reload();
-                }, 60*1000);
+                }, 2*60*1000);
             })
         }
 
@@ -409,23 +415,20 @@ window.angular && (function(angular) {
 
             // Check whether image has already been actived.
             APIUtils.getSwitchActivedVersion(function(fwVersion, confFile) {
-                console.log('fwVersion == imageVersion');
                 if (confFile != ""){
                     confFile = 'v' + confFile;
                 }
-                console.log(confFile);
-                console.log(imageVersion);
                 if (confFile == imageVersion){
                     toastService.error('This image has already been actived!');
                     return
                 }
-            },
-            function(error) {
-              console.log(error);
-            });
+              },
+              function(error) {
+                console.log(error);
+              });
 
             APIUtils.updateImage(imageId)
-            .then(
+              .then(
                 function(imageState) {    // update ImageId success
                     APIUtils.updateImageStatus(1)    // update process success
                     .then(
@@ -450,8 +453,6 @@ window.angular && (function(angular) {
                         },
                         function(error){    // update process error
                             $scope.switchInfo.updating = false;
-                            console.log('updateImage $scope.updating');
-                            console.log($scope.updating);
                             toastService.error('Error during update status process');
                             $scope.$emit('update-image-detail', {});
                         }
@@ -483,14 +484,18 @@ window.angular && (function(angular) {
         }
 
         $scope.runConfirmedDetail = function() {
+            console.log('first $scope.delete_image_id');
+            console.log($scope.delete_image_id);
+            console.log($scope.activate_image_id);
             APIUtils.runImage(1)
             .then(
                 function(state) {    // active success
                     APIUtils.getSwitchActivatedStatus(function(data, originalData) {
                         var activatedStatus = data.toString();
                         if (activatedStatus == '2'){
-                            console.log('$scope.delete_image_id');
+                            console.log('second $scope.delete_image_id');
                             console.log($scope.delete_image_id);
+                            console.log($scope.activate_image_id);
                             APIUtils.deleteImage($scope.delete_image_id).then(function(response){
                                 if (response.status == 'error') {
                                     toastService.error(response.data.description);
@@ -512,7 +517,7 @@ window.angular && (function(angular) {
                       console.log('Error during get switch activated status.');
                     });
                 },
-                function(error) {  // active fail
+                function(error) {    // active fail
                     toastService.error('Error during run image.');
                 });
             $scope.activate_confirm = false;
