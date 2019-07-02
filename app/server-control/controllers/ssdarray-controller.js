@@ -1,4 +1,4 @@
-    /**
+/**
     * Controller for ssdarray
     *
     * @module app/serverControl
@@ -9,9 +9,9 @@
     * @author Judy
     * @date   20190524
     * @brief  ssd inventory operations modify base the file of power usage controller
-    */
+*/
 
-    window.angular && (function(angular) {
+window.angular && (function(angular) {
     'use strict';
 
     angular.module('app.serverControl').controller('ssdArrayController', [
@@ -47,7 +47,8 @@
       $scope.loadSsdInfo = function(){
         APIUtils.getSsdArrayInfo().then(
             function(data){
-                var arrayInfo = data['data']['Info'];
+                //var arrayInfo = data['data']['Info']; // Restful interface
+                var arrayInfo = data['Info']; // Redfish interface
                 if (arrayInfo.hasOwnProperty('Ssdinfo')){
                     $scope.ssdinfo = arrayInfo['Ssdinfo'];
                 }
@@ -76,7 +77,8 @@
       $scope.loadPowerSupplyInfo = function(){
         APIUtils.getPowerSupplyInfo().then(
             function(data){
-                var psinfo = data['data'];
+                //var psinfo = data['data']; // Restful interface
+                var psinfo = data; // Redfish interface
                 if (psinfo.hasOwnProperty('Status')){
                     $scope.psinfo = psinfo['Status'];
                 }
@@ -89,7 +91,6 @@
 
       $scope.loadSsdInfo();
       $scope.loadPowerSupplyInfo();
-
     }
   ]);
 })(angular);

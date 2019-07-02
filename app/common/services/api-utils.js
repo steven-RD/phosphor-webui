@@ -1169,15 +1169,11 @@ window.angular && (function(angular) {
                       bmcActiveVersion: bmcActiveVersion,
                       hostActiveVersion: hostActiveVersion
                     });
-                    console.log("getFirmwares success");
-                    console.log(data);
                   },
                   function(error) {
                     console.log(error);
                     deferred.reject(error);
                   });
-          console.log("getFirmwares");
-          console.log(deferred.promise);
           return deferred.promise;
         },
         changePriority: function(imageId, priority) {
@@ -1217,8 +1213,6 @@ window.angular && (function(angular) {
                        {'data': Constants.FIRMWARE.ACTIVATE_FIRMWARE})
                  })
               .then(function(response) {
-                console.log("activateImage");
-                console.log(response);
                 return response.data;
               });
         },
@@ -1634,7 +1628,8 @@ window.angular && (function(angular) {
                 return response.data;
               });
         },
-
+        // Keep two ways to call interfaces: Restful and Redfish
+        // Restful way start
         /* Modified by USISH Steven20190122/Judy20190521 start */
         /* getSwitchUpdateStatus: function(callback) {
           $http({
@@ -1757,8 +1752,6 @@ window.angular && (function(angular) {
                     var json = JSON.stringify(response.data);
                     var content = JSON.parse(json);
                     deferred.resolve(content);
-                    console.log("updateImageStatus success");
-                    console.log(content);
                   },
                   function(error) {
                     // ToDo
@@ -1865,6 +1858,8 @@ window.angular && (function(angular) {
           return deferred.promise;
         },*/
       /* Modified by USISH Steven20190122/Judy20190521 end */
+      // Restful way end
+      // Redfish way start
       /* Modified by USISH Judy20190702 start */
       getSwitchUpdateStatus: function(callback) {
           $http({
@@ -1967,8 +1962,6 @@ window.angular && (function(angular) {
 
         updateImageStatus: function(val) {
           var deferred = $q.defer();
-          console.log("updateImageStatus val");
-          console.log(val);
           $http({
             method: 'PATCH',
             url: DataService.getHost() + '/redfish/v1/Switch/Update',
@@ -2086,6 +2079,7 @@ window.angular && (function(angular) {
           return deferred.promise;
         },
       /*  Modified by USISH Judy20190702 end */
+      // Redfish way end
       };
       return SERVICE;
     }
