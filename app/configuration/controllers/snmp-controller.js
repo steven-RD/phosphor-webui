@@ -397,8 +397,8 @@ window.angular && (function(angular) {
                 $timeout(function() {
                     $scope.switchInfo.updating = false;
                     $scope.confirm_updating = false;
-                    $scope.switchInfo.image_state = 'Ready';
                     $route.reload();
+                    $scope.switchInfo.image_state = 'Ready';
                 }, 2*60*1000);
             })
         }
@@ -451,6 +451,7 @@ window.angular && (function(angular) {
                                     $scope.loadSwitchUpdateStatus();
                                     toastService.error(imageId + ' update image fail, value 3');
                                 }
+                                $scope.$emit('update-image-detail', {});
                             },
                             function(error) {
                               console.log("Get switch update status error.");
@@ -483,8 +484,8 @@ window.angular && (function(angular) {
             $scope.runConfirmedDetail();
             // reload page
             $scope.$on('run-confirmed-success', function() {
-                $scope.switchInfo.image_state = 'Actived';
                 $route.reload();
+                $scope.switchInfo.image_state = 'Actived';
             })
         }
 
