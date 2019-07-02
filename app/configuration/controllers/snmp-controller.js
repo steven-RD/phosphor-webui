@@ -393,6 +393,7 @@ window.angular && (function(angular) {
             // reload page
             $scope.$on('update-image-detail', function() {
                 $timeout(function() {
+                    $scope.switchInfo.updating = false;
                     $scope.confirm_updating = false;
                     $route.reload();
                 }, 2*60*1000);
@@ -436,15 +437,12 @@ window.angular && (function(angular) {
                     APIUtils.updateImageStatus(1)    // update process success
                     .then(
                         function(state){
-                            $scope.switchInfo.updating = false;
-                            $scope.confirm_updating = false;
                             APIUtils.getSwitchUpdateStatus(function(data, originalData) {
                                 var updateStatus = data.toString();
                                 if (updateStatus == '2'){    // 2 update status success
                                     $scope.loadSwitchBeingActiveVersion();
                                     $scope.loadSwitchUpdateStatus();
                                     toastService.success('Update image success');
-                                    return state;
                                 }
                                 if (updateStatus == '3'){    // 3 update status fail
                                     $scope.loadSwitchUpdateStatus();
@@ -456,8 +454,8 @@ window.angular && (function(angular) {
                             });
                         },
                         function(error){    // update process error
-                            $scope.switchInfo.updating = false;
-                            $scope.confirm_updating = false;
+                            //$scope.switchInfo.updating = false;
+                            //$scope.confirm_updating = false;
                             toastService.error('Error during update status process');
                             $scope.$emit('update-image-detail', {});
                         }
