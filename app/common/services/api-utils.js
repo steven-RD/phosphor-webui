@@ -1635,8 +1635,8 @@ window.angular && (function(angular) {
               });
         },
 
-        /*  Modified by USISH Steven20190122/Judy20190521 start */
-        getSwitchUpdateStatus: function(callback) {
+        /* Modified by USISH Steven20190122/Judy20190521 start */
+        /* getSwitchUpdateStatus: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() +
@@ -1863,8 +1863,229 @@ window.angular && (function(angular) {
                 deferred.reject(error);
               });
           return deferred.promise;
+        },*/
+      /* Modified by USISH Steven20190122/Judy20190521 end */
+      /* Modified by USISH Judy20190702 start */
+      getSwitchUpdateStatus: function(callback) {
+          $http({
+            method: 'GET',
+            url: DataService.getHost() + '/redfish/v1/Switch/Update',
+            withCredentials: true
+          })
+          .then(
+              function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                var dataClone = JSON.parse(JSON.stringify(content));
+                var switchUpdateStatus = content.Value;
+
+                callback(switchUpdateStatus, dataClone);
+              },
+              function(error) {
+                console.log(error);
+              });
         },
-      /*  Modified by USISH Steven20190122/Judy20190521 end */
+
+        getSwitchActivatedStatus: function(callback) {
+          $http({
+            method: 'GET',
+            url: DataService.getHost() + '/redfish/v1/Switch/Activate',
+            withCredentials: true
+          })
+          .then(
+              function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                var dataClone = JSON.parse(JSON.stringify(content));
+                var switchActivatedStatus = content.Value;
+
+                callback(switchActivatedStatus, dataClone);
+              },
+              function(error) {
+                console.log(error);
+              });
+        },
+
+        getSwitchBeingActiveVersion: function(callback) {
+          $http({
+            method: 'GET',
+            url: DataService.getHost() + '/redfish/v1/Switch/Ready',
+            withCredentials: true
+          })
+              .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+                    var version = content['Version'];
+                    var type = content['Type'];
+                    callback(version, type);
+                  },
+                  function(error) {
+                    console.log(error);
+                  });
+        },
+
+        getSwitchActivedVersion: function(callback) {
+          $http({
+            method: 'GET',
+            url: DataService.getHost() + '/redfish/v1/Switch/Functional',
+            withCredentials: true
+          })
+              .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+                    var FirmwareVersion = content['Version']['FirmwareImage'];
+                    var ConfigurationFile = content['Version']['ConfigurationFile'];
+                    callback(FirmwareVersion, ConfigurationFile);
+                  },
+                  function(error) {
+                    console.log(error);
+                  });
+        },
+
+        updateImage: function(val) {
+          var deferred = $q.defer();
+          $http({
+            method: 'PATCH',
+            url: DataService.getHost() + '/redfish/v1/Switch/Update',
+            withCredentials: true,
+            data: {'Imageid': val}
+          })
+          .then(
+              function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                deferred.resolve(content);
+              },
+              function(error) {
+                console.log(error);
+                deferred.reject(error);
+              });
+          return deferred.promise;
+        },
+
+        updateImageStatus: function(val) {
+          var deferred = $q.defer();
+          console.log("updateImageStatus val");
+          console.log(val);
+          $http({
+            method: 'PATCH',
+            url: DataService.getHost() + '/redfish/v1/Switch/Update',
+            withCredentials: true,
+            timeout: 30 * 1000, // 30s
+            data: {'Value': val}
+          })
+           .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+                    deferred.resolve(content);
+                    console.log(content);
+                  },
+                  function(error) {
+                    // ToDo
+                    // Has 403 forbidden now. But can execute actually.
+                    console.log("updateImageStatus error");
+                    console.log(error);
+                    deferred.reject(error);
+                  }
+                );
+          return deferred.promise;
+        },
+
+        runImage: function(val) {
+          var deferred = $q.defer();
+          $http({
+            method: 'PATCH',
+            url: DataService.getHost() + '/redfish/v1/Switch/Activate',
+            withCredentials: true,
+            data: {'Value': val}
+          })
+          .then(
+              function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                deferred.resolve(content);
+              },
+              function(error) {
+                console.log(error);
+                deferred.reject(error);
+              });
+          return deferred.promise;
+        },
+
+        getSsdArrayInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/redfish/v1/Switch/AllInformations',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content;
+                },
+                function(error) {
+                   console.log(error);
+                });
+        },
+        getPowerSupplyInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/redfish/v1/Switch/PowerSupply',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content;
+                },
+                function(error) {
+                   console.log(error);
+                });
+        },
+
+        setPowerSwitchState: function(state) {
+          var deferred = $q.defer();
+          $http({
+              method: 'PATCH',
+              url: DataService.getHost() + '/redfish/v1/Switch/Control',
+              withCredentials: true,
+              data: {'Command': state}
+          })
+          .then(
+              function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                deferred.resolve(content);
+              },
+              function(error) {
+                deferred.reject(error);
+              });
+          return deferred.promise;
+        },
+        getPowerSwitchStatus: function() {
+          var deferred = $q.defer();
+          $http({
+              method: 'GET',
+              url: DataService.getHost() + '/redfish/v1/Switch/PowerSwitch',
+              withCredentials: true
+          })
+          .then(
+              function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                deferred.resolve(content);
+              },
+              function(error) {
+                deferred.reject(error);
+              });
+          return deferred.promise;
+        },
+      /*  Modified by USISH Judy20190702 end */
       };
       return SERVICE;
     }
