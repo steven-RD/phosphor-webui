@@ -51,6 +51,7 @@ window.angular && (function(angular) {
         $scope.activate = {reboot: true};
         $scope.download_error_msg = '';
         $scope.download_success = false;
+        $scope.confirm_updating = false; // Judy add 20190702
 
         var pollActivationTimer = undefined;
         var pollDownloadTimer = undefined;
@@ -392,6 +393,7 @@ window.angular && (function(angular) {
             // reload page
             $scope.$on('update-image-detail', function() {
                 $timeout(function() {
+                    $scope.confirm_updating = false;
                     $route.reload();
                 }, 2*60*1000);
             })
@@ -412,6 +414,7 @@ window.angular && (function(angular) {
             $scope.activate_image_version = imageVersion;
             $scope.activate_image_type = imageType;
             $scope.switchInfo.updating = true;
+            $scope.confirm_updating = true;
 
             // Check whether image has already been actived.
             APIUtils.getSwitchActivedVersion(function(fwVersion, confFile) {
@@ -434,6 +437,7 @@ window.angular && (function(angular) {
                     .then(
                         function(state){
                             $scope.switchInfo.updating = false;
+                            $scope.confirm_updating = false;
                             APIUtils.getSwitchUpdateStatus(function(data, originalData) {
                                 var updateStatus = data.toString();
                                 if (updateStatus == '2'){    // 2 update status success
@@ -453,6 +457,7 @@ window.angular && (function(angular) {
                         },
                         function(error){    // update process error
                             $scope.switchInfo.updating = false;
+                            $scope.confirm_updating = false;
                             toastService.error('Error during update status process');
                             $scope.$emit('update-image-detail', {});
                         }

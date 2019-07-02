@@ -53,8 +53,6 @@
 	</form>
 </div>
 
-
-
 <section class="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog" ng-class="{'active': confirm_delete}">
 	<div class="modal__tftp-unreachable" role="document">
 		<div class="screen-reader-offscreen modal-description">Delete firmware image</div><!-- accessibility only; used for screen readers -->
@@ -112,4 +110,21 @@
 		</div>
 	</div>
 </section>
-<div class="modal-overlay" tabindex="-1" ng-class="{'active': activate_confirm}"></div>
+
+<section class="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog" ng-class="{'active': confirm_updating}">
+    <div class="modal__tftp-unreachable" role="document">
+        <div class="screen-reader-offscreen modal-description">Update switch image</div>
+        <div class="page-header ">
+            <span class="icon icon__warning inline"><span class="accessible-text" role="alert">Notice</span></span>
+            <h1 class="modal-title h4 inline">Update image</h1>
+        </div>
+        <div class="modal__content">
+            <p>Switch image {{activate_image_id}}-{{activate_image_version}} is updating now.
+               This process needs about 2 minutes. Please wait.
+               After this process, you can click refresh button on the top right if needed.
+            </p>
+        </div>
+    </div>
+</section>
+
+<div class="modal-overlay" tabindex="-1" ng-class="{'active': (confirm_updating || activate_confirm || confirm_delete)}"></div>
