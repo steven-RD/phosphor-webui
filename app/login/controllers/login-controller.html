@@ -13,8 +13,6 @@
           </div>
           <label for="host">BMC Host or BMC IP Address</label>
           <input type="text" id="host" name="host" class="validate-input" ng-model="host" has-error="serverUnreachable && login__form.host.$pristine" required  autofocus ng-keydown="tryLogin(host, username, password, $event)">
-
-          <input type="text" id="host" name="host" class="validate-input" ng-model="host" has-error="serverUnreachable && login__form.host.$pristine" required  autofocus ng-keydown="tryLogin(host, username, password, $event)">
           <div ng-messages="login__form.host.$error" class="form-error" ng-class="{'visible' : login__form.host.$touched || submitted}">
             <p ng-message="required">Field is required</p>
             <p ng-message="hasError">Server unreachable</p>

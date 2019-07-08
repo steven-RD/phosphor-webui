@@ -151,7 +151,7 @@ window.angular && (function(angular) {
       };
       $scope.updateUserInfo = function() {
         if ($scope.selectedUser.Password !==
-            $scope.selectedUser.VerifyPassword) {
+          $scope.selectedUser.VerifyPassword) {
           toastService.error('Passwords do not match');
           return;
         }

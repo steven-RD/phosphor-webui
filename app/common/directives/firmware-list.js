@@ -13,7 +13,7 @@ window.angular && (function(angular) {
           '$rootScope', '$scope', 'dataService', '$location', '$timeout',
           function($rootScope, $scope, dataService, $location, $timeout) {
             $scope.dataService = dataService;
-			$scope.activateFlag = true;
+            $scope.activateFlag = true;
 
             $scope.activate = function(imageId, imageVersion, imageType) {
               $scope.$parent.activateImage(imageId, imageVersion, imageType);
@@ -32,16 +32,16 @@ window.angular && (function(angular) {
               event.stopPropagation();
             };
 
-			/*  Modified by USISH Steven 20190117 start */
-			$scope.update = function(imageId, imageVersion, imageType) {
-				$scope.$parent.updateImage(imageId, imageVersion, imageType);
-				$scope.activateFlag = false;
-			};
+            /*  Modified by USISH Steven 20190117 start */
+            $scope.update = function(imageId, imageVersion, imageType) {
+                $scope.$parent.updateImage(imageId, imageVersion, imageType);
+                $scope.activateFlag = false;
+            };
 
-			$scope.run = function(imageId, imageVersion, imageType) {
-				$scope.$parent.runImage(imageId, imageVersion, imageType);
-			};
-			/*  Modified by USISH Steven 20190117 start */
+            $scope.run = function(imageId, imageVersion, imageType) {
+                $scope.$parent.runImage(imageId, imageVersion, imageType);
+            };
+            /*  Modified by USISH Steven 20190117 start */
 
           }
         ]
