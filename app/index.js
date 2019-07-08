@@ -22,7 +22,6 @@ import ngToast from 'ng-toast';
 import ngToast_animate from 'ng-toast/dist/ngToast-animations.css';
 import ngToast_style from 'ng-toast/dist/ngToast.css';
 
-
 require('./styles/index.scss');
 var config = require('../config.json');
 
