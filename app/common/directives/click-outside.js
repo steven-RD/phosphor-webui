@@ -4,8 +4,8 @@ window.angular && (function(angular) {
   angular.module('app.common.directives').directive('clickOutside', [
     '$document',
     function($document) {
-        return {
-          restrict: 'A', scope: {clickOutside: '&'},
+      return {
+        restrict: 'A', scope: {clickOutside: '&'},
             link: function(scope, el, attr) {
               function clickEvent(e) {
                 if (el !== e.target && !el[0].contains(e.target)) {
@@ -14,7 +14,7 @@ window.angular && (function(angular) {
                   });
                 }
               }
-			  $document.bind('click', clickEvent);
+              $document.bind('click', clickEvent);
 
               scope.$on('$destroy', function() {
                 $document.unbind('click', clickEvent);

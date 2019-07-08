@@ -8,8 +8,8 @@
     </li>
     <li>
       <button class="btn-health"
-        ng-class="{opened: firstLevel == 'server-health'}"
-        ng-click="change('server-health')">
+      ng-class="{opened: firstLevel == 'server-health'}"
+      ng-click="change('server-health')">
         <icon class="nav-icon" file="icon-health.svg"></icon>
         JBOF health
       </button>
@@ -35,7 +35,7 @@
       </ul>
     </li>
     <li>
-      <button class="btn-control" ng-class="{opened: firstLevel == 'server-control'}" ng-click="change('server-control')" tabindex="3">
+      <button class="btn-control" ng-class="{opened: firstLevel == 'server-control'}" ng-click="change('server-control')">
         <icon class="nav-icon" file="icon-control.svg"></icon>
         JBOF control
       </button>
@@ -60,7 +60,7 @@
         </li>-->
         <li ng-class="{'active': (path == '/server-control/server-led')}">
           <a href="#/server-control/server-led" ng-click="closeSubnav()"
-          tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">JBOF LED</a>
+            tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">JBOF LED</a>
         </li>
         <li ng-class="{'active': (path == '/server-control/bmc-reboot')}">
           <a href="#/server-control/bmc-reboot" ng-click="closeSubnav()"

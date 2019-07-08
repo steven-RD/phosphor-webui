@@ -1631,7 +1631,7 @@ window.angular && (function(angular) {
         // Keep two ways to call interfaces: Restful and Redfish
         // Restful way start
         /* Modified by USISH Steven20190122/Judy20190521 start */
-        /* getSwitchUpdateStatus: function(callback) {
+        getSwitchUpdateStatus: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() +
@@ -1856,12 +1856,26 @@ window.angular && (function(angular) {
                 deferred.reject(error);
               });
           return deferred.promise;
-        },*/
+        },
+        uploadSwitchImage: function(file) {
+          return $http({
+                   method: 'POST',
+                   timeout: 5 * 60 * 1000,
+                   url: DataService.getHost() + '/upload/Switch/Image',
+                   // Overwrite the default 'application/json' Content-Type
+                   headers: {'Content-Type': 'application/octet-stream'},
+                   withCredentials: true,
+                   data: file
+                 })
+              .then(function(response) {
+                return response.data;
+              });
+        },
       /* Modified by USISH Steven20190122/Judy20190521 end */
       // Restful way end
       // Redfish way start
       /* Modified by USISH Judy20190702 start */
-      getSwitchUpdateStatus: function(callback) {
+      /*getSwitchUpdateStatus: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() + '/redfish/v1/Switch/Update',
@@ -2077,7 +2091,7 @@ window.angular && (function(angular) {
                 deferred.reject(error);
               });
           return deferred.promise;
-        },
+        },*/
       /*  Modified by USISH Judy20190702 end */
       // Redfish way end
       };

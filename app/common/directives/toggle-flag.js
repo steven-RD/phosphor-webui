@@ -1,7 +1,7 @@
 window.angular && (function(angular) {
   'use strict';
 
-  angular.module('app.common.directives').directive('toggleFlag',[
+  angular.module('app.common.directives').directive('toggleFlag', [
     '$document',
     function($document) {
       return {

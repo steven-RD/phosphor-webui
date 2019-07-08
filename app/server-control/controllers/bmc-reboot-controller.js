@@ -30,7 +30,7 @@ window.angular && (function(angular) {
       $scope.reboot = function() {
         APIUtils.bmcReboot().then(
             function(response) {
-              toastService.success('BMC is rebooting.');
+              toastService.success('BMC is rebooting.')
             },
             function(error) {
               console.log(JSON.stringify(error));

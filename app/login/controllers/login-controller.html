@@ -1,28 +1,20 @@
-<loader loading="loading"></loader>
 <div>
   <div class="row">
     <div class="columns large-6">
       <img src="../../assets/images/logo.svg" class="login__logo" alt="OpenBMC logo"/>
+      <h1 class="login__desc">JBOF</h1> <!--  Judy modify 20190708 -->
     </div>
     <div class="columns large-6">
-    </div>
-  </div>
-  <div class="row">
-    <div class="columns large-6 login__desc">
-    <!--  Modified by USISH Steven 20181130  start -->
-      <h1>JBOF</h1>
-    <!--  Modified by USISH Coco 20181130  end -->
-    </div>
-    <div class="columns large-6 disabled">
       <form id="login__form" name="login__form" action="" ng-class="{'submitted' : submitted}">
         <fieldset ng-disabled="dataService.loading">
           <div class="alert alert-danger" role="alert" ng-if="invalidCredentials">
             <b>Invalid username or password.</b>
             <br>Please try again.
           </div>
-          <label >BMC Host or BMC IP Address</label>
+          <label for="host">BMC Host or BMC IP Address</label>
+          <input type="text" id="host" name="host" class="validate-input" ng-model="host" has-error="serverUnreachable && login__form.host.$pristine" required  autofocus ng-keydown="tryLogin(host, username, password, $event)">
 
-        <input type="text" id="host" name="host" class="validate-input" ng-model="host" has-error="serverUnreachable && login__form.host.$pristine" required  autofocus ng-keydown="tryLogin(host, username, password, $event)">
+          <input type="text" id="host" name="host" class="validate-input" ng-model="host" has-error="serverUnreachable && login__form.host.$pristine" required  autofocus ng-keydown="tryLogin(host, username, password, $event)">
           <div ng-messages="login__form.host.$error" class="form-error" ng-class="{'visible' : login__form.host.$touched || submitted}">
             <p ng-message="required">Field is required</p>
             <p ng-message="hasError">Server unreachable</p>

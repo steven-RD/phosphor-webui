@@ -1,7 +1,7 @@
 //Breakpoints mixin
 @mixin mediaQuery($breakpoint) {
   @if $breakpoint == "x-small" {
-    @media (min-width: 25.000em) {
+    @media (min-width: 25em) {
       //400px
       @content;
     }
@@ -12,7 +12,7 @@
       @content;
     }
   } @else if $breakpoint == "medium" {
-    @media (min-width: 64.000em) {
+    @media (min-width: 64em) {
       //1024px
       @content;
     }
@@ -22,7 +22,7 @@
       @content;
     }
   } @else if $breakpoint == "x-large" {
-    @media (min-width: 100.000em) {
+    @media (min-width: 100em) {
       //1600px
       @content;
     }

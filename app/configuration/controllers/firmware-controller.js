@@ -51,10 +51,6 @@ window.angular && (function(angular) {
         $scope.activate_image_version = imageVersion;
         $scope.activate_image_type = imageType;
         $scope.activate_confirm = true;
-        console.log("activateImage");
-        console.log(imageId);
-        console.log(imageVersion);
-        console.log(imageType);
       };
 
       function waitForActive(imageId) {
@@ -87,7 +83,6 @@ window.angular && (function(angular) {
                 'Time out. Image did not activate in allotted time.');
           }
         }, Constants.POLL_INTERVALS.ACTIVATION);
-        console.log("waitForActive end")
         return deferred.promise;
       }
 
@@ -96,7 +91,6 @@ window.angular && (function(angular) {
             .then(
                 function(state) {
                   $scope.loadFirmwares();
-                  console.log("activateConfirmed");
                   return state;
                 },
                 function(error) {
@@ -137,9 +131,6 @@ window.angular && (function(angular) {
                             });
                       }, 10000);
                     }
-                    console.log("BMC is rebooting end");
-                    console.log($scope.activate.reboot);
-                    console.log($scope.activate_image_type);
                     if ($scope.activate.reboot &&
                         ($scope.activate_image_type == 'Host')) {
                       // If image type being activated is a host image, the
@@ -329,9 +320,7 @@ window.angular && (function(angular) {
         APIUtils.getFirmwares().then(function(result) {
           $scope.firmwares = result.data;
           $scope.bmcActiveVersion = result.bmcActiveVersion;
-        /*  Modified by USISH Steven 20190117 start */
           $scope.hostActiveVersion = result.hostActiveVersion;
-        /*  Modified by USISH Steven 20190117 end */
         });
       };
 

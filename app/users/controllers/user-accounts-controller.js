@@ -17,11 +17,11 @@ window.angular && (function(angular) {
       $scope.loading = true;
       $scope.properties = {};
       $scope.origProp = {};
-	  $scope.submitted = false;
+      $scope.submitted = false;
 
       function loadUserInfo() {
         $scope.loading = true;
-		$scope.submitted = false;
+        $scope.submitted = false;
         $scope.isUserSelected = false;
         $scope.selectedUser = {};
         $scope.togglePassword = false;
@@ -91,7 +91,7 @@ window.angular && (function(angular) {
                 function(response) {
                   toastService.success(
                       'User account properties have been updated successfully');
-				},
+                },
                 function(error) {
                   toastService.error('Unable to update account properties');
                 })
@@ -109,7 +109,7 @@ window.angular && (function(angular) {
         $scope.selectedUser.CurrentUserName = $scope.selectedUser.UserName;
       };
       $scope.createNewUser = function() {
-		if ($scope.users.length >= 15) {
+        if ($scope.users.length >= 15) {
           toastService.error(
               'Cannot create user. The maximum number of users that can be created is 15');
           return;
@@ -204,7 +204,7 @@ window.angular && (function(angular) {
             });
       };
 
-	  $scope.doesUserExist = function() {
+      $scope.doesUserExist = function() {
         for (var i in $scope.users) {
           // If a user exists with the same user name and a different Id then
           // the username already exists and isn't valid

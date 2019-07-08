@@ -224,22 +224,21 @@
     </div>
     <div class="modal__content">
       <p>The hostname is displayed in the header and can contain any characters up to a total of 64</p>
-      <form>
-        <form name="edit_hostname_text">
-          <label for="editServerName">Hostname</label>
-          <p>Hostname must be less than 64 characters and must not contain spaces.</p>
-          <input id="editServerName" class="modal__edit-server-name" type="text" ng-model="newHostname" ng-trim="false"
-            name="hostname" ng-pattern="/^\S{0,64}$/" required autofocus />
-          <span class="modal__error" ng-show="edit_hostname_text.hostname.$error.pattern">Invalid format.
-            Remove spaces.</span>
-          <span class="modal__char-count"
-            ng-hide="edit_hostname_text.hostname.$error.pattern">{{0 + newHostname.length}}/64</span>
+      <form name="edit_hostname_text">
+        <label for="editServerName">Hostname</label>
+        <p class="label__helper-text">Hostname must be less than 64 characters and must not contain spaces.</p>
+        <input id="editServerName" class="modal__edit-server-name" type="text" ng-model="newHostname" ng-trim="false"
+          name="hostname" ng-pattern="/^\S{0,64}$/" required autofocus />
+        <span class="modal__error" ng-show="edit_hostname_text.hostname.$error.pattern">Invalid format.
+          Remove spaces.</span>
+        <span class="modal__char-count"
+          ng-hide="edit_hostname_text.hostname.$error.pattern">{{0 + newHostname.length}}/64</span>
       </form>
     </div>
     <div class="modal__button-wrapper">
-      <button class="btn btn-secondary"
+      <button class="btn  btn-secondary"
         ng-click="edit_hostname= false; newHostname = dataService.hostname">Cancel</button>
-      <button class="btn btn-primary" ng-click="saveHostname(newHostname);" ng-disabled="edit_hostname_text.$invalid"
+      <button class="btn  btn-primary" ng-click="saveHostname(newHostname);" ng-disabled="edit_hostname_text.$invalid"
         ng-class="{'disabled' : edit_hostname_text.$invalid}">Save</button>
     </div>
   </div>

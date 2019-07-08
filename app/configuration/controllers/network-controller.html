@@ -33,9 +33,9 @@
           <label for="net-config__domain">Default Gateway</label>
           <input id="net-config__domain" type="text" ng-model="defaultGateway" />
         </div>
-	  </div>
-	</fieldset>
-	<fieldset class="net-config__fieldset row column">
+      </div>
+    </fieldset>
+    <fieldset class="net-config__fieldset row column">
       <legend class="column small-12 page-header h2">
         IPV4 settings
       </legend>
@@ -43,14 +43,14 @@
         <div class="row column">
           <label class="control-radio" for="dhcp-address">Obtain an IP address automatically using DHCP
             <input type="radio" name="ip-address" id="dhcp-address" ng-checked="true" ng-model="interface.DHCPEnabled"
-			  ng-value="true">
+              ng-value="true">
             <span class="control__indicator control__indicator-on"></span>
           </label>
         </div>
         <div class="row column">
           <label class="control-radio" for="static-ip-address">Assign a static IP address
             <input type="radio" name="ip-address" id="static-ip-address" ng-model="interface.DHCPEnabled"
-			  ng-value="false"/>
+              ng-value="false" />
             <span class="control__indicator control__indicator-on"></span>
           </label>
         </div>
@@ -77,18 +77,18 @@
           </fieldset>
           <div class="row column">
             <div class="column small-12">
-              <button type="button" class="btn btn-primary" ng-click="addIpv4Field()">Add IPV4 address</button>
+              <button type="button" class="btn  btn-primary" ng-click="addIpv4Field()">Add IPV4 address</button>
             </div>
           </div>
         </div>
       </div>
-	</fieldset>
-	<!--<fieldset class="net-config__fieldset row column">
+    </fieldset>
+    <fieldset class="net-config__fieldset row column">
       <legend class="column small-12 page-header h2">
         DNS settings
       </legend>
       <div class="net-config__fieldset-content">
-	    <!-- Call Nameservers "DNS Servers" on the GUI 
+        <!-- Call Nameservers "DNS Servers" on the GUI -->
         <div class="net-config__static-ip-wrap" ng-repeat="dns in interface.Nameservers track by $index">
           <div class="column small-12">
             <label for="net-config__prime-dns{{$index+1}}">DNS Server {{$index+1}}</label>
@@ -99,11 +99,11 @@
         </div>
         <div class="row column">
           <div class="column small-12">
-            <button type="button" class="btn btn-primary dns_add" ng-click="addDNSField()">Add DNS server</button>
+            <button type="button" class="btn  btn-primary dns_add" ng-click="addDNSField()">Add DNS server</button>
           </div>
         </div>
-	  </div>
-    </fieldset> -->
+      </div>
+    </fieldset>
     <div class="row column">
       <div class="network-config__submit-wrapper column">
         <div class="float-right">

@@ -54,7 +54,7 @@ window.angular && (function(angular) {
                 'controller': 'remoteConsoleWindowController',
                 authenticated: true
               })
-			  .when('/server-control/kvm', {
+              .when('/server-control/kvm', {
                 'template': require('./controllers/kvm-controller.html'),
                 'controller': 'kvmController',
                 authenticated: true

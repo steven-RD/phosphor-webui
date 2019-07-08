@@ -57,6 +57,7 @@
           <span class="table__cell-label">Version:</span>{{firmware.Version}}
           <button
               ng-click="toggleMoreDropdown($event, firmware)"
+              ng-class="{'active':firmware.isExtended}" ng-show="firmware.isExtended">
               <icon file="icon-more.svg"></icon>
           </button>
         </div>

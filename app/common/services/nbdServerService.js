@@ -16,10 +16,10 @@ window.angular && (function(angular) {
       this.nbdServerMap = {};
 
       this.addConnection = function(index, nbdServer, file) {
-          this.nbdServerMap[index] = {'server': nbdServer, 'file': file};
+        this.nbdServerMap[index] = {'server': nbdServer, 'file': file};
       };
       this.getExistingConnections = function(index) {
-          return this.nbdServerMap;
+        return this.nbdServerMap;
       }
     }
   ]);

@@ -31,25 +31,25 @@ window.angular && (function(angular) {
         var file = $scope.devices[index].file;
         var id = $scope.devices[index].id;
         var host = dataService.getHost().replace('https://', '');
-        var server = new NBDServer('wss://' + host + '/vm/0' + id, file, id);
+        var server = new NBDServer('wss://' + host + '/vm/0/' + id, file, id);
         $scope.devices[index].nbdServer = server;
         nbdServerService.addConnection(id, server, file);
         server.start();
       };
-      $scope.stopVM = function(index){
-          $scope.devices[index].isActive = false;
-          var server = $scope.devices[index].nbdServer;
-          server.stop();
+      $scope.stopVM = function(index) {
+        $scope.devices[index].isActive = false;
+        var server = $scope.devices[index].nbdServer;
+        server.stop();
       };
-      
-      $scope.resetFile = function(index){
-          document.getElementById('file-upload').value = '';
-          $scope.devices[index].file = '';
+
+      $scope.resetFile = function(index) {
+        document.getElementById('file-upload').value = '';
+        $scope.devices[index].file = '';
       };
 
       function findExistingConnection(vmDevice) {
         // Checks with existing connections kept in nbdServerService for an open
-        // Websocket connection
+        // Websocket connection.
         var existingConnectionsMap = nbdServerService.getExistingConnections();
         if (existingConnectionsMap.hasOwnProperty(vmDevice.id)) {
           // Open ws will have a ready state of 1
