@@ -1857,20 +1857,6 @@ window.angular && (function(angular) {
               });
           return deferred.promise;
         },
-        uploadSwitchImage: function(file) {
-          return $http({
-                   method: 'POST',
-                   timeout: 5 * 60 * 1000,
-                   url: DataService.getHost() + '/upload/Switch/Image',
-                   // Overwrite the default 'application/json' Content-Type
-                   headers: {'Content-Type': 'application/octet-stream'},
-                   withCredentials: true,
-                   data: file
-                 })
-              .then(function(response) {
-                return response.data;
-              });
-        },
       /* Modified by USISH Steven20190122/Judy20190521 end */
       // Restful way end
       // Redfish way start
