@@ -71,6 +71,45 @@
     </div>
 </section>
 
+<section class="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog" ng-class="{'active': activate_confirm}">
+    <div class="modal__activate" role="document">
+        <div class="screen-reader-offscreen modal-description">Activate modal</div><!-- accessibility only; used for screen readers -->
+        <div class="page-header ">
+            <h1 class="modal-title">
+                <icon class="icon__info" file="icon-information.svg"></icon>
+                <!-- We call "Host" firmware "server" firmware -->
+                Confirm {{activate_image_type == 'Host' ? 'Switch' : activate_image_type}} firmware file activation
+            </h1>
+        </div>
+        <div class="modal__content">
+            <div ng-switch on="activate_image_type">
+                <p ng-switch-when="Switch">When you activate the Switch firmware file, {{activate_image_version}}, the Switch must be rebooted before it will operate with the new firmware code. </p>
+                <!--<p ng-switch-when="Host">When you activate server firmware file, {{activate_image_version}}, the new firmware will not operate until the next time the server boots.</p>-->
+            </div>
+            <form ng-if="activate_image_type == 'Switch'">
+                <fieldset>
+                    <div class="row column">
+                        <label class="control-radio bold" for="activate-without-reboot">Activate firmware file without rebooting Switch
+                            <input type="radio" name="activate-without-reboot" id="activate-without-reboot" ng-model="activate.reboot" ng-value="false"/>
+                            <span class="control__indicator control__indicator-on"></span>
+                        </label>
+                    </div>
+                    <div class="row column">
+                        <label class="control-radio bold" for="activate-with-reboot">Activate firmware file and automatically reboot Switch
+                            <input type="radio" name="activate-with-reboot" id="activate-with-reboot" ng-model="activate.reboot" ng-value="true"/>
+                            <span class="control__indicator control__indicator-on"></span>
+                        </label>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="modal__button-wrapper">
+            <button class="btn btn-secondary" ng-click="activate_confirm=false;">Cancel</button>
+            <button class="btn btn-primary" ng-click="runConfirmed()">Continue</button>
+        </div>
+    </div>
+</section>
+
 <section class="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog" ng-class="{'active': confirm_updating}">
     <div class="modal__tftp-unreachable" role="document">
         <div class="screen-reader-offscreen modal-description">Update switch image</div>
@@ -87,4 +126,4 @@
     </div>
 </section>
 
-<div class="modal-overlay" tabindex="-1" ng-class="{'active': (confirm_updating || confirm_delete)}"></div>
+<div class="modal-overlay" tabindex="-1" ng-class="{'active': (confirm_updating || activate_confirm || confirm_delete)}"></div>
