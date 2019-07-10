@@ -1,0 +1,54 @@
+<!-- Judy add 20190710 -->
+<div class="row column firmware__table">
+  <div class="table-header column small-12">
+    <p class="inline">{{title}}</p>
+    <div>
+      <p class="inline firmware__active-version">
+        To be activate version: {{version.toBeActiveVersion}};{{version.type}}
+      </p><br>
+      <p class="inline firmware__active-version">Functional version:
+        ConfigureFile:{{version.configurationFile}}; FirmwareImage: {{version.switchActivedVersion}}
+      </p>
+    </div>
+  </div>
+  <div class="table row column">
+    <div class="table__head">
+      <div class="table__row">
+        <div class="table__cell firmware__version">
+          Version
+        </div>
+        <div class="table__cell firmware__action">
+          Action
+        </div>
+      </div>
+    </div>
+    <div class="table__body">
+      <div class="table__row" ng-repeat="firmware in firmwares|filter:filterBy|orderBy:'+Priority' as imageList">
+        <div class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
+          <span class="table__cell-label">Version:</span>{{firmware.Version}}
+        </div>
+        <div class="table__cell firmware__action">
+            <span class="table__cell-label">Action:</span>
+            <div>
+                <!--  Display button: Active, Update, Delete in different scene. -->
+                <div ng-if="version.switchUpdateStatus == '2' || version.toBeActiveVersion != 'None'">
+                    <button class="firmware__action-link"
+                        ng-show="version.switchActivatedStatus != '2' || (version.switchActivatedStatus == '2' && version.toBeActiveVersion != 'None')"
+                        ng-click="run(firmware.imageId, firmware.Version, firmware.imageType)">Active
+                    </button>
+                </div>
+                <div ng-if="firmware.imageType == 'Host' && version.toBeActiveVersion == 'None'">
+                    <button class="firmware__action-link"
+                        ng-click="update(firmware.imageId, firmware.Version, firmware.imageType)">update
+                    </button>
+                    <button class="firmware__action-link"
+                        ng-click="delete(firmware.imageId, firmware.Version)">Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="inline uploading" ng-show="version.updating">Update in progress...</div>
+  </div>
+</div>

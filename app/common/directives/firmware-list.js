@@ -31,18 +31,6 @@ window.angular && (function(angular) {
               firmware.extended.show = !firmware.extended.show;
               event.stopPropagation();
             };
-
-            /*  Modified by USISH Steven 20190117 start */
-            $scope.update = function(imageId, imageVersion, imageType) {
-                $scope.$parent.updateImage(imageId, imageVersion, imageType);
-                $scope.activateFlag = false;
-            };
-
-            $scope.run = function(imageId, imageVersion, imageType) {
-                $scope.$parent.runImage(imageId, imageVersion, imageType);
-            };
-            /*  Modified by USISH Steven 20190117 start */
-
           }
         ]
       };

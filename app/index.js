@@ -47,6 +47,7 @@ import log_filter from './common/directives/log-filter.js';
 import log_search_control from './common/directives/log-search-control.js';
 import toggle_flag from './common/directives/toggle-flag.js';
 import firmware_list from './common/directives/firmware-list.js';
+import switch_firmware_list from './common/directives/switch-firmware-list.js';
 import file from './common/directives/file.js';
 import input from './common/directives/input.js';
 import click_outside from './common/directives/click-outside.js';
