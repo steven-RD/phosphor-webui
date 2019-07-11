@@ -1713,37 +1713,63 @@ window.angular && (function(angular) {
                   });
         },
 
-        updateImage: function(val) {
+        getSwitchFirmware: function() {
           var deferred = $q.defer();
           $http({
-            method: 'PUT',
-            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/Imageid',
-            withCredentials: true,
-            data:
-                JSON.stringify({'data': val})
+            method: 'GET',
+            url: DataService.getHost() +
+                '/xyz/openbmc_project/ssdarray/firmware/imagefile',
+            withCredentials: true
           })
-          .then(
-              function(response) {
-                var json = JSON.stringify(response.data);
-                var content = JSON.parse(json);
-                deferred.resolve(content);
-              },
-              function(error) {
-                console.log(error);
-                deferred.reject(error);
-              });
+              .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+                    deferred.resolve({content});
+                  },
+                  function(error) {
+                    console.log(error);
+                    deferred.reject(error);
+                  })
           return deferred.promise;
         },
 
-        updateImageStatus: function(val) {
+        uploadSwitchImage: function(file) {
+          return $http({
+                   method: 'POST',
+                   timeout: 5 * 60 * 1000,
+                   url: DataService.getHost() + '/upload/SwitchImage',
+                   // Overwrite the default 'application/json' Content-Type
+                   headers: {'Content-Type': 'application/octet-stream'},
+                   withCredentials: true,
+                   data: file
+                 })
+              .then(function(response) {
+                return response.data;
+              });
+        },
+        deleteSwitchImage: function(imageId) {
+          return $http({
+                   method: 'POST',
+                   url: DataService.getHost() +
+                       '/xyz/openbmc_project/ssdarray/firmware/delete',
+                   withCredentials: true,
+                   data: JSON.stringify({'data': []})
+                 })
+              .then(function(response) {
+                return response.data;
+              });
+        },
+
+        updateImage: function(val) {
           var deferred = $q.defer();
-          console.log("updateImageStatus val");
+          console.log("updateImage val");
           console.log(val);
           $http({
             method: 'PUT',
             url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/Value',
             withCredentials: true,
-            timeout: 30 * 1000, // 30s
+            timeout: 60 * 1000, // 30s
             data:
                 JSON.stringify({'data': val})
           })
@@ -1756,7 +1782,7 @@ window.angular && (function(angular) {
                   function(error) {
                     // ToDo
                     // Has 403 forbidden now. But can execute actually.
-                    console.log("updateImageStatus error");
+                    console.log("updateImage error");
                     console.log(error);
                     deferred.reject(error);
                   }
@@ -1764,7 +1790,7 @@ window.angular && (function(angular) {
           return deferred.promise;
         },
 
-        runImage: function(val) {
+        runSwitchImage: function(val) {
           var deferred = $q.defer();
           $http({
             method: 'PUT',
@@ -1945,27 +1971,6 @@ window.angular && (function(angular) {
             method: 'PATCH',
             url: DataService.getHost() + '/redfish/v1/Switch/Update',
             withCredentials: true,
-            data: {'Imageid': val}
-          })
-          .then(
-              function(response) {
-                var json = JSON.stringify(response.data);
-                var content = JSON.parse(json);
-                deferred.resolve(content);
-              },
-              function(error) {
-                console.log(error);
-                deferred.reject(error);
-              });
-          return deferred.promise;
-        },
-
-        updateImageStatus: function(val) {
-          var deferred = $q.defer();
-          $http({
-            method: 'PATCH',
-            url: DataService.getHost() + '/redfish/v1/Switch/Update',
-            withCredentials: true,
             timeout: 30 * 1000, // 30s
             data: {'Value': val}
           })
@@ -1987,7 +1992,7 @@ window.angular && (function(angular) {
           return deferred.promise;
         },
 
-        runImage: function(val) {
+        runSwitchImage: function(val) {
           var deferred = $q.defer();
           $http({
             method: 'PATCH',

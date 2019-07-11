@@ -38,15 +38,16 @@
                 <div ng-if="version.switchUpdateStatus == '2' || version.toBeActiveVersion != 'None'">
                     <button class="firmware__action-link"
                         ng-show="version.switchActivatedStatus != '2' || (version.switchActivatedStatus == '2' && version.toBeActiveVersion != 'None')"
-                        ng-click="run(firmware.imageId, firmware.Version, firmware.imageType)">Active
+                        ng-click="run(firmware.Name, firmware.Version, firmware.Type)">Active
                     </button>
                 </div>
-                <div ng-if="firmware.imageType == 'Host' && version.toBeActiveVersion == 'None'">
+                <!-- After Upload, before Update -->
+                <div ng-if="firmware.Version != 'None' && version.toBeActiveVersion == 'None'">
                     <button class="firmware__action-link"
-                        ng-click="update(firmware.imageId, firmware.Version, firmware.imageType)">update
+                        ng-click="update(firmware.Name, firmware.Version, firmware.Type)">update
                     </button>
                     <button class="firmware__action-link"
-                        ng-click="delete(firmware.imageId, firmware.Version)">Delete
+                        ng-click="delete(firmware.Name, firmware.Version)">Delete
                     </button>
                 </div>
             </div>
