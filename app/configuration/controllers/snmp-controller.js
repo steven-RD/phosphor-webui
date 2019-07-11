@@ -58,7 +58,7 @@ window.angular && (function(angular) {
             $scope.upload_success = false;
             var upload_flag = true;
 
-            APIUtils.getSwitchFirmwares()
+            APIUtils.getSwitchFirmware()
             .then(
                 function(result) {
                     $scope.firmwares = result.data;
@@ -175,8 +175,9 @@ window.angular && (function(angular) {
 
         $scope.confirmDeleteImage = function() {
             $scope.loading = true;
-            APIUtils.deleteSwitchImage().then(function(response) {
+            APIUtils.deleteSwitchImage(1).then(function(response) {
                 $scope.loading = false;
+                console.log(response);
                 if (response.status == 'error') {
                     $scope.displayError({
                         modal_title: response.data.description,

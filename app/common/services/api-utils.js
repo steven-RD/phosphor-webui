@@ -1748,16 +1748,18 @@ window.angular && (function(angular) {
                 return response.data;
               });
         },
-        deleteSwitchImage: function(imageId) {
+        deleteSwitchImage: function(val) {
           return $http({
-                   method: 'POST',
+                   method: 'PUT',
                    url: DataService.getHost() +
                        '/xyz/openbmc_project/ssdarray/firmware/delete',
                    withCredentials: true,
-                   data: JSON.stringify({'data': []})
+                   data: JSON.stringify({'data': val})
                  })
               .then(function(response) {
-                return response.data;
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                return content;
               });
         },
 
