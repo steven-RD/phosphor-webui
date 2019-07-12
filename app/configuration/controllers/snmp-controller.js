@@ -367,10 +367,14 @@ window.angular && (function(angular) {
                         }
                     },
                     function(error) {
+                      console.log("getSwitchActivatedStatus error");
+                      console.log(error);
                       console.log('Error during get switch activated status.');
                     });
                 },
                 function(error) {    // active fail
+                    console.log("runSwitchImage error");
+                    console.log(error);
                     toastService.error('Error during run image.');
                 });
             $scope.activate_confirm = false;

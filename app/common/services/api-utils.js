@@ -1756,7 +1756,7 @@ window.angular && (function(angular) {
           return $http({
                    method: 'PUT',
                    url: DataService.getHost() +
-                       '/xyz/openbmc_project/ssdarray/firmware/delete',
+                       '/xyz/openbmc_project/ssdarray/firmware/delete/attr/Value',
                    withCredentials: true,
                    data: JSON.stringify({'data': val})
                  })
@@ -1809,6 +1809,8 @@ window.angular && (function(angular) {
               function(response) {
                 var json = JSON.stringify(response.data);
                 var content = JSON.parse(json);
+                console.log("runSwitchImage apiutils");
+                console.log(content);
                 deferred.resolve(content);
               },
               function(error) {
