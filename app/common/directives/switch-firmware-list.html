@@ -28,12 +28,11 @@
     </div>
     <div class="table__body">
       <div class="table__row" ng-repeat="firmware in firmwares">
-        <div class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
+        <div ng-if="firmware.Version!='None'" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
           <span class="table__cell-label">Version:</span>
-          <span ng-if="firmware.Version != 'None'">v</span>
-          {{firmware.Version}}
+          v{{firmware.Version}}
         </div>
-        <div class="table__cell firmware__action">
+        <div ng-if="firmware.Version!='None'" class="table__cell firmware__action">
             <span class="table__cell-label">Action:</span>
             <div>
                 <!--  Display button: Active, Update, Delete in different scene. -->
