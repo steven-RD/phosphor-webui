@@ -1738,7 +1738,7 @@ window.angular && (function(angular) {
           return $http({
                    method: 'POST',
                    timeout: 5 * 60 * 1000,
-                   url: DataService.getHost() + '/upload/SwitchImage',
+                   url: DataService.getHost() + '/upload/switchImage',
                    // Overwrite the default 'application/json' Content-Type
                    headers: {'Content-Type': 'application/octet-stream'},
                    withCredentials: true,
