@@ -201,6 +201,8 @@ window.angular && (function(angular) {
             .then(
                 function(result) {
                     $scope.firmwares = result.data;
+                    console.log("$scope.firmwares");
+                    console.log($scope.firmwares);
                     $scope.loadSwitchBeingActiveVersion();
                     $scope.loadSwitchActivedVersion();
                 },

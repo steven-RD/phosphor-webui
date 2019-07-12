@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="table__body">
-      <div class="table__row" ng-repeat="firmware in firmwares|filter:filterBy|orderBy:'+Priority' as imageList">
+      <div class="table__row" ng-repeat="firmware in firmwares">
         <div class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
           <span class="table__cell-label">Version:</span>{{firmware.Version}}
         </div>
