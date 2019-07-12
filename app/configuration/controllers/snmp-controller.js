@@ -289,9 +289,9 @@ window.angular && (function(angular) {
 
             // Check whether image has already been actived.
             APIUtils.getSwitchActivedVersion(function(fwVersion, confFile) {
-                if (confFile != ""){
-                    confFile = 'v' + confFile;
-                }
+                console.log("Check switch image");
+                console.log(confFile);
+                console.log(Version);
                 if (confFile == Version){
                     toastService.error('This image has already been actived!');
                 }
