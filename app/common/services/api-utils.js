@@ -1745,6 +1745,8 @@ window.angular && (function(angular) {
                    data: file
                  })
               .then(function(response) {
+                console.log("response.data");
+                console.log(response.data);
                 return response.data;
               });
         },

@@ -89,7 +89,7 @@ window.angular && (function(angular) {
                 },
                 function(error) {
                     $scope.uploading = false;
-                    toastService.error("Upload image error");
+                    toastService.error("Upload image error when check SwitchFirmware");
                 });
           }
         };
