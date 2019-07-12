@@ -1727,7 +1727,7 @@ window.angular && (function(angular) {
                     var content = JSON.parse(json);
                     console.log("getSwitchFirmware");
                     console.log(content);
-                    deferred.resolve({content});
+                    deferred.resolve(content);
                   },
                   function(error) {
                     console.log(error);

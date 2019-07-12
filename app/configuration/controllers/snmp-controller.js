@@ -200,8 +200,10 @@ window.angular && (function(angular) {
           APIUtils.getSwitchFirmware()
             .then(
                 function(result) {
-                    $scope.firmwares = result.data;
                     console.log("$scope.firmwares");
+                    console.log(result);
+                    console.log(result.data);
+                    $scope.firmwares = result.data;
                     console.log($scope.firmwares);
                     $scope.loadSwitchBeingActiveVersion();
                     $scope.loadSwitchActivedVersion();
