@@ -39,7 +39,7 @@
     width: 100%;
     margin-top: 3em;
     padding-top: 1em;
-    border-top: 1px solid $medgrey;
+    border-top: 1px solid $border-color-01;
     button {
       float: right;
       margin: .5em;
@@ -104,7 +104,7 @@
   margin: 0;
   background: $white;
   text-decoration: none;
-  border: 1px solid $medgrey;
+  border: 1px solid $border-color-01;
   background: lighten($lightgrey,1%);
   margin-top: 1em;
   @include mediaQuery(medium) {
