@@ -39,7 +39,7 @@ input.toggle-switch__round-flat + label {
   padding: 2px;
   width: 50px;
   height: 30px;
-  background-color: darken($medgrey, 8%);
+  background-color: $border-color-02;
   @include borderRadius;
   @include marginTransition;
 }
@@ -66,7 +66,7 @@ input.toggle-switch__round-flat + label:after {
   left: 4px;
   bottom: 4px;
   width: 20px;
-  background-color: darken($medgrey, 8%);
+  background-color: $border-color-02;
   -webkit-border-radius: 52px;
   -moz-border-radius: 52px;
   border-radius: 52px;
@@ -87,7 +87,7 @@ input.toggle-powerswitch__round-flat + label {
   padding: 2px;
   width: 50px;
   height: 30px;
-  background-color: darken($medgrey, 8%);
+  background-color: $border-color-02;
   @include borderRadius;
   @include marginTransition;
 }
@@ -114,7 +114,7 @@ input.toggle-powerswitch__round-flat + label:after {
   left: 4px;
   bottom: 4px;
   width: 20px;
-  background-color: darken($medgrey, 8%);
+  background-color: $border-color-02;
   -webkit-border-radius: 52px;
   -moz-border-radius: 52px;
   border-radius: 52px;
