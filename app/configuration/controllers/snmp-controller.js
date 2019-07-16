@@ -78,7 +78,6 @@ window.angular && (function(angular) {
                             $scope.uploading = false;
                             $scope.upload_success = true;
                             $scope.loadSwitchFirmware();
-                            //$scope.loadSwitchUpdateStatus();
                             $scope.loadSwitchActivatedStatus();
                         },
                         function(error) {
@@ -200,11 +199,7 @@ window.angular && (function(angular) {
           APIUtils.getSwitchFirmware()
             .then(
                 function(result) {
-                    console.log("$scope.firmwares");
-                    console.log(result);
-                    console.log(result.data);
                     $scope.firmwares = result.data;
-                    console.log($scope.firmwares);
                     $scope.loadSwitchBeingActiveVersion();
                     $scope.loadSwitchActivedVersion();
                 },
@@ -218,8 +213,6 @@ window.angular && (function(angular) {
             APIUtils.getSwitchBeingActiveVersion(function(version, type) {
                 $scope.switchInfo.toBeActiveVersion = version;
                 $scope.switchInfo.type = type;
-
-                $scope.$emit('exist_toBeActiveVersion', {});
             },
             function(error){
                 console.log(error)
@@ -227,26 +220,15 @@ window.angular && (function(angular) {
         };
 
         $scope.loadSwitchActivedVersion = function() {
-            APIUtils.getSwitchActivedVersion(function(firmwareVersion, configurationFile) {
+            APIUtils.getSwitchActivedVersion(
+              function(firmwareVersion, configurationFile) {
                 $scope.switchInfo.switchActivedVersion = firmwareVersion;
                 $scope.switchInfo.configurationFile = configurationFile;
-            },
-            function(error){
+              },
+              function(error){
                 console.log(error)
-            });
-        };
-
-        $scope.loadSwitchUpdateStatus = function(){
-            APIUtils.getSwitchUpdateStatus(function(data, originalData) {
-                var UpdateStatus = data.toString();
-                /*
-                    0: initial; 1: Updating; 2: Update OK; 3: Update Fail
-                */
-                $scope.switchInfo.switchUpdateStatus = UpdateStatus;
-            },
-            function(error){
-                console.log(error)
-            });
+              }
+            );
         };
 
         $scope.loadSwitchActivatedStatus = function(){
@@ -274,8 +256,7 @@ window.angular && (function(angular) {
 
         $scope.updateImageDetail = function(Name, Version, Type) {
             /*
-                First update switch firmware,
-                then get switch BeingActiveVersion
+                First update switch firmware, then get switch BeingActiveVersion
             */
             $scope.activate_image_id = Name;
             $scope.activate_image_version = Version;
@@ -286,9 +267,6 @@ window.angular && (function(angular) {
             // Check whether image has already been actived.
             APIUtils.getSwitchActivedVersion(
               function(fwVersion, confFile) {
-                console.log("Check switch image");
-                console.log(confFile);
-                console.log(Version);
                 if (confFile == Version){
                     toastService.error('This image has already been actived!');
                 }
@@ -324,8 +302,6 @@ window.angular && (function(angular) {
             $scope.activate_image_version = Version;
             $scope.activate_image_type = Type;
             $scope.activate_confirm = true;
-
-            $scope.delete_image_id = Name; // for delete usage
         };
 
         $scope.runConfirmed = function() {
@@ -333,14 +309,12 @@ window.angular && (function(angular) {
             $scope.runConfirmedDetail();
             // reload page
             $scope.$on('run-confirmed-success', function() {
+                $scope.activate_confirm = false;
                 $route.reload();
             })
         }
 
         $scope.runConfirmedDetail = function() {
-            console.log('first $scope.delete_image_id');
-            console.log($scope.delete_image_id);
-            console.log($scope.activate_image_id);
             APIUtils.runSwitchImage(1)
             .then(
                 function(state) {    // active success
@@ -350,7 +324,6 @@ window.angular && (function(angular) {
                             $scope.loadSwitchFirmware();
                             $scope.loadSwitchActivedVersion();
                             $scope.loadSwitchActivatedStatus();
-                            return state;
                         }
                         if (activatedStatus == '3'){
                             $scope.loadSwitchActivatedStatus();
@@ -358,24 +331,26 @@ window.angular && (function(angular) {
                         }
                     },
                     function(error) {
-                      console.log("getSwitchActivatedStatus error");
                       console.log(error);
-                      console.log('Error during get switch activated status.');
+                      toastService.error('Error during get SwitchActivatedStatus.');
                     });
                 },
                 function(error) {    // active fail
-                    console.log("runSwitchImage error");
                     console.log(error);
                     toastService.error('Error during run image.');
-                });
-            $scope.activate_confirm = false;
-            $scope.$emit('run-confirmed-success', {});
+                }
+            )
+            .then(
+                function(){
+                    console.log("run-confirmed-success");
+                    $scope.$emit('run-confirmed-success', {});
+                }
+            );
         };
 
         $scope.loadSwitchFirmware();
         $scope.loadSwitchBeingActiveVersion();
         $scope.loadSwitchActivedVersion();
-        //$scope.loadSwitchUpdateStatus();
         $scope.loadSwitchActivatedStatus();
     }
   ]);

@@ -1631,27 +1631,6 @@ window.angular && (function(angular) {
         // Keep two ways to call interfaces: Restful and Redfish
         // Restful way start
         /* Modified by USISH Steven20190122/Judy20190521 start */
-        getSwitchUpdateStatus: function(callback) {
-          $http({
-            method: 'GET',
-            url: DataService.getHost() +
-                '/xyz/openbmc_project/ssdarray/firmware/update',
-            withCredentials: true
-          })
-          .then(
-              function(response) {
-                var json = JSON.stringify(response.data);
-                var content = JSON.parse(json);
-                var dataClone = JSON.parse(JSON.stringify(content.data));
-                var switchUpdateStatus = content.data.Value;
-
-                callback(switchUpdateStatus, dataClone);
-              },
-              function(error) {
-                console.log(error);
-              });
-        },
-
         getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
@@ -1767,14 +1746,13 @@ window.angular && (function(angular) {
               });
         },
 
-        updateImage: function(val) {
+        updateImage: function() {
           var deferred = $q.defer();
-          console.log("updateImage val");
-          console.log(val);
           $http({
             method: 'GET',
             url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update',
             withCredentials: true,
+            timeout: 2 * 60 * 1000,
           })
            .then(
                   function(response) {
