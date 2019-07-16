@@ -21,10 +21,8 @@ window.angular && (function(angular) {
         $scope.switchInfo = {switchActivedVersion: '', configurationFile: '',
                              toBeActiveVersion: '', type: '',
                              switchActivatedStatus: '',
-                             switchUpdateStatus: '',
                              updating: false};
         $scope.firmwares = [];
-        $scope.switchActiveVersion = '';
         $scope.display_error = false;
         $scope.activate_confirm = false;
         $scope.delete_image_id = '';
@@ -35,12 +33,10 @@ window.angular && (function(angular) {
         $scope.file_empty = true;
         $scope.uploading = false;
         $scope.upload_success = false;
-        $scope.activate = {reboot: true};
         $scope.download_error_msg = '';
         $scope.download_success = false;
         $scope.confirm_updating = false; // Judy add 20190702
 
-        var pollActivationTimer = undefined;
         var pollDownloadTimer = undefined;
 
         $scope.filters = {bmc: {imageType: 'BMC'}, Switch: {imageType: 'Host'}};
@@ -79,6 +75,7 @@ window.angular && (function(angular) {
                             $scope.upload_success = true;
                             $scope.loadSwitchFirmware();
                             $scope.loadSwitchActivatedStatus();
+                            toastService.success("Upload image success");
                         },
                         function(error) {
                             $scope.uploading = false;
@@ -281,8 +278,11 @@ window.angular && (function(angular) {
                 function(state){
                     APIUtils.getSwitchBeingActiveVersion(
                       function(version, type) {
-                        $scope.$emit('update-image-detail', {});
-                        toastService.success('Update success. Get existing image.');
+                        if (version == 'None'){
+                            toastService.error('Update switch image fail.');
+                        }else{
+                            toastService.success('Update success. Get existing image.');
+                        }
                       },
                       function(error){
                         console.log(error);
@@ -291,8 +291,12 @@ window.angular && (function(angular) {
                     );
                 },
                 function(error){    // update process error
-                    $scope.$emit('update-image-detail', {});
                     toastService.error('Error during update status process.');
+                }
+            )
+            .then(
+                function(){
+                    $scope.$emit('update-image-detail', {});
                 }
             );
         };
@@ -309,7 +313,6 @@ window.angular && (function(angular) {
             $scope.runConfirmedDetail();
             // reload page
             $scope.$on('run-confirmed-success', function() {
-                $scope.activate_confirm = false;
                 $route.reload();
             })
         }
@@ -318,6 +321,7 @@ window.angular && (function(angular) {
             APIUtils.runSwitchImage(1)
             .then(
                 function(state) {    // active success
+                    $scope.activate_confirm = false;
                     APIUtils.getSwitchActivatedStatus(function(data, originalData) {
                         var activatedStatus = data.toString();
                         if (activatedStatus == '2'){
@@ -342,7 +346,7 @@ window.angular && (function(angular) {
             )
             .then(
                 function(){
-                    console.log("run-confirmed-success");
+                    $scope.activate_confirm = false;
                     $scope.$emit('run-confirmed-success', {});
                 }
             );
