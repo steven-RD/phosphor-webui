@@ -36,9 +36,9 @@
             <span class="table__cell-label">Action:</span>
             <div>
                 <!--  Display button: Active, Update, Delete in different scene. -->
-                <div ng-if="version.switchUpdateStatus == '2' || version.toBeActiveVersion != 'None'">
+                <div ng-if="version.toBeActiveVersion != 'None'">
                     <button class="firmware__action-link"
-                        ng-show="version.switchActivatedStatus != '2' || (version.switchActivatedStatus == '2' && version.toBeActiveVersion != 'None')"
+                        ng-show="version.switchActivatedStatus != '2' || version.toBeActiveVersion != 'None'"
                         ng-click="run(firmware.Name, firmware.Version, firmware.Type)">Active
                     </button>
                 </div>

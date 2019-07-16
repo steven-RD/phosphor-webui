@@ -1772,12 +1772,9 @@ window.angular && (function(angular) {
           console.log("updateImage val");
           console.log(val);
           $http({
-            method: 'PUT',
-            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/Value',
+            method: 'GET',
+            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update',
             withCredentials: true,
-            timeout: 60 * 1000, // 30s
-            data:
-                JSON.stringify({'data': val})
           })
            .then(
                   function(response) {
@@ -1786,8 +1783,6 @@ window.angular && (function(angular) {
                     deferred.resolve(content);
                   },
                   function(error) {
-                    // ToDo
-                    // Has 403 forbidden now. But can execute actually.
                     console.log("updateImage error");
                     console.log(error);
                     deferred.reject(error);

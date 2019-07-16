@@ -78,7 +78,7 @@ window.angular && (function(angular) {
                             $scope.uploading = false;
                             $scope.upload_success = true;
                             $scope.loadSwitchFirmware();
-                            $scope.loadSwitchUpdateStatus();
+                            //$scope.loadSwitchUpdateStatus();
                             $scope.loadSwitchActivatedStatus();
                         },
                         function(error) {
@@ -268,18 +268,14 @@ window.angular && (function(angular) {
                     $scope.switchInfo.updating = false;
                     $scope.confirm_updating = false;
                     $route.reload();
-                }, 2*60*1000);
+                }, 10*1000);
             })
         }
 
         $scope.updateImageDetail = function(Name, Version, Type) {
             /*
-                Set the update status as 1, then switch firmware start to update.
-                    if success, return 2:
-                        Update switch BeingActiveVersion;
-                        Update SwitchUpdateStatus.
-                    if fail, return 3:
-                        Update SwitchUpdateStatus.
+                First update switch firmware,
+                then get switch BeingActiveVersion
             */
             $scope.activate_image_id = Name;
             $scope.activate_image_version = Version;
@@ -288,7 +284,8 @@ window.angular && (function(angular) {
             $scope.confirm_updating = true;
 
             // Check whether image has already been actived.
-            APIUtils.getSwitchActivedVersion(function(fwVersion, confFile) {
+            APIUtils.getSwitchActivedVersion(
+              function(fwVersion, confFile) {
                 console.log("Check switch image");
                 console.log(confFile);
                 console.log(Version);
@@ -298,34 +295,28 @@ window.angular && (function(angular) {
               },
               function(error) {
                 console.log(error);
-              });
+              }
+            );
 
-            APIUtils.updateImage(1)    // update process success
+            APIUtils.updateImage()    // update image
             .then(
                 function(state){
-                    APIUtils.getSwitchUpdateStatus(function(data, originalData) {
-                        var updateStatus = data.toString();
-                        if (updateStatus == '2'){    // 2 update status success
-                            $scope.loadSwitchBeingActiveVersion();
-                            $scope.loadSwitchUpdateStatus();
-                            toastService.success('Update image success');
-                        }
-                        if (updateStatus == '3'){    // 3 update status fail
-                            $scope.loadSwitchUpdateStatus();
-                            toastService.error(Version + ' update image fail, value 3');
-                        }
+                    APIUtils.getSwitchBeingActiveVersion(
+                      function(version, type) {
                         $scope.$emit('update-image-detail', {});
-                    },
-                    function(error) {
-                      console.log("Get switch update status error.");
-                    });
+                        toastService.success('Update success. Get existing image.');
+                      },
+                      function(error){
+                        console.log(error);
+                        toastService.error('Update fail, no existing image.');
+                      }
+                    );
                 },
                 function(error){    // update process error
-                    toastService.error('Error during update status process');
                     $scope.$emit('update-image-detail', {});
+                    toastService.error('Error during update status process.');
                 }
             );
-            $scope.$emit('update-image-detail', {});
         };
 
         $scope.runImage = function(Name, Version, Type) {
@@ -384,7 +375,7 @@ window.angular && (function(angular) {
         $scope.loadSwitchFirmware();
         $scope.loadSwitchBeingActiveVersion();
         $scope.loadSwitchActivedVersion();
-        $scope.loadSwitchUpdateStatus();
+        //$scope.loadSwitchUpdateStatus();
         $scope.loadSwitchActivatedStatus();
     }
   ]);

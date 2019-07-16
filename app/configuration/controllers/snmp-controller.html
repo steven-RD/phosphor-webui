@@ -75,33 +75,15 @@
     <div class="modal__activate" role="document">
         <div class="screen-reader-offscreen modal-description">Activate modal</div><!-- accessibility only; used for screen readers -->
         <div class="page-header ">
-            <h1 class="modal-title">
+            <h2 class="modal-title">
                 <icon class="icon__info" file="icon-information.svg"></icon>
-                <!-- We call "Host" firmware "server" firmware -->
-                Confirm switch firmware file activation
-            </h1>
+                Confirm active switch firmware
+            </h2>
         </div>
         <div class="modal__content">
-            <div ng-switch on="activate_image_type">
-                <p ng-switch-when="Switch">When you activate the Switch firmware file, {{activate_image_version}}, the Switch must be rebooted before it will operate with the new firmware code. </p>
-                <!--<p ng-switch-when="Host">When you activate server firmware file, {{activate_image_version}}, the new firmware will not operate until the next time the server boots.</p>-->
-            </div>
-            <form ng-if="activate_image_type == 'Switch'">
-                <fieldset>
-                    <div class="row column">
-                        <label class="control-radio bold" for="activate-without-reboot">Activate firmware file without rebooting Switch
-                            <input type="radio" name="activate-without-reboot" id="activate-without-reboot" ng-model="activate.reboot" ng-value="false"/>
-                            <span class="control__indicator control__indicator-on"></span>
-                        </label>
-                    </div>
-                    <div class="row column">
-                        <label class="control-radio bold" for="activate-with-reboot">Activate firmware file and automatically reboot Switch
-                            <input type="radio" name="activate-with-reboot" id="activate-with-reboot" ng-model="activate.reboot" ng-value="true"/>
-                            <span class="control__indicator control__indicator-on"></span>
-                        </label>
-                    </div>
-                </fieldset>
-            </form>
+            <p>
+                Switch firmware file {{activate_image_version}} will be used in the new firmware.
+            </p>
         </div>
         <div class="modal__button-wrapper">
             <button class="btn btn-secondary" ng-click="activate_confirm=false;">Cancel</button>
