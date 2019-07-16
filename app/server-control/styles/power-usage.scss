@@ -67,7 +67,7 @@
 
 .ssd__title {
     font-weight: 700;
-    background: darken($lightgrey, 5%);
+    background: darken($background-02, 5%);
     min-width: 100%;
     padding: .2em;
     @include mediaQuery(medium) {
@@ -102,10 +102,10 @@
   position: relative;
   display: block;
   margin: 0;
-  background: $white;
+  background: $primary-light;
   text-decoration: none;
   border: 1px solid $border-color-01;
-  background: lighten($lightgrey,1%);
+  background: lighten($background-02,1%);
   margin-top: 1em;
   @include mediaQuery(medium) {
     padding: .3em 1em .3em 1.5em;
@@ -115,7 +115,7 @@
   }
   .ssd__title {
     font-weight: 700;
-    background: darken($lightgrey, 5%);
+    background: darken($background-02, 5%);
     min-width: 100%;
     padding: .2em;
     @include mediaQuery(medium) {
