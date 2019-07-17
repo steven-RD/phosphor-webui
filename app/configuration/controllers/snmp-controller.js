@@ -319,10 +319,10 @@ window.angular && (function(angular) {
         }
 
         $scope.runConfirmedDetail = function() {
+            $scope.activate_confirm = false;
             APIUtils.runSwitchImage(1)
             .then(
                 function(state) {    // active success
-                    $scope.activate_confirm = false;
                     APIUtils.getSwitchActivatedStatus(function(data, originalData) {
                         var activatedStatus = data.toString();
                         if (activatedStatus == '2'){
@@ -347,7 +347,6 @@ window.angular && (function(angular) {
             )
             .then(
                 function(){
-                    $scope.activate_confirm = false;
                     $scope.$emit('run-confirmed-success', {});
                 }
             );
