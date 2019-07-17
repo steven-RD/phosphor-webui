@@ -1,5 +1,5 @@
 /**
- * Controller for SNMP
+ * Controller for Switch Firmware
  *
  * @module app/configuration
  * @exports snmpController
@@ -10,18 +10,17 @@ window.angular && (function(angular) {
   'use strict';
 
   angular.module('app.configuration').controller('snmpController', [
-    '$scope', 'APIUtils', 'dataService', '$location', '$route',
-    'Constants', '$interval', '$q', '$timeout', 'toastService',
+    '$scope', 'APIUtils', 'dataService', '$route', 'Constants',
+    '$interval', '$q', '$timeout', 'toastService',
     function(
-        $scope, APIUtils, dataService, $location, $route,
-        Constants, $interval, $q, $timeout, toastService) {
+        $scope, APIUtils, dataService, $route, Constants,
+        $interval, $q, $timeout, toastService) {
         $scope.dataService = dataService;
 
-        // Judy add 20190612
+        // Display switchInfo at switch firmware list html
         $scope.switchInfo = {switchActivedVersion: '', configurationFile: '',
                              toBeActiveVersion: '', type: '',
-                             switchActivatedStatus: '',
-                             updating: false};
+                             switchActivatedStatus: '', updating: false};
         $scope.firmwares = [];
         $scope.display_error = false;
         $scope.activate_confirm = false;
@@ -247,7 +246,7 @@ window.angular && (function(angular) {
                     $scope.switchInfo.updating = false;
                     $scope.confirm_updating = false;
                     $route.reload();
-                }, 10*1000);
+                }, 1000);
             })
         }
 
@@ -291,6 +290,8 @@ window.angular && (function(angular) {
                     );
                 },
                 function(error){    // update process error
+                    console.log("updateImage error");
+                    console.log(error);
                     toastService.error('Error during update status process.');
                 }
             )

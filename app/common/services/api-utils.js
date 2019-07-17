@@ -1704,8 +1704,6 @@ window.angular && (function(angular) {
                   function(response) {
                     var json = JSON.stringify(response.data);
                     var content = JSON.parse(json);
-                    console.log("getSwitchFirmware");
-                    console.log(content);
                     deferred.resolve(content);
                   },
                   function(error) {
@@ -1752,7 +1750,6 @@ window.angular && (function(angular) {
             method: 'GET',
             url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update',
             withCredentials: true,
-            timeout: 2 * 60 * 1000,
           })
            .then(
                   function(response) {
@@ -1782,8 +1779,6 @@ window.angular && (function(angular) {
               function(response) {
                 var json = JSON.stringify(response.data);
                 var content = JSON.parse(json);
-                console.log("runSwitchImage apiutils");
-                console.log(content);
                 deferred.resolve(content);
               },
               function(error) {
