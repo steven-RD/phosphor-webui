@@ -1750,6 +1750,7 @@ window.angular && (function(angular) {
             method: 'GET',
             url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update',
             withCredentials: true,
+            timeout: 5 * 60 * 1000,
           })
            .then(
                   function(response) {
