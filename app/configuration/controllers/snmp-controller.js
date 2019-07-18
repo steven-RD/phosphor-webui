@@ -57,7 +57,7 @@ window.angular && (function(angular) {
             .then(
                 function(result) {
                     //$scope.firmwares = result.data; // Restful interface
-                    $scope.firmwares = {'Status': content['Status']}; // Redfish interface
+                    $scope.firmwares = {'Status': result['Status']}; // Redfish interface
                     // If exist one switch image, can't upload another one.
                     angular.forEach($scope.firmwares, function(firmware){
                         if (firmware.Version != 'None'){
@@ -197,7 +197,7 @@ window.angular && (function(angular) {
             .then(
                 function(result) {
                     //$scope.firmwares = result.data; // Restful interface
-                    $scope.firmwares = {'Status': content['Status']}; // Redfish interface
+                    $scope.firmwares = {'Status': result['Status']}; // Redfish interface
                     $scope.loadSwitchBeingActiveVersion();
                     $scope.loadSwitchActivedVersion();
                 },
