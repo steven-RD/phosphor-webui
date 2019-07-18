@@ -19,7 +19,7 @@ window.angular && (function(angular) {
 
         // Display switchInfo at switch firmware list html
         $scope.switchInfo = {switchActivedVersion: '', configurationFile: '',
-                             toBeActiveVersion: '', type: '',
+                             toBeActiveVersion: '', type: '', activing: false,
                              switchActivatedStatus: '', updating: false};
         $scope.firmwares = [];
         $scope.display_error = false;
@@ -74,17 +74,17 @@ window.angular && (function(angular) {
                             $scope.upload_success = true;
                             $scope.loadSwitchFirmware();
                             $scope.loadSwitchActivatedStatus();
-                            toastService.success("Upload image success");
+                            toastService.success("Upload image success.");
                         },
                         function(error) {
                             $scope.uploading = false;
-                            toastService.error("Upload image error");
+                            toastService.error("Upload image error.");
                         });
                     }
                 },
                 function(error) {
                     $scope.uploading = false;
-                    toastService.error("Upload image error when check SwitchFirmware");
+                    toastService.error("Upload image error when check SwitchFirmware.");
                 });
           }
         };
@@ -246,7 +246,7 @@ window.angular && (function(angular) {
                     $scope.switchInfo.updating = false;
                     $scope.confirm_updating = false;
                     $route.reload();
-                }, 1000);
+                }, 0);
             })
         }
 
@@ -314,12 +314,14 @@ window.angular && (function(angular) {
             $scope.runConfirmedDetail();
             // reload page
             $scope.$on('run-confirmed-success', function() {
+                $scope.switchInfo.activing = false;
                 $route.reload();
             })
         }
 
         $scope.runConfirmedDetail = function() {
             $scope.activate_confirm = false;
+            $scope.switchInfo.activing = true;
             APIUtils.runSwitchImage(1)
             .then(
                 function(state) {    // active success
@@ -332,7 +334,7 @@ window.angular && (function(angular) {
                         }
                         if (activatedStatus == '3'){
                             $scope.loadSwitchActivatedStatus();
-                            toastService.error('Error during activate status');
+                            toastService.error('Error during activate status.');
                         }
                     },
                     function(error) {
