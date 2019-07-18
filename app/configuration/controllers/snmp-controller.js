@@ -292,7 +292,6 @@ window.angular && (function(angular) {
                     );
                 },
                 function(error){    // update process error
-                    console.log("updateImage error");
                     console.log(error);
                     toastService.error('Error during update status process.');
                 }

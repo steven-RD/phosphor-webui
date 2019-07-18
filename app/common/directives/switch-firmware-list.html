@@ -21,6 +21,9 @@
         <div class="table__cell firmware__version">
           Version
         </div>
+        <div class="table__cell firmware__version">
+          Type
+        </div>
         <div class="table__cell firmware__action">
           Action
         </div>
@@ -42,7 +45,6 @@
                 <!--  Display button: Active, Update, Delete in different scene. -->
                 <div ng-if="version.toBeActiveVersion != 'None'">
                     <button class="firmware__action-link"
-                        ng-show="version.switchActivatedStatus != '2'"
                         ng-click="run(firmware.Name, firmware.Version, firmware.Type)">Active
                     </button>
                 </div>

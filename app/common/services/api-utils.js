@@ -1933,8 +1933,6 @@ window.angular && (function(angular) {
                   function(response) {
                     var json = JSON.stringify(response.data);
                     var content = JSON.parse(json);
-                    console.log("Redfish getSwitchFirmware response");
-                    console.log(content);
                     deferred.resolve(content);
                   },
                   function(error) {
@@ -1973,7 +1971,6 @@ window.angular && (function(angular) {
                     deferred.resolve(content);
                   },
                   function(error) {
-                    console.log("updateImage error");
                     console.log(error);
                     deferred.reject(error);
                   }
