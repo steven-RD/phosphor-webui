@@ -1629,9 +1629,25 @@ window.angular && (function(angular) {
               });
         },
         // Keep two ways to call interfaces: Restful and Redfish
+        uploadSwitchImage: function(file) {
+          return $http({
+                   method: 'POST',
+                   timeout: 5 * 60 * 1000,
+                   url: DataService.getHost() + '/upload/switchImage',
+                   // Overwrite the default 'application/json' Content-Type
+                   headers: {'Content-Type': 'application/octet-stream'},
+                   withCredentials: true,
+                   data: file
+                 })
+              .then(function(response) {
+                console.log("response.data");
+                console.log(response.data);
+                return response.data;
+              });
+        },
         // Restful way start
         /* Modified by USISH Steven20190122/Judy20190521 start */
-        getSwitchActivatedStatus: function(callback) {
+        /* getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() +
@@ -1713,22 +1729,6 @@ window.angular && (function(angular) {
           return deferred.promise;
         },
 
-        uploadSwitchImage: function(file) {
-          return $http({
-                   method: 'POST',
-                   timeout: 5 * 60 * 1000,
-                   url: DataService.getHost() + '/upload/switchImage',
-                   // Overwrite the default 'application/json' Content-Type
-                   headers: {'Content-Type': 'application/octet-stream'},
-                   withCredentials: true,
-                   data: file
-                 })
-              .then(function(response) {
-                console.log("response.data");
-                console.log(response.data);
-                return response.data;
-              });
-        },
         deleteSwitchImage: function(val) {
           return $http({
                    method: 'PUT',
@@ -1859,31 +1859,11 @@ window.angular && (function(angular) {
                 deferred.reject(error);
               });
           return deferred.promise;
-        },
+        }, */
       /* Modified by USISH Steven20190122/Judy20190521 end */
       // Restful way end
       // Redfish way start
       /* Modified by USISH Judy20190702 start */
-      /*getSwitchUpdateStatus: function(callback) {
-          $http({
-            method: 'GET',
-            url: DataService.getHost() + '/redfish/v1/Switch/Update',
-            withCredentials: true
-          })
-          .then(
-              function(response) {
-                var json = JSON.stringify(response.data);
-                var content = JSON.parse(json);
-                var dataClone = JSON.parse(JSON.stringify(content));
-                var switchUpdateStatus = content.Value;
-
-                callback(switchUpdateStatus, dataClone);
-              },
-              function(error) {
-                console.log(error);
-              });
-        },
-
         getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
@@ -1942,13 +1922,72 @@ window.angular && (function(angular) {
                   });
         },
 
-        updateImage: function(val) {
+        getSwitchFirmware: function() {
+          var deferred = $q.defer();
+          $http({
+            method: 'GET',
+            url: DataService.getHost() + '/redfish/v1/Switch/ImageFile',
+            withCredentials: true
+          })
+              .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+                    console.log("Redfish getSwitchFirmware response");
+                    console.log(content);
+                    deferred.resolve(content);
+                  },
+                  function(error) {
+                    console.log(error);
+                    deferred.reject(error);
+                  })
+          return deferred.promise;
+        },
+
+        deleteSwitchImage: function(val) {
+          return $http({
+                   method: 'PATCH',
+                   url: DataService.getHost() + '/redfish/v1/Switch/Delete',
+                   withCredentials: true,
+                   data: JSON.stringify({'Value': val})
+                 })
+              .then(function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                return content;
+              });
+        },
+
+        updateImage: function() {
+          var deferred = $q.defer();
+          $http({
+            method: 'GET',
+            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update',
+            withCredentials: true,
+            timeout: 5 * 60 * 1000,
+          })
+           .then(
+                  function(response) {
+                    var json = JSON.stringify(response.data);
+                    var content = JSON.parse(json);
+                    deferred.resolve(content);
+                  },
+                  function(error) {
+                    console.log("updateImage error");
+                    console.log(error);
+                    deferred.reject(error);
+                  }
+                );
+          return deferred.promise;
+        },
+
+        /* updateImage: function(val) {
           var deferred = $q.defer();
           $http({
             method: 'PATCH',
             url: DataService.getHost() + '/redfish/v1/Switch/Update',
             withCredentials: true,
-            timeout: 30 * 1000, // 30s
+            timeout: 5 * 60 * 1000, // 30s
             data: {'Value': val}
           })
            .then(
@@ -1967,7 +2006,7 @@ window.angular && (function(angular) {
                   }
                 );
           return deferred.promise;
-        },
+        }, */
 
         runSwitchImage: function(val) {
           var deferred = $q.defer();
@@ -2059,7 +2098,7 @@ window.angular && (function(angular) {
                 deferred.reject(error);
               });
           return deferred.promise;
-        },*/
+        },
       /*  Modified by USISH Judy20190702 end */
       // Redfish way end
       };
