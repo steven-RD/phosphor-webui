@@ -98,9 +98,6 @@ window.angular && (function(angular) {
             $scope.loadSystemName = function() {
               // Dynamically get ComputerSystems Name/serial
               // which differs across OEM's
-			  if (!userModel.isLoggedIn()) {
-                return;
-              }
               APIUtils.getRedfishSysName().then(
                   function(res) {
                     dataService.setSystemName(res);
