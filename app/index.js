@@ -87,7 +87,7 @@ import snmp_controller from './configuration/controllers/snmp-controller.js';
 import firmware_controller from './configuration/controllers/firmware-controller.js';
 import vm_controller from './configuration/controllers/virtual-media-controller.js';
 
-import usi_api_utils from './usi_extend/common/services/api-utils.js';
+import usi_api_utils from './usi_extend/common/services/usi-api-utils.js';
 import switch_firmware_list from './usi_extend/common/directives/switch-firmware-list.js';
 import ssdarray_controller from './usi_extend/server-control/controllers/ssdarray-controller.js';
 import switch_firmware_controller from './usi_extend/configuration/controllers/switch-firmware-controller.js';
