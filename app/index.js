@@ -89,7 +89,6 @@ import snmp_controller from './configuration/controllers/snmp-controller.js';
 import firmware_controller from './configuration/controllers/firmware-controller.js';
 import vm_controller from './configuration/controllers/virtual-media-controller.js';
 
-import switch_firmware_index from './usi_extend/configuration/index.js';
 import switch_firmware_controller from './usi_extend/configuration/controllers/switch-firmware-controller.js';
 
 import users_index from './users/index.js';
