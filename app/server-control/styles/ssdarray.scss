@@ -52,3 +52,17 @@
   font-size: 12px;
   text-align: center;
 }
+
+th , td {
+  text-align: center;
+  font-size: medium;
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+ tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+ tr:nth-child(even) {
+  background-color: #ffffff;
+}
