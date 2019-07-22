@@ -45,7 +45,7 @@ window.angular && (function(angular) {
       };
 
       $scope.loadSsdInfo = function(){
-        UsiAPIUtils,.getSsdArrayInfo().then(
+        UsiAPIUtils.getSsdArrayInfo().then(
             function(data){
                 //var arrayInfo = data['data']['Info']; // Restful interface
                 var arrayInfo = data['Info']; // Redfish interface

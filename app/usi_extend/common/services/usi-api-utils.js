@@ -11,6 +11,7 @@ window.angular && (function(angular) {
   angular.module('app.common.services').factory('UsiAPIUtils', [
     '$http', 'Constants', '$q', 'dataService', '$interval',
     function($http, Constants, $q, DataService, $interval) {
+      var SERVICE = {
         // Keep two ways to call interfaces: Restful and Redfish
         uploadSwitchImage: function(file) {
           return $http({
