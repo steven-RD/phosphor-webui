@@ -13,8 +13,6 @@ window.angular && (function(angular) {
           '$rootScope', '$scope', 'dataService', '$location', '$timeout',
           function($rootScope, $scope, dataService, $location, $timeout) {
             $scope.dataService = dataService;
-            $scope.activateFlag = true;
-
             $scope.activate = function(imageId, imageVersion, imageType) {
               $scope.$parent.activateImage(imageId, imageVersion, imageType);
             };
