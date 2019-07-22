@@ -37,9 +37,9 @@ window.angular && (function(angular) {
                 'controller': 'powerUsageController',
                 authenticated: true
               })
-			  .when('/server-control/ssdarray', {
+              .when('/server-control/ssdarray', {
                 'template':
-                    require('./controllers/ssdarray-controller.html'),
+                    require('../usi_extend/server-control/controllers/ssdarray-controller.html'),
                 'controller': 'ssdArrayController',
                 authenticated: true
               })

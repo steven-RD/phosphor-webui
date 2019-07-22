@@ -47,7 +47,6 @@ import log_filter from './common/directives/log-filter.js';
 import log_search_control from './common/directives/log-search-control.js';
 import toggle_flag from './common/directives/toggle-flag.js';
 import firmware_list from './common/directives/firmware-list.js';
-import switch_firmware_list from './common/directives/switch-firmware-list.js';
 import file from './common/directives/file.js';
 import input from './common/directives/input.js';
 import click_outside from './common/directives/click-outside.js';
@@ -68,7 +67,6 @@ import server_control_index from './server-control/index.js';
 import bmc_reboot_controller from './server-control/controllers/bmc-reboot-controller.js';
 import power_operations_controller from './server-control/controllers/power-operations-controller.js';
 import power_usage_controller from './server-control/controllers/power-usage-controller.js';
-import ssdarray_controller from './server-control/controllers/ssdarray-controller.js';
 import remote_console_window_controller from './server-control/controllers/remote-console-window-controller.js';
 import server_led_controller from './server-control/controllers/server-led-controller.js';
 import kvm_controller from './server-control/controllers/kvm-controller.js';
@@ -89,6 +87,8 @@ import snmp_controller from './configuration/controllers/snmp-controller.js';
 import firmware_controller from './configuration/controllers/firmware-controller.js';
 import vm_controller from './configuration/controllers/virtual-media-controller.js';
 
+import ssdarray_controller from './usi_extend/server-control/controllers/ssdarray-controller.js';
+import switch_firmware_list from './usi_extend/common/directives/switch-firmware-list.js';
 import switch_firmware_controller from './usi_extend/configuration/controllers/switch-firmware-controller.js';
 
 import users_index from './users/index.js';
