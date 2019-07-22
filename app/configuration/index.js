@@ -48,7 +48,7 @@ window.angular && (function(angular) {
               })
               .when('/configuration/switch-firmware', {
                 'template': require('../usi_extend/configuration/controllers/switch-firmware-controller.html'),
-                'controller': '../usi_extend/configuration/controllers/switchFirmwareController',
+                'controller': 'switchFirmwareController',
                 authenticated: true
               });
         }
