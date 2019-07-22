@@ -11,13 +11,13 @@
       <p class="header__server-ip courier-bold">{{dataService.server_id}}</p>
     </div>
     <div class="header__functions" ng-class="{'active' : toggle}">
-      <!-- Modified by USISH Steven 20181219 start-->
+      <!-- Modified by USISH Steven20181219 start-->
       <button type="button" class="header__info" ng-click="toggle = !toggle"><i class="icon icon-angle" aria-hidden="true"></i></button>
       <a href="#/server-health/event-log" class="header__server-health">JBOF health
         <i class="icon icon-angle" aria-hidden="true"></i><span ng-class="{'status-light__error': dataService.server_health == 'Critical', 'status-light__warn': dataService.server_health == 'Warning', 'status-light__good': dataService.server_health == 'Good'}">{{dataService.server_health}}</span></a>
-       <a href="#/server-control/power-operations" class="header__server-power" role="button">Switch power
-        <i class="icon icon-angle" aria-hidden="true"></i><span ng-class="{'status-light__off': dataService.server_state == 'Off', 'status-light__disabled': dataService.server_state == 'Unreachable', 'status-light__good': dataService.server_state == 'Running', 'status-light__error': dataService.server_state == 'Quiesced'}">{{dataService.server_state | quiescedToError}}</span></a>
-      <!-- Modified by USISH Steven 20181219 end-->
+      <!--<a href="#/server-control/power-operations" class="header__server-power" role="button">Switch power
+        <i class="icon icon-angle" aria-hidden="true"></i><span ng-class="{'status-light__off': dataService.server_state == 'Off', 'status-light__disabled': dataService.server_state == 'Unreachable', 'status-light__good': dataService.server_state == 'Running', 'status-light__error': dataService.server_state == 'Quiesced'}">{{dataService.server_state | quiescedToError}}</span></a>-->
+      <!-- Modified by USISH Steven20181219/Judy20190722 end-->
       <p class="header__refresh">Data last refreshed<span>{{dataService.last_updated | localeDate}}</span>
       </p>
       <button class="header__page-refresh" ng-click="refresh()" aria-label="refresh page data">
