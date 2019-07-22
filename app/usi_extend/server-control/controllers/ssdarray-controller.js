@@ -15,8 +15,8 @@ window.angular && (function(angular) {
     'use strict';
 
     angular.module('app.serverControl').controller('ssdArrayController', [
-    '$scope', '$window', 'APIUtils', 'dataService', 'toastService',
-    function($scope, $window, APIUtils, dataService, toastService) {
+    '$scope', '$window', 'UsiAPIUtils', 'dataService', 'toastService',
+    function($scope, $window, UsiAPIUtils, dataService, toastService) {
       $scope.loading = false;
 
       $scope.changeStatus = function(flag){
@@ -45,7 +45,7 @@ window.angular && (function(angular) {
       };
 
       $scope.loadSsdInfo = function(){
-        APIUtils.getSsdArrayInfo().then(
+        UsiAPIUtils,.getSsdArrayInfo().then(
             function(data){
                 //var arrayInfo = data['data']['Info']; // Restful interface
                 var arrayInfo = data['Info']; // Redfish interface
@@ -75,7 +75,7 @@ window.angular && (function(angular) {
       };
       // Get power supply info
       $scope.loadPowerSupplyInfo = function(){
-        APIUtils.getPowerSupplyInfo().then(
+        UsiAPIUtils.getPowerSupplyInfo().then(
             function(data){
                 //var psinfo = data['data']; // Restful interface
                 var psinfo = data; // Redfish interface

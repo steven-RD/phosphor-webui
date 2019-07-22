@@ -10,8 +10,8 @@ window.angular && (function(angular) {
   'use strict';
 
   angular.module('app.overview').controller('systemOverviewController', [
-    '$scope', '$window', 'APIUtils', 'dataService', 'Constants', '$q',
-    function($scope, $window, APIUtils, dataService, Constants, $q) {
+    '$scope', '$window', 'APIUtils', 'UsiAPIUtils', 'dataService', 'Constants', '$q',
+    function($scope, $window, APIUtils, UsiAPIUtils, dataService, Constants, $q) {
       $scope.dataService = dataService;
       $scope.dropdown_selected = false;
       $scope.logs = [];
@@ -112,7 +112,7 @@ window.angular && (function(angular) {
 
         // Judy modified at 20190627 start
         // Get power switch state when loading overview page.
-        var getSwitchPowerStatePromise = APIUtils.getPowerSwitchStatus().then(
+        var getSwitchPowerStatePromise = UsiAPIUtils.getPowerSwitchStatus().then(
             function(info){
               $scope.switch_state = info.Status;
             },
@@ -158,9 +158,9 @@ window.angular && (function(angular) {
           */
         var toggleState =
           ($scope.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
-        APIUtils.setPowerSwitchState(toggleState).then(
+        UsiAPIUtils.setPowerSwitchState(toggleState).then(
             function(data) {
-              APIUtils.getPowerSwitchStatus().then(
+              UsiAPIUtils.getPowerSwitchStatus().then(
                   function(info){
                      $scope.switch_state = info.Status;
                   },

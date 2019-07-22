@@ -10,10 +10,10 @@ window.angular && (function(angular) {
   'use strict';
 
   angular.module('app.configuration').controller('switchFirmwareController', [
-    '$scope', 'APIUtils', 'dataService', '$route', 'Constants',
+    '$scope', 'APIUtils', 'UsiAPIUtils', 'dataService', '$route', 'Constants',
     '$interval', '$q', '$timeout', 'toastService',
     function(
-        $scope, APIUtils, dataService, $route, Constants,
+        $scope, APIUtils, UsiAPIUtils, dataService, $route, Constants,
         $interval, $q, $timeout, toastService) {
         $scope.dataService = dataService;
 
@@ -53,7 +53,7 @@ window.angular && (function(angular) {
             $scope.upload_success = false;
             var upload_flag = true;
 
-            APIUtils.getSwitchFirmware()
+            UsiAPIUtils.getSwitchFirmware()
             .then(
                 function(result) {
                     //$scope.firmwares = result.data; // Restful interface
@@ -67,7 +67,7 @@ window.angular && (function(angular) {
                         }
                     })
                     if (upload_flag) {
-                      APIUtils.uploadSwitchImage($scope.file)
+                      UsiAPIUtils.uploadSwitchImage($scope.file)
                       .then(
                         function(response) {
                             $scope.file = '';
@@ -171,7 +171,7 @@ window.angular && (function(angular) {
 
         $scope.confirmDeleteImage = function() {
             $scope.loading = true;
-            APIUtils.deleteSwitchImage(1).then(function(response) {
+            UsiAPIUtils.deleteSwitchImage(1).then(function(response) {
                 $scope.loading = false;
                 console.log(response);
                 if (response.status == 'error') {
@@ -193,7 +193,7 @@ window.angular && (function(angular) {
         };
 
         $scope.loadSwitchFirmware = function() {
-          APIUtils.getSwitchFirmware()
+          UsiAPIUtils.getSwitchFirmware()
             .then(
                 function(result) {
                     //$scope.firmwares = result.data; // Restful interface
@@ -208,7 +208,7 @@ window.angular && (function(angular) {
         };
 
         $scope.loadSwitchBeingActiveVersion = function() {
-            APIUtils.getSwitchBeingActiveVersion(function(version, type) {
+            UsiAPIUtils.getSwitchBeingActiveVersion(function(version, type) {
                 $scope.switchInfo.toBeActiveVersion = version;
                 $scope.switchInfo.type = type;
             },
@@ -218,7 +218,7 @@ window.angular && (function(angular) {
         };
 
         $scope.loadSwitchActivedVersion = function() {
-            APIUtils.getSwitchActivedVersion(
+            UsiAPIUtils.getSwitchActivedVersion(
               function(firmwareVersion, configurationFile) {
                 $scope.switchInfo.switchActivedVersion = firmwareVersion;
                 $scope.switchInfo.configurationFile = configurationFile;
@@ -230,7 +230,7 @@ window.angular && (function(angular) {
         };
 
         $scope.loadSwitchActivatedStatus = function(){
-            APIUtils.getSwitchActivatedStatus(function(data, originalData) {
+            UsiAPIUtils.getSwitchActivatedStatus(function(data, originalData) {
                 var ActivatedStatus = data.toString();
                 $scope.switchInfo.switchActivatedStatus = ActivatedStatus;
             },
@@ -263,7 +263,7 @@ window.angular && (function(angular) {
             $scope.confirm_updating = true;
 
             // Check whether image has already been actived.
-            APIUtils.getSwitchActivedVersion(
+            UsiAPIUtils.getSwitchActivedVersion(
               function(fwVersion, confFile) {
                 if (confFile == Version){
                     toastService.error('This image has already been actived!');
@@ -274,10 +274,10 @@ window.angular && (function(angular) {
               }
             );
 
-            APIUtils.updateImage()    // update image
+            UsiAPIUtils.updateImage()    // update image
             .then(
                 function(state){
-                    APIUtils.getSwitchBeingActiveVersion(
+                    UsiAPIUtils.getSwitchBeingActiveVersion(
                       function(version, type) {
                         if (version == 'None'){
                             toastService.error('Update switch image fail.');
@@ -323,10 +323,10 @@ window.angular && (function(angular) {
         $scope.runConfirmedDetail = function() {
             $scope.activate_confirm = false;
             $scope.switchInfo.activing = true;
-            APIUtils.runSwitchImage(1)
+            UsiAPIUtils.runSwitchImage(1)
             .then(
                 function(state) {    // active success
-                    APIUtils.getSwitchActivatedStatus(function(data, originalData) {
+                    UsiAPIUtils.getSwitchActivatedStatus(function(data, originalData) {
                         var activatedStatus = data.toString();
                         if (activatedStatus == '2'){
                             $scope.loadSwitchFirmware();
