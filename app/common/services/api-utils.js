@@ -27,7 +27,7 @@ window.angular && (function(angular) {
         API_CREDENTIALS: Constants.API_CREDENTIALS,
         API_RESPONSE: Constants.API_RESPONSE,
         CHASSIS_POWER_STATE: Constants.CHASSIS_POWER_STATE,
-        HOST_STATE_TEXT: Constants.HOST_STATE_TEXT,
+        HOST_STATE_TEXT: Constants.HOST_STATE,
         LED_STATE: Constants.LED_STATE,
         LED_STATE_TEXT: Constants.LED_STATE_TEXT,
         HOST_SESSION_STORAGE_KEY: Constants.API_CREDENTIALS.host_storage_key,
@@ -1174,6 +1174,7 @@ window.angular && (function(angular) {
                     console.log(error);
                     deferred.reject(error);
                   });
+
           return deferred.promise;
         },
         changePriority: function(imageId, priority) {
@@ -1349,6 +1350,51 @@ window.angular && (function(angular) {
                        '/xyz/openbmc_project/time/host/attr/Elapsed',
                    withCredentials: true,
                    data: JSON.stringify({'data': time})
+                 })
+              .then(function(response) {
+                return response.data;
+              });
+        },
+        getCertificateLocations: function() {
+          return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/redfish/v1/CertificateService/CertificateLocations',
+                   withCredentials: true
+                 })
+              .then(function(response) {
+                return response.data;
+              });
+        },
+        getCertificate: function(location) {
+          return $http({
+                   method: 'GET',
+                   url: DataService.getHost() + location,
+                   withCredentials: true
+                 })
+              .then(function(response) {
+                return response.data;
+              });
+        },
+        addNewCertificate: function(file, type) {
+          return $http({
+                   method: 'POST',
+                   url: DataService.getHost() + type.location,
+                   headers: {'Content-Type': 'application/x-pem-file'},
+                   withCredentials: true,
+                   data: file
+                 })
+              .then(function(response) {
+                return response.data;
+              });
+        },
+        replaceCertificate: function(data) {
+          return $http({
+                   method: 'POST',
+                   url: DataService.getHost() +
+                       '/redfish/v1/CertificateService/Actions/CertificateService.ReplaceCertificate',
+                   withCredentials: true,
+                   data: data
                  })
               .then(function(response) {
                 return response.data;
@@ -1555,6 +1601,65 @@ window.angular && (function(angular) {
             }));
           });
           return $q.all(promises);
+        },
+        setRemoteLoggingServer: (data) => {
+          const ip = data.hostname;
+          const port = data.port;
+          const setIPRequest = $http({
+            method: 'PUT',
+            url: DataService.getHost() +
+                '/xyz/openbmc_project/logging/config/remote/attr/Address',
+            withCredentials: true,
+            data: {'data': ip}
+          });
+          const setPortRequest = $http({
+            method: 'PUT',
+            url: DataService.getHost() +
+                '/xyz/openbmc_project/logging/config/remote/attr/Port',
+            withCredentials: true,
+            data: {'data': port}
+          });
+          const promises = [setIPRequest, setPortRequest];
+          return $q.all(promises);
+        },
+        getRemoteLoggingServer: () => {
+          return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/xyz/openbmc_project/logging/config/remote',
+                   withCredentials: true
+                 })
+              .then((response) => {
+                const remoteServer = response.data.data;
+                if (remoteServer === undefined) {
+                  return undefined;
+                }
+                const hostname = remoteServer.Address;
+                const port = remoteServer.Port;
+                if (hostname === '') {
+                  return undefined;
+                } else {
+                  return {
+                    hostname, port
+                  }
+                }
+              });
+        },
+        disableRemoteLoggingServer: () => {
+          return SERVICE.setRemoteLoggingServer({hostname: '', port: 0});
+        },
+        updateRemoteLoggingServer: (data) => {
+          // Recommended to disable existing configuration
+          // before updating config to new server
+          // https://github.com/openbmc/phosphor-logging#changing-the-rsyslog-server
+          return SERVICE.disableRemoteLoggingServer()
+              .then(() => {
+                return SERVICE.setRemoteLoggingServer(data);
+              })
+              .catch(() => {
+                // try updating server even if initial disable attempt fails
+                return SERVICE.setRemoteLoggingServer(data);
+              });
         },
         getPowerConsumption: function() {
           return $http({
