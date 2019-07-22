@@ -40,7 +40,7 @@ window.angular && (function(angular) {
               .when('/server-control/ssdarray', {
                 'template':
                     require('../usi_extend/server-control/controllers/ssdarray-controller.html'),
-                'controller': 'ssdArrayController',
+                'controller': '../usi_extend/server-control/controllers/ssdArrayController',
                 authenticated: true
               })
               .when('/server-control/remote-console', {
