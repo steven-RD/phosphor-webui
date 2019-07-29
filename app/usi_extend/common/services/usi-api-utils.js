@@ -31,7 +31,7 @@ window.angular && (function(angular) {
         },
         // Restful way start
         /* Modified by USISH Steven20190122/Judy20190521 start */
-        /* getSwitchActivatedStatus: function(callback) {
+        getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() +
@@ -128,13 +128,15 @@ window.angular && (function(angular) {
               });
         },
 
-        updateImage: function() {
+        updateImage: function(val) {
           var deferred = $q.defer();
           $http({
-            method: 'GET',
-            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update',
+             method: 'PUT',
+            url: DataService.getHost() + '/xyz/openbmc_project/ssdarray/firmware/update/attr/Value',
             withCredentials: true,
-            timeout: 5 * 60 * 1000,
+            timeout: 5 * 60 * 1000, // 5min
+            data:
+                JSON.stringify({'data': val}),
           })
            .then(
                   function(response) {
@@ -243,12 +245,12 @@ window.angular && (function(angular) {
                 deferred.reject(error);
               });
           return deferred.promise;
-        }, */
+        },
       /* Modified by USISH Steven20190122/Judy20190521 end */
       // Restful way end
       // Redfish way start
       /* Modified by USISH Judy20190702 start */
-        getSwitchActivatedStatus: function(callback) {
+        /* getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() + '/redfish/v1/Switch/Activate',
@@ -360,7 +362,7 @@ window.angular && (function(angular) {
                   }
                 );
           return deferred.promise;
-        },
+        }, */
 
         /* updateImage: function(val) {
           var deferred = $q.defer();
@@ -389,7 +391,7 @@ window.angular && (function(angular) {
           return deferred.promise;
         }, */
 
-        runSwitchImage: function(val) {
+        /* runSwitchImage: function(val) {
           var deferred = $q.defer();
           $http({
             method: 'PATCH',
@@ -479,7 +481,7 @@ window.angular && (function(angular) {
                 deferred.reject(error);
               });
           return deferred.promise;
-        },
+        }, */
       /*  Modified by USISH Judy20190702 end */
       // Redfish way end
       };
