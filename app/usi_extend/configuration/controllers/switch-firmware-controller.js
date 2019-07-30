@@ -171,20 +171,23 @@ window.angular && (function(angular) {
 
         $scope.confirmDeleteImage = function() {
             $scope.loading = true;
-            UsiAPIUtils.deleteSwitchImage(1).then(function(response) {
+            UsiAPIUtils.deleteSwitchImage(1).then(
+              function(response) {
                 $scope.loading = false;
-                console.log(response);
-                if (response.status == 'error') {
-                    $scope.displayError({
-                        modal_title: response.data.description,
-                        title: response.data.description,
-                        desc: response.data.exception,
-                        type: 'Error'
-                    });
-                } else {
-                    $scope.loadSwitchFirmware();
-                }
-            });
+                UsiAPIUtils.getDeleteSwitchImage().then(
+                  function(response) {
+                    console.log(response.data)
+                    console.log(response.data['Value'])
+                    if (response.data.hasOwnProperty('Value)'){
+                        if (response.data['Value'] == 2) {
+                            toastService.success('Image delete ok!');
+                        }
+                        if (response.data['Value'] == 3) {
+                            toastService.error('Image delete fail!');
+                        }
+                    }
+                  })
+              });
             $scope.confirm_delete = false;
         };
 
@@ -266,6 +269,7 @@ window.angular && (function(angular) {
             UsiAPIUtils.getSwitchActivedVersion(
               function(fwVersion, confFile) {
                 if (confFile == Version){
+                    $scope.switchInfo.updating = false;
                     toastService.error('This image has already been actived!');
                 }
               },

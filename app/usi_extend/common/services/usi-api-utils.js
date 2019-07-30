@@ -127,7 +127,19 @@ window.angular && (function(angular) {
                 return content;
               });
         },
-
+        getDeleteSwitchImage: function(val) {
+          return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/xyz/openbmc_project/ssdarray/firmware/delete',
+                   withCredentials: true,
+                 })
+              .then(function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                return content;
+              });
+        },
         updateImage: function(val) {
           var deferred = $q.defer();
           $http({
