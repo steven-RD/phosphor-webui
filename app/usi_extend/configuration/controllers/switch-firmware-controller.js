@@ -176,9 +176,7 @@ window.angular && (function(angular) {
                 $scope.loading = false;
                 UsiAPIUtils.getDeleteSwitchImage().then(
                   function(response) {
-                    console.log(response.data)
-                    console.log(response.data['Value'])
-                    if (response.data.hasOwnProperty('Value)'){
+                    if (response.data.hasOwnProperty('Value')){
                         if (response.data['Value'] == 2) {
                             toastService.success('Image delete ok!');
                         }
@@ -186,6 +184,9 @@ window.angular && (function(angular) {
                             toastService.error('Image delete fail!');
                         }
                     }
+                  })
+                  .then(function(){
+                      $route.reload();
                   })
               });
             $scope.confirm_delete = false;
