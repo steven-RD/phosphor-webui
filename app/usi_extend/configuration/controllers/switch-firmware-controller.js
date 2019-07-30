@@ -56,7 +56,7 @@ window.angular && (function(angular) {
             UsiAPIUtils.getSwitchFirmware()
             .then(
                 function(result) {
-                    $scope.firmwares = result.data; // Restful interface
+                    $scope.firmwares = result; // Restful interface
                     //$scope.firmwares = {'Status': result['Status']}; // Redfish interface
                     // If exist one switch image, can't upload another one.
                     angular.forEach($scope.firmwares, function(firmware){
@@ -175,12 +175,12 @@ window.angular && (function(angular) {
               function(response) {
                 $scope.loading = false;
                 UsiAPIUtils.getDeleteSwitchImage().then(
-                  function(response) {
-                    if (response.data.hasOwnProperty('Value')){
-                        if (response.data['Value'] == 2) {
+                  function(content) {
+                    if (content.hasOwnProperty('Value')){
+                        if (content['Value'] == 2) {
                             toastService.success('Image delete ok!');
                         }
-                        if (response.data['Value'] == 3) {
+                        if (content['Value'] == 3) {
                             toastService.error('Image delete fail!');
                         }
                     }
@@ -200,7 +200,9 @@ window.angular && (function(angular) {
           UsiAPIUtils.getSwitchFirmware()
             .then(
                 function(result) {
-                    $scope.firmwares = result.data; // Restful interface
+                    console.log("loadSwitchFirmware result");
+                    console.log(result);
+                    $scope.firmwares = result; // Restful interface
                     //$scope.firmwares = {'Status': result['Status']}; // Redfish interface
                     $scope.loadSwitchBeingActiveVersion();
                     $scope.loadSwitchActivedVersion();

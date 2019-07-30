@@ -47,7 +47,7 @@ window.angular && (function(angular) {
       $scope.loadSsdInfo = function(){
         UsiAPIUtils.getSsdArrayInfo().then(
             function(data){
-                var arrayInfo = data['data']['Info']; // Restful interface
+                var arrayInfo = data; // Restful interface
                 //var arrayInfo = data['Info']; // Redfish interface
                 if (arrayInfo.hasOwnProperty('Ssdinfo')){
                     $scope.ssdinfo = arrayInfo['Ssdinfo'];
@@ -77,7 +77,7 @@ window.angular && (function(angular) {
       $scope.loadPowerSupplyInfo = function(){
         UsiAPIUtils.getPowerSupplyInfo().then(
             function(data){
-                var psinfo = data['data']; // Restful interface
+                var psinfo = data; // Restful interface
                 //var psinfo = data; // Redfish interface
                 if (psinfo.hasOwnProperty('Status')){
                     $scope.psinfo = psinfo['Status'];
