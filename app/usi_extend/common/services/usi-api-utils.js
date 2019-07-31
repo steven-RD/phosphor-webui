@@ -332,7 +332,7 @@ window.angular && (function(angular) {
                   function(response) {
                     var json = JSON.stringify(response.data);
                     var content = JSON.parse(json);
-                    deferred.resolve({'Status': content['Status']);
+                    deferred.resolve({'Status': content['Status']});
                   },
                   function(error) {
                     console.log(error);
@@ -357,7 +357,7 @@ window.angular && (function(angular) {
         getDeleteSwitchImage: function() {
           return $http({
                    method: 'GET',
-                   url: DataService.getHost() + 'redfish/v1/Switch/Delete',
+                   url: DataService.getHost() + '/redfish/v1/Switch/Delete',
                    withCredentials: true,
                  })
               .then(function(response) {
