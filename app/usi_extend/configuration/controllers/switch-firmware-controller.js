@@ -11,10 +11,10 @@ window.angular && (function(angular) {
 
   angular.module('app.configuration').controller('switchFirmwareController', [
     '$scope', 'APIUtils', 'UsiAPIUtils', 'dataService', '$route', 'Constants',
-    '$interval', '$q', '$timeout', 'toastService',
+    '$interval', '$timeout', 'toastService',
     function(
         $scope, APIUtils, UsiAPIUtils, dataService, $route, Constants,
-        $interval, $q, $timeout, toastService) {
+        $interval, $timeout, toastService) {
         $scope.dataService = dataService;
 
         // Display switchInfo at switch firmware list html
@@ -56,8 +56,7 @@ window.angular && (function(angular) {
             UsiAPIUtils.getSwitchFirmware()
             .then(
                 function(result) {
-                    $scope.firmwares = result; // Restful interface
-                    //$scope.firmwares = {'Status': result['Status']}; // Redfish interface
+                    $scope.firmwares = result;
                     // If exist one switch image, can't upload another one.
                     angular.forEach($scope.firmwares, function(firmware){
                         if (firmware.Version != 'None'){
@@ -200,10 +199,7 @@ window.angular && (function(angular) {
           UsiAPIUtils.getSwitchFirmware()
             .then(
                 function(result) {
-                    console.log("loadSwitchFirmware result");
-                    console.log(result);
-                    $scope.firmwares = result; // Restful interface
-                    //$scope.firmwares = {'Status': result['Status']}; // Redfish interface
+                    $scope.firmwares = result;
                     $scope.loadSwitchBeingActiveVersion();
                     $scope.loadSwitchActivedVersion();
                 },
@@ -284,7 +280,7 @@ window.angular && (function(angular) {
             UsiAPIUtils.updateImage(1)    // update image
             .then(
                 function(state){
-                    UsiAPIUtils.getSwitchBeingActiveVersion(
+                    UsiAPIUtils.getSwitchBeingActiveVersion( // Get ready sw image
                       function(version, type) {
                         if (version == 'None'){
                             toastService.error('Update switch image fail.');

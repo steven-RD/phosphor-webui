@@ -31,7 +31,7 @@ window.angular && (function(angular) {
         },
         // Restful way start
         /* Modified by USISH Steven20190122/Judy20190521 start */
-        /*getSwitchActivatedStatus: function(callback) {
+        getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() +
@@ -258,12 +258,11 @@ window.angular && (function(angular) {
               });
           return deferred.promise;
         },
-       */
       /* Modified by USISH Steven20190122/Judy20190521 end */
       // Restful way end
       // Redfish way start
       /* Modified by USISH Judy20190702 start */
-        getSwitchActivatedStatus: function(callback) {
+        /*getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() + '/redfish/v1/Switch/Activate',
@@ -481,7 +480,7 @@ window.angular && (function(angular) {
                 deferred.reject(error);
               });
           return deferred.promise;
-        },
+        },*/
       /*  Modified by USISH Judy20190702 end */
       // Redfish way end
       };
