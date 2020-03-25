@@ -143,16 +143,16 @@ window.angular && (function(angular) {
         function($httpProvider) {
           $httpProvider.interceptors.push('apiInterceptor');
           $httpProvider.defaults.headers.common = {
-            'Accept': 'application/json; charset=utf-8'
+            'Accept': 'application/json'
           };
           $httpProvider.defaults.headers.post = {
-            'Content-Type': 'application/json; charset=utf-8'
+            'Content-Type': 'application/json'
           };
           $httpProvider.defaults.headers.put = {
-            'Content-Type': 'application/json; charset=utf-8'
+            'Content-Type': 'application/json'
           };
           $httpProvider.defaults.headers.patch = {
-            'Content-Type': 'application/json; charset=utf-8'
+            'Content-Type': 'application/json'
           };
         }
       ])

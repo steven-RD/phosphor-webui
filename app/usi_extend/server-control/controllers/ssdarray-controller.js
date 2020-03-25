@@ -58,6 +58,7 @@ window.angular && (function(angular) {
     };
 
 
+
       $scope.loadSsdInfo = function(){
         UsiAPIUtils.getSsdArrayInfo().then(
             function(data){
