@@ -44,7 +44,7 @@ window.angular && (function(angular) {
           }
       };
 
-
+      
       $scope.ssdNumSelected = function(num){
       angular.forEach(arrayInfo['Ssdinfo'], function(ssdInfo, ssdNum){
         if(angular.equals(ssdNum, num)){
@@ -56,7 +56,6 @@ window.angular && (function(angular) {
         }
       });
     };
-
 
 
       $scope.loadSsdInfo = function(){

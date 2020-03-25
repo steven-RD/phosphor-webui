@@ -11,7 +11,7 @@
         <h1>JBOF inventory information</h1>
     </div>
 
-    <div id='ssd-header' class="row column header-row">
+<!--     <div id='ssd-header' class="row column header-row">
         <table id='ssd-info-header'>
             <tr>
                 <td ng-mouseover="changeStatus('ssd')">SSD information</td>
@@ -23,7 +23,7 @@
                 <td ng-mouseover="changeStatus('ps')">Power supply information</td>
             </tr>
         </table>
-    </div>
+    </div> -->
 
     <div class="row column header-row" >
     <img ng-src="../img/J2024-03-front.PNG" alt="{{ssdDescription}}" usemap="#SSDmap" />
@@ -60,8 +60,8 @@
     </map>
     <p>{{ssdDetailInfo}}</p>
     <table id='ssd-info-body'>
-        <tbody class="ssd-body-tbody" ng-show="ssdDetailInfo != 'None'>
-            <!--  -->
+        <tbody class="ssd-body-tbody" ng-show="ssdDetailInfo != 'None' ">
+
             <tr><td colspan='2'><b>SSD Information</b></td></tr>
             <tr><td>SSD NO.</td><td>{{ssdNO}}</td></tr>
             <tr><td>Address</td><td>{{ssdDetailInfo.SlotAddr}}</td></tr>
@@ -78,14 +78,13 @@
     </div>
 
 
-    <div class="row column header-row" ng-show="cableinfoFlag == true">
+<!--     <div class="row column header-row" ng-show="cableinfoFlag == true">
       <table id='ssd-info-body'>
         <caption>Cable information </caption>
         <thead class="ssd-body-header">
             <tr>
                 <th>Title</th>
                 <th>Status</th>
-                <!--<th>Value</th>-->
                 <th>CableType</th>
                 <th>SlotAddr</th>
                 <th>PartitionID</th>
@@ -101,7 +100,6 @@
             <tr ng-repeat="(cable, detail) in cableinfo" ng-show="cableinfo != 'None'">
                 <td>{{cable}}</td>
                 <td>{{detail.Status}}</td>
-                <!--<td>{{detail.Value}}</td>-->
                 <td>{{detail.CableType}}</td>
                 <td>{{detail.SlotAddr}}</td>
                 <td>{{detail.PartitionID}}</td>
@@ -213,6 +211,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> -->
 
 </div>
