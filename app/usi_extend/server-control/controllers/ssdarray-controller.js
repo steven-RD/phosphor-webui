@@ -44,6 +44,20 @@ window.angular && (function(angular) {
           }
       };
 
+
+      $scope.ssdNumSelected = function(num){
+      angular.forEach(arrayInfo['Ssdinfo'], function(ssdInfo, ssdNum){
+        if(angular.equals(ssdNum, num)){
+            console.log('equale');
+            $scop.ssdNO = num;
+            $scope.ssdDetailInfo = ssdInfo;
+            console.log($scop.ssdNO);
+            console.log($scope.ssdDetailInfo);
+        }
+      });
+    };
+
+
       $scope.loadSsdInfo = function(){
         UsiAPIUtils.getSsdArrayInfo().then(
             function(data){

@@ -25,41 +25,34 @@
         </table>
     </div>
 
-    <div class="row column header-row" ng-show="ssdFlag == true">
-        <table id='ssd-info-body'>
-            <caption>SSD information</caption>
-            <thead class="ssd-body-header">
-                <tr>
-                    <th>SSD NO.</th>
-                    <th>Address</th>
-                    <th>Type</th>
-                    <!--<th>Value</th>-->
-                    <th>Status</th>
-                    <th>Link Speed</th>
-                    <th>Link Width</th>
-                    <th>Par Id</th>
-                    <th>Inserted</th>
-                    <th>Link Status</th>
-                    <th>ConfigureWidth</th>
-                </tr>
-            </thead>
-            <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(ssdNo, detail) in ssdinfo" ng-show="ssdinfo != 'None'">
-                    <td>{{ssdNo}}</td>
-                    <td>{{detail.SlotAddr}}</td>
-                    <td>{{detail.Type}}</td>
-                    <!--<td>{{detail.Value}}</td>-->
-                    <td>{{detail.Status}}</td>
-                    <td>{{detail.LinkSpeed}}</td>
-                    <td>{{detail.LinkStatus}}</td>
-                    <td>{{detail.LinkWidth}}</td>
-                    <td>{{detail.PartitionID}}</td>
-                    <td>{{detail.Inserted}}</td>
-                    <td>{{detail.ConfigureWidth}}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row column header-row" >
+    <img ng-src="../img/J2024-03-front.PNG" alt="{{ssdDescription}}" usemap="#SSDmap" />
+    <map name="SSDmap" >
+        <area shape="rect" coords="58,10,80,140" alt="ssd1" style="cursor:pointer" ng-click="ssdNumSelected('SSD1')">
+        <area shape="rect" coords="86,10,108,140" alt="ssd2" style="cursor:pointer" ng-click="ssdNumSelected('SSD2')">
+        <area shape="rect" coords="114,10,136,140" alt="ssd3" style="cursor:pointer" ng-click="ssdNumSelected('SSD3')">
+        <area shape="rect" coords="140,10,164,140" alt="ssd4" style="cursor:pointer" ng-click="ssdNumSelected('SSD4')">
+        
+    </map>
+    <p>{{ssdDetailInfo}}</p>
+    <table id='ssd-info-body'>
+        <tbody class="ssd-body-tbody" ng-show="ssdDetailInfo != 'None'>
+            <!--  -->
+            <tr><td colspan='2'><b>SSD Information</b></td></tr>
+            <tr><td>SSD NO.</td><td>{{ssdNO}}</td></tr>
+            <tr><td>Address</td><td>{{ssdDetailInfo.SlotAddr}}</td></tr>
+            <tr><td>Type</td><td>{{ssdDetailInfo.Type}}</td></tr>
+            <tr><td>Status</td><td>{{ssdDetailInfo.Status}}</td></tr>
+            <tr><td>Link Speed</td><td>{{ssdDetailInfo.LinkSpeed}}</td></tr>
+            <tr><td>Link Width</td><td>{{ssdDetailInfo.LinkWidth}}</td></tr>
+            <tr><td>Link Status</td><td>{{ssdDetailInfo.LinkStatus}}</td></tr>
+            <tr><td>Par ID</td><td>{{ssdDetailInfo.PartitionID}}</td></tr>
+            <tr><td>Inserted</td><td>{{ssdDetailInfo.Inserted}}</td></tr>
+            <tr><td>ConfigureWidth</td><td>{{ssdDetailInfo.ConfigureWidth}}</td></tr>
+        </tbody>
+    </table>
     </div>
+
 
     <div class="row column header-row" ng-show="cableinfoFlag == true">
       <table id='ssd-info-body'>
