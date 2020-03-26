@@ -56,7 +56,7 @@ window.angular && (function(angular) {
             console.log('equal');
             $scope.ssdNO = num;
             $scope.ssdDetailInfo = ssdInfo;
-            console.log($scop.ssdNO);
+            console.log($scope.ssdNO);
             console.log($scope.ssdDetailInfo);
         }
       });
@@ -66,7 +66,7 @@ window.angular && (function(angular) {
         angular.forEach(psinfo['Status'], function(psInfo, psx) {
             if(angular.equals(name, psx)){
                 console.log('equale');
-                $scop.psName = name;
+                $scope.psName = name;
                 $scope.psDetailInfo = psInfo;
         }
         });
