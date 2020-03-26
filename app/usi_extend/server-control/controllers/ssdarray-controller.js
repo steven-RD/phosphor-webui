@@ -15,7 +15,7 @@ window.angular && (function(angular) {
     'use strict';
 
     angular.module('app.serverControl').controller('ssdArrayController', [
-    '$scope', '$window', 'UsiAPIUtils', 'dataService', 'toastService', 'tooltip'
+    '$scope', '$window', 'UsiAPIUtils', 'dataService', 'toastService', 'tooltip',
     function($scope, $window, UsiAPIUtils, dataService, toastService) {
       $scope.loading = false;
 
