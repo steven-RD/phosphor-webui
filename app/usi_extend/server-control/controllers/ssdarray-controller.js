@@ -53,8 +53,8 @@ window.angular && (function(angular) {
         console.log(ssdInfo);
         console.log(ssdNum);
         if(angular.equals(ssdNum, num)){
-            console.log('equale');
-            $scop.ssdNO = num;
+            console.log('equal');
+            $scope.ssdNO = num;
             $scope.ssdDetailInfo = ssdInfo;
             console.log($scop.ssdNO);
             console.log($scope.ssdDetailInfo);
