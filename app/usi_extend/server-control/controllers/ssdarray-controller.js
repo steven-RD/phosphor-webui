@@ -44,7 +44,7 @@ window.angular && (function(angular) {
           }
       };
 
-      
+
       $scope.ssdNumSelected = function(num){
       angular.forEach(arrayInfo['Ssdinfo'], function(ssdInfo, ssdNum){
         if(angular.equals(ssdNum, num)){
@@ -57,6 +57,15 @@ window.angular && (function(angular) {
       });
     };
 
+    $scope.PowerSupply = function(name) {
+        angular.forEach(psinfo['Status'], function(psInfo, psx) {
+            if(angular.equals(name, psx)){
+                console.log('equale');
+                $scop.psName = name;
+                $scope.psDetailInfo = psInfo;
+        }
+        });
+    }
 
       $scope.loadSsdInfo = function(){
         UsiAPIUtils.getSsdArrayInfo().then(

@@ -26,7 +26,8 @@
     </div> -->
 
     <div class="row column header-row" >
-    <img ng-src="../img/J2024-03-front.PNG" alt="{{ssdDescription}}" usemap="#SSDmap" />
+<!--<img ng-src="../img/J2024-03-front.png" alt="{{ssdDescription}}" usemap="#SSDmap" /> -->
+    <img src="../../../assets/images/J2024-03-front.png" class="ssd__logo" alt="ssd" usemap="#SSDmap"/>
     <map name="SSDmap" >
         <area shape="rect" coords="58,10,80,140" alt="ssd1" style="cursor:pointer" ng-click="ssdNumSelected('SSD1')">
         <area shape="rect" coords="86,10,108,140" alt="ssd2" style="cursor:pointer" ng-click="ssdNumSelected('SSD2')">
@@ -61,7 +62,6 @@
     <p>{{ssdDetailInfo}}</p>
     <table id='ssd-info-body'>
         <tbody class="ssd-body-tbody" ng-show="ssdDetailInfo != 'None' ">
-
             <tr><td colspan='2'><b>SSD Information</b></td></tr>
             <tr><td>SSD NO.</td><td>{{ssdNO}}</td></tr>
             <tr><td>Address</td><td>{{ssdDetailInfo.SlotAddr}}</td></tr>
