@@ -15,7 +15,7 @@ window.angular && (function(angular) {
     'use strict';
 
     angular.module('app.serverControl').controller('ssdArrayController', [
-    '$scope', '$window', 'UsiAPIUtils', 'dataService', 'toastService',
+    '$scope', '$window', 'UsiAPIUtils', 'dataService', 'toastService', 'tooltip'
     function($scope, $window, UsiAPIUtils, dataService, toastService) {
       $scope.loading = false;
 
@@ -46,7 +46,7 @@ window.angular && (function(angular) {
 
       var arrayInfo=[];
       var psinfo=[];
-      var strSSDinfo = "<table id='ssdinfo' width='100%' border='1' cellpadding='0' cellspacing='0'>"+
+      strSSDinfo = "<table id='ssdinfo' width='100%' border='1' cellpadding='0' cellspacing='0'>"+
 				"<tr><td colspan='3'><b>SSD Information</b></td></tr>"+
 				"<tr><td><b>SSD NO.</b></td><td><b></b></td></tr>"+
 				"<tr><td><b>type:</b></td><td><b></b></td></tr>"+
@@ -71,18 +71,24 @@ window.angular && (function(angular) {
             $scope.ssdDetailInfo = ssdInfo;
             console.log($scope.ssdNO);
             console.log($scope.ssdDetailInfo);
+			
 			var tableid = "ssdinfo";
-			document.getElementById(tableid).rows[1].cells[1].innerHTML = ssdNum;
-			document.getElementById(tableid).rows[1].cells[1].innerHTML = ssdInfo.Type;
-			document.getElementById(tableid).rows[2].cells[1].innerHTML = ssdInfo.SlotAddr;
-			document.getElementById(tableid).rows[3].cells[1].innerHTML = ssdInfo.Status;
-			document.getElementById(tableid).rows[4].cells[1].innerHTML = ssdInfo.LinkSpeed;
-			document.getElementById(tableid).rows[5].cells[1].innerHTML = ssdInfo.LinkWidth;
-			document.getElementById(tableid).rows[6].cells[1].innerHTML = ssdInfo.ConfigureWidth;
-			document.getElementById(tableid).rows[7].cells[1].innerHTML = ssdInfo.LinkStatus;
-			document.getElementById(tableid).rows[8].cells[1].innerHTML = ssdInfo.Inserted;
-			document.getElementById(tableid).rows[9].cells[1].innerHTML = ssdInfo.PartitionID;
-        }
+			var pid = "#span";
+			for(var i=1; i < 25; i++){
+				$(pid+i).tooltip({title:strSSDinfo, html:true, placement:"middle", ableShow:true});
+				$(pid+i).on("shown.bs.tooltip", function() {
+					document.getElementById(tableid).rows[0].cells[1].innerHTML = ssdNum;
+					document.getElementById(tableid).rows[1].cells[1].innerHTML = ssdInfo.Type;
+					document.getElementById(tableid).rows[2].cells[1].innerHTML = ssdInfo.SlotAddr;
+					document.getElementById(tableid).rows[3].cells[1].innerHTML = ssdInfo.Status;
+					document.getElementById(tableid).rows[4].cells[1].innerHTML = ssdInfo.LinkSpeed;
+					document.getElementById(tableid).rows[5].cells[1].innerHTML = ssdInfo.LinkWidth;
+					document.getElementById(tableid).rows[6].cells[1].innerHTML = ssdInfo.ConfigureWidth;
+					document.getElementById(tableid).rows[7].cells[1].innerHTML = ssdInfo.LinkStatus;
+					document.getElementById(tableid).rows[8].cells[1].innerHTML = ssdInfo.Inserted;
+					document.getElementById(tableid).rows[9].cells[1].innerHTML = ssdInfo.PartitionID;
+				}
+			}
       });
     };
 
