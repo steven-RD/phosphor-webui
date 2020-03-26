@@ -46,6 +46,19 @@ window.angular && (function(angular) {
 
       var arrayInfo=[];
       var psinfo=[];
+      var strSSDinfo = "<table id='ssdinfo' width='100%' border='1' cellpadding='0' cellspacing='0'>"+
+				"<tr><td colspan='3'><b>SSD Information</b></td></tr>"+
+				"<tr><td><b>SSD NO.</b></td><td><b></b></td></tr>"+
+				"<tr><td><b>type:</b></td><td><b></b></td></tr>"+
+				"<tr><td><b>slot address:</b></td><td><b></b></td></tr>"+
+				"<tr><td><b>status:</b></td><td><b></b></td></tr>"+
+				"<tr><td><b>link speed:</b></td><td><b></b></td></tr>"+
+				"<tr><td><b>link width:</b></td><td><b></b></td></tr>"+
+				"<tr><td><b>configure width:</b></td><td><b></b></td></tr>"+
+				"<tr><td><b>link up status:</b></td><td><b></b></td></tr>"+
+				"<tr><td><b>inserted:</b></td><td><b></b></td></tr>"+
+				"<tr><td><b>partition id:</b></td><td><b></b></td></tr></table>";
+
       $scope.ssdNumSelected = function(num){
         console.log(num);
         console.log(arrayInfo);
@@ -58,16 +71,31 @@ window.angular && (function(angular) {
             $scope.ssdDetailInfo = ssdInfo;
             console.log($scope.ssdNO);
             console.log($scope.ssdDetailInfo);
+			var tableid = "ssdinfo";
+			document.getElementById(tableid).rows[1].cells[1].innerHTML = ssdNum;
+			document.getElementById(tableid).rows[1].cells[1].innerHTML = ssdInfo.Type;
+			document.getElementById(tableid).rows[2].cells[1].innerHTML = ssdInfo.SlotAddr;
+			document.getElementById(tableid).rows[3].cells[1].innerHTML = ssdInfo.Status;
+			document.getElementById(tableid).rows[4].cells[1].innerHTML = ssdInfo.LinkSpeed;
+			document.getElementById(tableid).rows[5].cells[1].innerHTML = ssdInfo.LinkWidth;
+			document.getElementById(tableid).rows[6].cells[1].innerHTML = ssdInfo.ConfigureWidth;
+			document.getElementById(tableid).rows[7].cells[1].innerHTML = ssdInfo.LinkStatus;
+			document.getElementById(tableid).rows[8].cells[1].innerHTML = ssdInfo.Inserted;
+			document.getElementById(tableid).rows[9].cells[1].innerHTML = ssdInfo.PartitionID;
         }
       });
     };
 
     $scope.PowerSupply = function(name) {
         angular.forEach(psinfo['Status'], function(psInfo, psx) {
+            console.log(psInfo);
+            console.log(psx);
             if(angular.equals(name, psx)){
                 console.log('equale');
                 $scope.psName = name;
                 $scope.psDetailInfo = psInfo;
+                console.log($scope.psName);
+                console.log($scope.psDetailInfo);
         }
         });
     }
