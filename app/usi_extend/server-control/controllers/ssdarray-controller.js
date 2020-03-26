@@ -47,7 +47,11 @@ window.angular && (function(angular) {
       var arrayInfo=[];
       var psinfo=[];
       $scope.ssdNumSelected = function(num){
+        console.log(num);
+        console.log(arrayInfo);
       angular.forEach(arrayInfo['Ssdinfo'], function(ssdInfo, ssdNum){
+        console.log(ssdInfo);
+        console.log(ssdNum);
         if(angular.equals(ssdNum, num)){
             console.log('equale');
             $scop.ssdNO = num;
@@ -72,7 +76,7 @@ window.angular && (function(angular) {
         UsiAPIUtils.getSsdArrayInfo().then(
             function(data){
                 arrayInfo = data;
-                if (arrayInfo.hasOwnProperty('Ssdinfo')){
+                /* if (arrayInfo.hasOwnProperty('Ssdinfo')){
                     $scope.ssdinfo = arrayInfo['Ssdinfo'];
                 }
                 if (arrayInfo.hasOwnProperty('Cableinfo')){
@@ -89,7 +93,7 @@ window.angular && (function(angular) {
                 }
                 if (arrayInfo.hasOwnProperty('Bindinfo')){
                     $scope.bindinfo = arrayInfo['Bindinfo'];
-                }
+                } */
             },
             function(error) {
                toastService.error('Error during getSsdArrayInfo');
