@@ -19,7 +19,7 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, dataService, toastService) {
       $scope.loading = false;
 
-      changeStatus = function(flag){
+      $scope.changeStatus = function(flag){
           $scope.ssdFlag = false;
           $scope.cableinfoFlag = false;
           $scope.swinfoFlag = false;
@@ -62,7 +62,6 @@ window.angular && (function(angular) {
       $scope.ssdNumSelected = function(num){
         console.log(num);
         console.log(arrayInfo);
-		changeStatus('ssd');
       angular.forEach(arrayInfo['Ssdinfo'], function(ssdInfo, ssdNum){
         console.log(ssdInfo);
         console.log(ssdNum);
@@ -72,19 +71,25 @@ window.angular && (function(angular) {
             $scope.ssdDetailInfo = ssdInfo;
             console.log($scope.ssdNO);
             console.log($scope.ssdDetailInfo);
-			/* var tableid = "ssdinfo";
-			document.getElementById(tableid).rows[1].cells[1].innerHTML = ssdNum;
-			document.getElementById(tableid).rows[1].cells[1].innerHTML = ssdInfo.Type;
-			document.getElementById(tableid).rows[2].cells[1].innerHTML = ssdInfo.SlotAddr;
-			document.getElementById(tableid).rows[3].cells[1].innerHTML = ssdInfo.Status;
-			document.getElementById(tableid).rows[4].cells[1].innerHTML = ssdInfo.LinkSpeed;
-			document.getElementById(tableid).rows[5].cells[1].innerHTML = ssdInfo.LinkWidth;
-			document.getElementById(tableid).rows[6].cells[1].innerHTML = ssdInfo.ConfigureWidth;
-			document.getElementById(tableid).rows[7].cells[1].innerHTML = ssdInfo.LinkStatus;
-			document.getElementById(tableid).rows[8].cells[1].innerHTML = ssdInfo.Inserted;
-			document.getElementById(tableid).rows[9].cells[1].innerHTML = ssdInfo.PartitionID; */
-			var temp_obj = document.getElementById("ssd-info");
-			var temp_tobj = document.createElement("table");
+			
+			div1=document.getElementById(ssdNum);
+		    var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", "Link Status", "Inserted", "Par ID", "ConfigureWidth"];
+            var ssdInfo = [ssdNum, ssdInfo.SlotAddr, sdInfo.Type, ssdInfo.Status, ssdInfo.LinkSpeed, ssdInfo.LinkWidth, ssdInfo.LinkStatus, ssdInfo.Inserted, ssdInfo.PartitionID, ssdInfo.ConfigureWidth];
+		    var tab='<table border=1 width=500">'
+		 
+            for ( var i = 0; i < description.length; i++){
+                tab+='<tr>'
+                for ( var j = 0; j < 2; j++){
+                if(j == 0){
+					tab+="<td style='background:green'>"+description[i]+"</td>"
+				} else {
+					tab+="<td style='background:green'>"+ssdInfo[i]+"</td>"
+				}
+             }
+             tab+='</tr>'
+         }    
+         tab+='</table>';
+         div1.innerHTML=tab
         }
       });
     };
