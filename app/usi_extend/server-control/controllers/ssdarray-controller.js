@@ -74,7 +74,7 @@ window.angular && (function(angular) {
 			
 			var div1=document.getElementById(ssdNum);
 		    var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", "Link Status", "Inserted", "Par ID", "ConfigureWidth"];
-            var ssdInfo = [ssdNum, ssdInfo.SlotAddr, sdInfo.Type, ssdInfo.Status, ssdInfo.LinkSpeed, ssdInfo.LinkWidth, ssdInfo.LinkStatus, ssdInfo.Inserted, ssdInfo.PartitionID, ssdInfo.ConfigureWidth];
+            var ssdInfo = [ssdNum, ssdInfo.SlotAddr, ssdInfo.Type, ssdInfo.Status, ssdInfo.LinkSpeed, ssdInfo.LinkWidth, ssdInfo.LinkStatus, ssdInfo.Inserted, ssdInfo.PartitionID, ssdInfo.ConfigureWidth];
 		    var tab='<table border=1 width=500">'
 		 
             for ( var i = 0; i < description.length; i++){
@@ -94,8 +94,8 @@ window.angular && (function(angular) {
       });
     };
 
-		$scope.leave = function(obj){
-			var div=document.getElementById(obj);
+		$scope.leave = function(lab){
+			var div=document.getElementById(lab);
 			div.style.display="none";
 		}
 	
@@ -104,12 +104,24 @@ window.angular && (function(angular) {
             console.log(psInfo);
             console.log(psx);
             if(angular.equals(name, psx)){
-                console.log('equale');
+                console.log('equael');
                 $scope.psName = name;
                 $scope.psDetailInfo = psInfo;
                 console.log($scope.psName);
                 console.log($scope.psDetailInfo);
-        }
+				
+				/* var div1=document.getElementById(ssdNum);
+				//var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", "Link Status", "Inserted", "Par ID", "ConfigureWidth"];
+				//var ssdInfo = [ssdNum, ssdInfo.SlotAddr, sdInfo.Type, ssdInfo.Status, ssdInfo.LinkSpeed, ssdInfo.LinkWidth, ssdInfo.LinkStatus, ssdInfo.Inserted, ssdInfo.PartitionID, ssdInfo.ConfigureWidth];
+				var tab='<table border=1 width=500">'
+		 
+				tab+='<tr>'
+				tab+="<td style='background:green'>"+name+"</td>"
+				tab+="<td style='background:green'>"+psInfo+"</td>"				
+				tab+='</tr>'  
+				tab+='</table>';
+				div1.innerHTML=tab */
+			}
         });
     }
 
