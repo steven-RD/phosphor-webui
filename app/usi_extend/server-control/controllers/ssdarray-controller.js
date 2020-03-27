@@ -72,7 +72,7 @@ window.angular && (function(angular) {
             console.log($scope.ssdNO);
             console.log($scope.ssdDetailInfo);
 			
-			div1=document.getElementById(ssdNum);
+			var div1=document.getElementById(ssdNum);
 		    var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", "Link Status", "Inserted", "Par ID", "ConfigureWidth"];
             var ssdInfo = [ssdNum, ssdInfo.SlotAddr, sdInfo.Type, ssdInfo.Status, ssdInfo.LinkSpeed, ssdInfo.LinkWidth, ssdInfo.LinkStatus, ssdInfo.Inserted, ssdInfo.PartitionID, ssdInfo.ConfigureWidth];
 		    var tab='<table border=1 width=500">'
@@ -94,6 +94,11 @@ window.angular && (function(angular) {
       });
     };
 
+		$scope.leave = function(obj){
+			var div=document.getElementById(obj);
+			div.style.display="none";
+		}
+	
     $scope.PowerSupply = function(name) {
         angular.forEach(psinfo['Status'], function(psInfo, psx) {
             console.log(psInfo);
