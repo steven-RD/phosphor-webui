@@ -46,6 +46,11 @@ window.angular && (function(angular) {
 
       var arrayInfo=[];
       var psinfo=[];
+	  $scope.leave = function(lab){
+			var div=document.getElementById(lab);
+			div.style.display="none";
+	  };
+	  
       /* var strSSDinfo = "<table id='ssdinfo' width='100%' border='1' cellpadding='0' cellspacing='0'>"+
 				"<tr><td colspan='3'><b>SSD Information</b></td></tr>"+
 				"<tr><td><b>SSD NO.</b></td><td><b></b></td></tr>"+
@@ -58,7 +63,7 @@ window.angular && (function(angular) {
 				"<tr><td><b>link up status:</b></td><td><b></b></td></tr>"+
 				"<tr><td><b>inserted:</b></td><td><b></b></td></tr>"+
 				"<tr><td><b>partition id:</b></td><td><b></b></td></tr></table>"; */
-
+	  ///get and show ssd information
       $scope.ssdNumSelected = function(num){
         console.log(num);
         console.log(arrayInfo);
@@ -74,7 +79,7 @@ window.angular && (function(angular) {
 			
 			var div1=document.getElementById(ssdNum);
 		    var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", "Link Status", "Inserted", "Par ID", "ConfigureWidth"];
-            var ssdInfo = [ssdNum, ssdInfo.SlotAddr, ssdInfo.Type, ssdInfo.Status, ssdInfo.LinkSpeed, ssdInfo.LinkWidth, ssdInfo.LinkStatus, ssdInfo.Inserted, ssdInfo.PartitionID, ssdInfo.ConfigureWidth];
+            var ssd = [ssdNum, ssdInfo.SlotAddr, ssdInfo.Type, ssdInfo.Status, ssdInfo.LinkSpeed, ssdInfo.LinkWidth, ssdInfo.LinkStatus, ssdInfo.Inserted, ssdInfo.PartitionID, ssdInfo.ConfigureWidth];
 		    var tab='<table border=1 width=500">'
 		 
             for ( var i = 0; i < description.length; i++){
@@ -83,23 +88,20 @@ window.angular && (function(angular) {
                 if(j == 0){
 					tab+="<td style='background:green'>"+description[i]+"</td>"
 				} else {
-					tab+="<td style='background:green'>"+ssdInfo[i]+"</td>"
+					tab+="<td style='background:green'>"+ssd[i]+"</td>"
 				}
              }
              tab+='</tr>'
          }    
          tab+='</table>';
-         div1.innerHTML=tab
+         div1.innerHTML=tab;
+		 div1.style.display="";
         }
       });
     };
 
-		$scope.leave = function(lab){
-			var div=document.getElementById(lab);
-			div.style.display="none";
-		}
-	
-    $scope.PowerSupply = function(name) {
+	///get and show ps information
+/*     $scope.PowerSupply = function(name) {
         angular.forEach(psinfo['Status'], function(psInfo, psx) {
             console.log(psInfo);
             console.log(psx);
@@ -110,9 +112,7 @@ window.angular && (function(angular) {
                 console.log($scope.psName);
                 console.log($scope.psDetailInfo);
 				
-				/* var div1=document.getElementById(ssdNum);
-				//var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", "Link Status", "Inserted", "Par ID", "ConfigureWidth"];
-				//var ssdInfo = [ssdNum, ssdInfo.SlotAddr, sdInfo.Type, ssdInfo.Status, ssdInfo.LinkSpeed, ssdInfo.LinkWidth, ssdInfo.LinkStatus, ssdInfo.Inserted, ssdInfo.PartitionID, ssdInfo.ConfigureWidth];
+				var div1=document.getElementById(ssdNum);
 				var tab='<table border=1 width=500">'
 		 
 				tab+='<tr>'
@@ -120,11 +120,45 @@ window.angular && (function(angular) {
 				tab+="<td style='background:green'>"+psInfo+"</td>"				
 				tab+='</tr>'  
 				tab+='</table>';
-				div1.innerHTML=tab */
+				div1.innerHTML=tab;
+				div1.style.display="";
 			}
         });
-    }
+    };
 
+	$scope.Cable = function(name) {
+		console.log(name);
+        console.log(arrayInfo);
+        angular.forEach(arrayInfo['Cableinfo'], function(cableInfo, cableNum){
+        console.log(cableInfo);
+        console.log(cableNum);
+        if(angular.equals(cableNum, name)){
+            console.log('equal');
+            //$scope.cableNO = name;
+            //$scope.cableDetailInfo = ssdInfo;
+			
+			var div1=document.getElementById(name);
+		    var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", "Link Status", "Inserted", "Par ID", "ConfigureWidth"];
+            var cable = [name, cableInfo.SlotAddr, cableInfo.Type, cableInfo.Status, cableInfo.LinkSpeed, cableInfo.LinkWidth, cableInfo.LinkStatus, cableInfo.Inserted, cableInfo.PartitionID, cableInfo.ConfigureWidth];
+		    var tab='<table border=1 width=500">'
+		 
+            for ( var i = 0; i < description.length; i++){
+                tab+='<tr>'
+                for ( var j = 0; j < 2; j++){
+                if(j == 0){
+					tab+="<td style='background:green'>"+description[i]+"</td>"
+				} else {
+					tab+="<td style='background:green'>"+ssd[i]+"</td>"
+				}
+             }
+             tab+='</tr>'
+         }    
+         tab+='</table>';
+         div1.innerHTML=tab
+        }
+      });
+	}; */
+	
       $scope.loadSsdInfo = function(){
         UsiAPIUtils.getSsdArrayInfo().then(
             function(data){
