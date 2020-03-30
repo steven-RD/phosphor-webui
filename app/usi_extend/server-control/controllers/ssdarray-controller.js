@@ -15,8 +15,8 @@ window.angular && (function(angular) {
     'use strict';
 
     angular.module('app.serverControl').controller('ssdArrayController', [
-    '$scope', '$window', 'UsiAPIUtils', 'dataService', 'toastService',
-    function($scope, $window, UsiAPIUtils, dataService, toastService) {
+    '$scope', '$window', 'UsiAPIUtils', 'dataService', 'toastService', '$',
+    function($scope, $window, UsiAPIUtils, dataService, toastService, $) {
       $scope.loading = false;
 
  /*      $scope.changeStatus = function(flag){
@@ -63,9 +63,7 @@ window.angular && (function(angular) {
 			var windowEvent = window.event;               ///Get windowEvent
 			var mousePosition = getMousePos(windowEvent); ///Get mouse position
 			lab.style.left = mousePosition.x + 'px';
-			lab.style.top = mousePosition.y + 'px';
-			//lab.style.left = x + 'px';
-			//lab.style.top = y + 'px';
+			lab.style.top = mousePosition.y + 'px';	
 			console.log(mousePosition.x + 'px');
 			console.log(mousePosition.y + 'px');
 				
@@ -176,6 +174,15 @@ window.angular && (function(angular) {
 	$scope.Switch = function(name) {
 		var swMsg = arrayInfo['Swinfo'];
 		var lab = document.getElementById(name);
+		//var windowEvent = window.event;               ///Get windowEvent
+		var mousePosition = getMousePos(window.event); ///Get mouse position
+		lab.style.left = mousePosition.x + 'px';
+		lab.style.top = mousePosition.y + 'px';
+		//lab.style.left = x + 'px';
+		//lab.style.top = y + 'px';
+		console.log(mousePosition.x + 'px');
+		console.log(mousePosition.y + 'px');
+		
 		var description = ["Pca9546", "Pca9555-1", "Pca9555-2", "Pca9555-3", "Pca9555-4", "Pca9555-5", 
 			"Pca9555-6", "Pca9555-7", "Pca9555-8", "Pca9555-9", "Pca9555-10", "Pca9555-11", "SsdType",
 			"CustomConfigurationFileVersion", "UsiFirmwareVersion", "VendorTableVersion"];
@@ -196,7 +203,7 @@ window.angular && (function(angular) {
 		}
 		tab+='</table>';
 		lab.innerHTML=tab;
-		lab.style.display="";			
+		lab.style.display="block";			
 		
 	};
 	
@@ -261,6 +268,7 @@ window.angular && (function(angular) {
             }
         );
       };
+	  
       // Get power supply info
       $scope.loadPowerSupplyInfo = function(){
         UsiAPIUtils.getPowerSupplyInfo().then(

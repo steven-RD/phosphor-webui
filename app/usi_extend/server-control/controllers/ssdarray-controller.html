@@ -63,8 +63,7 @@
 					<!-- <area id="PSA" shape="rect" coords="504,10,528,140" alt="ssd17" style="cursor:pointer" ng-mouseover="PowerSupply('PSA')" ng-mouseout="leave('PSA')"/>
 					<area id="PSB" shape="rect" coords="532,10,560,140" alt="ssd18" style="cursor:pointer" ng-mouseover="PowerSupply('PSB')" ng-mouseout="leave('PSB')"/>
 					<area id="Cable1" shape="rect" coords="564,10,558,140" alt="ssd19" style="cursor:pointer" ng-mouseover="Cable('Cable1')" ng-mouseout="leave('Cable1')"/>
-					<area id="Cable2" shape="rect" coords="592,10,616,140" alt="ssd20" style="cursor:pointer" ng-mouseover="Cable('Cable2')" ng-mouseout="leave('Cable2')"/>
-					
+					<area id="Cable2" shape="rect" coords="592,10,616,140" alt="ssd20" style="cursor:pointer" ng-mouseover="Cable('Cable2')" ng-mouseout="leave('Cable2')"/>			
 					<area id="Swinfo" shape="rect" coords="648,10,672,140" alt="ssd22" style="cursor:pointer" ng-mouseover="Switch('Swinfo')" ng-mouseout="leave('Swinfo')"/>
 					-->
 				</map></div></a>
@@ -73,13 +72,14 @@
 			<li class="img_display"><a><div>
 				<img src="../../../assets/images/J2024-03-rear.jpg" alt="cable" usemap="#cableMap" />
 				<map name="cableMap" >
-					<area id="PSA" shape="rect" coords="40,220,110,360" alt="power" style="cursor:pointer" ng-mouseover="Cable('Cable1')" ng-mouseout="leave('Cable1')"/>
+					<area id="PSA" shape="rect" coords="40,220,110,360" alt="power" style="cursor:pointer" ng-mouseover="PowerSupply('PSA')" ng-mouseout="leave('PSA')"/>
+					<area id="PSB" shape="rect" coords="40,220,110,360" alt="power" style="cursor:pointer" ng-mouseover="PowerSupply('PSB')" ng-mouseout="leave('PSB')"/>
 					<area id="Cable1" shape="rect" coords="190,220,460,330" alt="cable" style="cursor:pointer" ng-mouseover="Cable('Cable1')" ng-mouseout="leave('Cable1')"/>
 				</map></div></a>
             </li>
 			
             <li class="img_display"><a><div>
-				<img src="../../../assets/images/J2024-03-internal-struct.jpg" alt="{{ssdDescription}}" usemap="#insideMap">
+				<img src="../../../assets/images/J2024-03-internal-struct.jpg" alt="internal-struct" usemap="#insideMap">
 				<map name="insideMap" >
 				  <!-- <area shape="rect" coords="240,20,300,430" alt="cable" style="cursor:pointer"
 					  ng-mouseover="insideFrameMouseOver('insideFan', 560, 490)" ng-mouseleave="insideFrameMouseLeave('insideFan')"/>
