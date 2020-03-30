@@ -94,7 +94,7 @@ window.angular && (function(angular) {
                 console.log(name);
                 console.log(psInfo);
 				
-				var lab=document.getElementById(ssdNum);
+				var lab=document.getElementById(name);
 				var tab='<table border=1 align="center">'
 			    tab+="<tr><td align='center' valian='middle' colspan='2'><b>PowerSupplya Information</b></td></tr>"
 				tab+='<tr>'
@@ -119,7 +119,7 @@ window.angular && (function(angular) {
 				console.log('equal');
 				
 				var lab=document.getElementById(name);
-				var description = ["SSD NO.", "Status", "Cable Type", "Slot Addr", "Partition ID",
+				var description = ["Cable NO.", "Status", "Cable Type", "Slot Addr", "Partition ID",
 					"Link Status", "Link Active", "Link Width", "Physical Port", "UspDsp", "Present"];
 				var cable = [name, cableInfo.Status, cableInfo.CableType, cableInfo.SlotAddr, cableInfo.PartitionID, cableInfo.LinkStatus, 
 					cableInfo.LinkActive, cableInfo.LinkWidth, cableInfo.PhysicalPort, cableInfo.UspDsp, cableInfo.Present];
