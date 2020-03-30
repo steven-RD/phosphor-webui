@@ -19,7 +19,7 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, dataService, toastService) {
       $scope.loading = false;
 
-      $scope.changeStatus = function(flag){
+ /*      $scope.changeStatus = function(flag){
           $scope.ssdFlag = false;
           $scope.cableinfoFlag = false;
           $scope.swinfoFlag = false;
@@ -42,122 +42,137 @@ window.angular && (function(angular) {
           }else if(flag == 'ps'){
               $scope.psFlag = true;
           }
-      };
+      }; */
 
       var arrayInfo=[];
       var psinfo=[];
-	  $scope.leave = function(lab){
-			var div=document.getElementById(lab);
-			div.style.display="none";
+	  $scope.leave = function(id){
+	      var lab = document.getElementById(id);
+		  lab.style.display="none";
 	  };
 	  
-      /* var strSSDinfo = "<table id='ssdinfo' width='100%' border='1' cellpadding='0' cellspacing='0'>"+
-				"<tr><td colspan='3'><b>SSD Information</b></td></tr>"+
-				"<tr><td><b>SSD NO.</b></td><td><b></b></td></tr>"+
-				"<tr><td><b>type:</b></td><td><b></b></td></tr>"+
-				"<tr><td><b>slot address:</b></td><td><b></b></td></tr>"+
-				"<tr><td><b>status:</b></td><td><b></b></td></tr>"+
-				"<tr><td><b>link speed:</b></td><td><b></b></td></tr>"+
-				"<tr><td><b>link width:</b></td><td><b></b></td></tr>"+
-				"<tr><td><b>configure width:</b></td><td><b></b></td></tr>"+
-				"<tr><td><b>link up status:</b></td><td><b></b></td></tr>"+
-				"<tr><td><b>inserted:</b></td><td><b></b></td></tr>"+
-				"<tr><td><b>partition id:</b></td><td><b></b></td></tr></table>"; */
-	  ///get and show ssd information
+	  ///ssd information
       $scope.ssdNumSelected = function(num){
-        console.log(num);
-        console.log(arrayInfo);
       angular.forEach(arrayInfo['Ssdinfo'], function(ssdInfo, ssdNum){
         console.log(ssdInfo);
         console.log(ssdNum);
         if(angular.equals(ssdNum, num)){
             console.log('equal');
-            $scope.ssdNO = num;
-            $scope.ssdDetailInfo = ssdInfo;
-            console.log($scope.ssdNO);
-            console.log($scope.ssdDetailInfo);
 			
-			var div1=document.getElementById(ssdNum);
-		    var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", "Link Status", "Inserted", "Par ID", "ConfigureWidth"];
-            var ssd = [ssdNum, ssdInfo.SlotAddr, ssdInfo.Type, ssdInfo.Status, ssdInfo.LinkSpeed, ssdInfo.LinkWidth, ssdInfo.LinkStatus, ssdInfo.Inserted, ssdInfo.PartitionID, ssdInfo.ConfigureWidth];
-		    var tab='<table border=1 width=500">'
-		 
-            for ( var i = 0; i < description.length; i++){
+			var lab = document.getElementById(ssdNum);
+		    var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", 
+				"Link Status", "Inserted", "Partition ID", "Configure Width"];
+            var ssd = [ssdNum, ssdInfo.SlotAddr, ssdInfo.Type, ssdInfo.Status, ssdInfo.LinkSpeed, 
+				ssdInfo.LinkWidth, ssdInfo.LinkStatus, ssdInfo.Inserted, ssdInfo.PartitionID, ssdInfo.ConfigureWidth];
+		    var tab='<table border=1 align="center" >'
+		    tab+="<tr><td align='center' valian='middle' colspan='2'><b>SSD Information</b></td></tr>"
+            for ( var row = 0; row < description.length; row++){
                 tab+='<tr>'
-                for ( var j = 0; j < 2; j++){
-                if(j == 0){
-					tab+="<td style='background:green'>"+description[i]+"</td>"
+                for ( var col = 0; col < 2; col++){
+                if(col == 0){
+					tab+="<td style='background:green'>"+description[row]+"</td>"
 				} else {
-					tab+="<td style='background:green'>"+ssd[i]+"</td>"
+					tab+="<td style='background:green'>"+ssd[row]+"</td>"
 				}
              }
              tab+='</tr>'
          }    
          tab+='</table>';
-         div1.innerHTML=tab;
-		 div1.style.display="";
+         lab.innerHTML=tab;
+		 lab.style.display="";
         }
       });
     };
 
-	///get and show ps information
-/*     $scope.PowerSupply = function(name) {
+	///ps information
+    $scope.PowerSupply = function(name) {
         angular.forEach(psinfo['Status'], function(psInfo, psx) {
             console.log(psInfo);
             console.log(psx);
             if(angular.equals(name, psx)){
                 console.log('equael');
-                $scope.psName = name;
-                $scope.psDetailInfo = psInfo;
-                console.log($scope.psName);
-                console.log($scope.psDetailInfo);
+                console.log(name);
+                console.log(psInfo);
 				
-				var div1=document.getElementById(ssdNum);
-				var tab='<table border=1 width=500">'
-		 
+				var lab=document.getElementById(ssdNum);
+				var tab='<table border=1 align="center">'
+			    tab+="<tr><td align='center' valian='middle' colspan='2'><b>PowerSupplya Information</b></td></tr>"
 				tab+='<tr>'
 				tab+="<td style='background:green'>"+name+"</td>"
 				tab+="<td style='background:green'>"+psInfo+"</td>"				
 				tab+='</tr>'  
 				tab+='</table>';
-				div1.innerHTML=tab;
-				div1.style.display="";
+				lab.innerHTML=tab;
+				lab.style.display="";
 			}
         });
     };
 
+	///cable information
 	$scope.Cable = function(name) {
 		console.log(name);
         console.log(arrayInfo);
         angular.forEach(arrayInfo['Cableinfo'], function(cableInfo, cableNum){
-        console.log(cableInfo);
-        console.log(cableNum);
-        if(angular.equals(cableNum, name)){
-            console.log('equal');
-            //$scope.cableNO = name;
-            //$scope.cableDetailInfo = ssdInfo;
-			
-			var div1=document.getElementById(name);
-		    var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", "Link Status", "Inserted", "Par ID", "ConfigureWidth"];
-            var cable = [name, cableInfo.SlotAddr, cableInfo.Type, cableInfo.Status, cableInfo.LinkSpeed, cableInfo.LinkWidth, cableInfo.LinkStatus, cableInfo.Inserted, cableInfo.PartitionID, cableInfo.ConfigureWidth];
-		    var tab='<table border=1 width=500">'
-		 
-            for ( var i = 0; i < description.length; i++){
-                tab+='<tr>'
-                for ( var j = 0; j < 2; j++){
-                if(j == 0){
-					tab+="<td style='background:green'>"+description[i]+"</td>"
+			console.log(cableInfo);
+			console.log(cableNum);
+			if(angular.equals(cableNum, name)){
+				console.log('equal');
+				
+				var lab=document.getElementById(name);
+				var description = ["SSD NO.", "Status", "Cable Type", "Slot Addr", "Partition ID",
+					"Link Status", "Link Active", "Link Width", "Physical Port", "UspDsp", "Present"];
+				var cable = [name, cableInfo.Status, cableInfo.CableType, cableInfo.SlotAddr, cableInfo.PartitionID, cableInfo.LinkStatus, 
+					cableInfo.LinkActive, cableInfo.LinkWidth, cableInfo.PhysicalPort, cableInfo.UspDsp, cableInfo.Present];
+				var tab='<table border=1 align="center">'
+				
+				tab+="<tr><td align='center' valian='middle' colspan='2'><b>Cable Information</b></td></tr>"
+				
+				for ( var row = 0; row < description.length; row++){
+					tab+='<tr>'
+					for (var col = 0; col < 2; col++){
+						if(col == 0){
+							tab+="<td style='background:green'>"+description[row]+"</td>"
+						} else {
+							tab+="<td style='background:green'>"+cable[row]+"</td>"
+						}
+				   }
+				   tab+='</tr>'
+			   }    
+			   tab+='</table>';
+			   lab.innerHTML=tab;
+			   lab.style.display="";
+			}
+		});
+	};
+	
+	///switch information
+	$scope.Switch = function(name) {
+		var swMsg = arrayInfo['Swinfo'];
+		var lab = document.getElementById(name);
+		var description = ["Pca9546", "Pca9555-1", "Pca9555-2", "Pca9555-3", "Pca9555-4", "Pca9555-5", 
+			"Pca9555-6", "Pca9555-7", "Pca9555-8", "Pca9555-9", "Pca9555-10", "Pca9555-11", "SsdType",
+			"CustomConfigurationFileVersion", "UsiFirmwareVersion", "VendorTableVersion"];
+		
+		var tab='<table border=1 align="center">'
+		
+		tab+="<tr><td align='center' valian='middle' colspan='2'><b>Switch Information</b></td></tr>"
+		for(var row = 0; row < description.length; row++){
+			tab+='<tr>'
+			for(var col = 0; col < 2; col++){
+				if(col == 0){
+					tab+="<td style='background:green'>"+description[row]+"</td>"
 				} else {
-					tab+="<td style='background:green'>"+ssd[i]+"</td>"
+					tab+="<td style='background:green'>"+swMsg[description[row]]+"</td>"
 				}
-             }
-             tab+='</tr>'
-         }    
-         tab+='</table>';
-         div1.innerHTML=tab
-        }
-      });
-	}; */
+			}
+			tab+='</tr>'
+		}
+		tab+='</table>';
+		lab.innerHTML=tab;
+		lab.style.display="";			
+		
+	};
+	
 	
       $scope.loadSsdInfo = function(){
         UsiAPIUtils.getSsdArrayInfo().then(
