@@ -70,3 +70,56 @@ th , td {
  tr:nth-child(even) {
   background-color: #ffffff;
 }
+
+
+
+// Image
+.allImage{
+    height: 470px;
+    width: 850px;
+    margin: 0px auto;
+    position:relative;
+}
+.img li{
+    position: absolute;
+    top: 0;
+    left: 30px;
+    margin:0 auto;
+}
+.btn{
+    position: absolute;
+    width: 10px;
+    height: 40px;
+    background-color: darkgray;
+    color: white;
+    text-align: center;
+    line-height: 60px;
+    top: 60%;
+    margin-top: -20px;
+    display: none;
+}
+.left_btn{
+    left: 0;
+}
+.right_btn{
+    right: 0;
+}
+.allImage:hover .btn{
+    display: inline-block;
+    cursor: pointer;
+}
+.img_display{
+    display: none;
+}
+#cableDiv{
+    display: none;
+    position: absolute;
+    background-color: #7d8489;
+    width: 150px;
+}
+#insideFrameDiv{
+    display: none;
+    position: absolute;
+    background-color: #7d8489;
+    width: 150px;
+}
