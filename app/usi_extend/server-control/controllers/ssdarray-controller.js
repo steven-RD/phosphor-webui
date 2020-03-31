@@ -35,12 +35,12 @@ window.angular && (function(angular) {
             console.log('equal');
 			
 			var lab = document.getElementById(ssdNum);
-			var windowEvent = window.event;               ///Get windowEvent
+			/* var windowEvent = window.event;               ///Get windowEvent
 			var mousePosition = getMousePos(windowEvent); ///Get mouse position
 			lab.style.left = mousePosition.x + 'px';
 			lab.style.top = mousePosition.y + 'px';	
 			console.log(mousePosition.x + 'px');
-			console.log(mousePosition.y + 'px');
+			console.log(mousePosition.y + 'px'); */
 				
 		    var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", 
 				"Link Status", "Inserted", "Partition ID", "Configure Width"];
@@ -77,14 +77,14 @@ window.angular && (function(angular) {
                 console.log(psInfo);
 				
 				var lab=document.getElementById(name);
-				var windowEvent = window.event;               ///Get windowEvent
+				/* var windowEvent = window.event;               ///Get windowEvent
 				var mousePosition = getMousePos(windowEvent); ///Get mouse position
                 lab.style.left = mousePosition.x + 'px';
 				lab.style.top = mousePosition.y + 'px';
 				//lab.style.left = x + 'px';
 				//lab.style.top = y + 'px';
 				console.log(mousePosition.x + 'px');
-				console.log(mousePosition.y + 'px');
+				console.log(mousePosition.y + 'px'); */
 				
 				var tab='<table border=1 align="center">'
 			    tab+="<tr><td align='center' valian='middle' colspan='2'><b>PowerSupplya Information</b></td></tr>"
@@ -223,7 +223,7 @@ window.angular && (function(angular) {
 	};
 	
 	  //arrow loop
-	  var index = 0;
+	  /* var index = 0;
       var imgElement = document.getElementById("imgs").getElementsByTagName("li");
       var imgLen = imgElement.length;
       $scope.moveNext = function(arrow){
@@ -240,10 +240,11 @@ window.angular && (function(angular) {
             }
             angular.element(imgElement).eq(index).stop().fadeIn(10).siblings().stop().fadeOut(10);
 		  }
-      };
+      }; */
+	   $scope.moveNext = function(arrow){};
 	
 	  // Get mouse relative position
-      function getMousePos(event) {
+      /* function getMousePos(event) {
           var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
           var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
 		  //var x = event.pageX || event.clientX + scrollX;
@@ -251,7 +252,7 @@ window.angular && (function(angular) {
 		  var x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
 		  var y = event.clientY+ document.body.scrollTop + document.documentElement.scrollTop;
 		  return { 'x': x, 'y': y };
-      }
+      } */
 	
 	
 	
