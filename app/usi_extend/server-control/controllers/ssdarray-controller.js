@@ -223,7 +223,7 @@ window.angular && (function(angular) {
 	};
 	
 	  //arrow loop
-	  /* var index = 0;
+	  var index = 0;
       var imgElement = document.getElementById("imgs").getElementsByTagName("li");
       var imgLen = imgElement.length;
       $scope.moveNext = function(arrow){
@@ -240,7 +240,7 @@ window.angular && (function(angular) {
             }
             angular.element(imgElement).eq(index).stop().fadeIn(10).siblings().stop().fadeOut(10);
 		  }
-      }; */
+      };
 	   
 	
 	  // Get mouse relative position
