@@ -35,12 +35,12 @@ window.angular && (function(angular) {
             console.log('equal');
 			
 			var lab = document.getElementById(ssdNum);
-			/* var windowEvent = window.event;               ///Get windowEvent
+			var windowEvent = window.event;               ///Get windowEvent
 			var mousePosition = getMousePos(windowEvent); ///Get mouse position
 			lab.style.left = mousePosition.x + 'px';
 			lab.style.top = mousePosition.y + 'px';	
 			console.log(mousePosition.x + 'px');
-			console.log(mousePosition.y + 'px'); */
+			console.log(mousePosition.y + 'px');
 				
 		    var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", 
 				"Link Status", "Inserted", "Partition ID", "Configure Width"];
@@ -110,14 +110,14 @@ window.angular && (function(angular) {
 				console.log('equal');
 				
 				var lab=document.getElementById(name);
-				/* var windowEvent = window.event;               ///Get windowEvent
+				var windowEvent = window.event;               ///Get windowEvent
 				var mousePosition = getMousePos(windowEvent); ///Get mouse position
                 lab.style.left = mousePosition.x + 'px';
 				lab.style.top = mousePosition.y + 'px';
 				//lab.style.left = x + 'px';
 				//lab.style.top = y + 'px';
 				console.log(mousePosition.x + 'px');
-				console.log(mousePosition.y + 'px'); */
+				console.log(mousePosition.y + 'px');
 				
 				var description = ["Cable NO.", "Status", "Cable Type", "Slot Addr", "Partition ID",
 					"Link Status", "Link Active", "Link Width", "Physical Port", "UspDsp", "Present"];
@@ -190,13 +190,13 @@ window.angular && (function(angular) {
 		var swMsg = arrayInfo['Swinfo'];
 		var lab = document.getElementById(name);
 		//var windowEvent = window.event;              ///Get windowEvent
-		/* var mousePosition = getMousePos(window.event); ///Get mouse position
+		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
 		//lab.style.left = x + 'px';
 		//lab.style.top = y + 'px';
 		console.log(mousePosition.x + 'px');
-		console.log(mousePosition.y + 'px'); */
+		console.log(mousePosition.y + 'px');
 		
 		var description = ["Pca9546", "Pca9555-1", "Pca9555-2", "Pca9555-3", "Pca9555-4", "Pca9555-5", 
 			"Pca9555-6", "Pca9555-7", "Pca9555-8", "Pca9555-9", "Pca9555-10", "Pca9555-11", "SsdType",
@@ -241,10 +241,10 @@ window.angular && (function(angular) {
             angular.element(imgElement).eq(index).stop().fadeIn(10).siblings().stop().fadeOut(10);
 		  }
       }; */
-	   $scope.moveNext = function(arrow){};
+	   
 	
 	  // Get mouse relative position
-      /* function getMousePos(event) {
+      function getMousePos(event) {
           var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
           var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
 		  //var x = event.pageX || event.clientX + scrollX;
@@ -252,7 +252,7 @@ window.angular && (function(angular) {
 		  var x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
 		  var y = event.clientY+ document.body.scrollTop + document.documentElement.scrollTop;
 		  return { 'x': x, 'y': y };
-      } */
+      }
 	
 	
 	
