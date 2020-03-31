@@ -170,7 +170,7 @@ window.angular && (function(angular) {
 		});
 		
 		/// 
-		/* var cable = ["name", "Status", "CableType", "SlotAddr", "PartitionID", "LinkStatus", 
+		/* var info = ["name", "Status", "CableType", "SlotAddr", "PartitionID", "LinkStatus", 
 					"LinkActive", "LinkWidth", "PhysicalPort", "UspDsp", "Present"];
 		if (arrayInfo.hasOwnProperty('Cableinfo')){
 			var cableInfo = arrayInfo['Cableinfo'];
@@ -196,7 +196,7 @@ window.angular && (function(angular) {
 					if(col == 0){
 						tab+="<td>"+cableInfo.cableId+"</td>"
 					}else{
-						var tmp=cable[col];
+						var tmp=info[col];
 						tab+="<td>"+cableInfo.cableId.tmp+"</td>"
 					}
 				}
