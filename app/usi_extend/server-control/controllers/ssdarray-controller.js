@@ -190,7 +190,8 @@ window.angular && (function(angular) {
 			if(var row = 0; row < 12; row++) {
 				tab+='<tr>'
 				for(var col = 0; col < 11; col++){
-					var cable
+					var cableId = "Cable" + row + 1;
+					tab+="<td>"+description[row]+"</td>"
 				}
 				
 				tab+='</tr>'
@@ -253,6 +254,7 @@ window.angular && (function(angular) {
                 index = imgLen - 1; // The last image
             }
             angular.element(imgElement).eq(index).stop().fadeIn(10).siblings().stop().fadeOut(10);
+		  }
       };
 	
 	  // Get mouse relative position
@@ -264,7 +266,7 @@ window.angular && (function(angular) {
 		  var x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
 		  var y = event.clientY+ document.body.scrollTop + document.documentElement.scrollTop;
 		  return { 'x': x, 'y': y };
-      }
+      };
 	
 	
 	
