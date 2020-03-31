@@ -170,7 +170,9 @@ window.angular && (function(angular) {
 		});
 		
 		/// 
-		/* if (arrayInfo.hasOwnProperty('Cableinfo')){
+		/* var cable = ["name", "Status", "CableType", "SlotAddr", "PartitionID", "LinkStatus", 
+					"LinkActive", "LinkWidth", "PhysicalPort", "UspDsp", "Present"];
+		if (arrayInfo.hasOwnProperty('Cableinfo')){
 			var cableInfo = arrayInfo['Cableinfo'];
 			console.log(cableInfo);
 			var lab=document.getElementById(name);
@@ -191,13 +193,21 @@ window.angular && (function(angular) {
 				tab+='<tr>'
 				for(var col = 0; col < 11; col++){
 					var cableId = "Cable" + row + 1;
-					tab+="<td>"+description[row]+"</td>"
+					if(col == 0){
+						tab+="<td>"+cableInfo.cableId+"</td>"
+					}else{
+						var tmp=cable[col];
+						tab+="<td>"+cableInfo.cableId.tmp+"</td>"
+					}
 				}
 				
 				tab+='</tr>'
 			}
+			tab+='</table>';
+		    lab.innerHTML=tab;
+		    lab.style.display="block";
 		} */
-		
+		////
 	};
 	
 	///switch information
@@ -237,7 +247,7 @@ window.angular && (function(angular) {
 		
 	};
 	
-	  //arrow loop
+	 /*  //arrow loop
 	  var index = 0;
       var imgElement = document.getElementById("img").getElementsByTagName("li");
       var imgLen = imgElement.length;
@@ -255,7 +265,7 @@ window.angular && (function(angular) {
             }
             angular.element(imgElement).eq(index).stop().fadeIn(10).siblings().stop().fadeOut(10);
 		  }
-      };
+      }; */
 	
 	  // Get mouse relative position
       function getMousePos(event) {
