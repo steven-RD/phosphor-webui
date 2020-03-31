@@ -19,31 +19,6 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, dataService, toastService, $) {
       $scope.loading = false;
 
- /*      $scope.changeStatus = function(flag){
-          $scope.ssdFlag = false;
-          $scope.cableinfoFlag = false;
-          $scope.swinfoFlag = false;
-          $scope.dspFlag = false;
-          $scope.patopoFlag = false;
-          $scope.bindinfoFlag = false;
-          $scope.psFlag = false;
-          if(flag == 'ssd'){
-              $scope.ssdFlag = true;
-          }else if(flag == 'cable'){
-              $scope.cableinfoFlag = true;
-          }else if(flag == 'swinfo'){
-              $scope.swinfoFlag = true;
-          }else if(flag == 'dsp'){
-              $scope.dspFlag = true;
-          }else if(flag == 'patopo'){
-              $scope.patopoFlag = true;
-          }else if(flag == 'bind'){
-              $scope.bindinfoFlag = true;
-          }else if(flag == 'ps'){
-              $scope.psFlag = true;
-          }
-      }; */
-
       var arrayInfo=[];
       var psinfo=[];
 	  $scope.leave = function(id){
@@ -60,8 +35,8 @@ window.angular && (function(angular) {
             console.log('equal');
 			
 			var lab = document.getElementById(ssdNum);
-			var windowEvent = window.event;               ///Get windowEvent
-			/* var mousePosition = getMousePos(windowEvent); ///Get mouse position
+			/*var windowEvent = window.event;               ///Get windowEvent
+			 var mousePosition = getMousePos(windowEvent); ///Get mouse position
 			lab.style.left = mousePosition.x + 'px';
 			lab.style.top = mousePosition.y + 'px';	
 			console.log(mousePosition.x + 'px');
@@ -249,7 +224,7 @@ window.angular && (function(angular) {
 	
 	 /*  //arrow loop
 	  var index = 0;
-      var imgElement = document.getElementById("img").getElementsByTagName("li");
+      var imgElement = document.getElementById("imgs").getElementsByTagName("li");
       var imgLen = imgElement.length;
       $scope.moveNext = function(arrow){
           if(arrow == 'right'){
