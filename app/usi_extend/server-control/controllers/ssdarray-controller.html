@@ -31,7 +31,7 @@
 			<div class="allImage" >
 			  <ul class="ulimg" id="imgs">
 				<li>
-				<img src="../../../assets/images/J2024-03-front.png" class="ssd__logo" alt="ssd" usemap="#SSDmap"/>
+				<img src="../../../assets/images/J2024-03-front.png" class="ssd-image" alt="ssd" usemap="#SSDmap"/>
 				<map name="SSDmap" >
 					<area id="SSD1" shape="rect" coords="58,10,80,140" alt="ssd1" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD1')" ng-mouseout="leave('SSD1')"/>
 					<area id="SSD2" shape="rect" coords="86,10,108,140" alt="ssd2" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD2')" ng-mouseout="leave('SSD2')"/>
@@ -93,8 +93,8 @@
 	</ul>
 		
 		
-        <div class="left_btn btn"><p class="arrow" ng-click="moveNext('left')"></p></div>
-        <div class="right_btn btn"><p class="arrow" ng-click="moveNext('right')"></p></div>
+        <div class="left_btn btn" ng-click="moveNext('left')"><p class="arrow"><</p></div>
+        <div class="right_btn btn" ng-click="moveNext('right')"><p class="arrow">></p></div>
 
 	</div>
 
