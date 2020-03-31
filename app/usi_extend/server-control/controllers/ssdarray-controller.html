@@ -26,7 +26,7 @@
     </div> -->
 
     <div class="allImage" >
-		<ul class="img">
+		<ul class="ulimg" id="img">
 			<li class="img_display"><a><div>
 				<img src="../../../assets/images/J2024-03-front.jpg" class="ssd__logo" alt="ssd" usemap="#SSDmap"/>
 				<map name="SSDmap" >
@@ -79,21 +79,19 @@
             </li>
 			
             <li class="img_display"><a><div>
-				<img src="../../../assets/images/J2024-03-internal-struct.jpg" alt="internal-struct" usemap="#insideMap">
-				<map name="insideMap" >
-				  <!-- <area shape="rect" coords="240,20,300,430" alt="cable" style="cursor:pointer"
-					  ng-mouseover="insideFrameMouseOver('insideFan', 560, 490)" ng-mouseleave="insideFrameMouseLeave('insideFan')"/>
+				<img src="../../../assets/images/J2024-03-internal-struct.jpg" alt="internal-struct" usemap="#insideMap" />
+				<map name="insideMap">
+				  <!-- <area id="Fan1" shape="rect" coords="240,20,300,430" alt="fan" style="cursor:pointer" ng-mouseover="Fan('Fan1')" ng-mouseleave="leave('Fan1')"/>
 				  <area shape="rect" coords="450,250,510,300" alt="cable" style="cursor:pointer"
-					  ng-mouseover="insideFrameMouseOver('insideCable', 760, 590)" ng-mouseleave="insideFrameMouseLeave('insideCable')"/>
-				  <area shape="rect" coords="335,350,610,430" alt="power" style="cursor:pointer"
-					  ng-mouseover="insideFrameMouseOver('insidePower', 760, 680)" ng-mouseleave="insideFrameMouseLeave('insidePower')"/> -->
+					  ng-mouseover="insideFrameMouseOver('insideCable', 760, 590)" ng-mouseleave="insideFrameMouseLeave('insideCable')"/> -->
+				  <area id="PS" shape="rect" coords="335,350,610,430" alt="power" style="cursor:pointer" ng-mouseover="PowerSupply('PS')" ng-mouseout="leave('PS')"/> 
 				</map></div></a>
             </li>
 		</ul>
 		
 		<p>{{index}}</p>
         <div class="left_btn btn"><p class="arrow" ng-click="moveNext('left')"></p></div>
-        <div class="right_btn btn"><p class="arrow" ng-click="moveNext('right')"><p></div>
+        <div class="right_btn btn"><p class="arrow" ng-click="moveNext('right')"></p></div>
 
     </div>
 

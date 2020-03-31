@@ -15,7 +15,7 @@ window.angular && (function(angular) {
     'use strict';
 
     angular.module('app.serverControl').controller('ssdArrayController', [
-    '$scope', '$window', 'UsiAPIUtils', 'dataService', 'toastService', '$',
+    '$scope', '$window', 'UsiAPIUtils', 'dataService', 'toastService',
     function($scope, $window, UsiAPIUtils, dataService, toastService, $) {
       $scope.loading = false;
 
@@ -168,13 +168,42 @@ window.angular && (function(angular) {
 			   lab.style.display="block";
 			}
 		});
+		
+		/// 
+		/* if (arrayInfo.hasOwnProperty('Cableinfo')){
+			var cableInfo = arrayInfo['Cableinfo'];
+			console.log(cableInfo);
+			var lab=document.getElementById(name);
+			var windowEvent = window.event;               ///Get windowEvent
+			var mousePosition = getMousePos(windowEvent); ///Get mouse position
+			lab.style.left = mousePosition.x + 'px';
+			lab.style.top = mousePosition.y + 'px';
+			//lab.style.left = x + 'px';
+			//lab.style.top = y + 'px';
+			console.log(mousePosition.x + 'px');
+			console.log(mousePosition.y + 'px');
+			
+			var tab='<table border=1 align="center">'
+			tab+="<tr><td><b>Cable NO.</b></td><td><b>Status</b></td><td><b>Cable Type</b></td><td><b>Slot Addr</b></td>" +
+			     "<td><b>Partition ID</b></td><td><b>Link Status</b></td><td><b>Link Active</b></td>" +
+				 "<td><b>Link Width</b></td><td><b>Physical Port</b></td><td><b>UspDsp</b></td><td><b>Present</b></td></tr>"
+			if(var row = 0; row < 12; row++) {
+				tab+='<tr>'
+				for(var col = 0; col < 11; col++){
+					var cable
+				}
+				
+				tab+='</tr>'
+			}
+		} */
+		
 	};
 	
 	///switch information
 	$scope.Switch = function(name) {
 		var swMsg = arrayInfo['Swinfo'];
 		var lab = document.getElementById(name);
-		//var windowEvent = window.event;               ///Get windowEvent
+		//var windowEvent = window.event;              ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
@@ -209,22 +238,21 @@ window.angular && (function(angular) {
 	
 	  //arrow loop
 	  var index = 0;
-      var imgLen = $(".img li").length; // Get the number of images
-      console.log(imgLen);
+      var imgElement = document.getElementById("img").getElementsByTagName("li");
+      var imgLen = imgElement.length;
       $scope.moveNext = function(arrow){
           if(arrow == 'right'){
             index++;
             if (index == imgLen){
                 index = 0; // The first image
             }
-            $(".img li").eq(index).stop().fadeIn(10).siblings().stop().fadeOut(10);
+            angular.element(imgElement).eq(index).stop().fadeIn(10).siblings().stop().fadeOut(10);
           }else if(arrow == 'left'){
             index--;
             if (index == -1){
                 index = imgLen - 1; // The last image
             }
-            $(".img li").eq(index).stop().fadeIn(10).siblings().stop().fadeOut(10);
-          }
+            angular.element(imgElement).eq(index).stop().fadeIn(10).siblings().stop().fadeOut(10);
       };
 	
 	  // Get mouse relative position
