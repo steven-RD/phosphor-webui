@@ -36,8 +36,12 @@ window.angular && (function(angular) {
       };
 	  
       var arrayInfo=[];
-      var psinfo=[];
+      var PSInfo=[];
 	  $scope.leave = function(id){
+		  $scope.ssdFlag = false;
+          $scope.cableinfoFlag = false;
+          $scope.swinfoFlag = false;
+          $scope.psFlag = false;
 	      var lab = document.getElementById(id);
 		  lab.style.display="none";
 	  };
@@ -56,6 +60,7 @@ window.angular && (function(angular) {
 			var lab = document.getElementById("usi-ssd");
 			var windowEvent = window.event;               ///Get windowEvent
 			var mousePosition = getMousePos(windowEvent); ///Get mouse position
+			lab.style.display="block";
 			lab.style.left = mousePosition.x + 'px';
 			lab.style.top = mousePosition.y + 'px';	
 			console.log(mousePosition.x + 'px');
@@ -79,60 +84,49 @@ window.angular && (function(angular) {
              tab+='</tr>'
          }    
          tab+='</table>';
-         lab.innerHTML=tab; */
-		 lab.style.display="block";
+         lab.innerHTML=tab; 
+		 lab.style.display="block";*/
         }
       });
     };
 
 	///ps information
     $scope.PowerSupply = function(name) {
-        angular.forEach(psinfo['Status'], function(psInfo, psx) {
-            console.log(psInfo);
-            console.log(psx);
-            if(angular.equals(name, psx)){
-                console.log('equal');
-                console.log(name);
-                console.log(psInfo);
-				
-				var lab=document.getElementById(name);
-				var windowEvent = window.event;               ///Get windowEvent
-				var mousePosition = getMousePos(windowEvent); ///Get mouse position
-                lab.style.left = mousePosition.x + 'px';
-				lab.style.top = mousePosition.y + 'px';
-				//lab.style.left = x + 'px';
-				//lab.style.top = y + 'px';
-				console.log(mousePosition.x + 'px');
-				console.log(mousePosition.y + 'px');
-				
-				var tab='<table border=1 align="center">'
-			    tab+="<tr><td align='center' valian='middle' colspan='2'><b>PowerSupplya Information</b></td></tr>"
-				tab+='<tr>'
-				tab+="<td style='background:green'>"+name+"</td>"
-				tab+="<td style='background:green'>"+psInfo+"</td>"				
-				tab+='</tr>'  
-				tab+='</table>';
-				lab.innerHTML=tab;
-				lab.style.display="block";
-			}
-        });
+		changeStatus('ps');
+		var lab=document.getElementById("usi-ps");
+		var windowEvent = window.event;               ///Get windowEvent
+		var mousePosition = getMousePos(windowEvent); ///Get mouse position
+		lab.style.display="block";
+		lab.style.left = mousePosition.x + 'px';
+		lab.style.top = mousePosition.y + 'px';
+		
+		if(angular.equals(name, "PS")) {
+			$scope.psinfo=PSInfo['Status'];
+		}else{
+			angular.forEach(PSInfo['Status'], function(psInfo, psName) {
+				if(angular.equals(psName, name)) {
+					$scope.psinfo=psInfo;
+				}
+			});
+		}
     };
 
 	///cable information
 	$scope.Cable = function(name) {
+		changeStatus('cable');
 		console.log(name);
         console.log(arrayInfo);
 		$scope.cableinfo=arrayInfo['Cableinfo'];
-		var lab=document.getElementById(name);
+		var lab=document.getElementById("usi-cable");
 		var windowEvent = window.event;               ///Get windowEvent
 		var mousePosition = getMousePos(windowEvent); ///Get mouse position
+		lab.style.display="block";
 		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
 		//lab.style.left = x + 'px';
 		//lab.style.top = y + 'px';
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
-		lab.style.display="block";
 		
        /*  angular.forEach(arrayInfo['Cableinfo'], function(cableInfo, cableNum){
 			console.log(cableInfo);
@@ -180,10 +174,12 @@ window.angular && (function(angular) {
 	
 	///switch information
 	$scope.Switch = function(name) {
-		var swMsg = arrayInfo['Swinfo'];
-		var lab = document.getElementById(name);
+		changeStatus('swinfo');
+		var $scope.swinfo = arrayInfo['Swinfo'];
+		var lab = document.getElementById("usi-switch");
 		//var windowEvent = window.event;              ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
+		lab.style.display="block";		
 		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
 		//lab.style.left = x + 'px';
@@ -191,7 +187,7 @@ window.angular && (function(angular) {
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
 		
-		var description = ["Pca9546", "Pca9555-1", "Pca9555-2", "Pca9555-3", "Pca9555-4", "Pca9555-5", 
+/* 		var description = ["Pca9546", "Pca9555-1", "Pca9555-2", "Pca9555-3", "Pca9555-4", "Pca9555-5", 
 			"Pca9555-6", "Pca9555-7", "Pca9555-8", "Pca9555-9", "Pca9555-10", "Pca9555-11", "SsdType",
 			"CustomConfigurationFileVersion", "UsiFirmwareVersion", "VendorTableVersion"];
 		
@@ -204,15 +200,14 @@ window.angular && (function(angular) {
 				if(col == 0){
 					tab+="<td style='background:green'>"+description[row]+"</td>"
 				} else {
-					tab+="<td style='background:green'>"+swMsg[description[row]]+"</td>"
+					tab+="<td style='background:green'>"+swinfo[description[row]]+"</td>"
 				}
 			}
 			tab+='</tr>'
 		}
 		tab+='</table>';
-		lab.innerHTML=tab;
-		lab.style.display="block";			
-		
+		lab.innerHTML=tab; */
+				
 	};
 	
 	  //arrow loop
