@@ -122,7 +122,19 @@ window.angular && (function(angular) {
 	$scope.Cable = function(name) {
 		console.log(name);
         console.log(arrayInfo);
-        angular.forEach(arrayInfo['Cableinfo'], function(cableInfo, cableNum){
+		$scope.cableinfo=arrayInfo['Cableinfo'];
+		var lab=document.getElementById(name);
+		var windowEvent = window.event;               ///Get windowEvent
+		var mousePosition = getMousePos(windowEvent); ///Get mouse position
+		lab.style.left = mousePosition.x + 'px';
+		lab.style.top = mousePosition.y + 'px';
+		//lab.style.left = x + 'px';
+		//lab.style.top = y + 'px';
+		console.log(mousePosition.x + 'px');
+		console.log(mousePosition.y + 'px');
+		lab.style.display="block";
+		
+       /*  angular.forEach(arrayInfo['Cableinfo'], function(cableInfo, cableNum){
 			console.log(cableInfo);
 			console.log(cableNum);
 			if(angular.equals(cableNum, name)){
@@ -160,48 +172,10 @@ window.angular && (function(angular) {
 			   tab+='</table>';
 			   lab.innerHTML=tab;
 			   lab.style.display="block";
-			}
+			} */
 		});
 		
-		/// 
-		/* var info = ["name", "Status", "CableType", "SlotAddr", "PartitionID", "LinkStatus", 
-					"LinkActive", "LinkWidth", "PhysicalPort", "UspDsp", "Present"];
-		if (arrayInfo.hasOwnProperty('Cableinfo')){
-			var cableInfo = arrayInfo['Cableinfo'];
-			console.log(cableInfo);
-			var lab=document.getElementById(name);
-			var windowEvent = window.event;               ///Get windowEvent
-			var mousePosition = getMousePos(windowEvent); ///Get mouse position
-			lab.style.left = mousePosition.x + 'px';
-			lab.style.top = mousePosition.y + 'px';
-			//lab.style.left = x + 'px';
-			//lab.style.top = y + 'px';
-			console.log(mousePosition.x + 'px');
-			console.log(mousePosition.y + 'px');
-			
-			var tab='<table border=1 align="center">'
-			tab+="<tr><td><b>Cable NO.</b></td><td><b>Status</b></td><td><b>Cable Type</b></td><td><b>Slot Addr</b></td>" +
-			     "<td><b>Partition ID</b></td><td><b>Link Status</b></td><td><b>Link Active</b></td>" +
-				 "<td><b>Link Width</b></td><td><b>Physical Port</b></td><td><b>UspDsp</b></td><td><b>Present</b></td></tr>"
-			if(var row = 0; row < 12; row++) {
-				tab+='<tr>'
-				for(var col = 0; col < 11; col++){
-					var cableId = "Cable" + row + 1;
-					if(col == 0){
-						tab+="<td>"+cableInfo.cableId+"</td>"
-					}else{
-						var tmp=info[col];
-						tab+="<td>"+cableInfo.cableId.tmp+"</td>"
-					}
-				}
-				
-				tab+='</tr>'
-			}
-			tab+='</table>';
-		    lab.innerHTML=tab;
-		    lab.style.display="block";
-		} */
-		////
+		
 	};
 	
 	///switch information
@@ -247,20 +221,27 @@ window.angular && (function(angular) {
 	  console.log(imgElement);
       var imgLen = imgElement.length;
       $scope.moveNext = function(arrow){
-          if(arrow == 'right'){
-            index++;
-            if (index == imgLen){
-                index = 0; // The first image
-            }
-            angular.element(imgElement).eq(index).stop().fadeIn(10).siblings().stop().fadeOut(10);
-          }else if(arrow == 'left'){
-            index--;
-            if (index == -1){
-                index = imgLen - 1; // The last image
-            }
-            angular.element(imgElement).eq(index).stop().fadeIn(10).siblings().stop().fadeOut(10);
+		  if(arrow == 'right'){
+			index++;
+			if (index == imgLen){
+				index = 0; // The first image
+			}
+			angular.element(imgElement).eq(index-1).addClass('img_display');
+			angular.element(imgElement).eq(index).removeClass('img_display');
+		  }else if(arrow == 'left'){
+			index--;
+			if (index == -1){
+				index = imgLen - 1; // The last image
+			}
+			if (index == 2){
+				angular.element(imgElement).eq(0).addClass('img_display');
+			}else{
+				angular.element(imgElement).eq(index+1).addClass('img_display');
+			}
+			angular.element(imgElement).eq(index).removeClass('img_display');
 		  }
-      };
+	  };
+
 	   
 	
 	  // Get mouse relative position
