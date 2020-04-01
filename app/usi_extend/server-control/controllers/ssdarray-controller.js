@@ -107,7 +107,6 @@ window.angular && (function(angular) {
 				if(angular.equals(psName, name)) {
 					$scope.psinfo=psInfo;
 				}
-				break;
 			});
 		}
     };
