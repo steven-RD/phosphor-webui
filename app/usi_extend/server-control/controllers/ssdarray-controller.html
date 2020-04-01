@@ -28,12 +28,12 @@
 
 		<div class="allImage" >
 			<ul class="ulimg" id="imgs"><li>
-				<img src="../../../assets/images/J2024-03-front.png" class="ssd-image" alt="ssd" usemap="#SSDmap"/>
+				<img id="frontImg" src="../../../assets/images/J2024-03-front.png" class="ssd-image" alt="ssd" usemap="#SSDmap"/>
 				<map name="SSDmap" >
-					<area shape="rect" coords="58,10,80,140" alt="ssd1" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD1')" ng-mouseout="leave('SSD1')"><div id="PSA"></div></area>
-					<div id="PSB"><area shape="rect" coords="86,10,108,140" alt="ssd2" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD2')" ng-mouseout="leave('SSD2')"/></div>
-					<div id="PSA"><area shape="rect" coords="114,10,136,140" alt="ssd3" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD3')" ng-mouseout="leave('SSD3')"/></div>
-					<area shape="rect" coords="140,10,164,140" alt="ssd4" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD4')" ng-mouseout="leave('SSD4')"><div id="PSB"></div></area>
+					<area shape="rect" coords="58,10,80,140" alt="ssd1" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD1')" ng-mouseout="leave('SSD1')">
+					<area shape="rect" coords="86,10,108,140" alt="ssd2" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD2')" ng-mouseout="leave('SSD2')"/>
+					<area shape="rect" coords="114,10,136,140" alt="ssd3" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD3')" ng-mouseout="leave('SSD3')"/>
+					<area shape="rect" coords="140,10,164,140" alt="ssd4" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD4')" ng-mouseout="leave('SSD4')">
 					
 					<area id="SSD5" shape="rect" coords="168,10,192,140" alt="ssd5" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD5')" ng-mouseout="leave('usi-ssd')"/>
 					<area id="SSD6" shape="rect" coords="196,10,220,140" alt="ssd6" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD6')" ng-mouseout="leave('usi-ssd')"/>
@@ -70,7 +70,7 @@
 			</li>
 			
 			<li class="img_display"><div>
-				<img src="../../../assets/images/J2024-03-rear.png" alt="cableImage" usemap="#cableMap" />
+				<img id="rearImg" src="../../../assets/images/J2024-03-rear.png" alt="cableImage" usemap="#cableMap" />
 				<map name="cableMap" >
 					<area id="PSA" shape="rect" coords="40,220,110,360" alt="powerA" style="cursor:pointer" ng-mouseover="PowerSupply('PSA')" ng-mouseout="leave('PSA')"/>
 					<area id="PSB" shape="rect" coords="40,220,110,360" alt="powerB" style="cursor:pointer" ng-mouseover="PowerSupply('PSB')" ng-mouseout="leave('PSB')"/>
@@ -79,7 +79,7 @@
             </li>
 			
             <li class="img_display"><div>
-				<img src="../../../assets/images/J2024-03-internal-struct.png" alt="internal-struct" usemap="#insideMap" />
+				<img id="insideImg" src="../../../assets/images/J2024-03-internal-struct.png" alt="internal-struct" usemap="#insideMap" />
 				<map name="insideMap">
 				  <area id="Fan1" shape="rect" coords="240,20,300,430" alt="fan" style="cursor:pointer" ng-mouseover="Fan('Fan1')" ng-mouseleave="leave('Fan1')"/>
 				  <!--<area shape="rect" coords="450,250,510,300" alt="cable" style="cursor:pointer"
