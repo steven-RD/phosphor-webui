@@ -173,7 +173,7 @@ window.angular && (function(angular) {
 			   lab.innerHTML=tab;
 			   lab.style.display="block";
 			} */
-		});
+		//});
 		
 		
 	};
