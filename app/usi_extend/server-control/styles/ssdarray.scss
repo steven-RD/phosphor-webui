@@ -73,12 +73,16 @@ th , td {
     width: 850px;
     margin: 0px auto;
     position:relative;
+    left: -8%;
 }
 .img li{
     position: absolute;
     top: 0;
     left: 30px;
     margin:0 auto;
+    left: 40%;
+    top: 0%;
+    transform: translate(-40%,-0%);
 }
 .btn{
     position: absolute;
@@ -88,7 +92,7 @@ th , td {
     color: white;
     text-align: center;
     line-height: 60px;
-    top: 60%;
+    top: 45%;
     margin-top: -20px;
     display: none;
 }
@@ -116,4 +120,13 @@ th , td {
     position: absolute;
     background-color: #7d8489;
     width: 150px;
+}
+
+#frontImg #rareImg{
+    width: 764px;
+    height: 350px;
+}
+#insideImg{
+    width: 600px;
+    height: 450px;
 }

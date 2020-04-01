@@ -65,6 +65,7 @@ window.angular && (function(angular) {
 			lab.style.top = mousePosition.y + 'px';	
 			console.log(mousePosition.x + 'px');
 			console.log(mousePosition.y + 'px');
+			console.log(lab);
 				
 		    /* var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", 
 				"Link Status", "Inserted", "Partition ID", "Configure Width"];
@@ -99,6 +100,7 @@ window.angular && (function(angular) {
 		lab.style.display="block";
 		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
+		console.log(lab);
 		
 		if(angular.equals(name, "PS")) {
 			$scope.psinfo=PSInfo['Status'];
@@ -127,6 +129,7 @@ window.angular && (function(angular) {
 		//lab.style.top = y + 'px';
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
+		console.log(lab);
 		
        /*  angular.forEach(arrayInfo['Cableinfo'], function(cableInfo, cableNum){
 			console.log(cableInfo);
@@ -186,6 +189,7 @@ window.angular && (function(angular) {
 		//lab.style.top = y + 'px';
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
+		console.log(lab);
 		
 /* 		var description = ["Pca9546", "Pca9555-1", "Pca9555-2", "Pca9555-3", "Pca9555-4", "Pca9555-5", 
 			"Pca9555-6", "Pca9555-7", "Pca9555-8", "Pca9555-9", "Pca9555-10", "Pca9555-11", "SsdType",
