@@ -60,13 +60,13 @@ window.angular && (function(angular) {
 			changeStatus('ssd');
 			
 			var lab = document.getElementById('usi-ssd');
-			var windowEvent = window.event;               ///Get windowEvent
-			var mousePosition = getMousePos(windowEvent); ///Get mouse position
+			//var windowEvent = window.event;               ///Get windowEvent
+			//var mousePosition = getMousePos(windowEvent); ///Get mouse position
 			lab.style.display="block";
-			lab.style.left = mousePosition.x + 'px';
-			lab.style.top = mousePosition.y + 'px';	
-			console.log(mousePosition.x + 'px');
-			console.log(mousePosition.y + 'px');
+			lab.style.left = 200 + 'px';
+			lab.style.top = 200 + 'px';	
+			//console.log(mousePosition.x + 'px');
+			//console.log(mousePosition.y + 'px');
 			console.log(lab);
         }
       });
@@ -75,20 +75,29 @@ window.angular && (function(angular) {
 	///ps information
     $scope.PowerSupply = function(name) {
 		changeStatus('ps');
-		var lab=document.getElementById('usi-ps');
-		var windowEvent = window.event;               ///Get windowEvent
-		var mousePosition = getMousePos(windowEvent); ///Get mouse position
-		lab.style.display="block";
-		lab.style.left = mousePosition.x + 'px';
-		lab.style.top = mousePosition.y + 'px';
-		console.log(lab);
+		
 		
 		if(angular.equals(name, 'PS')) {
+			var lab=document.getElementById('usi-ps');
+			var windowEvent = window.event;               ///Get windowEvent
+			var mousePosition = getMousePos(windowEvent); ///Get mouse position
+			lab.style.display="block";
+			lab.style.left = mousePosition.x + 'px';
+			lab.style.top = mousePosition.y + 'px';
 			$scope.psinfo=PSInfo['Status'];
+			console.log(lab);
 			console.log($scope.psinfo);
 		}else{
 			angular.forEach(PSInfo['Status'], function(psInfo, psName) {
+				var lab=document.getElementById('usi-psx');
+				var windowEvent = window.event;               ///Get windowEvent
+				var mousePosition = getMousePos(windowEvent); ///Get mouse position
+				lab.style.display="block";
+				lab.style.left = mousePosition.x + 'px';
+				lab.style.top = mousePosition.y + 'px';
+				console.log(lab);
 				if(angular.equals(psName, name)) {
+					$scope.psname=psName;
 					$scope.psinfo=psInfo;
 					console.log($scope.psinfo);
 				}

@@ -49,23 +49,23 @@
 					<area shape="rect" coords="420,10,444,140" alt="ssd14" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD14')" ng-mouseout="leave('usi-ssd')"/>
 					<area shape="rect" coords="448,10,472,140" alt="ssd15" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD15')" ng-mouseout="leave('usi-ssd')"/>
 					<area shape="rect" coords="476,10,500,140" alt="ssd16" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD16')" ng-mouseout="leave('usi-ssd')"/>
-					<!-- 
+					
 					<area shape="rect" coords="504,10,528,140" alt="ssd17" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD17')" ng-mouseout="leave('usi-ssd')"/>
 					<area shape="rect" coords="532,10,560,140" alt="ssd18" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD18')" ng-mouseout="leave('usi-ssd')"/>
 					<area shape="rect" coords="564,10,558,140" alt="ssd19" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD19')" ng-mouseout="leave('usi-ssd')"/>
 					<area shape="rect" coords="592,10,616,140" alt="ssd20" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD20')" ng-mouseout="leave('usi-ssd')"/>
-					 -->
+					 
 					<area shape="rect" coords="620,10,644,140" alt="ssd21" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD21')" ng-mouseout="leave('usi-ssd')"/>
 					<area shape="rect" coords="648,10,672,140" alt="ssd22" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD22')" ng-mouseout="leave('usi-ssd')"/>
 					<area shape="rect" coords="676,10,700,140" alt="ssd23" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD23')" ng-mouseout="leave('usi-ssd')"/>
 					<area shape="rect" coords="704,10,728,140" alt="ssd24" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD24')" ng-mouseout="leave('usi-ssd')"/> 
-											
+					<!-- 						
 					<area shape="rect" coords="504,10,528,140" alt="ssd17" style="cursor:pointer" ng-mouseover="PowerSupply('PSA')" ng-mouseout="leave('usi-ps')"/>
 					<area shape="rect" coords="532,10,560,140" alt="ssd18" style="cursor:pointer" ng-mouseover="PowerSupply('PSB')" ng-mouseout="leave('usi-ps')"/>
 					<area shape="rect" coords="620,10,644,140" alt="ssd21" style="cursor:pointer" ng-mouseover="PowerSupply('PS')" ng-mouseout="leave('usi-ps')"/>
 					<area shape="rect" coords="564,10,558,140" alt="ssd19" style="cursor:pointer" ng-mouseover="Cable('Cable')" ng-mouseout="leave('usi-cable')"/>
 					<area shape="rect" coords="592,10,616,140" alt="ssd20" style="cursor:pointer" ng-mouseover="Switch('Swinfo')" ng-mouseout="leave('usi-switch')"/>	
-					
+					 -->
 				</map>
 			</li>
 			
@@ -81,13 +81,14 @@
             <li class="img_display"><div>
 				<img id="insideImg" src="../../../assets/images/J2024-03-internal-struct.png" alt="internal-struct" usemap="#insideMap" />
 				<map name="insideMap">
-				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan1')" ng-mouseleave="leave('Fan1')"/>
-				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan2')" ng-mouseleave="leave('Fan1')"/>
-				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan3')" ng-mouseleave="leave('Fan1')"/>
-				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan4')" ng-mouseleave="leave('Fan1')"/>
-				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan5')" ng-mouseleave="leave('Fan1')"/>
-				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan6')" ng-mouseleave="leave('Fan1')"/>
-				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan6')" ng-mouseleave="leave('usi-switch')"/>
+				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan1')" ng-mouseleave="leave('usi-fan')"/>
+				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan2')" ng-mouseleave="leave('usi-fan')"/>
+				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan3')" ng-mouseleave="leave('usi-fan')"/>
+				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan4')" ng-mouseleave="leave('usi-fan')"/>
+				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan5')" ng-mouseleave="leave('usi-fan')"/>
+				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan6')" ng-mouseleave="leave('usi-fan')"/>
+				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan6')" ng-mouseleave="leave('usi-fan')"/>
+				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Switch('switch')" ng-mouseleave="leave('usi-switch')"/>
 				  <area shape="rect" coords="335,350,610,430" style="cursor:pointer" ng-mouseover="PowerSupply('PS')" ng-mouseout="leave('usi-ps')"/> 
 				</map></div>
             </li>
@@ -99,8 +100,8 @@
 
 	</div>
 
-	<div id="usi-ssd1" class="row column header-row">
-        <table id='usi-ssd'>
+	<div id="usi-ssd" class="row column header-row">
+        <table>
 			<tbody class="ssd-body-tbody">
 				<tr>
 					<th>SSD NO.</th><th>{{ssdNo}}</th>
@@ -137,7 +138,7 @@
     </div>
 	
     <div id="usi-cable1" class="row column header-row" ng-show="cableinfoFlag == true">
-      <table id='usi-cable'>
+      <table>
         <thead class="ssd-body-header">
             <tr>
                 <th>Title</th>
@@ -188,7 +189,7 @@
         </table>
     </div>
 	
-	<div id="usi-ps" class="row column header-row" ng-show="psFlag == true">
+	<div id="usi-ps" class="row column header-row">
         <table id='ssd-info-body'>
             <thead class='ssd-info-header'>
                 <tr>
@@ -205,7 +206,22 @@
         </table>
     </div>
 
-	
+	<div id="usi-psx" class="row column header-row">
+        <table id='ssd-info-body'>
+            <thead class='ssd-info-header'>
+                <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody class="ssd-body-tbody">
+                <tr>
+                    <td>{{psname}}</td>
+                    <td>{{psinfo}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 	
 <!--
 	<div class="row column header-row" ng-show="ssdFlag == true">
