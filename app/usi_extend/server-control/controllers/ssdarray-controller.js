@@ -16,7 +16,7 @@ window.angular && (function(angular) {
 
     angular.module('app.serverControl').controller('ssdArrayController', [
     '$scope', '$window', 'UsiAPIUtils', 'dataService', 'toastService',
-    function($scope, $window, UsiAPIUtils, dataService, toastService, $) {
+    function($scope, $window, UsiAPIUtils, dataService, toastService) {
       $scope.loading = false;
 
 	  function changeStatus(flag){
@@ -43,7 +43,7 @@ window.angular && (function(angular) {
           $scope.swinfoFlag = false;
           $scope.psFlag = false;
 	      var lab = document.getElementById(id);
-		  lab.style.display="none";
+		  lab.style.display = "none";
 	  };
 	  
 	  ///ssd information
@@ -107,6 +107,7 @@ window.angular && (function(angular) {
 				if(angular.equals(psName, name)) {
 					$scope.psinfo=psInfo;
 				}
+				break;
 			});
 		}
     };
@@ -175,7 +176,7 @@ window.angular && (function(angular) {
 	///switch information
 	$scope.Switch = function(name) {
 		changeStatus('swinfo');
-		var $scope.swinfo = arrayInfo['Swinfo'];
+		$scope.swinfo = arrayInfo['Swinfo'];
 		var lab = document.getElementById("usi-switch");
 		//var windowEvent = window.event;              ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
