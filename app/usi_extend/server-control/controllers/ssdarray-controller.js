@@ -43,6 +43,8 @@ window.angular && (function(angular) {
           $scope.swinfoFlag = false;
           $scope.psFlag = false;
 	      var lab = document.getElementById(id);
+		  console.log('leave');
+		  console.log(lab);
 		  lab.style.display = "none";
 	  };
 	  
@@ -57,7 +59,7 @@ window.angular && (function(angular) {
 			$scope.ssdx=ssdInfo;
 			changeStatus('ssd');
 			
-			var lab = document.getElementById("usi-ssd");
+			var lab = document.getElementById('usi-ssd');
 			var windowEvent = window.event;               ///Get windowEvent
 			var mousePosition = getMousePos(windowEvent); ///Get mouse position
 			lab.style.display="block";
@@ -66,27 +68,6 @@ window.angular && (function(angular) {
 			console.log(mousePosition.x + 'px');
 			console.log(mousePosition.y + 'px');
 			console.log(lab);
-				
-		    /* var description = ["SSD NO.", "Address", "Type", "Status", "Link Speed", "Link Width", 
-				"Link Status", "Inserted", "Partition ID", "Configure Width"];
-            var ssd = [ssdNum, ssdInfo.SlotAddr, ssdInfo.Type, ssdInfo.Status, ssdInfo.LinkSpeed, 
-				ssdInfo.LinkWidth, ssdInfo.LinkStatus, ssdInfo.Inserted, ssdInfo.PartitionID, ssdInfo.ConfigureWidth];
-		    var tab='<table border=1 align="center" >'
-		    tab+="<tr><td align='center' valian='middle' colspan='2'><b>SSD Information</b></td></tr>"
-            for ( var row = 0; row < description.length; row++){
-                tab+='<tr>'
-                for ( var col = 0; col < 2; col++){
-                if(col == 0){
-					tab+="<td style='background:green'>"+description[row]+"</td>"
-				} else {
-					tab+="<td style='background:green'>"+ssd[row]+"</td>"
-				}
-             }
-             tab+='</tr>'
-         }    
-         tab+='</table>';
-         lab.innerHTML=tab; 
-		 lab.style.display="block";*/
         }
       });
     };
@@ -94,7 +75,7 @@ window.angular && (function(angular) {
 	///ps information
     $scope.PowerSupply = function(name) {
 		changeStatus('ps');
-		var lab=document.getElementById("usi-ps");
+		var lab=document.getElementById('usi-ps');
 		var windowEvent = window.event;               ///Get windowEvent
 		var mousePosition = getMousePos(windowEvent); ///Get mouse position
 		lab.style.display="block";
@@ -102,12 +83,14 @@ window.angular && (function(angular) {
 		lab.style.top = mousePosition.y + 'px';
 		console.log(lab);
 		
-		if(angular.equals(name, "PS")) {
+		if(angular.equals(name, 'PS')) {
 			$scope.psinfo=PSInfo['Status'];
+			console.log($scope.psinfo);
 		}else{
 			angular.forEach(PSInfo['Status'], function(psInfo, psName) {
 				if(angular.equals(psName, name)) {
 					$scope.psinfo=psInfo;
+					console.log($scope.psinfo);
 				}
 			});
 		}
@@ -119,7 +102,7 @@ window.angular && (function(angular) {
 		console.log(name);
         console.log(arrayInfo);
 		$scope.cableinfo=arrayInfo['Cableinfo'];
-		var lab=document.getElementById("usi-cable");
+		var lab=document.getElementById('usi-cable');
 		var windowEvent = window.event;               ///Get windowEvent
 		var mousePosition = getMousePos(windowEvent); ///Get mouse position
 		lab.style.display="block";
@@ -130,56 +113,13 @@ window.angular && (function(angular) {
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
 		console.log(lab);
-		
-       /*  angular.forEach(arrayInfo['Cableinfo'], function(cableInfo, cableNum){
-			console.log(cableInfo);
-			console.log(cableNum);
-			if(angular.equals(cableNum, name)){
-				console.log('equal');
-				
-				var lab=document.getElementById(name);
-				var windowEvent = window.event;               ///Get windowEvent
-				var mousePosition = getMousePos(windowEvent); ///Get mouse position
-                lab.style.left = mousePosition.x + 'px';
-				lab.style.top = mousePosition.y + 'px';
-				//lab.style.left = x + 'px';
-				//lab.style.top = y + 'px';
-				console.log(mousePosition.x + 'px');
-				console.log(mousePosition.y + 'px');
-				
-				var description = ["Cable NO.", "Status", "Cable Type", "Slot Addr", "Partition ID",
-					"Link Status", "Link Active", "Link Width", "Physical Port", "UspDsp", "Present"];
-				var cable = [name, cableInfo.Status, cableInfo.CableType, cableInfo.SlotAddr, cableInfo.PartitionID, cableInfo.LinkStatus, 
-					cableInfo.LinkActive, cableInfo.LinkWidth, cableInfo.PhysicalPort, cableInfo.UspDsp, cableInfo.Present];
-				var tab='<table border=1 align="center">'
-				
-				tab+="<tr><td align='center' valian='middle' colspan='2'><b>Cable Information</b></td></tr>"
-				
-				for ( var row = 0; row < description.length; row++){
-					tab+='<tr>'
-					for (var col = 0; col < 2; col++){
-						if(col == 0){
-							tab+="<td style='background:green'>"+description[row]+"</td>"
-						} else {
-							tab+="<td style='background:green'>"+cable[row]+"</td>"
-						}
-				   }
-				   tab+='</tr>'
-			   }    
-			   tab+='</table>';
-			   lab.innerHTML=tab;
-			   lab.style.display="block";
-			} */
-		//});
-		
-		
 	};
 	
 	///switch information
 	$scope.Switch = function(name) {
 		changeStatus('swinfo');
 		$scope.swinfo = arrayInfo['Swinfo'];
-		var lab = document.getElementById("usi-switch");
+		var lab = document.getElementById('usi-switch');
 		//var windowEvent = window.event;              ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.display="block";		
@@ -190,31 +130,9 @@ window.angular && (function(angular) {
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
 		console.log(lab);
-		
-/* 		var description = ["Pca9546", "Pca9555-1", "Pca9555-2", "Pca9555-3", "Pca9555-4", "Pca9555-5", 
-			"Pca9555-6", "Pca9555-7", "Pca9555-8", "Pca9555-9", "Pca9555-10", "Pca9555-11", "SsdType",
-			"CustomConfigurationFileVersion", "UsiFirmwareVersion", "VendorTableVersion"];
-		
-		var tab='<table border=1 align="center">'
-		
-		tab+="<tr><td align='center' valian='middle' colspan='2'><b>Switch Information</b></td></tr>"
-		for(var row = 0; row < description.length; row++){
-			tab+='<tr>'
-			for(var col = 0; col < 2; col++){
-				if(col == 0){
-					tab+="<td style='background:green'>"+description[row]+"</td>"
-				} else {
-					tab+="<td style='background:green'>"+swinfo[description[row]]+"</td>"
-				}
-			}
-			tab+='</tr>'
-		}
-		tab+='</table>';
-		lab.innerHTML=tab; */
-				
 	};
 	
-	  //arrow loop
+	  ///arrow loop
 	  var index = 0;
       var imgElement = document.getElementById("imgs").getElementsByTagName("li");
 	  console.log(imgElement);
@@ -260,8 +178,7 @@ window.angular && (function(angular) {
         UsiAPIUtils.getSsdArrayInfo().then(
             function(data){
                 arrayInfo = data;
-                /* if (arrayInfo.hasOwnProperty('Ssdinfo')){
-                    $scope.ssdinfo = arrayInfo['Ssdinfo'];
+                /*   $scope.ssdinfo = arrayInfo['Ssdinfo'];
                 }
                 if (arrayInfo.hasOwnProperty('Cableinfo')){
                     $scope.cableinfo = arrayInfo['Cableinfo'];
@@ -289,10 +206,10 @@ window.angular && (function(angular) {
       $scope.loadPowerSupplyInfo = function(){
         UsiAPIUtils.getPowerSupplyInfo().then(
             function(data){
-                psinfo = data;
-                if (psinfo.hasOwnProperty('Status')){
+                PSInfo = data;
+                /* if (psinfo.hasOwnProperty('Status')){
                     $scope.psinfo = psinfo['Status'];
-                }
+                } */
             },
             function(error) {
                toastService.error('Error during get PowerSupplyInfo');
