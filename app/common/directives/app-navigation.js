@@ -28,7 +28,8 @@ window.angular && (function(angular) {
                 if (urlRoot != '') {
                   $scope.firstLevel = urlRoot;
                 } else {
-                  $scope.firstLevel = 'overview';
+                  //$scope.firstLevel = 'overview';
+				  $scope.firstLevel = 'SSD-array';
                 }
                 $scope.showSubMenu = false;
               });
@@ -38,7 +39,8 @@ window.angular && (function(angular) {
                 if (urlRoot != '') {
                   $scope.firstLevel = urlRoot;
                 } else {
-                  $scope.firstLevel = 'overview';
+                  //$scope.firstLevel = 'overview';
+				  $scope.firstLevel = 'SSD-array';
                 }
 
                 if ($scope.showNavigation) {
