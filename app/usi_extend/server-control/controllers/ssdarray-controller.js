@@ -252,7 +252,7 @@ window.angular && (function(angular) {
               for(var i = 0; i < data.length; i++){
 				  console.log(data[i].title);
                   if(data[i].title.indexOf('Fan') != -1 && 
-				     data[i].title.indexOf('Tach') != -1 && ){
+				     data[i].title.indexOf('Tach') != -1){
                       fanData.push(data[i]);
 					  console.log(fanData);
 					  console.log(data[i].title);
