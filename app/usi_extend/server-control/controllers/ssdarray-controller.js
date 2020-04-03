@@ -236,17 +236,19 @@ window.angular && (function(angular) {
 				     data[i].title.indexOf('sensors') != -1 && 
 					 data[i].title.indexOf('chassis') == -1){
                       fanData.push(data[i]);
-					  console.log(data[i].title);
 					  console.log(fanData);
+					  console.log(data[i].title);
 					  tempKey = data[i].title.split('/');
 					  fanName.push(tempKey.pop());
+					  console.log(fanName);
                   }
               }
-              console.log(fanData);
+              
               $scope.faninfo = fanData;
 			  $scope.fanname = fanName;
+			  console.log($scope.faninfo);
+			  console.log($scope.fanname);
          });
-      };
 	  };
 
       $scope.loadSsdInfo();
