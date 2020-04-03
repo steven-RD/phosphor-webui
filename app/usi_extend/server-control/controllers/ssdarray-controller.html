@@ -117,7 +117,7 @@
         </table>
     </div>
 	
-    <div id="usi-cable1" class="row column header-row" ng-show="cableinfoFlag == true">
+    <div id="usi-cable1" class="row column header-row"<!--  ng-show="cableinfoFlag == true" -->>
       <table id='ssd-info-body'>
         <thead class="ssd-body-header">
             <tr>
@@ -152,7 +152,7 @@
       </table>
     </div>
 
-    <div id="usi-switch" class="row column header-row" ng-show="swinfoFlag == true">
+    <div id="usi-switch" class="row column header-row"<!--  ng-show="swinfoFlag == true" -->>
         <table id='ssd-info-body'>
             <thead class="ssd-body-header">
                 <tr>
@@ -169,7 +169,7 @@
         </table>
     </div>
 	
-	<div id="usi-ps" class="row column header-row" ng-show="psFlag == true">
+	<div id="usi-ps" class="row column header-row"<!--  ng-show="psFlag == true" -->>
         <table id='ssd-info-body'>
             <thead class='ssd-info-header'>
                 <tr>
@@ -186,7 +186,7 @@
         </table>
     </div>
 
-	<div id="usi-psx" class="row column header-row" ng-show="psxFlag == true">
+	<div id="usi-psx" class="row column header-row"<!--  ng-show="psxFlag == true" -->>
         <table id='ssd-info-body'>
             <thead class='ssd-info-header'>
                 <tr>
@@ -203,7 +203,7 @@
         </table>
     </div>
 	
-	<div id="usi-fan" class="row column header-row" ng-show="fanFlag == true">
+	<div id="usi-fan" class="row column header-row">
         <table id='ssd-info-body'>
              <thead class='ssd-info-header'>
                 <tr>
@@ -232,9 +232,7 @@
 					<td>{{faninfoOUT.WarningLow}}</td>
 					<td>{{faninfoOUT.Value}}</td>
 					<td>{{faninfoOUT.WarningHigh}}</td>
-					<td>{{faninfoOUT.CriticalHigh}}<span class="sensors__tbody-cell__content">
-					<span class="sensors__tbody-degree" ng-if="faninfoOUT.unit == 'C'">&deg;</span>
-					<span class="sensors__tbody-unit">{{faninfoOUT.unit}}</span></span></td>
+					<td>{{faninfoOUT.CriticalHigh}}<span class="sensors__tbody-unit">{{faninfoOUT.unit}}</span></td>
                 </tr>
                
             </tbody>

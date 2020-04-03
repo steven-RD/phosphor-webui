@@ -239,10 +239,10 @@ window.angular && (function(angular) {
 			console.log(lab);
 
 			for(var i = 0; i < fanData.length; i++){
-				if(fanData[i].title.indexOf(name+' INLET')) {
+				if(fanData[i].title.indexOf(name+' INLET') != -1) {
 					$scope.faninfoIN=fanData[i];
 					console.log($scope.faninfoIN);
-				}else if(fanData[i].title.indexOf(name+' OUTLET')){
+				}else if(fanData[i].title.indexOf(name+' OUTLET') != -1){
 					$scope.faninfoOUT=fanData[i];
 					console.log($scope.faninfoOUT);
 				}
@@ -253,7 +253,7 @@ window.angular && (function(angular) {
 	  $scope.loadFanSensorData = function(){
           APIUtils.getAllSensorStatus(function(data, originalData) {
               for(var i = 0; i < data.length; i++){
-				  console.log(data[i].title);
+				  //console.log(data[i].title);
                   if(data[i].title.indexOf('Fan') != -1 &&  data[i].title.indexOf('Tach') != -1){
                       fanData.push(data[i]);
 					  console.log(data[i]);
