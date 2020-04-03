@@ -226,13 +226,9 @@ window.angular && (function(angular) {
 	  
 	  	///fan sensor information
 	    $scope.Fan = function(name) {
-			//changeStatus('cable');
+			//changeStatus('fan');
 			console.log(name);
 			console.log(fanData);
-			//$scope.cableinfo=fanData['Cableinfo'];
-			$scope.fanname = name;
-			$scope.faninfo = fanData[name];			
-			console.log($scope.faninfo);
 			
 			var lab=document.getElementById('usi-fan');
 			var windowEvent = window.event;               ///Get windowEvent
@@ -240,25 +236,28 @@ window.angular && (function(angular) {
 			lab.style.display="block";
 			lab.style.left = mousePosition.x + 'px';
 			lab.style.top = mousePosition.y + 'px';
-			
 			console.log(lab);
+
+			for(var i = 0; i < fanData.length; i++){
+				if(fanData[i].title.indexOf(name+' INLET')) {
+					$scope.faninfoIN=fanData[i];
+					console.log($scope.faninfoIN);
+				}else if(fanData[i].title.indexOf(name+' OUTLET')){
+					$scope.faninfoOUT=fanData[i];
+					console.log($scope.faninfoOUT);
+				}
+			}
 	  };
 	  
       var fanData = [];
 	  $scope.loadFanSensorData = function(){
-		  //var tempKey= [];
-		  //var fanName = [];
           APIUtils.getAllSensorStatus(function(data, originalData) {
               for(var i = 0; i < data.length; i++){
 				  console.log(data[i].title);
-                  if(data[i].title.indexOf('Fan') != -1 && 
-				     data[i].title.indexOf('Tach') != -1){
+                  if(data[i].title.indexOf('Fan') != -1 &&  data[i].title.indexOf('Tach') != -1){
                       fanData.push(data[i]);
-					  console.log(fanData);
+					  console.log(data[i]);
 					  console.log(data[i].title);
-					  //tempKey = data[i].title.split('/');
-					  //fanName.push(tempKey.pop());
-					  //console.log(fanName);
                   }
               }
               

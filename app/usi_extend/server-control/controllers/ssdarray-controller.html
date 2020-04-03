@@ -61,7 +61,7 @@
 					<area shape="rect" coords="704,10,728,140" alt="ssd24" style="cursor:pointer" ng-mouseover="ssdNumSelected('SSD24')" ng-mouseout="leave('usi-ssd')"/> 
 											
 					<area shape="rect" coords="504,10,528,140" alt="ssd17" style="cursor:pointer" ng-mouseover="PowerSupply('PSA')" ng-mouseout="leave('usi-ps')"/>
-					<area shape="rect" coords="532,10,560,140" alt="ssd18" style="cursor:pointer" ng-mouseover="Fan('Fan Tach Fan3 INLET')" ng-mouseout="leave('usi-fan')"/>
+					<area shape="rect" coords="532,10,560,140" alt="ssd18" style="cursor:pointer" ng-mouseover="Fan('Fan3')" ng-mouseout="leave('usi-fan')"/>
 					<area shape="rect" coords="620,10,644,140" alt="ssd21" style="cursor:pointer" ng-mouseover="PowerSupply('PS')" ng-mouseout="leave('usi-ps')"/>
 					<area shape="rect" coords="564,10,558,140" alt="ssd19" style="cursor:pointer" ng-mouseover="Cable('Cable')" ng-mouseout="leave('usi-cable')"/>
 					<area shape="rect" coords="592,10,616,140" alt="ssd20" style="cursor:pointer" ng-mouseover="Switch('Swinfo')" ng-mouseout="leave('usi-switch')"/>	
@@ -205,33 +205,38 @@
 	
 	<div id="usi-fan" class="row column header-row" ng-show="fanFlag == true">
         <table id='ssd-info-body'>
-<!--             <thead class='ssd-info-header'>
+             <thead class='ssd-info-header'>
                 <tr>
                     <th>Name</th>
+                    <th>Low critical</th>
+					<th>Low warning</th>
                     <th>Status</th>
+					<th>Current value</th>
+                    <th>High warning</th>
                 </tr>
-            </thead> -->
+            </thead>
             <tbody class="ssd-body-tbody">
 				<tr>
-                    <td colspan='2'><b>{{faninfo.fanname}}</b></td>
-                </tr>
-                <tr>
-                    <td>Low critical</td><td>{{faninfo.CriticalLow}}</td>
-                </tr>
-				<tr>
-                    <td>Low warning</td><td>{{faninfo.WarningLow}}</td>
-                </tr>
-				<tr>
-                    <td>Current value</td><td>{{faninfo.Value}}</td>
+                    <td>{{faninfoIN.fanname}}</td>
+					<td>{{faninfoIN.CriticalLow}}</td>
+					<td>{{faninfoIN.WarningLow}}</td>
+					<td>{{faninfoIN.Value}}</td>
+					<td>{{faninfoIN.WarningHigh}}</td>
+					<td>{{faninfoIN.CriticalHigh}}<span class="sensors__tbody-cell__content">
+					<span class="sensors__tbody-degree" ng-if="faninfoIN.unit == 'C'">&deg;</span>
+					<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></span></td>
                 </tr>
 				<tr>
-                    <td>High warning</td><td>{{faninfo.WarningHigh}}</td>
+                    <td>{{faninfoOUT.fanname}}</td>
+					<td>{{faninfoOUT.CriticalLow}}</td>
+					<td>{{faninfoOUT.WarningLow}}</td>
+					<td>{{faninfoOUT.Value}}</td>
+					<td>{{faninfoOUT.WarningHigh}}</td>
+					<td>{{faninfoOUT.CriticalHigh}}<span class="sensors__tbody-cell__content">
+					<span class="sensors__tbody-degree" ng-if="faninfoOUT.unit == 'C'">&deg;</span>
+					<span class="sensors__tbody-unit">{{faninfoOUT.unit}}</span></span></td>
                 </tr>
-				<tr>
-                    <td>High critical</td><td>{{faninfo.CriticalHigh}}<span class="sensors__tbody-cell__content">
-					<span class="sensors__tbody-degree" ng-if="sensor.unit == 'C'">&deg;</span>
-					<span class="sensors__tbody-unit">{{sensor.unit}}</span></span></td>
-                </tr>
+               
             </tbody>
         </table>
     </div>
