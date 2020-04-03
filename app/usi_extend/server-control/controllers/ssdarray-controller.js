@@ -49,7 +49,7 @@ window.angular && (function(angular) {
           $scope.switchFlag = false;
           $scope.psFlag = false;
 		  $scope.psxFlag = false;
-		  $scope.fanFlag = true;
+		  $scope.fanFlag = false;
 	      var lab = document.getElementById(id);
 		  console.log('leave');
 		  console.log(lab);
@@ -70,7 +70,7 @@ window.angular && (function(angular) {
 			var lab = document.getElementById('usi-ssd');
 			//var windowEvent = window.event;               ///Get windowEvent
 			//var mousePosition = getMousePos(windowEvent); ///Get mouse position
-			lab.style.display="block";
+			lab.style.display="inline-table";
 			lab.style.left = 200 + 'px';
 			lab.style.top = 200 + 'px';	
 			console.log(lab);
@@ -86,7 +86,7 @@ window.angular && (function(angular) {
 			var lab=document.getElementById('usi-ps');
 			//var windowEvent = window.event;               ///Get windowEvent
 			var mousePosition = getMousePos(window.event); ///Get mouse position
-			lab.style.display="block";
+			lab.style.display="inline-table";
 			lab.style.left = mousePosition.x + 'px';
 			lab.style.top = mousePosition.y + 'px';
 			$scope.psinfo=PSInfo['Status'];
@@ -98,7 +98,7 @@ window.angular && (function(angular) {
 				var lab=document.getElementById('usi-psx');
 				//var windowEvent = window.event;               ///Get windowEvent
 				var mousePosition = getMousePos(window.event); ///Get mouse position
-				lab.style.display="block";
+				lab.style.display='inline-table';
 				lab.style.left = mousePosition.x + 'px';
 				lab.style.top = mousePosition.y + 'px';
 				console.log(lab);
@@ -120,7 +120,7 @@ window.angular && (function(angular) {
 		var lab=document.getElementById('usi-cable');
 		//var windowEvent = window.event;               ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
-		lab.style.display="block";
+		lab.style.display="table";
 		/* lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
 		console.log(mousePosition.x + 'px');
@@ -135,7 +135,7 @@ window.angular && (function(angular) {
 		var lab = document.getElementById('usi-switch');
 		//var windowEvent = window.event;              ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
-		lab.style.display="block";		
+		lab.style.display='table';		
 		/* lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
 		console.log(mousePosition.x + 'px');
@@ -237,7 +237,7 @@ window.angular && (function(angular) {
 			var lab=document.getElementById('usi-fan');
 			//var windowEvent = window.event;               ///Get windowEvent
 			var mousePosition = getMousePos(window.event); ///Get mouse position
-			lab.style.display="block";
+			lab.style.display='inline-table';
 			/* lab.style.left = mousePosition.x + 'px';
 			lab.style.top = mousePosition.y + 'px'; */
 			console.log(lab);

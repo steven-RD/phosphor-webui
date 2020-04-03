@@ -215,17 +215,15 @@
             </thead>
             <tbody class="ssd-body-tbody">
 				<tr>
-                    <td>{{faninfoIN.title}}<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></td>
+                    <td>{{faninfoIN.title}}</td>
 					<td>{{faninfoIN.CriticalLow}}<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></td>
 					<td>{{faninfoIN.WarningLow}}<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></td>
 					<td>{{faninfoIN.Value}}<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></td>
 					<td>{{faninfoIN.WarningHigh}}<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></td>
-					<td>{{faninfoIN.CriticalHigh}}<span class="sensors__tbody-cell__content">
-					<span class="sensors__tbody-degree" ng-if="faninfoIN.unit == 'C'">&deg;</span>
-					<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></span></td>
+					<td>{{faninfoIN.CriticalHigh}}<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></span></td>
                 </tr>
 				<tr>
-                    <td>{{faninfoOUT.fanname}}<span class="sensors__tbody-unit">{{faninfoOUT.unit}}</span></td>
+                    <td>{{faninfoOUT.title}}</td>
 					<td>{{faninfoOUT.CriticalLow}}<span class="sensors__tbody-unit">{{faninfoOUT.unit}}</span></td>
 					<td>{{faninfoOUT.WarningLow}}<span class="sensors__tbody-unit">{{faninfoOUT.unit}}</span></td>
 					<td>{{faninfoOUT.Value}}<span class="sensors__tbody-unit">{{faninfoOUT.unit}}</span></td>
