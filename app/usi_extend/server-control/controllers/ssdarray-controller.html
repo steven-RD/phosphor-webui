@@ -89,7 +89,7 @@
 				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan6')" ng-mouseleave="leave('usi-fan')"/>
 				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan6')" ng-mouseleave="leave('usi-fan')"/>
 				  <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Switch('switch')" ng-mouseleave="leave('usi-switch')"/>
-				  <area shape="rect" coords="335,350,610,430" style="cursor:pointer" ng-mouseover="PowerSupply('PS')" ng-mouseout="leave('usi-ps')"/> 
+				  <area shape="rect" coords="335,350,610,430" style="cursor:pointer" ng-mouseover="PowerSupply('PS')" ng-mouseout="leave('usi-psx')"/> 
 				</map></div>
             </li>
 	</ul>
@@ -101,44 +101,24 @@
 	</div>
 
 	<div id="usi-ssd" class="row column header-row">
-        <table>
+        <table id='ssd-info-body'>
 			<tbody class="ssd-body-tbody">
-				<tr>
-					<th>SSD NO.</th><th>{{ssdNo}}</th>
-				</tr>
-				<tr>
-					<th>Address</th><td>{{ssdx.SlotAddr}}</td>
-				</tr>
-				<tr>
-					<th>Type</th><td>{{ssdx.Type}}</td>
-				</tr>
-				<tr>
-					<th>Status</th><td>{{ssdx.Status}}</td>
-				</tr>
-				<tr>
-					<th>Link Speed</th><td>{{ssdx.LinkSpeed}}</td>
-				</tr>
-				<tr>
-					<th>Link Width</th><td>{{ssdx.LinkWidth}}</td>
-				</tr>
-				<tr>
-					<th>Par Id</th><td>{{ssdx.PartitionID}}</td>
-				</tr>
-				<tr>
-					<th>Inserted</th><td>{{ssdx.Inserted}}</td>
-				</tr>
-				<tr>
-					<th>Link Status</th><td>{{ssdx.LinkStatus}}</td>
-				</tr>
-				<tr>
-					<th>ConfigureWidth</th><td>{{ssdx.ConfigureWidth}}</td>
-				</tr>
+				<tr><th>SSD NO.</th><td>{{ssdNo}}</td></tr>
+				<tr><th>Address</th><td>{{ssdx.SlotAddr}}</td></tr>
+				<tr><th>Type</th><td>{{ssdx.Type}}</td></tr>
+				<tr><th>Status</th><td>{{ssdx.Status}}</td></tr>
+				<tr><th>Link Speed</th><td>{{ssdx.LinkSpeed}}</td></tr>
+				<tr><th>Link Width</th><td>{{ssdx.LinkWidth}}</td></tr>
+				<tr><th>Par Id</th><td>{{ssdx.PartitionID}}</td></tr>
+				<tr><th>Inserted</th><td>{{ssdx.Inserted}}</td></tr>
+				<tr><th>Link Status</th><td>{{ssdx.LinkStatus}}</td></tr>
+				<tr><th>ConfigureWidth</th><td>{{ssdx.ConfigureWidth}}</td></tr>
             </tbody>
         </table>
     </div>
 	
     <div id="usi-cable1" class="row column header-row" ng-show="cableinfoFlag == true">
-      <table>
+      <table id='ssd-info-body'>
         <thead class="ssd-body-header">
             <tr>
                 <th>Title</th>
@@ -189,7 +169,7 @@
         </table>
     </div>
 	
-	<div id="usi-ps" class="row column header-row">
+	<div id="usi-ps" class="row column header-row" ng-show="psFlag == true">
         <table id='ssd-info-body'>
             <thead class='ssd-info-header'>
                 <tr>
@@ -206,7 +186,7 @@
         </table>
     </div>
 
-	<div id="usi-psx" class="row column header-row">
+	<div id="usi-psx" class="row column header-row" ng-show="psxFlag == true">
         <table id='ssd-info-body'>
             <thead class='ssd-info-header'>
                 <tr>
