@@ -21,31 +21,35 @@ window.angular && (function(angular) {
 
 	  function changeStatus(flag){
           $scope.ssdFlag = false;
-          $scope.cableinfoFlag = false;
-          $scope.swinfoFlag = false;
+          $scope.cableFlag = false;
+          $scope.switchFlag = false;
           $scope.psFlag = false;
 		  $scope.psxFlag = false;
+		  $scope.fanFlag = false;
           if(flag == 'ssd'){
               $scope.ssdFlag = true;
           }else if(flag == 'cable'){
-              $scope.cableinfoFlag = true;
-          }else if(flag == 'swinfo'){
-              $scope.swinfoFlag = true;
+              $scope.cableFlag = true;
+          }else if(flag == 'sw'){
+              $scope.switchFlag = true;
           }else if(flag == 'ps'){
               $scope.psFlag = true;
           }else if(flag == 'psx'){
               $scope.psxFlag = true;
+          }else if(flag == 'fan'){
+              $scope.fanFlag = true;
           }
       };
 	  
       var arrayInfo=[];
       var PSInfo=[];
 	  $scope.leave = function(id){
-		  /* $scope.ssdFlag = false;
-          $scope.cableinfoFlag = false;
-          $scope.swinfoFlag = false;
+		  $scope.ssdFlag = false;
+          $scope.cableFlag = false;
+          $scope.switchFlag = false;
           $scope.psFlag = false;
-		  $scope.psxFlag = false; */
+		  $scope.psxFlag = false;
+		  $scope.fanFlag = true;
 	      var lab = document.getElementById(id);
 		  console.log('leave');
 		  console.log(lab);
@@ -53,7 +57,7 @@ window.angular && (function(angular) {
 	  };
 	  
 	  ///ssd information
-      $scope.ssdNumSelected = function(num){
+      $scope.SSD = function(num){
       angular.forEach(arrayInfo['Ssdinfo'], function(ssdInfo, ssdNum){
         console.log(ssdInfo);
         console.log(ssdNum);
@@ -61,7 +65,7 @@ window.angular && (function(angular) {
             console.log('equal');
 			$scope.ssdNo=ssdNum;
 			$scope.ssdx=ssdInfo;
-			//changeStatus('ssd');
+			changeStatus('ssd');
 			
 			var lab = document.getElementById('usi-ssd');
 			//var windowEvent = window.event;               ///Get windowEvent
@@ -78,10 +82,10 @@ window.angular && (function(angular) {
     $scope.PowerSupply = function(name) {		
 		
 		if(angular.equals(name, 'PS')) {
-			//changeStatus('ps');	
+			changeStatus('ps');	
 			var lab=document.getElementById('usi-ps');
-			var windowEvent = window.event;               ///Get windowEvent
-			var mousePosition = getMousePos(windowEvent); ///Get mouse position
+			//var windowEvent = window.event;               ///Get windowEvent
+			var mousePosition = getMousePos(window.event); ///Get mouse position
 			lab.style.display="block";
 			lab.style.left = mousePosition.x + 'px';
 			lab.style.top = mousePosition.y + 'px';
@@ -90,10 +94,10 @@ window.angular && (function(angular) {
 			console.log($scope.psinfo);
 		}else{
 			angular.forEach(PSInfo['Status'], function(psInfo, psName) {
-				//changeStatus('psx');	
+				changeStatus('psx');	
 				var lab=document.getElementById('usi-psx');
-				var windowEvent = window.event;               ///Get windowEvent
-				var mousePosition = getMousePos(windowEvent); ///Get mouse position
+				//var windowEvent = window.event;               ///Get windowEvent
+				var mousePosition = getMousePos(window.event); ///Get mouse position
 				lab.style.display="block";
 				lab.style.left = mousePosition.x + 'px';
 				lab.style.top = mousePosition.y + 'px';
@@ -109,34 +113,34 @@ window.angular && (function(angular) {
 
 	///cable information
 	$scope.Cable = function(name) {
-		//changeStatus('cable');
+		changeStatus('cable');
 		console.log(name);
         console.log(arrayInfo);
 		$scope.cableinfo=arrayInfo['Cableinfo'];
 		var lab=document.getElementById('usi-cable');
-		var windowEvent = window.event;               ///Get windowEvent
-		var mousePosition = getMousePos(windowEvent); ///Get mouse position
+		//var windowEvent = window.event;               ///Get windowEvent
+		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.display="block";
-		lab.style.left = mousePosition.x + 'px';
+		/* lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
 		console.log(mousePosition.x + 'px');
-		console.log(mousePosition.y + 'px');
-		console.log(lab);
+		console.log(mousePosition.y + 'px');*/
+		console.log(lab); 
 	};
 	
 	///switch information
 	$scope.Switch = function(name) {
-		//changeStatus('swinfo');
+		changeStatus('sw');
 		$scope.swinfo = arrayInfo['Swinfo'];
 		var lab = document.getElementById('usi-switch');
 		//var windowEvent = window.event;              ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.display="block";		
-		lab.style.left = mousePosition.x + 'px';
+		/* lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
 		console.log(mousePosition.x + 'px');
-		console.log(mousePosition.y + 'px');
-		console.log(lab);
+		console.log(mousePosition.y + 'px');*/
+		console.log(lab); 
 	};
 	
 	  ///arrow loop
@@ -226,16 +230,16 @@ window.angular && (function(angular) {
 	  
 	  	///fan sensor information
 	    $scope.Fan = function(name) {
-			//changeStatus('fan');
+			changeStatus('fan');
 			console.log(name);
 			console.log(fanData);
 			
 			var lab=document.getElementById('usi-fan');
-			var windowEvent = window.event;               ///Get windowEvent
-			var mousePosition = getMousePos(windowEvent); ///Get mouse position
+			//var windowEvent = window.event;               ///Get windowEvent
+			var mousePosition = getMousePos(window.event); ///Get mouse position
 			lab.style.display="block";
-			lab.style.left = mousePosition.x + 'px';
-			lab.style.top = mousePosition.y + 'px';
+			/* lab.style.left = mousePosition.x + 'px';
+			lab.style.top = mousePosition.y + 'px'; */
 			console.log(lab);
 
 			for(var i = 0; i < fanData.length; i++){
@@ -253,7 +257,6 @@ window.angular && (function(angular) {
 	  $scope.loadFanSensorData = function(){
           APIUtils.getAllSensorStatus(function(data, originalData) {
               for(var i = 0; i < data.length; i++){
-				  //console.log(data[i].title);
                   if(data[i].title.indexOf('Fan') != -1 &&  data[i].title.indexOf('Tach') != -1){
                       fanData.push(data[i]);
 					  console.log(data[i]);
