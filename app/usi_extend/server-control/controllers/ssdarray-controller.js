@@ -75,8 +75,7 @@ window.angular && (function(angular) {
     };
 
 	///ps information
-    $scope.PowerSupply = function(name) {
-			
+    $scope.PowerSupply = function(name) {		
 		
 		if(angular.equals(name, 'PS')) {
 			//changeStatus('ps');	
@@ -225,29 +224,44 @@ window.angular && (function(angular) {
         );
       };
 	  
+	  	///fan sensor information
+	    $scope.Fan = function(name) {
+			//changeStatus('cable');
+			console.log(name);
+			console.log(fanData);
+			//$scope.cableinfo=fanData['Cableinfo'];
+			$scope.fanname = name;
+			$scope.faninfo = fanData[name];			
+			console.log($scope.faninfo);
+			
+			var lab=document.getElementById('usi-fan');
+			var windowEvent = window.event;               ///Get windowEvent
+			var mousePosition = getMousePos(windowEvent); ///Get mouse position
+			lab.style.display="block";
+			lab.style.left = mousePosition.x + 'px';
+			lab.style.top = mousePosition.y + 'px';
+			
+			console.log(lab);
+	  };
+	  
+      var fanData = [];
 	  $scope.loadFanSensorData = function(){
-          var fanData = [];
-		  var tempKey= [];
-		  var fanName = [];
+		  //var tempKey= [];
+		  //var fanName = [];
           APIUtils.getAllSensorStatus(function(data, originalData) {
               for(var i = 0; i < data.length; i++){
 				  console.log(data[i].title);
-                  if(data[i].title.indexOf('fan_tach') != -1 && 
-				     data[i].title.indexOf('sensors') != -1 && 
-					 data[i].title.indexOf('chassis') == -1){
+                  if(data[i].title.indexOf('Fan') != -1 && 
+				     data[i].title.indexOf('Tach') != -1 && ){
                       fanData.push(data[i]);
 					  console.log(fanData);
 					  console.log(data[i].title);
-					  tempKey = data[i].title.split('/');
-					  fanName.push(tempKey.pop());
-					  console.log(fanName);
+					  //tempKey = data[i].title.split('/');
+					  //fanName.push(tempKey.pop());
+					  //console.log(fanName);
                   }
               }
               
-              $scope.faninfo = fanData;
-			  $scope.fanname = fanName;
-			  console.log($scope.faninfo);
-			  console.log($scope.fanname);
          });
 	  };
 
