@@ -1,15 +1,15 @@
 /**
- * A module for the overview
+ * A module for the usi_extend
  *
- * @module app/overview/index
- * @exports app/overview/index
+ * @module app/usi_extend/server-control/index
+ * @exports app/usi_extend/server-control/index
  */
 
 window.angular && (function(angular) {
   'use strict';
 
   angular
-      .module('app.overview', ['ngRoute', 'app.common.services'])
+      .module('app.usi_extend.server-control', ['ngRoute', 'app.common.services'])
       // Route configuration
       .config([
         '$routeProvider',
@@ -27,7 +27,7 @@ window.angular && (function(angular) {
                 'controller': 'systemOverviewController',
                 authenticated: true
               }) */
-			  .when('/server-control/ssdarray', {
+			  .when('/usi_extend/server-control', {
                 'template':
                     require('./controllers/ssdarray-controller.html'),
                 'controller': 'ssdArrayController',
