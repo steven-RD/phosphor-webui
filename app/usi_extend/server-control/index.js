@@ -29,7 +29,7 @@ window.angular && (function(angular) {
               }) */
 			  .when('/usi_extend/server-control', {
                 'template':
-                    require('./controllers/ssdarray-controller.html'),
+                    require('../../usi_extend/server-control/controllers/ssdarray-controller.html'),
                 'controller': 'ssdArrayController',
                 authenticated: true
               });
