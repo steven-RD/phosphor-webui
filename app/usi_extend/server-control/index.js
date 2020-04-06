@@ -27,7 +27,7 @@ window.angular && (function(angular) {
                 'controller': 'systemOverviewController',
                 authenticated: true
               }) */
-			  .when('/usi_extend/server-control', {
+			  .when('/usi_extend/server-control/ssdarray', {
                 'template':
                     require('../../usi_extend/server-control/controllers/ssdarray-controller.html'),
                 'controller': 'ssdArrayController',
