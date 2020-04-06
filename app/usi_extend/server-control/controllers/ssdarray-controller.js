@@ -68,8 +68,8 @@ window.angular && (function(angular) {
 			changeStatus('ssd');
 			
 			var lab = document.getElementById('usi-ssd');
-			//var windowEvent = window.event;               ///Get windowEvent
-			//var mousePosition = getMousePos(windowEvent); ///Get mouse position
+			var windowEvent = window.event;               ///Get windowEvent
+			var mousePosition = getMousePos(windowEvent); ///Get mouse position
 			lab.style.display="inline-table";
 			lab.style.left = 200 + 'px';
 			lab.style.top = 200 + 'px';	
@@ -121,10 +121,10 @@ window.angular && (function(angular) {
 		//var windowEvent = window.event;               ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.display="table";
-		/* lab.style.left = mousePosition.x + 'px';
+		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
 		console.log(mousePosition.x + 'px');
-		console.log(mousePosition.y + 'px');*/
+		console.log(mousePosition.y + 'px');
 		console.log(lab); 
 	};
 	
@@ -136,10 +136,10 @@ window.angular && (function(angular) {
 		//var windowEvent = window.event;              ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.display='table';		
-		/* lab.style.left = mousePosition.x + 'px';
+		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
 		console.log(mousePosition.x + 'px');
-		console.log(mousePosition.y + 'px');*/
+		console.log(mousePosition.y + 'px');
 		console.log(lab); 
 	};
 	
@@ -238,8 +238,8 @@ window.angular && (function(angular) {
 			//var windowEvent = window.event;               ///Get windowEvent
 			var mousePosition = getMousePos(window.event); ///Get mouse position
 			lab.style.display='inline-table';
-			/* lab.style.left = mousePosition.x + 'px';
-			lab.style.top = mousePosition.y + 'px'; */
+			lab.style.left = mousePosition.x + 'px';
+			lab.style.top = mousePosition.y + 'px'; 
 			console.log(lab);
 
 			for(var i = 0; i < fanData.length; i++){
