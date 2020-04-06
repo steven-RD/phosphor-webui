@@ -188,7 +188,7 @@ window.angular && (function(angular) {
                   $location.path(current.$$route.originalPath);
                 } else {
                   //$location.path('/overview/server');
-				  $location.path('/usi_extend/server-control');
+				  $location.path('/usi_extend/server-control/ssdarray');
                 }
               }
             }
