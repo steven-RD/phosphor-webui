@@ -40,7 +40,7 @@ window.angular && (function(angular) {
                   $scope.firstLevel = urlRoot;
                 } else {
                   //$scope.firstLevel = 'overview';
-				  $scope.firstLevel = 'SSD-array';
+				  $scope.firstLevel = 'ssdarray';
                 }
 
                 if ($scope.showNavigation) {
