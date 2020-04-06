@@ -24,12 +24,12 @@ window.angular && (function(angular) {
                 $scope.showSubMenu = false;
               };
               $scope.$watch('path', function() {
-                var urlRoot = $location.path().split('/')[1];
+                var urlRoot = $location.path().split('/')[3];
                 if (urlRoot != '') {
                   $scope.firstLevel = urlRoot;
                 } else {
                   //$scope.firstLevel = 'overview';
-				  $scope.firstLevel = 'SSD-array';
+				  $scope.firstLevel = 'ssdarray';
                 }
                 $scope.showSubMenu = false;
               });
