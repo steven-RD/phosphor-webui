@@ -70,9 +70,10 @@ window.angular && (function(angular) {
 			var lab = document.getElementById('usi-ssd');
 			var windowEvent = window.event;               ///Get windowEvent
 			var mousePosition = getMousePos(windowEvent); ///Get mouse position
+			lab.style.position = "absolute";
 			lab.style.display="inline-table";
-			lab.style.left = 200 + 'px';
-			lab.style.top = 200 + 'px';	
+			lab.style.left = mousePosition.x  + 'px';
+			lab.style.top = mousePosition.y  + 'px';	
 			console.log(lab);
         }
       });
@@ -86,6 +87,7 @@ window.angular && (function(angular) {
 			var lab=document.getElementById('usi-ps');
 			//var windowEvent = window.event;               ///Get windowEvent
 			var mousePosition = getMousePos(window.event); ///Get mouse position
+			lab.style.position = "absolute";
 			lab.style.display="inline-table";
 			lab.style.left = mousePosition.x + 'px';
 			lab.style.top = mousePosition.y + 'px';
@@ -98,6 +100,7 @@ window.angular && (function(angular) {
 				var lab=document.getElementById('usi-psx');
 				//var windowEvent = window.event;               ///Get windowEvent
 				var mousePosition = getMousePos(window.event); ///Get mouse position
+				lab.style.position = "absolute";
 				lab.style.display='inline-table';
 				lab.style.left = mousePosition.x + 'px';
 				lab.style.top = mousePosition.y + 'px';
@@ -120,7 +123,8 @@ window.angular && (function(angular) {
 		var lab=document.getElementById('usi-cable');
 		//var windowEvent = window.event;               ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
-		lab.style.display="table";
+		lab.style.position = "absolute";
+		lab.style.display="block";
 		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
 		console.log(mousePosition.x + 'px');
@@ -135,6 +139,7 @@ window.angular && (function(angular) {
 		var lab = document.getElementById('usi-switch');
 		//var windowEvent = window.event;              ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
+		lab.style.position = "absolute";
 		lab.style.display='table';		
 		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
@@ -142,6 +147,33 @@ window.angular && (function(angular) {
 		console.log(mousePosition.y + 'px');
 		console.log(lab); 
 	};
+	
+	
+	  	///fan sensor information
+	$scope.Fan = function(name) {
+		changeStatus('fan');
+		console.log(name);
+		console.log(fanData);
+		
+		var lab=document.getElementById('usi-fan');
+		//var windowEvent = window.event;               ///Get windowEvent
+		var mousePosition = getMousePos(window.event); ///Get mouse position
+		lab.style.position = "absolute";
+		lab.style.display='inline-table';
+		lab.style.left = mousePosition.x + 'px';
+		lab.style.top = mousePosition.y + 'px'; 
+		console.log(lab);
+
+		for(var i = 0; i < fanData.length; i++){
+			if(fanData[i].title.indexOf(name+' INLET') != -1) {
+				$scope.faninfoIN=fanData[i];
+				console.log($scope.faninfoIN);
+			}else if(fanData[i].title.indexOf(name+' OUTLET') != -1){
+				$scope.faninfoOUT=fanData[i];
+				console.log($scope.faninfoOUT);
+			}
+		}
+	  };
 	
 	  ///arrow loop
 	  var index = 0;
@@ -171,7 +203,6 @@ window.angular && (function(angular) {
 	  };
 
 	   
-	
 	  // Get mouse relative position
       function getMousePos(event) {
           var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
@@ -182,7 +213,6 @@ window.angular && (function(angular) {
 		  var y = event.clientY+ document.body.scrollTop + document.documentElement.scrollTop;
 		  return { 'x': x, 'y': y };
       }
-	
 	
 	
       $scope.loadSsdInfo = function(){
@@ -228,30 +258,6 @@ window.angular && (function(angular) {
         );
       };
 	  
-	  	///fan sensor information
-	    $scope.Fan = function(name) {
-			changeStatus('fan');
-			console.log(name);
-			console.log(fanData);
-			
-			var lab=document.getElementById('usi-fan');
-			//var windowEvent = window.event;               ///Get windowEvent
-			var mousePosition = getMousePos(window.event); ///Get mouse position
-			lab.style.display='inline-table';
-			lab.style.left = mousePosition.x + 'px';
-			lab.style.top = mousePosition.y + 'px'; 
-			console.log(lab);
-
-			for(var i = 0; i < fanData.length; i++){
-				if(fanData[i].title.indexOf(name+' INLET') != -1) {
-					$scope.faninfoIN=fanData[i];
-					console.log($scope.faninfoIN);
-				}else if(fanData[i].title.indexOf(name+' OUTLET') != -1){
-					$scope.faninfoOUT=fanData[i];
-					console.log($scope.faninfoOUT);
-				}
-			}
-	  };
 	  
       var fanData = [];
 	  $scope.loadFanSensorData = function(){
