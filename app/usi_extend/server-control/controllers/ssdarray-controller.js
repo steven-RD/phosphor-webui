@@ -74,11 +74,11 @@ window.angular && (function(angular) {
 			//var windowEvent = window.event;               ///Get windowEvent
 			var mousePosition = getMousePos(window.event); ///Get mouse position
 			lab.style.position = "absolute";
-			lab.style.display="inline-table";
+			lab.style.display="block";
 			//lab.style.left = mousePosition.x  + 'px';
 			//lab.style.top = mousePosition.y  + 'px';	
-			lab.style.left = frontImgRect.left + 61 + 'px';
-			lab.style.left = frontImgRect.top + 248  + 'px';
+			lab.style.left = frontImgRect.left - 100 + 'px';
+			lab.style.left = frontImgRect.top + 10  + 'px';
 			console.log(mousePosition);
 			console.log(frontImgRect.left);
 			console.log(frontImgRect.bottom);
@@ -93,14 +93,14 @@ window.angular && (function(angular) {
 			changeStatus('ps');	
 			var lab=document.getElementById('usi-ps');
 			var mousePosition = getMousePos(window.event); ///Get mouse position
-			var insideImg = document.getElementById('insideImg');
-			var insideImgRect = insideImg.getBoundingClientRect();
+			//var insideImg = document.getElementById('insideImg');
+			//var insideImgRect = insideImg.getBoundingClientRect();
 			lab.style.position = "absolute";
 			lab.style.display="block";
-			//lab.style.left = mousePosition.x + 'px';
-			//lab.style.top = mousePosition.y + 'px';
-			lab.style.left = insideImgRect.left + 470 + 'px';
-			lab.style.top = insideImgRect.top + 390 + 'px';
+			lab.style.left = mousePosition.x + 'px';
+			lab.style.top = mousePosition.y + 'px';
+			//lab.style.left = insideImgRect.left + 470 + 'px';
+			//lab.style.top = insideImgRect.top + 390 + 'px';
 			$scope.psinfo=PSInfo['Status'];
 			console.log(lab);
 			console.log($scope.psinfo);
@@ -115,7 +115,7 @@ window.angular && (function(angular) {
 				lab.style.display='block';
 				//lab.style.left = mousePosition.x + 'px';
 				//lab.style.top = mousePosition.y + 'px';
-				lab.style.left = rearImgRect.left + 75 + 'px';
+				lab.style.left = rearImgRect.left - 100 + 'px';
 				lab.style.top = rearImgRect.top + 190  + 'px';
 				console.log(lab);
 				if(angular.equals(psName, name)) {
@@ -142,7 +142,7 @@ window.angular && (function(angular) {
 		lab.style.display="block";
 		//lab.style.left = mousePosition.x + 'px';
 		//lab.style.top = mousePosition.y + 'px';
-		lab.style.left = rearImgRect.left + 300 + 'px';
+		lab.style.left = rearImgRect.left + 100 + 'px';
 		lab.style.top = rearImgRect.top + 170  + 'px';
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
@@ -175,7 +175,7 @@ window.angular && (function(angular) {
 		//var windowEvent = window.event;               ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.position = "absolute";
-		lab.style.display='inline-table';
+		lab.style.display='block';
 		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px'; 
 		console.log(lab);
