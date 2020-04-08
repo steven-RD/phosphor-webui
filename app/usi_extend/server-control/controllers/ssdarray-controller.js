@@ -157,8 +157,8 @@ window.angular && (function(angular) {
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.position = "absolute";
 		lab.style.display="block";		
-		lab.style.left = mousePosition.x + 'px';
-		lab.style.top = mousePosition.y + 'px';
+		lab.style.left = mousePosition.x - 300 + 'px';
+		lab.style.top = mousePosition.y - 50 + 'px';
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
 		console.log(lab); 
