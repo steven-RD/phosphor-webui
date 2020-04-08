@@ -113,10 +113,12 @@ window.angular && (function(angular) {
 				var mousePosition = getMousePos(window.event); ///Get mouse position
 				lab.style.position = "absolute";
 				lab.style.display= "block";
-				lab.style.left = mousePosition.x + 'px';
-				lab.style.top = mousePosition.y + 'px';
+				//lab.style.left = mousePosition.x + 'px';
+				//lab.style.top = mousePosition.y + 'px';
 				//lab.style.left = rearImgRect.left - 100 + 'px'; ///ok
 				//lab.style.top = rearImgRect.top + 190  + 'px';
+				lab.style.left = rearImgRect.left-200 + 'px'; ///ok
+				lab.style.top = rearImgRect.bottom + 'px';
 				console.log(lab);
 				if(angular.equals(psName, name)) {
 					$scope.psname=psName;
@@ -143,7 +145,7 @@ window.angular && (function(angular) {
 		//lab.style.left = mousePosition.x + 'px';
 		//lab.style.top = mousePosition.y + 'px';
 		lab.style.left = rearImgRect.left + 100 + 'px';
-		lab.style.top = rearImgRect.top + 150  + 'px';
+		lab.style.top = rearImgRect.top + 50  + 'px';
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
 		console.log(lab); 
@@ -158,10 +160,11 @@ window.angular && (function(angular) {
 		lab.style.position = "absolute";
 		lab.style.display = "block";		
 		lab.style.left = mousePosition.x - 350 + 'px';
-		lab.style.top = mousePosition.y - 100 + 'px';
+		lab.style.top = mousePosition.y - 150 + 'px';
+		console.log("Switch"); 
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
-		console.log(lab); 
+		//console.log(lab); 
 	};
 	
 	
@@ -176,9 +179,9 @@ window.angular && (function(angular) {
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.position = "absolute";
 		lab.style.display="block";
-		lab.style.left = mousePosition.x - 250 + 'px';
+		lab.style.left = mousePosition.x-250 + 'px';
 		lab.style.top = mousePosition.y + 'px'; 
-		console.log(lab);
+		console.log("Fan");
 
 		for(var i = 0; i < fanData.length; i++){
 			if(fanData[i].title.indexOf(name+' INLET') != -1) {
