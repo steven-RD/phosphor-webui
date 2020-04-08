@@ -26,7 +26,7 @@
     </div> -->
 
 		<div class="allImage" >
-			<ul class="ulimg" id="imgs"><li>
+			<ul class="ulimg" id="imgs"><li><div id="front-img">
 				<img id="frontImg" src="../../../assets/images/J2024-03-front.png" class="ssd-image" alt="ssd" usemap="#SSDmap"/>
 				<map name="SSDmap" >
 					<area shape="rect" coords="61,130,84,248" alt="ssd1" style="cursor:pointer" ng-mouseover="SSD('SSD1')" ng-mouseleave="leave('usi-ssd')"/>
@@ -59,9 +59,9 @@
 					<area shape="rect" coords="564,10,558,140" alt="ssd19" style="cursor:pointer" ng-mouseover="Cable('Cable')" ng-mouseout="leave('usi-cable')"/>
 					<area shape="rect" coords="592,10,616,140" alt="ssd20" style="cursor:pointer" ng-mouseover="Switch('Swinfo')" ng-mouseout="leave('usi-switch')"/>	
 					 -->
-				</map>
+				</map></div>
 			</li>
-			<li class="img_display"><div>
+			<li class="img_display"><div id="rear-img">
 				<img id="rearImg" src="../../../assets/images/J2024-03-rear.png" alt="cableImage" usemap="#cableMap" />
 				<map name="cableMap" >
 					<area shape="rect" coords="40,120,110,190" alt="powerA" style="cursor:pointer" ng-mouseover="PowerSupply('PSA')" ng-mouseleave="leave('usi-ps')"/>
@@ -70,7 +70,7 @@
 					<!-- <area shape="rect" coords="490,120,740,220" alt="cable" style="cursor:pointer" ng-mouseover="Cable('Cable')" ng-mouseout="leave('usi-cable')"/> -->
 				</map></div>
             </li>
-            <li class="img_display"><div>
+            <li class="img_display"><div id="inside-img">
 				<img id="insideImg" src="../../../assets/images/J2024-03-internal-struct.png" alt="internal-struct" usemap="#insideMap" />
 				<map name="insideMap">
 				  <area shape="rect" coords="220,35,280,95" style="cursor:pointer" ng-mouseover="Fan('Fan1')" ng-mouseleave="leave('usi-fan')"/>
