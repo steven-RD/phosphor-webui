@@ -93,7 +93,7 @@ window.angular && (function(angular) {
 			changeStatus('ps');	
 			var lab=document.getElementById('usi-ps');
 			var mousePosition = getMousePos(window.event); ///Get mouse position
-			//var insideImg = document.getElementById('insideImg');
+			//var insideImg = document.getElementById('inside-img');
 			//var insideImgRect = insideImg.getBoundingClientRect();
 			lab.style.position = "absolute";
 			lab.style.display="block";
@@ -116,7 +116,8 @@ window.angular && (function(angular) {
 				//lab.style.left = mousePosition.x + 'px';
 				//lab.style.top = mousePosition.y + 'px';
 				lab.style.left = rearImgRect.left-100 + 'px'; ///ok
-				lab.style.top = rearImgRect.top+190 + 'px';
+				//lab.style.top = rearImgRect.top+190 + 'px';
+				lab.style.top = rearImgRect.top+250 + 'px';
 				console.log(lab);
 				if(angular.equals(psName, name)) {
 					$scope.psname=psName;

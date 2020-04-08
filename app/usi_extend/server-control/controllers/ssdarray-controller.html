@@ -73,15 +73,23 @@
             <li class="img_display"><div id="inside-img">
 				<img id="insideImg" src="../../../assets/images/J2024-03-internal-struct.png" alt="internal-struct" usemap="#insideMap" />
 				<map name="insideMap">
-				  <area shape="rect" coords="220,35,280,95" style="cursor:pointer" ng-mouseover="Fan('Fan1')" ng-mouseleave="leave('usi-fan')"/>
-				  <area shape="rect" coords="220,115,280,170" style="cursor:pointer" ng-mouseover="Fan('Fan2')" ng-mouseleave="leave('usi-fan')"/>
-				  <area shape="rect" coords="220,195,280,255" style="cursor:pointer" ng-mouseover="Fan('Fan3')" ng-mouseleave="leave('usi-fan')"/>
-				  <area shape="rect" coords="220,275,280,330" style="cursor:pointer" ng-mouseover="Fan('Fan4')" ng-mouseleave="leave('usi-fan')"/>
-				  <area shape="rect" coords="220,355,280,410" style="cursor:pointer" ng-mouseover="Fan('Fan5')" ng-mouseleave="leave('usi-fan')"/>
-				  <!-- <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan6')" ng-mouseleave="leave('usi-fan')"/> -->
-				  <area shape="rect" coords="450,100,510,150" style="cursor:pointer" ng-mouseover="Switch('Swinfo')" ng-mouseleave="leave('usi-switch')"/>
-				  <!-- <area shape="rect" coords="450,250,510,300" style="cursor:pointer" ng-mouseover="Switch('Swinfo')" ng-mouseleave="leave('usi-switch')"/> -->
-				  <area shape="rect" coords="335,350,610,430" style="cursor:pointer" ng-mouseover="PowerSupply('PS')" ng-mouseleave="leave('usi-psx')"/> 
+					<div ng-mouseover="Fan('Fan1')" ng-mouseleave="leave('usi-fan')">
+						<area shape="rect" coords="220,35,280,95" style="cursor:pointer"/>
+				    </div>
+					<area shape="rect" coords="220,115,280,170" style="cursor:pointer">
+						<div ng-mouseover="Fan('Fan2')" ng-mouseleave="leave('usi-fan')" />
+					</area>
+					<area shape="rect" coords="220,195,280,255" style="cursor:pointer">
+						<span ng-mouseover="Fan('Fan3')" ng-mouseleave="leave('usi-fan')"/>
+					</area>	
+					<area shape="rect" coords="220,275,280,330" style="cursor:pointer" ng-mouseover="Fan('Fan4')" ng-mouseleave="leave('usi-fan')"/>
+					<area shape="rect" coords="220,355,280,410" style="cursor:pointer" ng-mouseover="Fan('Fan5')" ng-mouseleave="leave('usi-fan')"/>
+					<!-- <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan6')" ng-mouseleave="leave('usi-fan')"/> -->
+					<div ng-mouseover="Switch('Swinfo')" ng-mouseleave="leave('usi-switch')">
+						<area shape="rect" coords="450,100,510,150" style="cursor:pointer"/>
+					</div>
+					<!-- <area shape="rect" coords="450,250,510,300" style="cursor:pointer" ng-mouseover="Switch('Swinfo')" ng-mouseleave="leave('usi-switch')"/> -->
+					<area shape="rect" coords="335,350,610,430" style="cursor:pointer" ng-mouseover="PowerSupply('PS')" ng-mouseleave="leave('usi-psx')"/> 
 				</map></div>
             </li>
 		</ul>
