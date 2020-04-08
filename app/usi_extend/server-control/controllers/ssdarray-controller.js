@@ -96,8 +96,8 @@ window.angular && (function(angular) {
 			//var insideImg = document.getElementById('insideImg');
 			//var insideImgRect = insideImg.getBoundingClientRect();
 			lab.style.position = "absolute";
-			lab.style.display="inline-table";
-			lab.style.left = mousePosition.x - 50 + 'px';
+			lab.style.display="block";
+			lab.style.left = mousePosition.x - 150 + 'px';
 			lab.style.top = mousePosition.y - 50 + 'px';
 			//lab.style.left = insideImgRect.left + 470 + 'px';
 			//lab.style.top = insideImgRect.top + 390 + 'px';
@@ -112,11 +112,11 @@ window.angular && (function(angular) {
 				var rearImgRect = rearImg.getBoundingClientRect();
 				var mousePosition = getMousePos(window.event); ///Get mouse position
 				lab.style.position = "absolute";
-				lab.style.display= "inline-table";
-				//lab.style.left = mousePosition.x + 'px';
-				//lab.style.top = mousePosition.y + 'px';
-				lab.style.left = rearImgRect.left - 100 + 'px';
-				lab.style.top = rearImgRect.top + 190  + 'px';
+				lab.style.display= "block";
+				lab.style.left = mousePosition.x + 'px';
+				lab.style.top = mousePosition.y + 'px';
+				//lab.style.left = rearImgRect.left - 100 + 'px'; ///ok
+				//lab.style.top = rearImgRect.top + 190  + 'px';
 				console.log(lab);
 				if(angular.equals(psName, name)) {
 					$scope.psname=psName;
@@ -156,9 +156,9 @@ window.angular && (function(angular) {
 		var lab = document.getElementById('usi-switch');
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.position = "absolute";
-		lab.style.display="block";		
-		lab.style.left = mousePosition.x - 300 + 'px';
-		lab.style.top = mousePosition.y - 50 + 'px';
+		lab.style.display = "block";		
+		lab.style.left = mousePosition.x - 350 + 'px';
+		lab.style.top = mousePosition.y - 100 + 'px';
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
 		console.log(lab); 
