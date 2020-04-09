@@ -62,7 +62,7 @@ window.angular && (function(angular) {
         console.log(ssdInfo);
         console.log(ssdNum);
         if(angular.equals(ssdNum, num)){
-            console.log('equal');
+            console.log('ssd');
 			$scope.ssdNo=ssdNum;
 			$scope.ssdx=ssdInfo;
 			changeStatus('ssd');
@@ -77,10 +77,12 @@ window.angular && (function(angular) {
 			lab.style.display="block";
 			//lab.style.left = mousePosition.x  + 'px';
 			//lab.style.top = mousePosition.y  + 'px';	
-			lab.style.left = frontImgRect.left +(frontImgRect.right - frontImgRect.left)/2 + 'px';
-			lab.style.top = frontImgRect.top+70+ 'px';
+			lab.style.left = frontImgRect.left + (frontImgRect.right - frontImgRect.left)/2 + 'px';
+			lab.style.top = frontImgRect.top + 70 + 'px';
 			console.log(mousePosition);
 			console.log(frontImgRect.left);
+			console.log(frontImgRect.right);
+			console.log(frontImgRect.top);
 			console.log(frontImgRect.bottom);
         }
       });
@@ -90,7 +92,8 @@ window.angular && (function(angular) {
     $scope.PowerSupply = function(name) {		
 		
 		if(angular.equals(name, 'PS')) {
-			changeStatus('ps');	
+			changeStatus('ps');
+			$scope.psinfo=PSInfo['Status'];	
 			var lab=document.getElementById('usi-ps');
 			var mousePosition = getMousePos(window.event); ///Get mouse position
 			//var insideImg = document.getElementById('inside-img');
@@ -101,27 +104,26 @@ window.angular && (function(angular) {
 			lab.style.top = mousePosition.y-50 + 'px';
 			//lab.style.left = insideImgRect.left + 470 + 'px';
 			//lab.style.top = insideImgRect.top + 390 + 'px';
-			$scope.psinfo=PSInfo['Status'];
 			console.log(lab);
 			console.log($scope.psinfo);
 		}else{
-			angular.forEach(PSInfo['Status'], function(psInfo, psName) {
-				changeStatus('psx');	
-				var lab=document.getElementById('usi-psx');
-				var rearImg = document.getElementById('rear-img');
-				var rearImgRect = rearImg.getBoundingClientRect();
-				var mousePosition = getMousePos(window.event); ///Get mouse position
-				lab.style.position = "absolute";
-				lab.style.display= "block";
-				//lab.style.left = mousePosition.x + 'px';
-				//lab.style.top = mousePosition.y + 'px';
-				lab.style.left = rearImgRect.left-100 + 'px'; ///ok
-				//lab.style.top = rearImgRect.top+190 + 'px';
-				lab.style.top = rearImgRect.top+250 + 'px';
-				console.log(lab);
+			angular.forEach(PSInfo['Status'], function(psInfo, psName) {				
 				if(angular.equals(psName, name)) {
+					changeStatus('psx');				
 					$scope.psname=psName;
 					$scope.psinfo=psInfo;
+					var lab=document.getElementById('usi-psx');
+					var rearImg = document.getElementById('rear-img');
+					var rearImgRect = rearImg.getBoundingClientRect();
+					var mousePosition = getMousePos(window.event); ///Get mouse position
+					lab.style.position = "absolute";
+					lab.style.display= "block";
+					//lab.style.left = mousePosition.x + 'px';
+					//lab.style.top = mousePosition.y + 'px';
+					lab.style.left = rearImgRect.left-100 + 'px'; ///ok
+					//lab.style.top = rearImgRect.top+190 + 'px';
+					lab.style.top = rearImgRect.top+250 + 'px';
+					console.log(lab);
 					console.log($scope.psinfo);
 				}
 			});
