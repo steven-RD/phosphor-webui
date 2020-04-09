@@ -74,7 +74,7 @@ window.angular && (function(angular) {
 			var mousePosition = getMousePos(window.event); ///Get mouse position
 			lab.style.position = "absolute";
 			lab.style.display="block";
-			//lab.style.pointer-events = "none";
+			lab.style.pointer-events = "none";
 			lab.style.left = mousePosition.x  + 'px';
 			lab.style.top = mousePosition.y  + 'px';	
 			console.log(mousePosition);
@@ -98,7 +98,7 @@ window.angular && (function(angular) {
 			//var insideImgRect = insideImg.getBoundingClientRect();
 			lab.style.position = "absolute";
 			lab.style.display = "block";
-			//lab.style.pointer-events = "none";
+			lab.style.pointer-events = "none";
 			lab.style.left = mousePosition.x-150 + 'px';
 			lab.style.top = mousePosition.y-50 + 'px';
 			//lab.style.left = insideImgRect.left + 470 + 'px';
@@ -117,7 +117,7 @@ window.angular && (function(angular) {
 					var mousePosition = getMousePos(window.event); ///Get mouse position
 					lab.style.position = "absolute";
 					lab.style.display= "block";
-					//lab.style.pointer-events = "none";
+					lab.style.pointer-events = "none";
 					lab.style.left = mousePosition.x + 'px';
 					lab.style.top = mousePosition.y + 'px';
 					//lab.style.left = rearImgRect.left-100 + 'px'; ///ok
@@ -143,7 +143,7 @@ window.angular && (function(angular) {
 		var rearImgRect = rearImg.getBoundingClientRect();
 		lab.style.position = "absolute";
 		lab.style.display = "block";
-		//lab.style.pointer-events = "none";
+		lab.style.pointer-events = "none";
 		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
 		//lab.style.left = rearImgRect.left+100+ 'px';
@@ -161,7 +161,7 @@ window.angular && (function(angular) {
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.position = "absolute";
 		lab.style.display = "block";	
-		//lab.style.pointer-events = "none";
+		lab.style.pointer-events = "none";
 		lab.style.left = mousePosition.x - 350 + 'px';
 		lab.style.top = mousePosition.y - 150 + 'px';
 		console.log("Switch"); 
@@ -182,7 +182,7 @@ window.angular && (function(angular) {
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.position = "absolute";
 		lab.style.display = "block";
-		//lab.style.pointer-events = "none";
+		lab.style.pointer-events = "none";
 		lab.style.left = mousePosition.x-250 + 'px';
 		lab.style.top = mousePosition.y + 'px'; 
 		console.log("Fan");
