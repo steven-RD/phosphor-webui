@@ -58,7 +58,7 @@ th , td {
   font-size: medium;
   border: 1px solid grey;
   border-collapse: collapse;
-  padding: 5px;
+  padding: 4px;
 }
  tr:nth-child(odd) {
   background-color: #f1f1f1;
@@ -126,11 +126,16 @@ th , td {
     width: 150px;
 }
 
-#frontImg #rareImg{
+#frontImg #rearImg{
     width: 764px;
     height: 350px;
 }
 #insideImg{
     width: 600px;
     height: 450px;
+}
+
+#ssdArrayStyle{
+	cursor:pointer;
+	pointer-events: none;
 }
