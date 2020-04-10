@@ -55,7 +55,7 @@ window.angular && (function(angular) {
 		  console.log('leave');
 		  console.log(lab);
 	  };
-	  
+	 
 	  ///ssd information
       $scope.SSD = function(num){
       angular.forEach(arrayInfo['Ssdinfo'], function(ssdInfo, ssdNum){
