@@ -30,14 +30,14 @@
 			<li ><div id="front-img">
 				<img id="frontImg" src="../../../assets/images/J2024-03-front.png" class="ssd-image" alt="ssd" usemap="#SSDmap"/>
 				<map name="SSDmap" >
-					<area shape="rect" coords="61,130,84,248" alt="ssd1" id="ssdArrayStyle" ng-click="SSD('SSD1')" ng-mouseout="leave('usi-ssd')"/>
-					<area shape="rect" coords="90,130,113,248" alt="ssd2" id="ssdArrayStyle" ng-click="SSD('SSD2')" ng-mouseout="leave('usi-ssd')"/>
-					<area shape="rect" coords="119,130,142,248" alt="ssd3" id="ssdArrayStyle" ng-click="SSD('SSD3')" ng-mouseleave="leave('usi-ssd')"/>
-					<area shape="rect" coords="146,130,169,248" alt="ssd4" id="ssdArrayStyle" ng-click="SSD('SSD4')" ng-mouseleave="leave('usi-ssd')"/>					
-					<area shape="rect" coords="175,130,198,248" alt="ssd5" id="ssdArrayStyle" ng-click="SSD('SSD5')" />
-					<area shape="rect" coords="204,130,226,248" alt="ssd6" id="ssdArrayStyle" ng-click="SSD('SSD6')" />
-					<area shape="rect" coords="232,130,254,248" alt="ssd7" id="ssdArrayStyle" ng-mouseover="SSD('SSD7')" ng-mouseout="leave('usi-ssd')"/>
-					<area shape="rect" coords="259,130,281,248" alt="ssd8" id="ssdArrayStyle" ng-mouseover="SSD('SSD8')" ng-mouseout="leave('usi-ssd')"/>	
+					<area shape="rect" coords="61,130,84,248" alt="ssd1" id="ssdArrayStyle" ng-mouseover="SSD('SSD1')" />
+					<area shape="rect" coords="90,130,113,248" alt="ssd2" id="ssdArrayStyle" ng-mouseover="SSD('SSD2')" />
+					<area shape="rect" coords="119,130,142,248" alt="ssd3" id="ssdArrayStyle" ng-mouseover="SSD('SSD3')" />
+					<area shape="rect" coords="146,130,169,248" alt="ssd4" id="ssdArrayStyle" ng-mouseover="SSD('SSD4')" />					
+					<area shape="rect" coords="175,130,198,248" alt="ssd5" id="ssdArrayStyle" ng-mouseover="SSD('SSD5')" />
+					<area shape="rect" coords="204,130,226,248" alt="ssd6" id="ssdArrayStyle" ng-mouseover="SSD('SSD6')" />
+					<area shape="rect" coords="232,130,254,248" alt="ssd7" id="ssdArrayStyle" ng-mouseover="SSD('SSD7')" />
+					<area shape="rect" coords="259,130,281,248" alt="ssd8" id="ssdArrayStyle" ng-mouseover="SSD('SSD8')" />	
 					<area shape="rect" coords="286,130,309,248" alt="ssd9" id="ssdArrayStyle" ng-mouseenter="SSD('SSD9')" /> <!-- ng-mouseleave="leave('usi-ssd')" -->
 					<area shape="rect" coords="315,130,337,248" alt="ssd10" id="ssdArrayStyle" ng-mouseenter="SSD('SSD10')" />
 					<area shape="rect" coords="342,130,364,248" alt="ssd11" id="ssdArrayStyle" ng-mouseenter="SSD('SSD11')" />
@@ -67,7 +67,7 @@
 				<map name="cableMap" >
 					<area shape="rect" coords="40,120,110,190" alt="powerA" id="ssdArrayStyle" ng-mouseover="PowerSupply('PSA')" /> <!-- ng-mouseleave="leave('usi-ps')" -->
 					<area shape="rect" coords="40,196,110,268" alt="powerB" id="ssdArrayStyle" ng-mouseover="PowerSupply('PSB')" />
-					<area shape="rect" coords="190,120,440,220" alt="cable" id="ssdArrayStyle" ng-click="Cable()" /> <!-- ng-mouseleave="leave('usi-cable')" -->
+					<area shape="rect" coords="190,120,440,220" alt="cable" id="ssdArrayStyle" ng-mouseover="Cable()" ng-mouseleave="leave('usi-cable')/> 
 					<!-- <area shape="rect" coords="490,120,740,220" alt="cable" style="cursor:pointer" ng-mouseover="Cable()" ng-mouseout="leave('usi-cable')"/> -->
 				</map></div>
             </li>
@@ -89,7 +89,7 @@
         <div class="left_btn btn" ng-click="moveNext('left')"><p class="arrow"><</p></div>
         <div class="right_btn btn" ng-click="moveNext('right')"><p class="arrow">></p></div>
 	</div>
-	<div id="usi-ssd" class="" ng-show="ssdFlag == true">
+	<div id="usi-ssd" class="" ng-show="ssdFlag == true" ng-mouseleave="leave('usi-ssd')">
         <table id='ssd-info-body'>
 			<tbody class="ssd-body-tbody">
 				<tr><td>SSD NO.</td><td>{{ssdNo}}</td></tr>
@@ -105,7 +105,7 @@
             </tbody>
         </table>
     </div>
-    <div id="usi-cable" class="" ng-show="cableFlag == true">
+    <div id="usi-cable" class="" ng-show="cableFlag == true" > <!--  ng-mouseleave="leave('usi-cable')" -->
       <table id='ssd-info-body'>
         <thead class="ssd-body-header">
             <tr>
@@ -139,7 +139,7 @@
         </tbody>
       </table>
     </div>
-    <div id="usi-switch" class="" ng-show="switchFlag == true">
+    <div id="usi-switch" class="" ng-show="switchFlag == true" ng-mouseleave="leave('usi-switch')">
         <table id='ssd-info-body'>
             <thead class="ssd-body-header">
                 <tr>
@@ -155,7 +155,7 @@
             </tbody>
         </table>
     </div>
-	<div id="usi-ps" class="" ng-show="psFlag == true">
+	<div id="usi-ps" class="" ng-show="psFlag == true" ng-mouseleave="leave('usi-ps')">
         <table id='ssd-info-body'>
             <thead class='ssd-body-header'>
                 <tr>
@@ -171,7 +171,7 @@
             </tbody>
         </table>
     </div>
-	<div id="usi-psx" class="" ng-show="psxFlag == true">
+	<div id="usi-psx" class="" ng-show="psxFlag == true" ng-mouseleave="leave('usi-psx')">
         <table id='ssd-info-body'>
             <thead class='ssd-body-header'>
                 <tr>
@@ -187,7 +187,7 @@
             </tbody>
         </table>
     </div>
-	<div id="usi-fan" class="" ng-show="fanFlag == true">
+	<div id="usi-fan" class="" ng-show="fanFlag == true" ng-mouseleave="leave('usi-fan')">
         <table id='ssd-info-body'>
              <thead class='ssd-body-header'>
                 <tr>

@@ -41,8 +41,6 @@ window.angular && (function(angular) {
           }
       };
 	  
-      var arrayInfo=[];
-      var PSInfo=[];
 	  $scope.leave = function(id){
 		  $scope.ssdFlag = false;
           $scope.cableFlag = false;
@@ -56,6 +54,8 @@ window.angular && (function(angular) {
 		  console.log(lab);
 	  };
 	 
+      var arrayInfo=[];
+      var PSInfo=[];
 	  ///ssd information
       $scope.SSD = function(num){
       angular.forEach(arrayInfo['Ssdinfo'], function(ssdInfo, ssdNum){
@@ -66,18 +66,16 @@ window.angular && (function(angular) {
 			$scope.ssdNo=ssdNum;
 			$scope.ssdx=ssdInfo;
 			changeStatus('ssd');
-			
-			//var frontImg = document.getElementById('front-img');
-			//var frontImgRect = frontImg.getBoundingClientRect();			
+						
 			var lab = document.getElementById('usi-ssd');
-			//var windowEvent = window.event;               ///Get windowEvent
 			var mousePosition = getMousePos(window.event); ///Get mouse position
 			lab.style.position = "absolute";
 			lab.style.display = "block";
-			//lab.style.pointer-events = "none";
 			lab.style.left = mousePosition.x + 5  + 'px';
-			lab.style.top = mousePosition.y  + 5 +  'px';	
-			console.log(mousePosition);
+			lab.style.top = mousePosition.y  + 5 +  'px';
+			lab.style.height = '0px';
+			lab.style.width = '0px';	
+			//lab.style.pointer-events = "none";
         }
       });
     };
@@ -94,11 +92,10 @@ window.angular && (function(angular) {
 			//var insideImgRect = insideImg.getBoundingClientRect();
 			lab.style.position = "absolute";
 			lab.style.display = "block";
-			//lab.style.pointer-events = "none";
-			lab.style.left = mousePosition.x-150 + 'px';
-			lab.style.top = mousePosition.y-50 + 'px';
-			//lab.style.left = insideImgRect.left + 470 + 'px';
-			//lab.style.top = insideImgRect.top + 390 + 'px';
+			lab.style.left = mousePosition.x + 'px';
+			lab.style.top = mousePosition.y + 'px';
+			lab.style.height = '0px';
+			lab.style.width = '0px';
 			console.log(lab);
 			console.log($scope.psinfo);
 		}else{
@@ -108,17 +105,13 @@ window.angular && (function(angular) {
 					$scope.psname=psName;
 					$scope.psinfo=psInfo;
 					var lab = document.getElementById('usi-psx');
-					//var rearImg = document.getElementById('rear-img');
-					//var rearImgRect = rearImg.getBoundingClientRect();
 					var mousePosition = getMousePos(window.event); ///Get mouse position
 					lab.style.position = "absolute";
 					lab.style.display= "block";
-					//lab.style.pointer-events = "none";
+					lab.style.height = '0px';
+					lab.style.width = '0px';
 					lab.style.left = mousePosition.x + 'px';
 					lab.style.top = mousePosition.y + 'px';
-					//lab.style.left = rearImgRect.left-100 + 'px'; ///ok
-					//lab.style.top = rearImgRect.top+190 + 'px';
-					//lab.style.top = rearImgRect.top+250 + 'px';
 					console.log(lab);
 					console.log($scope.psinfo);
 				}
@@ -135,19 +128,12 @@ window.angular && (function(angular) {
 		var lab = document.getElementById('usi-cable');
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		
-		var rearImg = document.getElementById('rear-img');
-		var rearImgRect = rearImg.getBoundingClientRect();
 		lab.style.position = "absolute";
 		lab.style.display = "block";
-		//lab.style.pointer-events = "none";
 		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
 		lab.style.height = '0px';
 		lab.style.width = '0px';
-		//lab.style.left = rearImgRect.left+100+ 'px';
-		//lab.style.top = rearImgRect.top+50+ 'px';
-		//console.log(mousePosition.x + 'px');
-		//console.log(mousePosition.y + 'px');
 		console.log(lab); 
 	};
 	
@@ -158,10 +144,11 @@ window.angular && (function(angular) {
 		var lab = document.getElementById('usi-switch');
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.position = "absolute";
-		lab.style.display = "block";	
-		//lab.style.pointer-events = "none";
-		lab.style.left = mousePosition.x - 350 + 'px';
-		lab.style.top = mousePosition.y - 100 + 'px';
+		lab.style.display = "block";
+		lab.style.height = '0px';
+		lab.style.width = '0px';	
+		lab.style.left = mousePosition.x + 'px';
+		lab.style.top = mousePosition.y  + 'px';
 		console.log("Switch"); 
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
@@ -179,9 +166,10 @@ window.angular && (function(angular) {
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.position = "absolute";
 		lab.style.display = "block";
-		//lab.style.pointer-events = "none";
-		lab.style.left = mousePosition.x-250 + 'px';
+		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px'; 
+		lab.style.height = '0px';
+		lab.style.width = '0px';
 		console.log("Fan");
 
 		for(var i = 0; i < fanData.length; i++){
@@ -201,12 +189,7 @@ window.angular && (function(angular) {
 	  console.log(imgElement);
       var imgLen = imgElement.length;
       $scope.moveNext = function(arrow){
-		  $scope.ssdFlag = false;
-          $scope.cableFlag = false;
-          $scope.switchFlag = false;
-          $scope.psFlag = false;
-		  $scope.psxFlag = false;
-		  $scope.fanFlag = false;
+		  
 		  if(arrow == 'right'){
 			index++;
 			if (index == imgLen){
