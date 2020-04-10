@@ -58,7 +58,7 @@ th , td {
   font-size: medium;
   border: 1px solid grey;
   border-collapse: collapse;
-  padding: 4px;
+  padding: 0px;
 }
  tr:nth-child(odd) {
   background-color: #f1f1f1;
@@ -141,4 +141,8 @@ th , td {
 
 #usi-ssd #usi-cable #usi-switch #usi-ps #usi-psx #usi-fan {
 	pointer-events: none;
+}
+
+.ulimg li {
+	list-style: none;
 }
