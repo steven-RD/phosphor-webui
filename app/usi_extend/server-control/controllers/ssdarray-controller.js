@@ -78,10 +78,6 @@ window.angular && (function(angular) {
 			lab.style.left = mousePosition.x + 5  + 'px';
 			lab.style.top = mousePosition.y  + 5 +  'px';	
 			console.log(mousePosition);
-			//console.log(frontImgRect.left);
-			//console.log(frontImgRect.right);
-			//console.log(frontImgRect.top);
-			//console.log(frontImgRect.bottom);
         }
       });
     };
@@ -178,7 +174,6 @@ window.angular && (function(angular) {
 		console.log(fanData);
 		
 		var lab = document.getElementById('usi-fan');
-		//var windowEvent = window.event;               ///Get windowEvent
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.position = "absolute";
 		lab.style.display = "block";
@@ -204,6 +199,12 @@ window.angular && (function(angular) {
 	  console.log(imgElement);
       var imgLen = imgElement.length;
       $scope.moveNext = function(arrow){
+		  $scope.ssdFlag = false;
+          $scope.cableFlag = false;
+          $scope.switchFlag = false;
+          $scope.psFlag = false;
+		  $scope.psxFlag = false;
+		  $scope.fanFlag = false;
 		  if(arrow == 'right'){
 			index++;
 			if (index == imgLen){
@@ -242,23 +243,6 @@ window.angular && (function(angular) {
         UsiAPIUtils.getSsdArrayInfo().then(
             function(data){
                 arrayInfo = data;
-                /*   $scope.ssdinfo = arrayInfo['Ssdinfo'];
-                }
-                if (arrayInfo.hasOwnProperty('Cableinfo')){
-                    $scope.cableinfo = arrayInfo['Cableinfo'];
-                }
-                if (arrayInfo.hasOwnProperty('Dspinfo')){
-                    $scope.dspinfo = arrayInfo['Dspinfo'];
-                }
-                if (arrayInfo.hasOwnProperty('Patopoinfo')){
-                    $scope.patopoinfo = arrayInfo['Patopoinfo'];
-                }
-                if (arrayInfo.hasOwnProperty('Swinfo')){
-                    $scope.swinfo = arrayInfo['Swinfo'];
-                }
-                if (arrayInfo.hasOwnProperty('Bindinfo')){
-                    $scope.bindinfo = arrayInfo['Bindinfo'];
-                } */
             },
             function(error) {
                toastService.error('Error during getSsdArrayInfo');
@@ -271,9 +255,6 @@ window.angular && (function(angular) {
         UsiAPIUtils.getPowerSupplyInfo().then(
             function(data){
                 PSInfo = data;
-                /* if (psinfo.hasOwnProperty('Status')){
-                    $scope.psinfo = psinfo['Status'];
-                } */
             },
             function(error) {
                toastService.error('Error during get PowerSupplyInfo');
@@ -288,8 +269,6 @@ window.angular && (function(angular) {
               for(var i = 0; i < data.length; i++){
                   if(data[i].title.indexOf('Fan') != -1 &&  data[i].title.indexOf('Tach') != -1){
                       fanData.push(data[i]);
-					  //console.log(data[i]);
-					  //console.log(data[i].title);
                   }
               }
               
