@@ -11,7 +11,7 @@
         <h1>JBOF inventory information</h1>
     </div> -->
 	
-<!--     <div id='ssd-header' class="row column header-row">
+<!--     <div id='ssd-header' class="">
         <table id='ssd-info-header'>
             <tr>
                 <td ng-mouseover="changeStatus('ssd')">SSD information</td>
@@ -89,7 +89,7 @@
         <div class="left_btn btn" ng-click="moveNext('left')"><p class="arrow"><</p></div>
         <div class="right_btn btn" ng-click="moveNext('right')"><p class="arrow">></p></div>
 	</div>
-	<div id="usi-ssd" class="row column header-row" ng-show="ssdFlag == true">
+	<div id="usi-ssd" class="" ng-show="ssdFlag == true">
         <table id='ssd-info-body'>
 			<tbody class="ssd-body-tbody">
 				<tr><td>SSD NO.</td><td>{{ssdNo}}</td></tr>
@@ -105,7 +105,7 @@
             </tbody>
         </table>
     </div>
-    <div id="usi-cable" class="row column header-row" ng-show="cableFlag == true">
+    <div id="usi-cable" class="" ng-show="cableFlag == true">
       <table id='ssd-info-body'>
         <thead class="ssd-body-header">
             <tr>
@@ -139,7 +139,7 @@
         </tbody>
       </table>
     </div>
-    <div id="usi-switch" class="row column header-row" ng-show="switchFlag == true">
+    <div id="usi-switch" class="" ng-show="switchFlag == true">
         <table id='ssd-info-body'>
             <thead class="ssd-body-header">
                 <tr>
@@ -155,7 +155,7 @@
             </tbody>
         </table>
     </div>
-	<div id="usi-ps" class="row column header-row" ng-show="psFlag == true">
+	<div id="usi-ps" class="" ng-show="psFlag == true">
         <table id='ssd-info-body'>
             <thead class='ssd-body-header'>
                 <tr>
@@ -171,7 +171,7 @@
             </tbody>
         </table>
     </div>
-	<div id="usi-psx" class="row column header-row" ng-show="psxFlag == true">
+	<div id="usi-psx" class="" ng-show="psxFlag == true">
         <table id='ssd-info-body'>
             <thead class='ssd-body-header'>
                 <tr>
@@ -187,7 +187,7 @@
             </tbody>
         </table>
     </div>
-	<div id="usi-fan" class="row column header-row" ng-show="fanFlag == true">
+	<div id="usi-fan" class="" ng-show="fanFlag == true">
         <table id='ssd-info-body'>
              <thead class='ssd-body-header'>
                 <tr>
@@ -221,7 +221,7 @@
     </div>
 </div>	
 <!--
-	<div class="row column header-row" ng-show="ssdFlag == true">
+	<div class="" ng-show="ssdFlag == true">
         <table id='ssd-info-body'>
             <caption>SSD information</caption>
             <thead class="ssd-body-header">
@@ -255,7 +255,7 @@
         </table>
     </div>
 	
-	<div class="row column header-row" ng-show="cableinfoFlag == true">
+	<div class="" ng-show="cableinfoFlag == true">
       <table id='ssd-info-body'>
         <caption>Cable information </caption>
         <thead class="ssd-body-header">
@@ -291,7 +291,7 @@
       </table>
     </div>
 
-    <div class="row column header-row" ng-show="swinfoFlag == true">
+    <div class="" ng-show="swinfoFlag == true">
         <table id='ssd-info-body'>
             <caption>Swinfo information </caption>
             <thead class="ssd-body-header">
@@ -309,7 +309,7 @@
         </table>
     </div>
 
-    <div class="row column header-row" ng-show="patopoFlag == true">
+    <div class="" ng-show="patopoFlag == true">
         <table id='ssd-info-body' ng-show="patopoinfo != 'None'" ng-repeat="(k, v) in patopoinfo">
             <caption>{{k}} information </caption>
             <thead class="ssd-body-header">
@@ -336,7 +336,7 @@
         </table>
     </div>
 
-    <div class="row column header-row" ng-show="dspFlag == true">
+    <div class="" ng-show="dspFlag == true">
         <table id='ssd-info-body'>
             <caption>dspinfo information</caption>
             <thead class='ssd-info-header'>
@@ -354,7 +354,7 @@
         </table>
     </div>
 
-    <div class="row column header-row" ng-show="bindinfoFlag == true">
+    <div class="" ng-show="bindinfoFlag == true">
         <table id='ssd-info-body'>
             <caption>bindinfo information </caption>
             <thead class='ssd-info-header'>
@@ -372,7 +372,7 @@
         </table>
     </div>
 
-    <div class="row column header-row" ng-show="psFlag == true">
+    <div class="" ng-show="psFlag == true">
         <table id='ssd-info-body'>
             <caption>ps info</caption>
             <thead class='ssd-info-header'>

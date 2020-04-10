@@ -142,6 +142,8 @@ window.angular && (function(angular) {
 		//lab.style.pointer-events = "none";
 		lab.style.left = mousePosition.x + 'px';
 		lab.style.top = mousePosition.y + 'px';
+		lab.style.height = '0px';
+		lab.style.width = '0px';
 		//lab.style.left = rearImgRect.left+100+ 'px';
 		//lab.style.top = rearImgRect.top+50+ 'px';
 		//console.log(mousePosition.x + 'px');
@@ -159,7 +161,7 @@ window.angular && (function(angular) {
 		lab.style.display = "block";	
 		//lab.style.pointer-events = "none";
 		lab.style.left = mousePosition.x - 350 + 'px';
-		lab.style.top = mousePosition.y - 150 + 'px';
+		lab.style.top = mousePosition.y - 100 + 'px';
 		console.log("Switch"); 
 		console.log(mousePosition.x + 'px');
 		console.log(mousePosition.y + 'px');
