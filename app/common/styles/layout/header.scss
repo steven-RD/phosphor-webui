@@ -54,7 +54,7 @@ $logoMaxWidth: 300px;
   display: block;
   position: relative;
   overflow: hidden;
-  min-height: 5em;
+  min-height: 4em;
   border-bottom: 1px solid $border-color-01;
   background: $primary-light;
   .header__server-name {
@@ -83,7 +83,7 @@ $logoMaxWidth: 300px;
 
   .header__logo {
     vertical-align: middle;
-    margin: 1em;
+    margin: .2em;
     float: left;
     height: $logoHeight; //required for <SVG> logos - can remove if using img
     max-height: $logoMaxHeight;
