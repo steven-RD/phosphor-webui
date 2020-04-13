@@ -38,10 +38,10 @@
 					<area shape="rect" coords="204,130,226,248" alt="ssd6" id="ssdArrayStyle" ng-mouseover="SSD('SSD6')" />
 					<area shape="rect" coords="232,130,254,248" alt="ssd7" id="ssdArrayStyle" ng-mouseover="SSD('SSD7')" />
 					<area shape="rect" coords="259,130,281,248" alt="ssd8" id="ssdArrayStyle" ng-mouseover="SSD('SSD8')" />	
-					<area shape="rect" coords="286,130,309,248" alt="ssd9" id="ssdArrayStyle" ng-mouseenter="SSD('SSD9')" /> <!-- ng-mouseleave="leave('usi-ssd')" -->
-					<area shape="rect" coords="315,130,337,248" alt="ssd10" id="ssdArrayStyle" ng-mouseenter="SSD('SSD10')" />
-					<area shape="rect" coords="342,130,364,248" alt="ssd11" id="ssdArrayStyle" ng-mouseenter="SSD('SSD11')" />
-					<area shape="rect" coords="370,130,392,248" alt="ssd12" id="ssdArrayStyle" ng-mouseenter="SSD('SSD12')" />
+					<area shape="rect" coords="286,130,309,248" alt="ssd9" id="ssdArrayStyle" ng-mouseover="SSD('SSD9')" /> 
+					<area shape="rect" coords="315,130,337,248" alt="ssd10" id="ssdArrayStyle" ng-mouseover="SSD('SSD10')" />
+					<area shape="rect" coords="342,130,364,248" alt="ssd11" id="ssdArrayStyle" ng-mouseover="SSD('SSD11')" />
+					<area shape="rect" coords="370,130,392,248" alt="ssd12" id="ssdArrayStyle" ng-mouseover="SSD('SSD12')" />
 					<area shape="rect" coords="396,130,419,248" alt="ssd13" id="ssdArrayStyle" ng-mouseover="SSD('SSD13')" />
 					<area shape="rect" coords="425,130,447,248" alt="ssd14" id="ssdArrayStyle" ng-mouseover="SSD('SSD14')" />
 					<area shape="rect" coords="452,130,475,248" alt="ssd15" id="ssdArrayStyle" ng-mouseover="SSD('SSD15')" />
@@ -63,18 +63,18 @@
 				</map></div>
 			</li>
 			<li class="img_display"><div id="rear-img">
-				<img id="rearImg" src="../../../assets/images/J2024-03-rear.png" alt="cableImage" usemap="#cableMap" />
-				<map name="cableMap" >
-					<area shape="rect" coords="40,120,110,190" alt="powerA" id="ssdArrayStyle" ng-mouseover="PowerSupply('PSA')" /> <!-- ng-mouseleave="leave('usi-ps')" -->
-					<area shape="rect" coords="40,196,110,268" alt="powerB" id="ssdArrayStyle" ng-mouseover="PowerSupply('PSB')" />
-					<area shape="rect" coords="190,120,440,220" alt="cable" id="ssdArrayStyle" ng-mouseover="Cable()" ng-mouseleave="leave('usi-cable')/> 
+				<img id="rearImg" src="../../../assets/images/J2024-03-rear.png" alt="cableImage" usemap="#cableMap"/>
+				<map name="cableMap">
+					<area shape="rect" coords="40,120,110,190" alt="powerA" id="ssdArrayStyle" ng-mouseover="PowerSupply('PSA')"/>
+					<area shape="rect" coords="40,196,110,268" alt="powerB" id="ssdArrayStyle" ng-mouseover="PowerSupply('PSB')"/>
+					<area shape="rect" coords="190,120,440,220" alt="cable" id="ssdArrayStyle" ng-mouseover="Cable()"/> 
 					<!-- <area shape="rect" coords="490,120,740,220" alt="cable" style="cursor:pointer" ng-mouseover="Cable()" ng-mouseout="leave('usi-cable')"/> -->
 				</map></div>
             </li>
             <li class="img_display"><div id="inside-img">
-				<img id="insideImg" src="../../../assets/images/J2024-03-internal-struct.png" alt="internal-struct" usemap="#insideMap" />
+				<img id="insideImg" src="../../../assets/images/J2024-03-internal-struct.png" alt="internal-struct" usemap="#insideMap"/>
 				<map name="insideMap">
-					<area shape="rect" coords="220,35,280,95" id="ssdArrayStyle" ng-mouseover="Fan('Fan1')" /> <!-- ng-mouseleave="leave('usi-fan')" -->
+					<area shape="rect" coords="220,35,280,95" id="ssdArrayStyle" ng-mouseover="Fan('Fan1')" /> 
 					<area shape="rect" coords="220,115,280,170" id="ssdArrayStyle" ng-mouseover="Fan('Fan2')" />
 					<area shape="rect" coords="220,195,280,255" id="ssdArrayStyle" ng-mouseover="Fan('Fan3')" />
 					<area shape="rect" coords="220,275,280,330" id="ssdArrayStyle" ng-mouseover="Fan('Fan4')" />
@@ -86,8 +86,8 @@
 				</map></div>
             </li>
 		</ul>
-        <div class="left_btn btn" ng-click="moveNext('left')"><p class="arrow"><</p></div>
-        <div class="right_btn btn" ng-click="moveNext('right')"><p class="arrow">></p></div>
+        <div class="left_btn arrow_btn" ng-click="moveNext('left')"><p class="arrow"><</p></div>
+        <div class="right_btn arrow_btn" ng-click="moveNext('right')"><p class="arrow">></p></div>
 	</div>
 	<div id="usi-ssd" class="" ng-show="ssdFlag == true" ng-mouseleave="leave('usi-ssd')">
         <table id='ssd-info-body'>
@@ -105,7 +105,7 @@
             </tbody>
         </table>
     </div>
-    <div id="usi-cable" class="" ng-show="cableFlag == true" > <!--  ng-mouseleave="leave('usi-cable')" -->
+    <div id="usi-cable" class="" ng-show="cableFlag == true"  ng-mouseleave="leave('usi-cable')> 
       <table id='ssd-info-body'>
         <thead class="ssd-body-header">
             <tr>
@@ -220,173 +220,5 @@
         </table>
     </div>
 </div>	
-<!--
-	<div class="" ng-show="ssdFlag == true">
-        <table id='ssd-info-body'>
-            <caption>SSD information</caption>
-            <thead class="ssd-body-header">
-                <tr>
-                    <th>SSD NO.</th>
-                    <th>Address</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th>Link Speed</th>
-                    <th>Link Width</th>
-                    <th>Par Id</th>
-                    <th>Inserted</th>
-                    <th>Link Status</th>
-                    <th>ConfigureWidth</th>
-               </tr>
-            </thead>
-            <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(ssdNo, detail) in ssdinfo" ng-show="ssdinfo != 'None'">
-                    <td>{{ssdNo}}</td>
-                    <td>{{detail.SlotAddr}}</td>
-                    <td>{{detail.Type}}</td>
-                    <td>{{detail.Status}}</td>
-                    <td>{{detail.LinkSpeed}}</td>
-                    <td>{{detail.LinkStatus}}</td>
-                    <td>{{detail.LinkWidth}}</td>
-                    <td>{{detail.PartitionID}}</td>
-                    <td>{{detail.Inserted}}</td>
-                    <td>{{detail.ConfigureWidth}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-	
-	<div class="" ng-show="cableinfoFlag == true">
-      <table id='ssd-info-body'>
-        <caption>Cable information </caption>
-        <thead class="ssd-body-header">
-            <tr>
-                <th>Title</th>
-                <th>Status</th>
-                <th>CableType</th>
-                <th>SlotAddr</th>
-                <th>PartitionID</th>
-                <th>LinkStatus</th>
-                <th>LinkActive</th>
-                <th>LinkWidth</th>
-                <th>PhysicalPort</th>
-                <th>UspDsp</th>
-                <th>Present</th>
-            </tr>
-        </thead>
-        <tbody class="ssd-body-tbody">
-            <tr ng-repeat="(cable, detail) in cableinfo" ng-show="cableinfo != 'None'">
-                <td>{{cable}}</td>
-                <td>{{detail.Status}}</td>
-                <td>{{detail.CableType}}</td>
-                <td>{{detail.SlotAddr}}</td>
-                <td>{{detail.PartitionID}}</td>
-                <td>{{detail.LinkStatus}}</td>
-                <td>{{detail.LinkActive}}</td>
-                <td>{{detail.LinkWidth}}</td>
-                <td>{{detail.PhysicalPort}}</td>
-                <td>{{detail.UspDsp}}</td>
-                <td>{{detail.Present}}</td>
-            </tr>
-        </tbody>
-      </table>
-    </div>
 
-    <div class="" ng-show="swinfoFlag == true">
-        <table id='ssd-info-body'>
-            <caption>Swinfo information </caption>
-            <thead class="ssd-body-header">
-                <tr>
-                    <th>Item</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(item, value) in swinfo" ng-show="swinfo != 'None'">
-                    <td>{{item}}</td>
-                    <td>{{value}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="" ng-show="patopoFlag == true">
-        <table id='ssd-info-body' ng-show="patopoinfo != 'None'" ng-repeat="(k, v) in patopoinfo">
-            <caption>{{k}} information </caption>
-            <thead class="ssd-body-header">
-                <tr>
-                    <th>Item</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(item, value) in v" ng-show="patopoinfo != 'None'">
-                    <td>{{item}}</td>
-                    <td>{{value}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <table id='ssd-info-body' ng-show="patopoinfo == 'None'">
-            <caption>Patopoinfo information </caption>
-            <thead class="ssd-body-header">
-                <tr>
-                    <th>Item</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
-
-    <div class="" ng-show="dspFlag == true">
-        <table id='ssd-info-body'>
-            <caption>dspinfo information</caption>
-            <thead class='ssd-info-header'>
-                <tr>
-                    <th>Item</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(item, value) in dspinfo" ng-show="dspinfo != 'None'">
-                    <td>{{item}}</td>
-                    <td>{{value}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="" ng-show="bindinfoFlag == true">
-        <table id='ssd-info-body'>
-            <caption>bindinfo information </caption>
-            <thead class='ssd-info-header'>
-                <tr>
-                    <th>bindinfo Result</th>
-                    <th>bindinfo Status</th>
-                </tr>
-            </thead>
-            <tbody class="ssd-body-tbody">
-                <tr ng-show="bindinfo != 'None'">
-                    <td>{{bindinfo.BindResult}}</td>
-                    <td>{{bindinfo.BindStatus}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="" ng-show="psFlag == true">
-        <table id='ssd-info-body'>
-            <caption>ps info</caption>
-            <thead class='ssd-info-header'>
-                <tr>
-                    <th>Name</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(ps, detail) in psinfo">
-                    <td>{{ps}}</td>
-                    <td>{{detail}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div> -->
 

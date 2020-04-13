@@ -88,7 +88,7 @@ th , td {
     top: 0%;
     transform: translate(-40%,-0%);
 }
-.btn{
+.arrow_btn{
     position: absolute;
     width: 10px;
     height: 40px;
@@ -106,7 +106,7 @@ th , td {
 .right_btn{
     right: 0;
 }
-.allImage:hover .btn{
+.allImage:hover .arrow_btn{
     display: inline-block;
     cursor: pointer;
 }
