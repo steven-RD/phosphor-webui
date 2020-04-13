@@ -12,19 +12,23 @@
     </div>
     <div class="header__functions" ng-class="{'active' : toggle}">
       <!-- Modified by USISH Steven20181219 start-->
-      <button type="button" class="header__info" ng-click="toggle = !toggle"><i class="icon icon-angle" aria-hidden="true"></i></button>
+      <button type="button" class="header__page-refresh" ng-click="toggle = !toggle"><i class="icon icon-angle" aria-hidden="true"></i></button>
       <a href="#/server-health/event-log" class="header__server-health">JBOF health
         <i class="icon icon-angle" aria-hidden="true"></i><span ng-class="{'status-light__error': dataService.server_health == 'Critical', 'status-light__warn': dataService.server_health == 'Warning', 'status-light__good': dataService.server_health == 'Good'}">{{dataService.server_health}}</span></a>
       <!--<a href="#/server-control/power-operations" class="header__server-power" role="button">Switch power
         <i class="icon icon-angle" aria-hidden="true"></i><span ng-class="{'status-light__off': dataService.server_state == 'Off', 'status-light__disabled': dataService.server_state == 'Unreachable', 'status-light__good': dataService.server_state == 'Running', 'status-light__error': dataService.server_state == 'Quiesced'}">{{dataService.server_state | quiescedToError}}</span></a>-->
       <!-- Modified by USISH Steven20181219/Judy20190722 end-->
-      <p class="header__refresh">Data last refreshed<span>{{dataService.last_updated | localeDate}}</span>
+      <p class="header__page-refresh">Data last refreshed<span>{{dataService.last_updated | localeDate}}</span>
       </p>
       <button class="header__page-refresh" ng-click="refresh()" aria-label="refresh page data">
-        <span>Refresh</span>
+        <!-- <span>Refresh</span> -->
         <icon file="icon-restart.svg"></icon>
       </button>
-	  <a href="" class="header__logout" ng-click="logout()">Log out</a> <!-- modify -->
+	  <!-- <a href="" class="header__logout" ng-click="logout()">Log out</a> modify -->
+	  <button class="header__page-refresh" ng-click="logout()">
+        <!-- <span>Log out</span> -->
+        <icon file="icon-logout.svg.svg"></icon>
+      </button>
     </div>
   </div>
 </header>
