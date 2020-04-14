@@ -83,7 +83,7 @@ $logoMaxWidth: 300px;
 
   .header__logo {
     vertical-align: middle;
-    margin: .2em;
+    margin: 0em;
     float: left;
     height: $logoHeight; //required for <SVG> logos - can remove if using img
     max-height: $logoMaxHeight;

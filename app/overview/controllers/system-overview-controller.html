@@ -87,14 +87,17 @@
     </div>
     <div class="row column">
 		<div class="bmc-reboot-option" ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
-		<confirm title="Reboot the BMC"
-            confirm="confirm"
-            ng-show="confirm"
-            callback="reboot"></confirm>
+		<p>When reboot BMC, your web browser loses contact with the BMC for several minutes.</p>
+        <confirm title="Reboot the BMC"
+          confirm="confirm"
+          ng-show="confirm"
+          callback="reboot"></confirm>
         </div>
-        <button id="bmc__reboot" class="btn  btn-secondary" ng-class="{disabled: confirm}" ng-click="rebootConfirm()" ng-disabled="dataService.server_unreachable">
-            <icon file="icon-restart.svg"></icon>Reboot BMC
-        </button>
+        <div class="row column">
+			<button id="bmc__reboot" class="btn  btn-secondary" ng-class="{disabled: confirm}" ng-click="rebootConfirm()" ng-disabled="dataService.server_unreachable">
+				<icon file="icon-restart.svg"></icon>Reboot BMC
+			</button>
+		</div>
     </div>
 	  
       <!-- Power metadata -->
