@@ -10,8 +10,8 @@ window.angular && (function(angular) {
   'use strict';
 
   angular.module('app.overview').controller('systemOverviewController', [
-    '$scope', '$window', 'APIUtils', 'UsiAPIUtils', 'dataService', 'Constants', '$q',
-    function($scope, $window, APIUtils, UsiAPIUtils, dataService, Constants, $q) {
+    '$scope', '$window', 'APIUtils', 'UsiAPIUtils', 'dataService', 'Constants', 'toastService', '$q',
+    function($scope, $window, APIUtils, UsiAPIUtils, dataService, Constants, toastService, $q) {
       $scope.dataService = dataService;
       $scope.dropdown_selected = false;
       $scope.logs = [];
@@ -27,6 +27,34 @@ window.angular && (function(angular) {
       $scope.newHostname = '';
 
       loadOverviewData();
+	  
+	  
+	  //$scope.dataService = dataService;
+      $scope.confirm = false;
+      APIUtils.getLastRebootTime().then(
+          function(data) {
+            $scope.reboot_time = data.data;
+          },
+          function(error) {
+            console.log(JSON.stringify(error));
+          });
+      $scope.rebootConfirm = function() {
+          if ($scope.confirm) {
+			return;
+		  }
+          $scope.confirm = true;
+      };
+      $scope.reboot = function() {
+          APIUtils.bmcReboot().then(
+              function(response) {
+                  toastService.success('BMC is rebooting.')
+              },
+              function(error) {
+				console.log(JSON.stringify(error));
+				toastService.error('Unable to reboot BMC.');
+              });
+      };
+	  
 
       function loadOverviewData() {
         $scope.loading = true;
