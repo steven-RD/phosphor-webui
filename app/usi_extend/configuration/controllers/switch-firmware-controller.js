@@ -11,11 +11,17 @@ window.angular && (function(angular) {
 
   angular.module('app.configuration').controller('switchFirmwareController', [
     '$scope', 'APIUtils', 'UsiAPIUtils', 'dataService', '$route', 'Constants',
-    '$interval', '$timeout', 'toastService',
+    '$interval', '$timeout', 'toastService', '$location',
     function(
         $scope, APIUtils, UsiAPIUtils, dataService, $route, Constants,
-        $interval, $timeout, toastService) {
+        $interval, $timeout, toastService, $location) {
         $scope.dataService = dataService;
+		
+		 // Scroll to target anchor
+        $scope.gotoAnchor = function() {
+			$location.hash('upload');
+			$anchorScroll();
+        };
 
         // Display switchInfo at switch firmware list html
         $scope.switchInfo = {switchActivedVersion: '', configurationFile: '',
