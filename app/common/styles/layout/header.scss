@@ -231,6 +231,16 @@ $logoMaxWidth: 300px;
   
 
  .ng-logout{
+ 
+	background: $background-02;
+    @include round-corners;
+    border: 1px solid $border-color-01;
+    opacity: 1;
+    @include fastTransition-all;
+    &:hover {
+      background: $background-01;
+    }
+ 
 	width:48px;
 	height:48px;
     margin-right: 10px;
