@@ -222,17 +222,23 @@ $logoMaxWidth: 300px;
       margin-right: auto;
     }
     svg {
-      width: 25px;
-      height: auto;
+      width: 48px;
+      height: 48px;
       fill: $primary-accent;
     }
   }
-}
+  
+  
+
  .ng-logout{
 	width:48px;
 	height:48px;
     margin-right: 10px;
-
+	svg{
+	  width: 48px;
+      height: 48px;
+      fill: $primary-accent;
+	}
   }
   .btn-logout{
     padding-left: 2px;
@@ -241,5 +247,6 @@ $logoMaxWidth: 300px;
     padding-right: 2px;
   }
   
+}
  
 // end header__functions-section
