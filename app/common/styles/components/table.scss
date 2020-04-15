@@ -13,6 +13,19 @@
   }
 }
 
+.table-header-usi {
+  width: 100%;
+  color: $primary-dark;
+  line-height: 30px;
+  padding: .8em 0 0;
+  margin-bottom: .8em;
+  border-bottom: 1px solid $border-color-01;
+  font-size: 1.25em;
+  @include mediaQuery(medium) {
+    margin: 0em 0em;
+  }
+}
+
 // Table
 .table {
   width: 100%;

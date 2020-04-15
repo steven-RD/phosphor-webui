@@ -90,7 +90,7 @@ th , td {
 }
 .arrow_btn{
     position: absolute;
-    width: 10px;
+    width: 20px;
     height: 40px;
     background-color: darkgray;
     color: white;
@@ -105,6 +105,9 @@ th , td {
 }
 .right_btn{
     right: 0;
+}
+.arrow{
+    margin-top: 10px;
 }
 .allImage:hover .arrow_btn{
     display: inline-block;
