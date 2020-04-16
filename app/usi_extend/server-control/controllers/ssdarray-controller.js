@@ -195,7 +195,7 @@ window.angular && (function(angular) {
           $scope.psFlag = false;
 		  $scope.psxFlag = false;
 		  $scope.fanFlag = false;
-		  $scope.patopoFlag = true;
+		  $scope.patopoFlag = false;
 		  if(arrow == 'right'){
 			index++;
 			if (index == imgLen){
