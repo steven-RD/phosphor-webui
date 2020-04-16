@@ -20,7 +20,7 @@
 	  <div class="table__head">
 		  <div class="table__row">
 			  <div class="table__cell">ToBe activated version</div>
-			  <div class="table__cell">Functional version</div>
+			  <!-- <div class="table__cell">Functional version</div> -->
 			  <div class="table__cell">Configure file</div>
 			  <div class="table__cell">Firmware image</div>
           </div>
@@ -29,16 +29,16 @@
   <div class="table__body">
 	  <div class="table__row">
 	      <div ng-if="version.toBeActiveVersion!='None'" class="table__cell firmware__version">
-		      <span class="table__cell-label">version:</span> {{version.toBeActiveVersion}}
+		      <span class="table__cell-label">version:</span> {{version.toBeActiveVersion}};{{version.type}}
           </div>
-		  <div ng-if="version.switchActivedVersion!='None'" class="table__cell firmware__version">
+		  <!-- <div ng-if="version.switchActivedVersion!='None'" class="table__cell firmware__version">
 		      <span class="table__cell-label">version:</span> {{version.switchActivedVersion}}
-          </div>
+          </div> -->
 		  <div ng-if="version.configurationFile!='None'" class="table__cell firmware__version">
 		      <span class="table__cell-label">version:</span> {{version.configurationFile}}
           </div>
 		  <div ng-if="version.type!='None'" class="table__cell firmware__version">
-		      <span class="table__cell-label">version:</span> {{version.type}}
+		      <span class="table__cell-label">version:</span> {{version.switchActivedVersion}}
           </div>
 	  </div>
   </div>

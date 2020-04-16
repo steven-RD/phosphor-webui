@@ -26,6 +26,7 @@ window.angular && (function(angular) {
           $scope.psFlag = false;
 		  $scope.psxFlag = false;
 		  $scope.fanFlag = false;
+		   $scope.patopoFlag = false;
           if(flag == 'ssd'){
               $scope.ssdFlag = true;
           }else if(flag == 'cable'){
