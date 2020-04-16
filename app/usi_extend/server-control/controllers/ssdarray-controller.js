@@ -38,6 +38,8 @@ window.angular && (function(angular) {
               $scope.psxFlag = true;
           }else if(flag == 'fan'){
               $scope.fanFlag = true;
+          }else if(flag == 'patopo'){
+              $scope.patopoFlag = true;
           }
       };
 	  
@@ -48,10 +50,9 @@ window.angular && (function(angular) {
           $scope.psFlag = false;
 		  $scope.psxFlag = false;
 		  $scope.fanFlag = false;
+		  $scope.patopoFlag = true;
 	      var lab = document.getElementById(id);
 		  lab.style.display = "none";
-		  console.log('leave');
-		  console.log(lab);
 	  };
 	 
       var arrayInfo=[];
@@ -59,10 +60,7 @@ window.angular && (function(angular) {
 	  ///ssd information
       $scope.SSD = function(num){
       angular.forEach(arrayInfo['Ssdinfo'], function(ssdInfo, ssdNum){
-        console.log(ssdInfo);
-        console.log(ssdNum);
         if(angular.equals(ssdNum, num)){
-            console.log('ssd');
 			$scope.ssdNo=ssdNum;
 			$scope.ssdx=ssdInfo;
 			changeStatus('ssd');
@@ -75,7 +73,6 @@ window.angular && (function(angular) {
 			lab.style.top = mousePosition.y  + 5 +  'px';
 			lab.style.height = '0px';
 			lab.style.width = '0px';	
-			//lab.style.pointer-events = "none";
         }
       });
     };
@@ -88,16 +85,12 @@ window.angular && (function(angular) {
 			$scope.psinfo=PSInfo['Status'];	
 			var lab = document.getElementById('usi-ps');
 			var mousePosition = getMousePos(window.event); ///Get mouse position
-			//var insideImg = document.getElementById('inside-img');
-			//var insideImgRect = insideImg.getBoundingClientRect();
 			lab.style.position = "absolute";
 			lab.style.display = "block";
 			lab.style.left = mousePosition.x + 5 + 'px';
 			lab.style.top = mousePosition.y + 5 + 'px';
 			lab.style.height = '0px';
 			lab.style.width = '0px';
-			console.log(lab);
-			console.log($scope.psinfo);
 		}else{
 			angular.forEach(PSInfo['Status'], function(psInfo, psName) {				
 				if(angular.equals(psName, name)) {
@@ -112,8 +105,6 @@ window.angular && (function(angular) {
 					lab.style.width = '0px';
 					lab.style.left = mousePosition.x + 5 + 'px';
 					lab.style.top = mousePosition.y + 5 + 'px';
-					console.log(lab);
-					console.log($scope.psinfo);
 				}
 			});
 		}
@@ -122,8 +113,6 @@ window.angular && (function(angular) {
 	///cable information
 	$scope.Cable = function() {
 		changeStatus('cable');
-		console.log("cable");
-        console.log(arrayInfo);
 		$scope.cableinfo = arrayInfo['Cableinfo'];
 		var lab = document.getElementById('usi-cable');
 		var mousePosition = getMousePos(window.event); ///Get mouse position
@@ -134,7 +123,6 @@ window.angular && (function(angular) {
 		lab.style.top = mousePosition.y + 5 + 'px';
 		lab.style.height = '0px';
 		lab.style.width = '0px';
-		console.log(lab); 
 	};
 	
 	///switch information
@@ -149,10 +137,22 @@ window.angular && (function(angular) {
 		lab.style.width = '0px';	
 		lab.style.left = mousePosition.x + 5 + 'px';
 		lab.style.top = mousePosition.y + 5 + 'px';
-		console.log("Switch"); 
-		console.log(mousePosition.x + 5 + 'px');
-		console.log(mousePosition.y + 5 + 'px');
-		console.log(lab); 
+		
+	};
+	
+	$scope.Patopo = function() {
+		changeStatus('patopo');
+		$scope.patopoinfo = arrayInfo['Patopoinfo'];
+		var lab = document.getElementById('usi-patopo');
+		var mousePosition = getMousePos(window.event); ///Get mouse position
+		lab.style.position = "absolute";
+		lab.style.display = "block";
+		lab.style.height = '0px';
+		lab.style.width = '0px';
+		lab.style.left = mousePosition.x + 5 + 'px';
+		lab.style.top = mousePosition.y + 5 + 'px';
+		console.log("patopo"); 
+		console.log($scope.patopoinfo); 
 	};
 	
 	
@@ -195,6 +195,7 @@ window.angular && (function(angular) {
           $scope.psFlag = false;
 		  $scope.psxFlag = false;
 		  $scope.fanFlag = false;
+		  $scope.patopoFlag = true;
 		  if(arrow == 'right'){
 			index++;
 			if (index == imgLen){

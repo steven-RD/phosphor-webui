@@ -78,7 +78,7 @@
 					<area shape="rect" coords="220,115,280,170" id="ssdArrayStyle" ng-mouseover="Fan('Fan2')" />
 					<area shape="rect" coords="220,195,280,255" id="ssdArrayStyle" ng-mouseover="Fan('Fan3')" />
 					<area shape="rect" coords="220,275,280,330" id="ssdArrayStyle" ng-mouseover="Fan('Fan4')" />
-					<area shape="rect" coords="220,355,280,410" id="ssdArrayStyle" ng-mouseover="Fan('Fan5')" />
+					<area shape="rect" coords="220,355,280,410" id="ssdArrayStyle" ng-mouseover="Patopo()" />
 					<!-- <area shape="rect" coords="240,20,300,430" style="cursor:pointer" ng-mouseover="Fan('Fan6')" ng-mouseleave="leave('usi-fan')"/> -->
 					<area shape="rect" coords="450,100,510,150" id="ssdArrayStyle" ng-mouseover="Switch()" />
 					<!-- <area shape="rect" coords="450,250,510,300" style="cursor:pointer" ng-mouseover="Switch('Swinfo')" ng-mouseleave="leave('usi-switch')"/> -->
@@ -187,6 +187,24 @@
             </tbody>
         </table>
     </div>
+	
+	<div id="usi-patopo" class="" ng-show="patopoFlag == true" ng-mouseleave="leave('usi-patopo')">
+        <table id='ssd-info-body'>
+            <thead class='ssd-body-header'>
+                <tr>
+                    <th>Item</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody class="ssd-body-tbody">
+                <tr ng-repeat="(key, value) in patopoinfo">
+                    <td>{{key}}</td>
+                    <td>{{value}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	
 	<div id="usi-fan" class="" ng-show="fanFlag == true" ng-mouseleave="leave('usi-fan')">
         <table id='ssd-info-body'>
              <thead class='ssd-body-header'>

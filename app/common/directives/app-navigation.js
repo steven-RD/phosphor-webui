@@ -46,7 +46,7 @@ window.angular && (function(angular) {
                 if ($scope.showNavigation) {
                   paddingTop = document.getElementById('header').offsetHeight;
                 }
-                dataService.bodyStyle = {'padding-top': paddingTop + 'px', 'background-color': '#f0f8ff'};
+                dataService.bodyStyle = {'padding-top': paddingTop + 'px', 'background-color': 'rgb(207, 221, 251)'}; //'#f0f8ff'
                 $scope.navStyle = {'top': paddingTop + 'px'};
               });
             }
