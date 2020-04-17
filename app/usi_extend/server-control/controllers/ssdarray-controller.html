@@ -53,13 +53,7 @@
 					<area shape="rect" coords="618,130,641,248" alt="ssd21" id="ssdArrayStyle" ng-mouseover="SSD('SSD21')" />
 					<area shape="rect" coords="645,130,669,248" alt="ssd22" id="ssdArrayStyle" ng-mouseover="SSD('SSD22')" />
 					<area shape="rect" coords="675,130,698,248" alt="ssd23" id="ssdArrayStyle" ng-mouseover="SSD('SSD23')" />
-					<area shape="rect" coords="703,130,726,248" alt="ssd24" id="ssdArrayStyle" ng-mouseover="SSD('SSD24')" /> 				
-					<!-- <area shape="rect" coords="504,10,528,140" alt="ssd17" style="cursor:pointer" ng-mouseover="PowerSupply('PSA')" ng-mouseout="leave('usi-ps')"/>
-					<area shape="rect" coords="532,10,560,140" alt="ssd18" style="cursor:pointer" ng-mouseover="Fan('Fan3')" ng-mouseout="leave('usi-fan')"/>
-					<area shape="rect" coords="620,10,644,140" alt="ssd21" style="cursor:pointer" ng-mouseover="PowerSupply('PS')" ng-mouseout="leave('usi-ps')"/>
-					<area shape="rect" coords="564,10,558,140" alt="ssd19" style="cursor:pointer" ng-mouseover="Cable('Cable')" ng-mouseout="leave('usi-cable')"/>
-					<area shape="rect" coords="592,10,616,140" alt="ssd20" style="cursor:pointer" ng-mouseover="Switch('Swinfo')" ng-mouseout="leave('usi-switch')"/>	
-					 -->
+					<area shape="rect" coords="703,130,726,248" alt="ssd24" id="ssdArrayStyle" ng-mouseover="SSD('SSD24')" /> 
 				</map></div>
 			</li>
 			<li class="img_display"><div id="rear-img">
@@ -67,7 +61,8 @@
 				<map name="cableMap">
 					<area shape="rect" coords="40,120,110,190" alt="powerA" id="ssdArrayStyle" ng-mouseover="PowerSupply('PSA')"/>
 					<area shape="rect" coords="40,196,110,268" alt="powerB" id="ssdArrayStyle" ng-mouseover="PowerSupply('PSB')"/>
-					<area shape="rect" coords="190,120,440,220" alt="cable" id="ssdArrayStyle" ng-mouseover="Cable()"/> 
+					<!-- <area shape="rect" coords="190,120,440,220" alt="cable" id="ssdArrayStyle" ng-mouseover="Cable()"/> -->
+					<area shape="rect" coords="190,120,440,220" alt="ip" id="ssdArrayStyle" ng-mouseover="Ip()"/> 
 					<!-- <area shape="rect" coords="490,120,740,220" alt="cable" style="cursor:pointer" ng-mouseover="Cable()" ng-mouseout="leave('usi-cable')"/> -->
 				</map></div>
             </li>
@@ -237,6 +232,25 @@
             </tbody>
         </table>
     </div>
+	<div id="usi-ip" class="" ng-show="ipFlag == true" ng-mouseleave="leave('usi-ip')">
+        <table id='ssd-info-body'>
+            <thead class='ssd-body-header'>
+                <tr>
+                    <th>Status</th>
+                    <th>IP</th>
+                </tr>
+            </thead>
+            <tbody class="ssd-body-tbody">
+                <tr>
+                    <td>Static IP</td><td>{{bmc_ip_addresses[0]}}</td>
+                </tr>
+				<tr>
+                    <td>DHCP IP</td><td>{{bmc_ip_addresses[1]}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	
 </div>	
 
 

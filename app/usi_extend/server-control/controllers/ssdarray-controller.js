@@ -26,7 +26,8 @@ window.angular && (function(angular) {
           $scope.psFlag = false;
 		  $scope.psxFlag = false;
 		  $scope.fanFlag = false;
-		   $scope.patopoFlag = false;
+		  $scope.patopoFlag = false;
+		  $scope.ipFlag = false;
           if(flag == 'ssd'){
               $scope.ssdFlag = true;
           }else if(flag == 'cable'){
@@ -39,8 +40,10 @@ window.angular && (function(angular) {
               $scope.psxFlag = true;
           }else if(flag == 'fan'){
               $scope.fanFlag = true;
-          }else if(flag == 'patopo'){
+          }else if(flag == 'patopo'){ 
               $scope.patopoFlag = true;
+          }else if(flag == 'ip'){
+              $scope.ipFlag = true;
           }
       };
 	  
@@ -51,7 +54,8 @@ window.angular && (function(angular) {
           $scope.psFlag = false;
 		  $scope.psxFlag = false;
 		  $scope.fanFlag = false;
-		  $scope.patopoFlag = true;
+		  $scope.patopoFlag = false;
+		  $scope.ipFlag = false;
 	      var lab = document.getElementById(id);
 		  lab.style.display = "none";
 	  };
@@ -156,13 +160,23 @@ window.angular && (function(angular) {
 		console.log($scope.patopoinfo); 
 	};
 	
+	$scope.Ip = function() {
+		changeStatus('ip');
+		var lab = document.getElementById('usi-ip');
+		var mousePosition = getMousePos(window.event); ///Get mouse position
+		lab.style.position = "absolute";
+		lab.style.display = "block";
+		lab.style.height = '0px';
+		lab.style.width = '0px';
+		lab.style.left = mousePosition.x + 5 + 'px';
+		lab.style.top = mousePosition.y + 5 + 'px';
+		console.log("ip"); 
+		console.log($scope.bmc_ip_addresses); 
+	};
 	
-	  	///fan sensor information
+	///fan sensor information
 	$scope.Fan = function(name) {
 		changeStatus('fan');
-		console.log(name);
-		console.log(fanData);
-		
 		var lab = document.getElementById('usi-fan');
 		var mousePosition = getMousePos(window.event); ///Get mouse position
 		lab.style.position = "absolute";
@@ -171,7 +185,6 @@ window.angular && (function(angular) {
 		lab.style.top = mousePosition.y + 5 + 'px'; 
 		lab.style.height = '0px';
 		lab.style.width = '0px';
-		console.log("Fan");
 
 		for(var i = 0; i < fanData.length; i++){
 			if(fanData[i].title.indexOf(name+' INLET') != -1) {
@@ -183,7 +196,7 @@ window.angular && (function(angular) {
 			}
 		}
 	  };
-	
+	  
 	  ///arrow loop
 	  var index = 0;
       var imgElement = document.getElementById("imgs").getElementsByTagName("li");
@@ -197,6 +210,7 @@ window.angular && (function(angular) {
 		  $scope.psxFlag = false;
 		  $scope.fanFlag = false;
 		  $scope.patopoFlag = false;
+		  $scope.ipFlag = false;
 		  if(arrow == 'right'){
 			index++;
 			if (index == imgLen){
@@ -217,7 +231,6 @@ window.angular && (function(angular) {
 			angular.element(imgElement).eq(index).removeClass('img_display');
 		  }
 	  };
-
 	   
 	  // Get mouse relative position
       function getMousePos(event) {
@@ -229,7 +242,6 @@ window.angular && (function(angular) {
 		  var y = event.clientY+ document.body.scrollTop + document.documentElement.scrollTop;
 		  return { 'x': x, 'y': y };
       }
-	
 	
       $scope.loadSsdInfo = function(){
         UsiAPIUtils.getSsdArrayInfo().then(
@@ -254,7 +266,6 @@ window.angular && (function(angular) {
         );
       };
 	  
-	  
       var fanData = [];
 	  $scope.loadFanSensorData = function(){
           APIUtils.getAllSensorStatus(function(data, originalData) {
@@ -263,13 +274,27 @@ window.angular && (function(angular) {
                       fanData.push(data[i]);
                   }
               }
-              
          });
+	  };
+	  
+	  $scope.bmc_ip_addresses = [];
+	  $scope.loadNetworkInfo = function(){
+		 APIUtils.getNetworkInfo().then(
+            function(data) {
+              // TODO: openbmc/openbmc#3150 Support IPV6 when
+              // officially supported by the backend
+              $scope.bmc_ip_addresses = data.formatted_data.ip_addresses.ipv4;
+              //$scope.newHostname = data.hostname;
+            },
+            function(error) {
+              console.log(JSON.stringify(error));
+            }); 
 	  };
 
       $scope.loadSsdInfo();
       $scope.loadPowerSupplyInfo();
 	  $scope.loadFanSensorData();
+	  $scope.loadNetworkInfo ();
     }
   ]);
 })(angular);
