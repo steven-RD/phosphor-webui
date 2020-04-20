@@ -6,8 +6,8 @@
     * @name ssdArrayController
     *
     *
-    * @author Judy
-    * @date   20190524
+    * @author Steven & Judy
+    * @date   20200417
     * @brief  ssd inventory operations modify base the file of power usage controller
 */
 

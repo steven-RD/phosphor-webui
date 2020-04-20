@@ -1,29 +1,12 @@
 
 <!--
- * @author Judy
- * @date   20190524
+ * @author Steven & Judy
+ * @date   20200417
  * @brief  ssd inventory operations modify base the file of power usage controller
 -->
 
 <loader loading="loading"></loader>
 <div id="ssd-info">
-<!--     <div class="row column">
-        <h1>JBOF inventory information</h1>
-    </div> -->
-	
-<!--     <div id='ssd-header' class="">
-        <table id='ssd-info-header'>
-            <tr>
-                <td ng-mouseover="changeStatus('ssd')">SSD information</td>
-                <td ng-mouseover="changeStatus('cable')">Cable information</td>
-                <td ng-mouseover="changeStatus('swinfo')">Swinfo information</td>
-                <td ng-mouseover="changeStatus('dsp')">dspinfo information</td>
-                <td ng-mouseover="changeStatus('patopo')">patopo information</td>
-                <td ng-mouseover="changeStatus('bind')">bindinfo information</td>
-                <td ng-mouseover="changeStatus('ps')">Power supply information</td>
-            </tr>
-        </table>
-    </div> -->
 
 	<div class="allImage" >
 		<ul class="ulimg" id="imgs">
@@ -85,7 +68,7 @@
         <div class="right_btn arrow_btn" ng-click="moveNext('right')"><p class="arrow">></p></div>
 	</div>
 	<div id="usi-ssd" class="" ng-show="ssdFlag == true" ng-mouseleave="leave('usi-ssd')">
-        <table id='ssd-info-body'>
+        <table id='ssd-info-body' ng-show="ssdx != 'None'">
 			<tbody class="ssd-body-tbody">
 				<tr><td>SSD NO.</td><td>{{ssdNo}}</td></tr>
 				<tr><td>Address</td><td>{{ssdx.SlotAddr}}</td></tr>
@@ -101,41 +84,41 @@
         </table>
     </div>
     <div id="usi-cable" class="" ng-show="cableFlag == true"  ng-mouseleave="leave('usi-cable')"> 
-      <table id='ssd-info-body'>
+      <table id='ssd-info-body' ng-show="cableinfo != 'None'">
         <thead class="ssd-body-header">
             <tr>
                 <th>Cable NO.</th>
-                <th>Status</th>
+               <!--  <th>Status</th>
                 <th>Type</th>
-                <th>Slot addr</th>
                 <th>Par Id</th>
+                <th>UspDsp</th> -->
+                <th>Slot addr</th>
                 <th>Link status</th>
                 <th>Link active</th>
                 <th>Link width</th>
                 <th>Physical port</th>
-                <th>UspDsp</th>
                 <th>Present</th>
             </tr>
         </thead>
         <tbody class="ssd-body-tbody">
             <tr ng-repeat="(cable, detail) in cableinfo">
                 <td>{{cable}}</td>
-                <td>{{detail.Status}}</td>
+                <!-- <td>{{detail.Status}}</td>
                 <td>{{detail.CableType}}</td>
-                <td>{{detail.SlotAddr}}</td>
                 <td>{{detail.PartitionID}}</td>
+                <td>{{detail.UspDsp}}</td> -->
+                <td>{{detail.SlotAddr}}</td>
                 <td>{{detail.LinkStatus}}</td>
                 <td>{{detail.LinkActive}}</td>
                 <td>{{detail.LinkWidth}}</td>
                 <td>{{detail.PhysicalPort}}</td>
-                <td>{{detail.UspDsp}}</td>
                 <td>{{detail.Present}}</td>
             </tr>
         </tbody>
       </table>
     </div>
     <div id="usi-switch" class="" ng-show="switchFlag == true" ng-mouseleave="leave('usi-switch')">
-        <table id='ssd-info-body'>
+        <table id='ssd-info-body' ng-show="swinfo != 'None'">
             <thead class="ssd-body-header">
                 <tr>
                     <th>Item</th>
@@ -151,7 +134,7 @@
         </table>
     </div>
 	<div id="usi-ps" class="" ng-show="psFlag == true" ng-mouseleave="leave('usi-ps')">
-        <table id='ssd-info-body'>
+        <table id='ssd-info-body' ng-show="psinfo != 'None'">
             <thead class='ssd-body-header'>
                 <tr>
                     <th>Name</th>
@@ -167,7 +150,7 @@
         </table>
     </div>
 	<div id="usi-psx" class="" ng-show="psxFlag == true" ng-mouseleave="leave('usi-psx')">
-        <table id='ssd-info-body'>
+        <table id='ssd-info-body' ng-show="psinfo != 'None'">
             <thead class='ssd-body-header'>
                 <tr>
                     <th>Name</th>
@@ -183,8 +166,8 @@
         </table>
     </div>
 	
-	<div id="usi-patopo" class="" ng-show="patopoFlag == true" ng-mouseleave="leave('usi-patopo')">
-        <table id='ssd-info-body'>
+<!-- 	<div id="usi-patopo" class="" ng-show="patopoFlag == true" ng-mouseleave="leave('usi-patopo')">
+        <table id='ssd-info-body' ng-show="patopoinfo != 'None'">
             <thead class='ssd-body-header'>
                 <tr>
                     <th>Item</th>
@@ -198,10 +181,27 @@
                 </tr>
             </tbody>
         </table>
+    </div> -->
+	<div id="usi-patopo" ng-show="patopoFlag == true"  ng-mouseleave="leave('usi-patopo')">
+        <table id='ssd-info-body' ng-show="patopoinfo != 'None'" ng-repeat="(k, v) in patopoinfo">
+            <thead class="ssd-body-header">
+				<tr><td colspan='2'><b>{{k}} information</b></td></tr>
+                <tr>
+                    <th>Item</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody class="ssd-body-tbody">
+                <tr ng-repeat="(item, value) in v" ng-show="patopoinfo != 'None'">
+                    <td>{{item}}</td>
+                    <td>{{value}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 	
 	<div id="usi-fan" class="" ng-show="fanFlag == true" ng-mouseleave="leave('usi-fan')">
-        <table id='ssd-info-body'>
+        <table id='ssd-info-body' ng-show="faninfoIN != 'None'">
              <thead class='ssd-body-header'>
                 <tr>
                     <th>Name</th>
@@ -233,7 +233,7 @@
         </table>
     </div>
 	<div id="usi-ip" class="" ng-show="ipFlag == true" ng-mouseleave="leave('usi-ip')">
-        <table id='ssd-info-body'>
+        <table id='ssd-info-body' ng-show="bmc_ip_addresses != 'None'">
             <thead class='ssd-body-header'>
                 <tr>
                     <th>Status</th>
@@ -242,10 +242,10 @@
             </thead>
             <tbody class="ssd-body-tbody">
                 <tr>
-                    <td>Static IP</td><td>{{bmc_ip_addresses[0]}}</td>
+                    <td>Static</td><td>{{bmc_ip_addresses[0]}}</td>
                 </tr>
 				<tr>
-                    <td>DHCP IP</td><td>{{bmc_ip_addresses[1]}}</td>
+                    <td>DHCP</td><td>{{bmc_ip_addresses[1]}}</td>
                 </tr>
             </tbody>
         </table>

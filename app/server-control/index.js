@@ -43,6 +43,11 @@ window.angular && (function(angular) {
                 'controller': 'ssdArrayController',
                 authenticated: true
               }) */
+			  .when('/server-control/fan', {
+                'template': require('../usi_extend/server-control/controllers/fan-controller.html'),
+                'controller': 'fanController',
+                authenticated: true
+              })
               .when('/server-control/remote-console', {
                 'template':
                     require('./controllers/remote-console-controller.html'),
