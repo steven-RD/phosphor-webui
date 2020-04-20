@@ -54,3 +54,14 @@ input.modal__edit-server-name {
 .modal__error {
   color: $status-error;
 }
+
+ #edit-hostname{
+	width:25px;
+	height:35px;
+    margin-right: 10px;
+	svg{
+	  width: 25px;
+      height: 35px;
+      fill: $primary-accent;
+	}
+  }
