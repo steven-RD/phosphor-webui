@@ -185,16 +185,13 @@ window.angular && (function(angular) {
 		lab.style.top = mousePosition.y + 5 + 'px'; 
 		lab.style.height = '0px';
 		lab.style.width = '0px';
-		$scope.faninfo = 'None';
 		
 		for(var i = 0; i < fanData.length; i++){
 			if(fanData[i].title.indexOf(name+' INLET') != -1) {
 				$scope.faninfoIN=fanData[i];
-				$scope.faninfo != 'None';
 				console.log($scope.faninfoIN);
 			}else if(fanData[i].title.indexOf(name+' OUTLET') != -1){
 				$scope.faninfoOUT=fanData[i];
-				$scope.faninfo != 'None';
 				console.log($scope.faninfoOUT);
 			}
 		}

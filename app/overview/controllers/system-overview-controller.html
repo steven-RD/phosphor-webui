@@ -2,7 +2,7 @@
 <div class="overview">
   <div class="row column">
     <h1 class="inline">{{dataService.hostname}}</h1>
-    <button class="btn  btn-tertiary" ng-click="edit_hostname = !edit_hostname">Edit</button>
+    <button class="btn  btn-tertiary" ng-click="edit_hostname = !edit_hostname"><icon file="icon-edit-hostname.svg"></icon></button>
   </div>
   <section class="row">
     <div class="column large-8">
@@ -154,7 +154,7 @@
         <div class="quick-links__item no-icon">
           <p class="inline quick-links__label">
             Power <span ng-if="switch_state == 'Power Off'">on</span>
-            <span ng-if="switch_state == 'Power On'">off</span> switch.
+            <span ng-if="switch_state == 'Power On'">off</span> switch
           </p>
           <div class="toggle inline float-right">
             <input id="toggle__powerswitch-round"
