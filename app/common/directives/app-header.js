@@ -126,7 +126,7 @@ window.angular && (function(angular) {
               });
             };
 			
-			function() loadImages() {
+			function loadImages() {
 				var imgElement = document.getElementById("imgs").getElementsByTagName("li");
 				var imgLen = imgElement.length;
 				for(var i = 0; i < imgLen; i++){
