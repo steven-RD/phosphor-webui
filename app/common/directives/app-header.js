@@ -133,7 +133,7 @@ window.angular && (function(angular) {
 					if (i != 0){
 						angular.element(imgElement).eq(i).addClass('img_display');
 					} else {
-						angular.element(imgElement).eq(index).removeClass('img_display');
+						angular.element(imgElement).eq(0).removeClass('img_display');
 					}
 				}
 			}
