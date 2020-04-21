@@ -125,10 +125,23 @@ window.angular && (function(angular) {
                 }
               });
             };
+			
+			function() loadImages() {
+				var imgElement = document.getElementById("imgs").getElementsByTagName("li");
+				var imgLen = imgElement.length;
+				for(var i = 0; i < imgLen; i++){
+					if (i != 0){
+						angular.element(imgElement).eq(i).addClass('img_display');
+					} else {
+						angular.element(imgElement).eq(index).removeClass('img_display');
+					}
+				}
+			}
 
             $scope.refresh = function() {
               // reload current page controllers and header
               loadData();
+			  loadImages();
               $route.reload();
               // Add flash class to header timestamp on click of refresh
               var myEl =
