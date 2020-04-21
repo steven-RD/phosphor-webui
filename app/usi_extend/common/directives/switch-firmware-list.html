@@ -8,10 +8,10 @@
      <p class="inline">{{title}}</p> 
     <div>
       <p class="inline firmware__active-version">
-        To be activate version: {{version.toBeActiveVersion}};
+        To be activate version: {{version.toBeActiveVersion}};{{version.type}}
       </p><br>
-      <p class="inline firmware__active-version">Functional version:{{version.switchActivedVersion}}
-        ConfigureFile:{{version.configurationFile}}; FirmwareImage:{{version.type}}
+      <p class="inline firmware__active-version">Functional version:
+        ConfigureFile:{{version.configurationFile}}; FirmwareImage: {{version.switchActivedVersion}}
       </p>
     </div>
   </div>-->
@@ -19,53 +19,45 @@
   <div class="table row column">
 	  <div class="table__head">
 		  <div class="table__row">
-			  <div class="table__cell">ToBe activated version</div>
-			  <!-- <div class="table__cell">Functional version</div> -->
-			  <div class="table__cell">Configure file</div>
-			  <div class="table__cell">Firmware image</div>
+			  <div class="table__cell firmware__version">ToBe activated</div>
+			  <div class="table__cell firmware__version">Functional</div>
+			  <div class="table__cell firmware__version">Configure file</div>
+			  <!-- <div class="table__cell firmware__action">Firmware image</div> -->
           </div>
       </div>
   </div>
   <div class="table__body">
 	  <div class="table__row">
-	      <div ng-if="version.toBeActiveVersion!='None'" class="table__cell firmware__version">
-		      <span class="table__cell-label">version:</span> {{version.toBeActiveVersion}};{{version.type}}
+	      <div ng-if="version.toBeActiveVersion!='None'" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
+		      <span class="table__cell-label">version:</span> v{{version.toBeActiveVersion}};{{version.type}}
           </div>
-		  <!-- <div ng-if="version.switchActivedVersion!='None'" class="table__cell firmware__version">
-		      <span class="table__cell-label">version:</span> {{version.switchActivedVersion}}
-          </div> -->
-		  <div ng-if="version.configurationFile!='None'" class="table__cell firmware__version">
+		  <div ng-if="version.switchActivedVersion!='None'" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
+		      <span class="table__cell-label">version:</span> v{{version.switchActivedVersion}}
+          </div>
+		  <div ng-if="version.configurationFile!='None'" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
 		      <span class="table__cell-label">version:</span> {{version.configurationFile}}
           </div>
-		  <div ng-if="version.type!='None'" class="table__cell firmware__version">
+		 <!--  <div ng-if="version.type!='None'" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
 		      <span class="table__cell-label">version:</span> {{version.switchActivedVersion}}
-          </div>
+          </div> -->
 	  </div>
   </div>
   
   <div class="table row column">
     <div class="table__head">
       <div class="table__row">
-        <div class="table__cell firmware__version">
-          Version
-        </div>
-        <div class="table__cell firmware__version">
-          Type
-        </div>
-        <div class="table__cell firmware__action">
-          Action
-        </div>
+        <div class="table__cell firmware__version">Version</div>
+        <div class="table__cell firmware__version">Type</div>
+        <div class="table__cell firmware__action">Action</div>
       </div>
     </div>
     <div class="table__body">
       <div class="table__row" ng-repeat="firmware in firmwares">
         <div ng-if="firmware.Version!='None'" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
-          <span class="table__cell-label">Version:</span>
-          v{{firmware.Version}}
+          <span class="table__cell-label">Version:</span> v{{firmware.Version}}
         </div>
         <div ng-if="firmware.Type!='None'" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
-          <span class="table__cell-label">Type:</span>
-          {{firmware.Type}}
+          <span class="table__cell-label">Type:</span>{{firmware.Type}}
         </div>
         <div ng-if="firmware.Version!='None'" class="table__cell firmware__action">
             <span class="table__cell-label">Action:</span>

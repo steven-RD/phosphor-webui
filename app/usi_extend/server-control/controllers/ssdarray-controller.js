@@ -216,27 +216,19 @@ window.angular && (function(angular) {
 			if (index == imgLen){
 				index = 0; // The first image
 			}
-			console.log("right");
-			console.log(index);
 			angular.element(imgElement).eq(index-1).addClass('img_display');
 			angular.element(imgElement).eq(index).removeClass('img_display');
-			console.log(imgElement);
 		  }else if(arrow == 'left'){
 			index--;
-			console.log("left");
-			console.log(index);
 			if (index == -1){
 				index = imgLen - 1; // The last image
 			}
-			console.log("left");
-			console.log(index);
 			if (index == 2){
 				angular.element(imgElement).eq(0).addClass('img_display');
 			}else{
 				angular.element(imgElement).eq(index+1).addClass('img_display');
 			}
 			angular.element(imgElement).eq(index).removeClass('img_display');
-			console.log(imgElement);
 		  }
 	  };
 	   
