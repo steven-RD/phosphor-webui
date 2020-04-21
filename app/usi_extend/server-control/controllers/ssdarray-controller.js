@@ -201,6 +201,7 @@ window.angular && (function(angular) {
 	  var index = 0;
       var imgElement = document.getElementById("imgs").getElementsByTagName("li");
 	  console.log(imgElement);
+	  console.log(index);
       var imgLen = imgElement.length;
       $scope.moveNext = function(arrow){
 		  $scope.ssdFlag = false;
@@ -221,6 +222,7 @@ window.angular && (function(angular) {
 			console.log(index);
 			angular.element(imgElement).eq(index-1).addClass('img_display');
 			angular.element(imgElement).eq(index).removeClass('img_display');
+			console.log(imgElement);
 		  }else if(arrow == 'left'){
 			index--;
 			console.log("left");
@@ -236,6 +238,7 @@ window.angular && (function(angular) {
 				angular.element(imgElement).eq(index+1).addClass('img_display');
 			}
 			angular.element(imgElement).eq(index).removeClass('img_display');
+			console.log(imgElement);
 		  }
 	  };
 	   
