@@ -199,10 +199,6 @@ window.angular && (function(angular) {
 	  
 	  ///arrow loop
 	  var index = 0;
-      var imgElement = document.getElementById("imgs").getElementsByTagName("li");
-	  console.log(imgElement);
-	  console.log(index);
-      var imgLen = imgElement.length;
       $scope.moveNext = function(arrow){
 		  $scope.ssdFlag = false;
           $scope.cableFlag = false;
@@ -213,6 +209,8 @@ window.angular && (function(angular) {
 		  $scope.patopoFlag = false;
 		  $scope.ipFlag = false;
 		  
+		  var imgElement = document.getElementById("imgs").getElementsByTagName("li");
+		  var imgLen = imgElement.length;
 		  if(arrow == 'right'){
 			index++;
 			if (index == imgLen){

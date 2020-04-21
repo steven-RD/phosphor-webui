@@ -126,7 +126,7 @@ window.angular && (function(angular) {
               });
             };
 			
-			function loadImages() {
+			/* function loadImages() {
 				var imgElement = document.getElementById("imgs").getElementsByTagName("li");
 				var imgLen = imgElement.length;
 				for(var i = 0; i < imgLen; i++){
@@ -136,12 +136,12 @@ window.angular && (function(angular) {
 						angular.element(imgElement).eq(0).removeClass('img_display');
 					}
 				}
-			}
+			} */
 
             $scope.refresh = function() {
               // reload current page controllers and header
               loadData();
-			  loadImages();
+			  //loadImages();
               $route.reload();
               // Add flash class to header timestamp on click of refresh
               var myEl =
