@@ -68,7 +68,7 @@
         <div class="left_btn arrow_btn" ng-click="moveNext('left')"><p class="arrow"><</p></div>
         <div class="right_btn arrow_btn" ng-click="moveNext('right')"><p class="arrow">></p></div>
 	</div>
-	<div id="usi-ssd" class="" ng-show="ssdFlag == true" ng-mouseleave="leave('usi-ssd')">
+	<div id="usi-ssd" class="usi-ssd-array" ng-show="ssdFlag == true" ng-mouseleave="leave('usi-ssd')">
         <table id='ssd-info-body' ng-show="ssdx != 'None'">
 			<tbody class="ssd-body-tbody">
 				<tr><td>SSD NO.</td><td>{{ssdNo}}</td></tr>
@@ -84,7 +84,7 @@
             </tbody>
         </table>
     </div>
-    <div id="usi-cable" class="" ng-show="cableFlag == true"  ng-mouseleave="leave('usi-cable')"> 
+    <div id="usi-cable" class="usi-ssd-array" ng-show="cableFlag == true"  ng-mouseleave="leave('usi-cable')"> 
       <table id='ssd-info-body' ng-show="cableinfo != 'None'">
         <thead class="ssd-body-header">
             <tr>
@@ -118,7 +118,7 @@
         </tbody>
       </table>
     </div>
-    <div id="usi-switch" class="" ng-show="switchFlag == true" ng-mouseleave="leave('usi-switch')">
+    <div id="usi-switch" class="usi-ssd-array" ng-show="switchFlag == true" ng-mouseleave="leave('usi-switch')">
         <table id='ssd-info-body' ng-show="swinfo != 'None'">
             <thead class="ssd-body-header">
                 <tr>
@@ -134,7 +134,7 @@
             </tbody>
         </table>
     </div>
-	<div id="usi-ps" class="" ng-show="psFlag == true" ng-mouseleave="leave('usi-ps')">
+	<div id="usi-ps" class="usi-ssd-array" ng-show="psFlag == true" ng-mouseleave="leave('usi-ps')">
         <table id='ssd-info-body' ng-show="psinfo != 'None'">
             <thead class='ssd-body-header'>
                 <tr>
@@ -150,7 +150,7 @@
             </tbody>
         </table>
     </div>
-	<div id="usi-psx" class="" ng-show="psxFlag == true" ng-mouseleave="leave('usi-psx')">
+	<div id="usi-psx" class="usi-ssd-array" ng-show="psxFlag == true" ng-mouseleave="leave('usi-psx')">
         <table id='ssd-info-body' ng-show="psinfo != 'None'">
             <thead class='ssd-body-header'>
                 <tr>
@@ -183,7 +183,7 @@
             </tbody>
         </table>
     </div> -->
-	<div id="usi-patopo" ng-show="patopoFlag == true"  ng-mouseleave="leave('usi-patopo')">
+	<div id="usi-patopo" class="usi-ssd-array" ng-show="patopoFlag == true"  ng-mouseleave="leave('usi-patopo')">
         <table id='ssd-info-body' ng-show="patopoinfo != 'None'" ng-repeat="(k, v) in patopoinfo">
             <thead class="ssd-body-header">
 				<tr><td colspan='2'><b>{{k}} information</b></td></tr>
@@ -201,7 +201,7 @@
         </table>
     </div>
 	
-	<div id="usi-fan" class="" ng-show="fanFlag == true" ng-mouseleave="leave('usi-fan')">
+	<div id="usi-fan" class="usi-ssd-array" ng-show="fanFlag == true" ng-mouseleave="leave('usi-fan')">
         <table id='ssd-info-body'>
              <thead class='ssd-body-header'>
                 <tr>
@@ -233,7 +233,7 @@
             </tbody>
         </table>
     </div>
-	<div id="usi-ip" class="" ng-show="ipFlag == true" ng-mouseleave="leave('usi-ip')">
+	<div id="usi-ip" class="usi-ssd-array" ng-show="ipFlag == true" ng-mouseleave="leave('usi-ip')">
         <table id='ssd-info-body' ng-show="bmc_ip_addresses != 'None'">
             <thead class='ssd-body-header'>
                 <tr>
