@@ -39,21 +39,21 @@ window.angular && (function(angular) {
 			
 		};
 			
-		function draw() {
+		 $scope.draw = function() {
 			var img = new Image();
 			img.src = "../../../assets/images/J2024-03-front.png";
-
+			console.log("45");
 			var canvas = document.getElementById('canvas'); // 拿到画板
 			var context = canvas.getContext('2d');          // 拿到上下文
 			var pat=context.createPattern(img,"no-repeat");
 			context.rect(0,0,800,400);
 			context.fillStyle=pat;
 			context.fill();
-			
+			console.log("52");
 			context.strokeStyle = 'red'; 	  
 			context.lineWidth = 1;       
 			context.beginPath();         
-			
+			console.log("56");
 			var ssdNum = 0;
 			var num = 0, pos = 0;
 			var position = [];
