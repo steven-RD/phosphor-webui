@@ -1,7 +1,7 @@
 /**
     * Controller for partition
     *
-    * @module app/serverControl
+    * @module app/serverHealth
     * @exports powerUsageController
     * @name fanController
     *
@@ -14,7 +14,7 @@
 window.angular && (function(angular) {
     'use strict';
 
-    angular.module('app.serverControl').controller('partitionController', [
+    angular.module('app.serverHealth').controller('partitionController', [
     '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', 'toastService',
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService) {
       $scope.loading = false;
