@@ -83,7 +83,7 @@ window.angular && (function(angular) {
 					console.log(width);
 				}
 				if(p != 0 && record[p] != 0) { ///
-					context.rect(x[position[p-1]+1], 130, x[position[p]]-x[position[p-1]], 118);
+					context.rect(x[position[p-1]+1], 130, x[position[p]]-x[position[p-1]+1], 118);
 				}
 			}
 			
