@@ -99,6 +99,7 @@ import usi_api_utils from './usi_extend/common/services/usi-api-utils.js';
 import switch_firmware_list from './usi_extend/common/directives/switch-firmware-list.js';
 import ssdarray_controller from './usi_extend/server-control/controllers/ssdarray-controller.js';
 import fan_controller from './usi_extend/server-control/controllers/fan-controller.js';
+import partition_controller from './usi_extend/server-control/controllers/partition-controller.js';
 import switch_firmware_controller from './usi_extend/configuration/controllers/switch-firmware-controller.js';
 import usi_extend_server_control_index from './usi_extend/server-control/index.js';
 
