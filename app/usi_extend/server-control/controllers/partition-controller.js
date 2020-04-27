@@ -20,43 +20,90 @@ window.angular && (function(angular) {
 		$scope.loading = false;
 		
 		//$scope.partitionName = "../../../assets/images/partition-24.png";
-		//$scope.patopo24=true;
-		//$scope.patopo12=false;
-		//$scope.patopo6=false;
+		var Patopoinfo = [
+			"Partition(0)": {
+			    "Dspid-1": "bound to ssd-6.",
+			    "Dspid-10": "bound to ssd-11.",
+			    "Dspid-11": "bound to ssd-9.",
+			    "Dspid-12": "bound to ssd-12.",
+			    "Dspid-2": "bound to ssd-3.",
+			    "Dspid-3": "bound to ssd-5.",
+			    "Dspid-4": "bound to ssd-2.",
+			    "Dspid-5": "bound to ssd-4.",
+			    "Dspid-6": "bound to ssd-1.",
+			    "Dspid-7": "bound to ssd-7.",
+			    "Dspid-8": "bound to ssd-10.",
+			    "Dspid-9": "bound to ssd-8."
+			},
+			"Partition(1)": {
+			    "Dspid-13": "bound to ssd-13.",
+			    "Dspid-14": "bound to ssd-14.",
+			    "Dspid-15": "bound to ssd-15.",
+			    "Dspid-16": "bound to ssd-116.",
+			    "Dspid-17": "bound to ssd-17.",
+			    "Dspid-18": "bound to ssd-18.",
+			    "Dspid-19": "bound to ssd-19.",
+			    "Dspid-20": "bound to ssd-20.",
+			    "Dspid-21": "bound to ssd-21.",
+			    "Dspid-22": "bound to ssd-22.",
+			    "Dspid-23": "bound to ssd-23.",
+			    "Dspid-24": "bound to ssd-24."
+			}
+		];
+
+		
 		$scope.loadSsdInfo = function() {
 			var arrayInfo=[];
 			UsiAPIUtils.getSsdArrayInfo().then(
 				function(data){
 					arrayInfo = data;
 					console.log(arrayInfo);
-					$scope.patopo24=false;
-					$scope.patopo12=true;
-					$scope.patopo6=false;
-					angular.forEach(arrayInfo['Patopoinfo'], function(patopoInfo, patopoName) {
+					
+					if(Patopoinfo.length == 1){
+						$scope.patopo1=true;
+						$scope.patopo2=false;
+						$scope.patopo4=false;
+						$scope.patopoinfo1
+					} else if(Patopoinfo.length == 2) {
+						$scope.patopo1=false;
+						$scope.patopo2=true;
+						$scope.patopo4=false;
+						console.log(Patopoinfo);
+						angular.forEach(Patopoinfo, function(partition, name) {
+							console.log(partition);
+							console.log(name);
+							if(angular.equals(name, "Partition(0)")) {
+								$scope.partition20=partition;
+								$scope.name20=name;
+								console.log(partition);
+								console.log(name);
+							}else if(angular.equals(name, "Partition(1)")){
+								$scope.partition21=partition;
+								$scope.name21=name;
+								console.log(partition);
+								console.log(name);
+							}
+						});
+					} else if(Patopoinfo.length == 4) {
+						$scope.patopo1=false;
+						$scope.patopo2=false;
+						$scope.patopo4=true;
+					}
+					/* angular.forEach(arrayInfo['Patopoinfo'], function(patopoInfo, patopoName) {
 						console.log(patopoInfo);
 						console.log(patopoName);
 						if(angular.equals(patopoName, "Partition(0)")) {
-							//$scope.patopo24=false;
-							//$scope.patopo12=true;
-							//$scope.patopo6=false;
+							$scope.patopo24=false;
+							$scope.patopo12=true;
+							$scope.patopo6=false;
 						}
-					});
+					}); */
 				},
 				function(error) {
 				   toastService.error('Error during getSsdArrayInfo');
 				}
 			);
 			
-			//$scope.patopoinfo = arrayInfo['Patopoinfo'];
-			/* angular.forEach(arrayInfo['Patopoinfo'], function(patopoInfo, patopoName) {
-				console.log(patopoInfo);
-				console.log(patopoName);
-				if(angular.equals(patopoName, "Partition(0)")) {
-					$scope.patopo24=false;
-					$scope.patopo12=true;
-					$scope.patopo6=false;
-				}
-			}); */
 		};
 		
 		$scope.loadSsdInfo();
