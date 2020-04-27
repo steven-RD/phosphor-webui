@@ -23,7 +23,7 @@ window.angular && (function(angular) {
 		//$scope.patopo24=true;
 		//$scope.patopo12=false;
 		//$scope.patopo6=false;
-		//$scope.loadSsdInfo = function() {
+		$scope.loadSsdInfo = function() {
 			var arrayInfo=[];
 			UsiAPIUtils.getSsdArrayInfo().then(
 				function(data){
