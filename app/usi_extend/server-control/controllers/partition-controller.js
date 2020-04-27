@@ -33,8 +33,9 @@ window.angular && (function(angular) {
 			    "Dspid-7": "bound to ssd-7.",
 			    "Dspid-8": "bound to ssd-10.",
 			    "Dspid-9": "bound to ssd-8."
-			},
-			"Partition(1)": {
+			}},
+			{
+				"Partition(1)": {
 			    "Dspid-13": "bound to ssd-13.",
 			    "Dspid-14": "bound to ssd-14.",
 			    "Dspid-15": "bound to ssd-15.",
@@ -62,7 +63,7 @@ window.angular && (function(angular) {
 						$scope.patopo1=true;
 						$scope.patopo2=false;
 						$scope.patopo4=false;
-						
+						console.log(Patopoinfo.length);
 					} else if(Patopoinfo.length == 2) {
 						$scope.patopo1=false;
 						$scope.patopo2=true;
