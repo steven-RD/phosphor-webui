@@ -20,7 +20,7 @@ window.angular && (function(angular) {
 		$scope.loading = false;
 		
 		var Patopoinfo = {
-			{"Partition(0)": {
+			"Partition(0)": {
 			    "Dspid-1": "bound to ssd-6.",
 			    "Dspid-10": "bound to ssd-11.",
 			    "Dspid-11": "bound to ssd-9.",
@@ -33,8 +33,8 @@ window.angular && (function(angular) {
 			    "Dspid-7": "bound to ssd-7.",
 			    "Dspid-8": "bound to ssd-10.",
 			    "Dspid-9": "bound to ssd-8."
-			}},
-			{"Partition(1)": {
+			},
+			"Partition(1)": {
 			    "Dspid-13": "bound to ssd-13.",
 			    "Dspid-14": "bound to ssd-14.",
 			    "Dspid-15": "bound to ssd-15.",
@@ -47,7 +47,7 @@ window.angular && (function(angular) {
 			    "Dspid-22": "bound to ssd-22.",
 			    "Dspid-23": "bound to ssd-23.",
 			    "Dspid-24": "bound to ssd-24."
-			}}
+			}
 		};
 
 		
