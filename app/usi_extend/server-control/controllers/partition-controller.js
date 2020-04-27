@@ -17,9 +17,11 @@ window.angular && (function(angular) {
     angular.module('app.serverHealth').controller('partitionController', [
     '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', 'toastService',
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService) {
-      $scope.loading = false;
-
-		var patArray = ['ssd1', 'ssd2', 'ssd3', 'ssd4', 'ssd5', 'ssd6', 
+		$scope.loading = false;
+		
+		$scope.partitionName = "../../../assets/images/partition-24.png"
+		
+		/* var patArray = ['ssd1', 'ssd2', 'ssd3', 'ssd4', 'ssd5', 'ssd6', 
 						'ssd7', 'ssd8', 'ssd9', 'ssd10', 'ssd11', 'ssd12'];
 		var x = [61, 90, 119, 146, 175, 204, 232, 259, 286, 315, 342, 370, 
 				 396, 425, 452, 480, 508, 535, 560, 589, 618, 645, 675, 703];
@@ -94,7 +96,7 @@ window.angular && (function(angular) {
 			context.stroke();
 		}
 		
-		$scope.loadSsdInfo();
+		$scope.loadSsdInfo(); */
     }
   ]);
 })(angular);
