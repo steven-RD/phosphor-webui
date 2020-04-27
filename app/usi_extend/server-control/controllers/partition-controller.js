@@ -19,7 +19,6 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService) {
 		$scope.loading = false;
 		
-		//$scope.partitionName = "../../../assets/images/partition-24.png";
 		var Patopoinfo = [
 			"Partition(0)": {
 			    "Dspid-1": "bound to ssd-6.",
