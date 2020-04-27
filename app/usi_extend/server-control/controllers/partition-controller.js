@@ -63,7 +63,7 @@ window.angular && (function(angular) {
 						$scope.patopo1=true;
 						$scope.patopo2=false;
 						$scope.patopo4=false;
-						$scope.patopoinfo1
+						
 					} else if(Patopoinfo.length == 2) {
 						$scope.patopo1=false;
 						$scope.patopo2=true;
