@@ -19,7 +19,22 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService) {
 		$scope.loading = false;
 		
-		$scope.partitionName = "../../../assets/images/partition-24.png"
+		$scope.partitionName = "../../../assets/images/partition-24.png";
+		$scope.loadSsdInfo = function() {
+			var arrayInfo=[];
+			UsiAPIUtils.getSsdArrayInfo().then(
+				function(data){
+					arrayInfo = data;
+				},
+				function(error) {
+				   toastService.error('Error during getSsdArrayInfo');
+				}
+			);
+			
+			$scope.patopoinfo = arrayInfo['Patopoinfo'];
+			///deal with patopoinfo to get ssdx place into order patArray
+			
+		};
 		
 		/* var patArray = ['ssd1', 'ssd2', 'ssd3', 'ssd4', 'ssd5', 'ssd6', 
 						'ssd7', 'ssd8', 'ssd9', 'ssd10', 'ssd11', 'ssd12'];
