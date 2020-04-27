@@ -19,8 +19,8 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService) {
 		$scope.loading = false;
 		
-		var Patopoinfo = [{
-			"Partition(0)": {
+		var Patopoinfo = {
+			{"Partition(0)": {
 			    "Dspid-1": "bound to ssd-6.",
 			    "Dspid-10": "bound to ssd-11.",
 			    "Dspid-11": "bound to ssd-9.",
@@ -34,12 +34,11 @@ window.angular && (function(angular) {
 			    "Dspid-8": "bound to ssd-10.",
 			    "Dspid-9": "bound to ssd-8."
 			}},
-			{
-				"Partition(1)": {
+			{"Partition(1)": {
 			    "Dspid-13": "bound to ssd-13.",
 			    "Dspid-14": "bound to ssd-14.",
 			    "Dspid-15": "bound to ssd-15.",
-			    "Dspid-16": "bound to ssd-116.",
+			    "Dspid-16": "bound to ssd-16.",
 			    "Dspid-17": "bound to ssd-17.",
 			    "Dspid-18": "bound to ssd-18.",
 			    "Dspid-19": "bound to ssd-19.",
@@ -48,8 +47,8 @@ window.angular && (function(angular) {
 			    "Dspid-22": "bound to ssd-22.",
 			    "Dspid-23": "bound to ssd-23.",
 			    "Dspid-24": "bound to ssd-24."
-			}
-		}];
+			}}
+		};
 
 		
 		$scope.loadSsdInfo = function() {
@@ -57,7 +56,7 @@ window.angular && (function(angular) {
 			UsiAPIUtils.getSsdArrayInfo().then(
 				function(data){
 					arrayInfo = data;
-					console.log(arrayInfo);
+					//console.log(arrayInfo);
 					
 					if(Patopoinfo.length == 1){
 						$scope.patopo1=true;
