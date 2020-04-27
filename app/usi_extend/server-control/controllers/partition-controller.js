@@ -77,7 +77,7 @@ window.angular && (function(angular) {
 								console.log(partition);
 								//console.log(name);
 							}else if(angular.equals(index, 1)){
-								$scope.partition21="Partition(1)";
+								$scope.partition21=partition["Partition(1)"];
 								$scope.name21="Partition(1)";
 								console.log(partition);
 								//console.log(name);
