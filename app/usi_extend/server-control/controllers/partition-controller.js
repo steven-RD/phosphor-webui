@@ -19,7 +19,7 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService) {
 		$scope.loading = false;
 		
-		var Patopoinfo = [
+		var Patopoinfo = [{
 			"Partition(0)": {
 			    "Dspid-1": "bound to ssd-6.",
 			    "Dspid-10": "bound to ssd-11.",
@@ -48,7 +48,7 @@ window.angular && (function(angular) {
 			    "Dspid-23": "bound to ssd-23.",
 			    "Dspid-24": "bound to ssd-24."
 			}
-		];
+		}];
 
 		
 		$scope.loadSsdInfo = function() {
