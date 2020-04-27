@@ -34,9 +34,16 @@ window.angular && (function(angular) {
 				}
 			);
 			
-			$scope.patopoinfo = arrayInfo['Patopoinfo'];
-			///deal with patopoinfo to get ssdx place into order patArray
-			
+			//$scope.patopoinfo = arrayInfo['Patopoinfo'];
+			angular.forEach(arrayInfo['Patopoinfo'], function(patopoInfo, patopoName) {
+				console.log(patopoInfo);
+				console.log(patopoName);
+				if(angular.equals(patopoName, "Partition(0)")) {
+					//$scope.patopo24=false;
+					//$scope.patopo12=true;
+					//$scope.patopo6=false;
+				}
+			}
 		};
 		
 		$scope.loadSsdInfo();
