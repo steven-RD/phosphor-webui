@@ -29,13 +29,16 @@ window.angular && (function(angular) {
 				function(data){
 					arrayInfo = data;
 					console.log(arrayInfo);
+					$scope.patopo24=false;
+					$scope.patopo12=true;
+					$scope.patopo6=false;
 					angular.forEach(arrayInfo['Patopoinfo'], function(patopoInfo, patopoName) {
 						console.log(patopoInfo);
 						console.log(patopoName);
 						if(angular.equals(patopoName, "Partition(0)")) {
-							$scope.patopo24=false;
-							$scope.patopo12=true;
-							$scope.patopo6=false;
+							//$scope.patopo24=false;
+							//$scope.patopo12=true;
+							//$scope.patopo6=false;
 						}
 					});
 				},
