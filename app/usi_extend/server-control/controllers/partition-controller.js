@@ -20,14 +20,24 @@ window.angular && (function(angular) {
 		$scope.loading = false;
 		
 		//$scope.partitionName = "../../../assets/images/partition-24.png";
-		$scope.patopo24=true;
-		$scope.patopo12=false;
-		$scope.patopo6=false;
-		$scope.loadSsdInfo = function() {
+		//$scope.patopo24=true;
+		//$scope.patopo12=false;
+		//$scope.patopo6=false;
+		//$scope.loadSsdInfo = function() {
 			var arrayInfo=[];
 			UsiAPIUtils.getSsdArrayInfo().then(
 				function(data){
 					arrayInfo = data;
+					console.log(arrayInfo);
+					angular.forEach(arrayInfo['Patopoinfo'], function(patopoInfo, patopoName) {
+						console.log(patopoInfo);
+						console.log(patopoName);
+						if(angular.equals(patopoName, "Partition(0)")) {
+							$scope.patopo24=false;
+							$scope.patopo12=true;
+							$scope.patopo6=false;
+						}
+					});
 				},
 				function(error) {
 				   toastService.error('Error during getSsdArrayInfo');
@@ -35,15 +45,15 @@ window.angular && (function(angular) {
 			);
 			
 			//$scope.patopoinfo = arrayInfo['Patopoinfo'];
-			angular.forEach(arrayInfo['Patopoinfo'], function(patopoInfo, patopoName) {
+			/* angular.forEach(arrayInfo['Patopoinfo'], function(patopoInfo, patopoName) {
 				console.log(patopoInfo);
 				console.log(patopoName);
-				//if(angular.equals(patopoName, "Partition(0)")) {
-					//$scope.patopo24=false;
-					//$scope.patopo12=true;
-					//$scope.patopo6=false;
-				//}
-			});
+				if(angular.equals(patopoName, "Partition(0)")) {
+					$scope.patopo24=false;
+					$scope.patopo12=true;
+					$scope.patopo6=false;
+				}
+			}); */
 		};
 		
 		$scope.loadSsdInfo();
