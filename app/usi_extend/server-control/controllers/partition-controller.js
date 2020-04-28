@@ -21,26 +21,30 @@ window.angular && (function(angular) {
 		
 		var Patopoinfo = {
 			"Partition(0)": {
-			    "Dspid-1": "bound to ssd-6.",
-			    "Dspid-10": "bound to ssd-11.",
-			    "Dspid-11": "bound to ssd-9.",
-			    "Dspid-12": "bound to ssd-12.",
-			    "Dspid-2": "bound to ssd-3.",
-			    "Dspid-3": "bound to ssd-5.",
-			    "Dspid-4": "bound to ssd-2.",
-			    "Dspid-5": "bound to ssd-4.",
-			    "Dspid-6": "bound to ssd-1.",
-			    "Dspid-7": "bound to ssd-7.",
-			    "Dspid-8": "bound to ssd-10.",
-			    "Dspid-9": "bound to ssd-8."
+			    "Dspid-1": "bound to ssd-1.",
+			    "Dspid-2": "bound to ssd-2.",
+			    "Dspid-3": "bound to ssd-3.",
+			    "Dspid-4": "bound to ssd-4.",
+			    "Dspid-5": "bound to ssd-5.",
+			    "Dspid-6": "bound to ssd-6."
 			},
 			"Partition(1)": {
+			    "Dspid-7": "bound to ssd-7.",
+			    "Dspid-8": "bound to ssd-8.",
+			    "Dspid-9": "bound to ssd-9.",
+			    "Dspid-10": "bound to ssd-10.",
+			    "Dspid-11": "bound to ssd-11.",
+			    "Dspid-12": "bound to ssd-12."
+			},
+			"Partition(2)": {
 			    "Dspid-13": "bound to ssd-13.",
 			    "Dspid-14": "bound to ssd-14.",
 			    "Dspid-15": "bound to ssd-15.",
 			    "Dspid-16": "bound to ssd-16.",
 			    "Dspid-17": "bound to ssd-17.",
-			    "Dspid-18": "bound to ssd-18.",
+			    "Dspid-18": "bound to ssd-18."
+			},
+			"Partition(3)": {
 			    "Dspid-19": "bound to ssd-19.",
 			    "Dspid-20": "bound to ssd-20.",
 			    "Dspid-21": "bound to ssd-21.",
@@ -65,6 +69,8 @@ window.angular && (function(angular) {
 						$scope.patopo2=false;
 						$scope.patopo4=false;
 						$scope.partition_1=true;
+						$scope.partition_2=false;
+						$scope.partition_4=false;
 						angular.forEach(Patopoinfo, function(partition, name) {
 							if(angular.equals(name, "Partition(0)")) {
 								$scope.partition1_0=partition;
@@ -75,7 +81,9 @@ window.angular && (function(angular) {
 						$scope.patopo1=false;
 						$scope.patopo2=true;
 						$scope.patopo4=false;
+						$scope.partition_1=false;
 						$scope.partition_2=true;
+						$scope.partition_4=false;
 						angular.forEach(Patopoinfo, function(partition, name) {
 							if(angular.equals(name, "Partition(0)")) {
 								$scope.partition2_0=partition;
@@ -89,6 +97,8 @@ window.angular && (function(angular) {
 						$scope.patopo1=false;
 						$scope.patopo2=false;
 						$scope.patopo4=true;
+						$scope.partition_1=false;
+						$scope.partition_2=false;
 						$scope.partition_4=true;
 						angular.forEach(Patopoinfo, function(partition, name) {
 							if(angular.equals(name, "Partition(0)")) {

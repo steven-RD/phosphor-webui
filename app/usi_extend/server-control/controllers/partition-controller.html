@@ -12,18 +12,18 @@
     </div> -->
 	<ul class="ulimg" id="imgs">
 		<li class="par1">
-			<div ng-show="patopo1 == true">
-				 <img id="ssd24" align="center" src="../../../assets/images/partition1.png"/>
+			<div align="center" ng-show="patopo1 == true">
+				 <img id="ssd24" src="../../../assets/images/partition1.png"/>
 			</div>
 		</li>
 		<li class="par2">
-			<div ng-show="patopo2 == true">
-				<img id="ssd12" align="center" src="../../../assets/images/partition2.png"/>
+			<div align="center" ng-show="patopo2 == true">
+				<img id="ssd12" src="../../../assets/images/partition2.png"/>
 			</div>
 		</li>
 		<li class="par4">
-			<div ng-show="patopo4 == true">
-				<img id="ssd6" align="center" src="../../../assets/images/partition4.png"/>
+			<div align="center" ng-show="patopo4 == true">
+				<img id="ssd6" src="../../../assets/images/partition4.png"/>
 			</div>
 		</li>
 	</ul>
@@ -33,7 +33,7 @@
 	</div> -->
 		
 	<div class="usi-patopo" ng-show="partition_1">
-		<table id='usi-partition1_0' ng-show="partition1_0 != 'None'">
+		<table id='usi-partition1_0' align="center" ng-show="partition1_0 != 'None'">
             <thead class='ssd-body-header'>
 				<tr><td align='center' valian='middle' colspan='2'><b>{{name1_0}}</b></td></tr>
                 <tr><th>Item</th><th>Value</th></tr>
@@ -45,22 +45,10 @@
             </tbody>
         </table>
 	</div>
-	
-	<table width="100%" align="center">
-		<tr>
-			<td>
-				<table width="100%"><tr><td></td></tr></table>
-			</td>
-			<td>
-				<table width="100%"><tr><td> </td></tr></table>
-			</td>
-		</tr>
-	</table>
-	
  	<div class="usi-patopo" ng-show="partition_2">
-		<table>
+		<table align="center">
 			<tr><td>
-				<table id='usi-partition2_0' style="float:left;" ng-show="partition2_0 != 'None'">
+				<table id='usi-partition2_0'  ng-show="partition2_0 != 'None'">
 					<thead class='ssd-body-header'>
 						<tr><td align='center' valian='middle' colspan='2'><b>{{name2_0}}</b></td></tr>
 						<tr><th>Item</th><th>Value</th></tr>
@@ -88,50 +76,60 @@
 		<table>		
     </div>
 	<div class="usi-patopo" ng-show="partition_4">
-        <table id='usi-partition4_0' style="float:left;" ng-show="partition4_0 != 'None'">
-            <thead class='ssd-body-header'>
-				<tr><td align='center' valian='middle' colspan='2'><b>{{name4_0}}</b></td></tr>
-                <tr><th>Item</th><th>Value</th></tr>
-            </thead>
-            <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(key, value) in partition4_0">
-                    <td>{{key}}</td><td>{{value}}</td>
-                </tr>
-            </tbody>
-        </table>
-		<table id='usi-partition4_1' style="float:left;" ng-show="partition4_1 != 'None'">
-            <thead class='ssd-body-header'>
-				<tr><td align='center' valian='middle' colspan='2'><b>{{name4_1}}</b></td></tr>
-                <tr><th>Item</th><th>Value</th></tr>
-            </thead>
-            <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(key, value) in partition4_1">
-                    <td>{{key}}</td><td>{{value}}</td>
-                </tr>
-            </tbody>
-        </table>
-		<table id='usi-partition4_2' style="float:left;" ng-show="partition4_2 != 'None'">
-            <thead class='ssd-body-header'>
-				<tr><td align='center' valian='middle' colspan='2'><b>{{name4_2}}</b></td></tr>
-                <tr><th>Item</th><th>Value</th></tr>
-            </thead>
-            <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(key, value) in partition4_2">
-                    <td>{{key}}</td><td>{{value}}</td>
-                </tr>
-            </tbody>
-        </table>
-		<table id='usi-partition4_3' ng-show="partition4_3 != 'None'">
-            <thead class='ssd-body-header'>
-				<tr><td align='center' valian='middle' colspan='2'><b>{{name4_3}}</b></td></tr>
-                <tr><th>Item</th><th>Value</th></tr>
-            </thead>
-            <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(key, value) in partition4_3">
-                    <td>{{key}}</td><td>{{value}}</td>
-                </tr>
-            </tbody>
-        </table>
+		<table align="center">
+			<tr><td>
+				<table id='usi-partition4_0' ng-show="partition4_0 != 'None'">
+					<thead class='ssd-body-header'>
+						<tr><td align='center' valian='middle' colspan='2'><b>{{name4_0}}</b></td></tr>
+						<tr><th>Item</th><th>Value</th></tr>
+					</thead>
+					<tbody class="ssd-body-tbody">
+						<tr ng-repeat="(key, value) in partition4_0">
+							<td>{{key}}</td><td>{{value}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td>
+				<table id='usi-partition4_1' ng-show="partition4_1 != 'None'">
+					<thead class='ssd-body-header'>
+						<tr><td align='center' valian='middle' colspan='2'><b>{{name4_1}}</b></td></tr>
+						<tr><th>Item</th><th>Value</th></tr>
+					</thead>
+					<tbody class="ssd-body-tbody">
+						<tr ng-repeat="(key, value) in partition4_1">
+							<td>{{key}}</td><td>{{value}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td>
+				<table id='usi-partition4_2' style="float:left;" ng-show="partition4_2 != 'None'">
+					<thead class='ssd-body-header'>
+						<tr><td align='center' valian='middle' colspan='2'><b>{{name4_2}}</b></td></tr>
+						<tr><th>Item</th><th>Value</th></tr>
+					</thead>
+					<tbody class="ssd-body-tbody">
+						<tr ng-repeat="(key, value) in partition4_2">
+							<td>{{key}}</td><td>{{value}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td>
+				<table id='usi-partition4_3' ng-show="partition4_3 != 'None'">
+					<thead class='ssd-body-header'>
+						<tr><td align='center' valian='middle' colspan='2'><b>{{name4_3}}</b></td></tr>
+						<tr><th>Item</th><th>Value</th></tr>
+					</thead>
+					<tbody class="ssd-body-tbody">
+						<tr ng-repeat="(key, value) in partition4_3">
+							<td>{{key}}</td><td>{{value}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</td></tr>		
+		</table>		
     </div>
 
 </div>
