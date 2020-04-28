@@ -56,7 +56,12 @@ window.angular && (function(angular) {
 			UsiAPIUtils.getSsdArrayInfo().then(
 				function(data){
 					arrayInfo = data;
-					var length = Object.keys(data).length;
+					
+					var length = Object.keys(Patopoinfo).length;
+					//for(var key in Patopoinfo) {
+					//	length++;
+					//}
+					
 					console.log(length);
 					if(length == 1){
 						$scope.patopo1=true;
