@@ -58,56 +58,48 @@ window.angular && (function(angular) {
 					arrayInfo = data;
 					
 					var length = Object.keys(Patopoinfo).length;
-					//for(var key in Patopoinfo) {
-					//	length++;
-					//}
-					
-					console.log(length);
 					if(length == 1){
 						$scope.patopo1=true;
 						$scope.patopo2=false;
 						$scope.patopo4=false;
-						//console.log(Patopoinfo.length);
-						//$scope.partition1=partition["Partition(0)"];
-						//$scope.name1="Partition(0)";
+						angular.forEach(Patopoinfo, function(partition, name) {
+							if(angular.equals(name, "Partition(0)")) {
+								$scope.partition1_0=partition;
+								$scope.name1_0=name;
+							});
 					} else if(length == 2) { 
 						$scope.patopo1=false;
 						$scope.patopo2=true;
 						$scope.patopo4=false;
-						console.log(Patopoinfo);
 						angular.forEach(Patopoinfo, function(partition, name) {
-							console.log(partition);
-							//console.log(index);
 							if(angular.equals(name, "Partition(0)")) {
-								$scope.partition20=partition;
-								$scope.name20=name;
-								console.log(partition);
-								console.log(name);
+								$scope.partition2_0=partition;
+								$scope.name2_0=name;
 							}else if(angular.equals(name, "Partition(1)")){
-								$scope.partition21=partition;
-								$scope.name21=name;
-								console.log(partition);
-								console.log(partition);
-								console.log(name);
+								$scope.partition2_1=partition;
+								$scope.name2_1=name;
 							}
 						});
 					} else if(length == 4) {
 						$scope.patopo1=false;
 						$scope.patopo2=false;
 						$scope.patopo4=true;
-						//angular.forEach(Patopoinfo, function(partition, index){
-							
-						//});
+						angular.forEach(Patopoinfo, function(partition, name) {
+							if(angular.equals(name, "Partition(0)")) {
+								$scope.partition4_0=partition;
+								$scope.name4_0=name;
+							}else if(angular.equals(name, "Partition(1)")){
+								$scope.partition4_1=partition;
+								$scope.name4_1=name;
+							}else if(angular.equals(name, "Partition(2)")){
+								$scope.partition4_2=partition;
+								$scope.name4_2=name;
+							}else if(angular.equals(name, "Partition(3)")){
+								$scope.partition4_3=partition;
+								$scope.name4_3=name;
+							}
+						});
 					}
-					/* angular.forEach(arrayInfo['Patopoinfo'], function(patopoInfo, patopoName) {
-						console.log(patopoInfo);
-						console.log(patopoName);
-						if(angular.equals(patopoName, "Partition(0)")) {
-							$scope.patopo24=false;
-							$scope.patopo12=true;
-							$scope.patopo6=false;
-						}
-					}); */
 				},
 				function(error) {
 				   toastService.error('Error during getSsdArrayInfo');

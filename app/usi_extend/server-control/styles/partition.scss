@@ -1,0 +1,105 @@
+// SSD Array
+#ssd-header {
+  text-align: center;
+  margin: auto;
+}
+#ssd-info-header {
+  text-align: center;
+  border-color: #FFFFFF;
+}
+#ssd-info-header tr {
+  text-align: center;
+  height: 85px;
+}
+#ssd-info-header tr td {
+  width: 140px;
+  background: #B088FF;
+  font-size: 12px;
+  border: 2px solid #0000AE;
+  text-align: center;
+}
+#ssd-info-header tr td:hover{
+  background: #FF704D;
+}
+
+#ssd-info-body {
+  text-align: center;
+  border: 2px solid;
+  border-color: #0000FF;
+  margin: auto;
+}
+
+#usi-partition1_0, usi-partition2_0, usi-partition4_0{
+  text-align: center;
+  border: 2px solid;
+  border-color: #e116e2;
+  margin: auto;
+}
+
+#usi-partition2_0, usi-partition4_1{
+  text-align: center;
+  border: 2px solid;
+  border-color: #e2cb16;
+  margin: auto;
+}
+
+#usi-partition4_2{
+  text-align: center;
+  border: 2px solid;
+  border-color: #419641e0;
+  margin: auto;
+}
+
+#usi-partition4_3{
+  text-align: center;
+  border: 2px solid;
+  border-color: #351bf9e0;
+  margin: auto;
+}
+
+.ssd-body-header {
+  text-align: center;
+}
+.ssd-body-header caption {
+  text-align: center;
+}
+.ssd-body-header tr th {
+  font-size: 12px;
+  text-align: center;
+}
+
+.ssd-body-tbody tr {
+  text-align: center;
+}
+.ssd-body-tbody tr td {
+  font-size: 11px;
+  text-align: center;
+}
+
+
+.usi-patopo tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+.usi-patopo tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+
+// Image
+.allImage{
+    height: 470px;
+    width: 850px;
+    margin: 0px auto;
+    position:relative;
+    left: -8%;
+}
+.img li{
+    position: absolute;
+    top: 0;
+    left: 30px;
+    margin:0 auto;
+    left: 40%;
+    top: 0%;
+    transform: translate(-40%,-0%);
+}
+
