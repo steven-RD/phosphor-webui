@@ -56,22 +56,23 @@ window.angular && (function(angular) {
 			UsiAPIUtils.getSsdArrayInfo().then(
 				function(data){
 					arrayInfo = data;
-					console.log(Patopoinfo.count());
-					if(Patopoinfo.count() == 1){
+					var length = Object.keys(data).length;
+					console.log(length);
+					if(length == 1){
 						$scope.patopo1=true;
 						$scope.patopo2=false;
 						$scope.patopo4=false;
-						console.log(Patopoinfo.length);
+						//console.log(Patopoinfo.length);
 						//$scope.partition1=partition["Partition(0)"];
 						//$scope.name1="Partition(0)";
-					} else if(Patopoinfo.count() == 2) {
+					} else if(length == 2) { 
 						$scope.patopo1=false;
 						$scope.patopo2=true;
 						$scope.patopo4=false;
 						console.log(Patopoinfo);
 						angular.forEach(Patopoinfo, function(partition, name) {
 							console.log(partition);
-							console.log(index);
+							//console.log(index);
 							if(angular.equals(name, "Partition(0)")) {
 								$scope.partition20=partition;
 								$scope.name20=name;
@@ -85,7 +86,7 @@ window.angular && (function(angular) {
 								console.log(name);
 							}
 						});
-					} else if(Patopoinfo.count() == 4) {
+					} else if(length == 4) {
 						$scope.patopo1=false;
 						$scope.patopo2=false;
 						$scope.patopo4=true;
