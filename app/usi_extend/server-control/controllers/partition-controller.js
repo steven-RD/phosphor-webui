@@ -110,8 +110,8 @@ window.angular && (function(angular) {
 			    "Dspid-22": "bound to ssd-22.",
 			    "Dspid-23": "bound to ssd-23.",
 			    "Dspid-24": "bound to ssd-24."
-			} */
-		};
+			} 
+		};*/
 
 		
 		$scope.loadSsdInfo = function() {
