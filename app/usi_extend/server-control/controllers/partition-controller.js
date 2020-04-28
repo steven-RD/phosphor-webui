@@ -19,8 +19,8 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService) {
 		$scope.loading = false;
 		
-		var Patopoinfo = [
-			{"Partition(0)": {
+		var Patopoinfo = {
+			"Partition(0)": {
 			    "Dspid-1": "bound to ssd-6.",
 			    "Dspid-10": "bound to ssd-11.",
 			    "Dspid-11": "bound to ssd-9.",
@@ -33,8 +33,8 @@ window.angular && (function(angular) {
 			    "Dspid-7": "bound to ssd-7.",
 			    "Dspid-8": "bound to ssd-10.",
 			    "Dspid-9": "bound to ssd-8."
-			}},
-			{"Partition(1)": {
+			},
+			"Partition(1)": {
 			    "Dspid-13": "bound to ssd-13.",
 			    "Dspid-14": "bound to ssd-14.",
 			    "Dspid-15": "bound to ssd-15.",
@@ -47,8 +47,8 @@ window.angular && (function(angular) {
 			    "Dspid-22": "bound to ssd-22.",
 			    "Dspid-23": "bound to ssd-23.",
 			    "Dspid-24": "bound to ssd-24."
-			}}
-		];
+			}
+		};
 
 		
 		$scope.loadSsdInfo = function() {
@@ -56,37 +56,42 @@ window.angular && (function(angular) {
 			UsiAPIUtils.getSsdArrayInfo().then(
 				function(data){
 					arrayInfo = data;
-					//console.log(arrayInfo);
-					
-					if(Patopoinfo.length == 1){
+					console.log(Patopoinfo.count());
+					if(Patopoinfo.count() == 1){
 						$scope.patopo1=true;
 						$scope.patopo2=false;
 						$scope.patopo4=false;
 						console.log(Patopoinfo.length);
-					} else if(Patopoinfo.length == 2) {
+						//$scope.partition1=partition["Partition(0)"];
+						//$scope.name1="Partition(0)";
+					} else if(Patopoinfo.count() == 2) {
 						$scope.patopo1=false;
 						$scope.patopo2=true;
 						$scope.patopo4=false;
 						console.log(Patopoinfo);
-						angular.forEach(Patopoinfo, function(partition, index) {
+						angular.forEach(Patopoinfo, function(partition, name) {
 							console.log(partition);
 							console.log(index);
-							if(angular.equals(index, 0)) {
-								$scope.partition20=partition["Partition(0)"];
-								$scope.name20="Partition(0)";
+							if(angular.equals(name, "Partition(0)")) {
+								$scope.partition20=partition;
+								$scope.name20=name;
 								console.log(partition);
-								//console.log(name);
-							}else if(angular.equals(index, 1)){
-								$scope.partition21=partition["Partition(1)"];
-								$scope.name21="Partition(1)";
+								console.log(name);
+							}else if(angular.equals(name, "Partition(1)")){
+								$scope.partition21=partition;
+								$scope.name21=name;
 								console.log(partition);
-								//console.log(name);
+								console.log(partition);
+								console.log(name);
 							}
 						});
-					} else if(Patopoinfo.length == 4) {
+					} else if(Patopoinfo.count() == 4) {
 						$scope.patopo1=false;
 						$scope.patopo2=false;
 						$scope.patopo4=true;
+						//angular.forEach(Patopoinfo, function(partition, index){
+							
+						//});
 					}
 					/* angular.forEach(arrayInfo['Patopoinfo'], function(patopoInfo, patopoName) {
 						console.log(patopoInfo);
