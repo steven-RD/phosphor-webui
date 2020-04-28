@@ -66,7 +66,8 @@ window.angular && (function(angular) {
 							if(angular.equals(name, "Partition(0)")) {
 								$scope.partition1_0=partition;
 								$scope.name1_0=name;
-							});
+							}
+						});
 					} else if(length == 2) { 
 						$scope.patopo1=false;
 						$scope.patopo2=true;
