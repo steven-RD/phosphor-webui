@@ -56,12 +56,15 @@ window.angular && (function(angular) {
 			UsiAPIUtils.getSsdArrayInfo().then(
 				function(data){
 					arrayInfo = data;
-					
+					$scope.partition_1=false;
+					$scope.partition_2=false;
+					$scope.partition_4=false;
 					var length = Object.keys(Patopoinfo).length;
 					if(length == 1){
 						$scope.patopo1=true;
 						$scope.patopo2=false;
 						$scope.patopo4=false;
+						$scope.partition_1=true;
 						angular.forEach(Patopoinfo, function(partition, name) {
 							if(angular.equals(name, "Partition(0)")) {
 								$scope.partition1_0=partition;
@@ -72,6 +75,7 @@ window.angular && (function(angular) {
 						$scope.patopo1=false;
 						$scope.patopo2=true;
 						$scope.patopo4=false;
+						$scope.partition_2=true;
 						angular.forEach(Patopoinfo, function(partition, name) {
 							if(angular.equals(name, "Partition(0)")) {
 								$scope.partition2_0=partition;
@@ -85,6 +89,7 @@ window.angular && (function(angular) {
 						$scope.patopo1=false;
 						$scope.patopo2=false;
 						$scope.patopo4=true;
+						$scope.partition_4=true;
 						angular.forEach(Patopoinfo, function(partition, name) {
 							if(angular.equals(name, "Partition(0)")) {
 								$scope.partition4_0=partition;
