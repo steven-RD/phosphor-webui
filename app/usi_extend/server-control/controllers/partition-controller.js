@@ -19,7 +19,66 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService) {
 		$scope.loading = false;
 		
+		/* var Patopoinfo = {
+			"Partition(0)": {
+			    "Dspid-1": "bound to ssd-1.",
+			    "Dspid-2": "bound to ssd-2.",
+			    "Dspid-3": "bound to ssd-3.",
+			    "Dspid-4": "bound to ssd-4.",
+			    "Dspid-5": "bound to ssd-5.",
+			    "Dspid-6": "bound to ssd-6.",
+			    "Dspid-7": "bound to ssd-7.",
+			    "Dspid-8": "bound to ssd-8.",
+			    "Dspid-9": "bound to ssd-9.",
+			    "Dspid-10": "bound to ssd-10.",
+			    "Dspid-11": "bound to ssd-11.",
+			    "Dspid-12": "bound to ssd-12.",
+			    "Dspid-13": "bound to ssd-13.",
+			    "Dspid-14": "bound to ssd-14.",
+			    "Dspid-15": "bound to ssd-15.",
+			    "Dspid-16": "bound to ssd-16.",
+			    "Dspid-17": "bound to ssd-17.",
+			    "Dspid-18": "bound to ssd-18.",
+			    "Dspid-19": "bound to ssd-19.",
+			    "Dspid-20": "bound to ssd-20.",
+			    "Dspid-21": "bound to ssd-21.",
+			    "Dspid-22": "bound to ssd-22.",
+			    "Dspid-23": "bound to ssd-23.",
+			    "Dspid-24": "bound to ssd-24."
+			}
+		}; */
 		var Patopoinfo = {
+			"Partition(0)": {
+			    "Dspid-1": "bound to ssd-1.",
+			    "Dspid-2": "bound to ssd-2.",
+			    "Dspid-3": "bound to ssd-3.",
+			    "Dspid-4": "bound to ssd-4.",
+			    "Dspid-5": "bound to ssd-5.",
+			    "Dspid-6": "bound to ssd-6.",
+			    "Dspid-7": "bound to ssd-7.",
+			    "Dspid-8": "bound to ssd-8.",
+			    "Dspid-9": "bound to ssd-9.",
+			    "Dspid-10": "bound to ssd-10.",
+			    "Dspid-11": "bound to ssd-11.",
+			    "Dspid-12": "bound to ssd-12."
+			},
+			"Partition(1)": {
+			    "Dspid-13": "bound to ssd-13.",
+			    "Dspid-14": "bound to ssd-14.",
+			    "Dspid-15": "bound to ssd-15.",
+			    "Dspid-16": "bound to ssd-16.",
+			    "Dspid-17": "bound to ssd-17.",
+			    "Dspid-18": "bound to ssd-18.",
+			    "Dspid-19": "bound to ssd-19.",
+			    "Dspid-20": "bound to ssd-20.",
+			    "Dspid-21": "bound to ssd-21.",
+			    "Dspid-22": "bound to ssd-22.",
+			    "Dspid-23": "bound to ssd-23.",
+			    "Dspid-24": "bound to ssd-24."
+			}
+		};
+		
+		/* var Patopoinfo = {
 			"Partition(0)": {
 			    "Dspid-1": "bound to ssd-1.",
 			    "Dspid-2": "bound to ssd-2.",
@@ -51,7 +110,7 @@ window.angular && (function(angular) {
 			    "Dspid-22": "bound to ssd-22.",
 			    "Dspid-23": "bound to ssd-23.",
 			    "Dspid-24": "bound to ssd-24."
-			}
+			} */
 		};
 
 		
@@ -60,9 +119,7 @@ window.angular && (function(angular) {
 			UsiAPIUtils.getSsdArrayInfo().then(
 				function(data){
 					arrayInfo = data;
-					$scope.partition_1=false;
-					$scope.partition_2=false;
-					$scope.partition_4=false;
+					
 					var length = Object.keys(Patopoinfo).length;
 					if(length == 1){
 						$scope.patopo1=true;
