@@ -1,8 +1,55 @@
 
 <!--
  * @author Steven
- * @date   20200417
- * @brief  ssd inventory operations modify base the file of power usage controller
+ * @date   20200429
+ * @brief  Fan speed control
 -->
 
 <loader loading="loading"></loader>
+<div>
+	<div class="row column">
+		<h1>Fan speed control</h1>
+    </div>
+	<div>
+		<form >
+			<div>
+				<label>Fan1_INLET  Speed:</label>
+				<input type="number" id="Fan1_INLET" min="100" max="24500" ng-model="Fan1_INLET"/>
+			</div>
+			<div>
+				<label>Fan1_OUTLET Speed:</label>
+				<input type="number" id="Fan1_OUTLET" min="100" max="24500" ng-model="Fan1_OUTLET"/>
+			</div>
+			
+			
+			<div class="row column">
+				<div class="network-config__submit-wrapper column">
+					<div class="float-right">
+						<button type="button" class="btn  btn-secondary" ng-click="refresh()">Cancel</button>
+						<button type="button" class="btn  btn-primary" ng-click="confirmSettings=true;">Save settings</button>
+					</div>
+				</div>
+			</div>
+		
+		</form>
+	</div>
+
+</div>
+
+<div class="modal-overlay" tabindex="-1" ng-class="{'active': confirmSettings}"></div>
+<section class="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog" ng-class="{'active': confirmSettings}">
+	<div class="modal__tftp-unreachable" role="document">
+		<div class="screen-reader-offscreen modal-description">Change fan speed settings</div>
+		<div class="page-header">
+			<span class="icon icon__warning inline"><span class="accessible-text" role="alert">Warning</span></span>
+			<h3 class="modal-title inline">Change fan speed settings</h3>
+		</div>
+		<div class="modal__content">
+			<p>Change fan speed settings will cause the fan speed change.</p>
+		</div>
+		<div class="modal__button-wrapper">
+			<button class="btn btn-secondary" ng-click="confirmSettings=false;">Cancel</button>
+			<button class="btn btn-primary" ng-click="setFanSpeed()">Continue</button>
+		</div>
+    </div>
+</section>
