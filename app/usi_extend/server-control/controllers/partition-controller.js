@@ -19,7 +19,7 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService) {
 		$scope.loading = false;
 		
-		var Patopoinfo = {
+		/* var Patopoinfo = {
 			"Partition(0)": {
 			    "Dspid-1": "bound to ssd-1.",
 			    "Dspid-2": "bound to ssd-2.",
@@ -47,7 +47,7 @@ window.angular && (function(angular) {
 			    "Dspid-24": "bound to ssd-24."
 			}
 		};
-		/* var Patopoinfo = {
+		var Patopoinfo = {
 			"Partition(0)": {
 			    "Dspid-1": "bound to ssd-1.",
 			    "Dspid-2": "bound to ssd-2.",
@@ -76,7 +76,7 @@ window.angular && (function(angular) {
 			    "Dspid-23": "bound to ssd-23.",
 			    "Dspid-24": "bound to ssd-24."
 			}
-		};
+		}; */
 		
 		var Patopoinfo = {
 			"Partition(0)": {
@@ -111,7 +111,7 @@ window.angular && (function(angular) {
 			    "Dspid-23": "bound to ssd-23.",
 			    "Dspid-24": "bound to ssd-24."
 			} 
-		}; */
+		}; 
 
 		
 		$scope.loadSsdInfo = function() {

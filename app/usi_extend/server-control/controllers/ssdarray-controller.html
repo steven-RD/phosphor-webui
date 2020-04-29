@@ -236,18 +236,11 @@
 	<div id="usi-ip" class="usi-ssd-array" ng-show="ipFlag == true" ng-mouseleave="leave('usi-ip')">
         <table id='ssd-info-body' ng-show="bmc_ip_addresses != 'None'">
             <thead class='ssd-body-header'>
-                <tr>
-                    <th>Status</th>
-                    <th>IP</th>
-                </tr>
+                <tr><th>IP Addresses</th></tr>
             </thead>
             <tbody class="ssd-body-tbody">
-                <tr>
-                    <td>DHCP</td><td>{{bmc_ip_addresses[0]}}</td>
-                </tr>
-				<tr>
-                    <td>Static</td><td>{{bmc_ip_addresses[1]}}</td>
-                </tr>
+                <tr><td>{{bmc_ip_addresses[0]}}</td></tr>
+				<tr><td>{{bmc_ip_addresses[1]}}</td></tr>
             </tbody>
         </table>
     </div>
