@@ -46,7 +46,7 @@ window.angular && (function(angular) {
 			    "Dspid-23": "bound to ssd-23.",
 			    "Dspid-24": "bound to ssd-24."
 			}
-		}; */
+		};
 		var Patopoinfo = {
 			"Partition(0)": {
 			    "Dspid-1": "bound to ssd-1.",
@@ -76,9 +76,9 @@ window.angular && (function(angular) {
 			    "Dspid-23": "bound to ssd-23.",
 			    "Dspid-24": "bound to ssd-24."
 			}
-		};
+		}; */
 		
-		/* var Patopoinfo = {
+		var Patopoinfo = {
 			"Partition(0)": {
 			    "Dspid-1": "bound to ssd-1.",
 			    "Dspid-2": "bound to ssd-2.",
@@ -111,7 +111,7 @@ window.angular && (function(angular) {
 			    "Dspid-23": "bound to ssd-23.",
 			    "Dspid-24": "bound to ssd-24."
 			} 
-		};*/
+		};
 
 		
 		$scope.loadSsdInfo = function() {
@@ -121,6 +121,7 @@ window.angular && (function(angular) {
 					arrayInfo = data;
 					
 					var length = Object.keys(Patopoinfo).length;
+					console.log(length);
 					if(length == 1){
 						$scope.patopo1=true;
 						$scope.patopo2=false;
@@ -158,6 +159,8 @@ window.angular && (function(angular) {
 						$scope.partition_2=false;
 						$scope.partition_4=true;
 						angular.forEach(Patopoinfo, function(partition, name) {
+							console.log(partition);
+							console.log(name);
 							if(angular.equals(name, "Partition(0)")) {
 								$scope.partition4_0=partition;
 								$scope.name4_0=name;
