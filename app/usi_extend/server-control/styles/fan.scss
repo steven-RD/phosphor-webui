@@ -1,6 +1,25 @@
 // fan
 .fan-config__form{
+
 	input {
-    margin-bottom: 2em;
+        margin-bottom: 2em;
+    }
+	
+	.fan-config__submit-wrapper {
+    padding-top: 1em;
+    border-top: 1px solid $border-color-01;
+    margin-top: 2em;
+
+    .btn:not(:last-child) {
+      margin-right: 1em;
+    }
+
+    &::after {
+      content: " ";
+      display: block;
+      clear: both;
+    }
+
   }
+  
 }
