@@ -19,7 +19,7 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService) {
 		$scope.loading = false;
 		
-		$scope.setFanSpeed() {
+		$scope.setFanSpeed = function() {
 			$scope.loading = true;
 			var data = {};
 			if ($scope.Fan1_INLET != '') {
