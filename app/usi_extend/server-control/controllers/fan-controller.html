@@ -15,12 +15,12 @@
 			<div class="column small-12 large-3">
 				<label>Choose Fan to Set Speed:</label>
 				<select id="usi-Fan" ng-model="fan.owner" class="date-time__owner-dropdown">
-					<option class="courier-bold" ng-repeat="owner in fanOwners">{{owner}}</option>
+					<option class="courier-bold" ng-repeat="fan in fans">{{fan}}</option>
 				</select>
 			</div>
 			<div class="column small-12 large-3">
 				<label>Fan Speed:</label>
-				<input type="number" id="Fanx_INLET" min="100" max="24500" step="100" ng-model="Fanx_INLET">
+				<input type="number" id="Fanx_INLET" min="0" max="255" ng-model="Fanx_INLET">
 			</div>
 			<!-- <div class="column small-12 large-3">
 				<label>Fan1_OUTLET Speed:</label>
