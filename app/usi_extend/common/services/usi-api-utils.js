@@ -31,6 +31,22 @@ window.angular && (function(angular) {
         },
         // Restful way start
         /* Modified by USISH Steven20190122/Judy20190521 start */
+        setFanSpeed: function(fanId, val) {
+          return $http({
+                   method: 'PUT',
+                   url: DataService.getHost() +
+                       '/xyz/openbmc_project/sensors/fan_tach/' + fanId + '/attr/Target',
+                   withCredentials: true,
+                   data: JSON.stringify({'data': val})
+                 })
+              .then(function(response) {
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                return content;
+              });
+        },
+        
+        
         getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
