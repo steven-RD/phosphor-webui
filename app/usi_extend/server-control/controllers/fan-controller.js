@@ -15,8 +15,8 @@ window.angular && (function(angular) {
     'use strict';
 
     angular.module('app.serverControl').controller('fanController', [
-    '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', 'toastService',
-    function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService) {
+    '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', '$q',
+    function($scope, $window, UsiAPIUtils, APIUtils, dataService, $q) {
 		$scope.loading = false;
 		
 		$scope.fans = ['Fan1_INLET', 'Fan1_OUTLET', 'Fan2_INLET', 'Fan2_OUTLET', 
