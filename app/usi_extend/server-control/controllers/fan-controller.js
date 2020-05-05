@@ -33,7 +33,7 @@ window.angular && (function(angular) {
 			
 		};
 
-		$scope.setFanSpeed();
+		//$scope.setFanSpeed();
 
       
     }
