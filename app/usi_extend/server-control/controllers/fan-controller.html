@@ -9,25 +9,25 @@
 <div>
 	<div class="row column">
 		<h1>Fan speed control</h1>
-    </div>
+    </div></br>
 	<div>
 		<form class="fan-config__form" role="form" action="">
 			<div class="column small-12 large-3">
 				<label>Choose Fan to Set Speed:</label>
 				<select id="usi-Fan" ng-model="fanId" class="date-time__owner-dropdown">
 					<!-- <option class="courier-bold" ng-repeat="fanId in fans">{{fanId}}</option> -->
-					<option class="courier-bold" >Fan1_INLET</option>
-					<option class="courier-bold" >Fan1_OUTLET</option>
-					<option class="courier-bold" >Fan2_INLET</option>
-					<option class="courier-bold" >Fan2_OUTLET</option>
-					<option class="courier-bold" >Fan3_INLET</option>
-					<option class="courier-bold" >Fan3_OUTLET</option>
-					<option class="courier-bold" >Fan4_INLET</option>
-					<option class="courier-bold" >Fan4_OUTLET</option>
-					<option class="courier-bold" >Fan5_INLET</option>
-					<option class="courier-bold" >Fan5_OUTLET</option>
-					<option class="courier-bold" >Fan6_INLET</option>
-					<option class="courier-bold" >Fan6_OUTLET</option>
+					<option value="Fan1_INLET" >Fan1_INLET</option>
+					<option value="Fan1_OUTLET" >Fan1_OUTLET</option>
+					<option value="Fan2_INLET" >Fan2_INLET</option>
+					<option value="Fan2_OUTLET" >Fan2_OUTLET</option>
+					<option value="Fan3_INLET" >Fan3_INLET</option>
+					<option value="Fan3_OUTLET" >Fan3_OUTLET</option>
+					<option value="Fan4_INLET" >Fan4_INLET</option>
+					<option value="Fan4_OUTLET" >Fan4_OUTLET</option>
+					<option value="Fan5_INLET" >Fan5_INLET</option>
+					<option value="Fan5_OUTLET" >Fan5_OUTLET</option>
+					<option class="Fan6_INLET" >Fan6_INLET</option>
+					<option class="Fan6_OUTLET" >Fan6_OUTLET</option>
 				</select>
 			</div>
 			<div class="column small-12 large-3">
@@ -81,7 +81,7 @@
 				<input type="number" id="Fan6_OUTLET" min="100" max="24500" ng-model="Fan6_OUTLET"/>
 			</div> -->
 			
-			
+			</br>
 			<div class="row column">
 				<div class="fan-config__submit-wrapper column">
 					<div class="float-right">
