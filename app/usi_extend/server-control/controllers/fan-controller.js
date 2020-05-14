@@ -22,7 +22,7 @@ window.angular && (function(angular) {
 		$scope.fans = ['Fan1_INLET', 'Fan1_OUTLET', 'Fan2_INLET', 'Fan2_OUTLET', 
 					   'Fan3_INLET', 'Fan3_OUTLET', 'Fan4_INLET', 'Fan4_OUTLET',
 					   'Fan5_INLET', 'Fan5_OUTLET', 'Fan6_INLET', 'Fan6_OUTLET'];
-
+        $scope.fanId = 'Fan1_INLET';
       $scope.setFanSpeed = function() {
           $scope.loading = true;
 		  $scope.confirmSettings = false;
