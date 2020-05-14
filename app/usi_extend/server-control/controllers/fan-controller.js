@@ -17,24 +17,26 @@ window.angular && (function(angular) {
     angular.module('app.serverControl').controller('fanController', [
     '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', '$q',
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, $q) {
-		$scope.loading = false;
+		//$scope.loading = false;
 		
 		$scope.fans = ['Fan1_INLET', 'Fan1_OUTLET', 'Fan2_INLET', 'Fan2_OUTLET', 
 					   'Fan3_INLET', 'Fan3_OUTLET', 'Fan4_INLET', 'Fan4_OUTLET',
 					   'Fan5_INLET', 'Fan5_OUTLET', 'Fan6_INLET', 'Fan6_OUTLET'];
 
       $scope.setFanSpeed = function() {
-          $scope.loading = true;
+          //$scope.loading = true;
 		  $scope.confirmSettings = false;
 		  console.log($scope.fanId)
 		  console.log($scope.speed)
-          UsiAPIUtils.setFanSpeed($scope.fanId, $scope.speed)
-		  /* .then(
-              function(data) {},
+          UsiAPIUtils.setFanSpeed($scope.fanId, $scope.speed).then(
+              function(data) {
+				  console.log(JSON.stringify(data));
+				  console.log("setFanSpeed");
+			  },
               function(error) {
                   console.log(JSON.stringify(error));
                   return $q.reject();
-                }); */
+                }); 
       }
 	  
 	  $scope.refresh = function() {

@@ -5,17 +5,17 @@
  * @brief  Fan speed control
 -->
 
-<loader loading="loading"></loader>
+<!-- <loader loading="loading"></loader> -->
 <div>
 	<div class="row column">
 		<h1>Fan speed control</h1>
     </div></br>
+	
 	<div>
 		<form class="fan-config__form" role="form" action="">
 			<div class="column small-12 large-3">
 				<label>Choose Fan to Set Speed:</label>
 				<select id="usi-Fan" ng-model="fanId" class="date-time__owner-dropdown">
-					<!-- <option class="courier-bold" ng-repeat="fanId in fans">{{fanId}}</option> -->
 					<option value="Fan1_INLET" >Fan1_INLET</option>
 					<option value="Fan1_OUTLET" >Fan1_OUTLET</option>
 					<option value="Fan2_INLET" >Fan2_INLET</option>
@@ -26,60 +26,17 @@
 					<option value="Fan4_OUTLET" >Fan4_OUTLET</option>
 					<option value="Fan5_INLET" >Fan5_INLET</option>
 					<option value="Fan5_OUTLET" >Fan5_OUTLET</option>
-					<option class="Fan6_INLET" >Fan6_INLET</option>
-					<option class="Fan6_OUTLET" >Fan6_OUTLET</option>
+					<option value="Fan6_INLET" >Fan6_INLET</option>
+					<option value="Fan6_OUTLET" >Fan6_OUTLET</option>
 				</select>
+				<!-- <select id="date-time-owner" ng-model="fanId" class="date-time__owner-dropdown">
+                    <option class="courier-bold" ng-repeat="fanId in fans">{{fanId}}</option>
+                </select> -->
 			</div>
 			<div class="column small-12 large-3">
 				<label>Fan Speed:</label>
 				<input type="number" id="FanId_INLET" min="0" max="255" step="5" ng-model="speed">
 			</div>
-			<!-- <div class="column small-12 large-3">
-				<label>Fan1_OUTLET Speed:</label>
-				<input  type="number" id="Fan1_OUTLET" min="100" max="24500" ng-model="Fan1_OUTLET"/>
-			</div>
-			<div class="column small-12 large-3">
-				<label>Fan2_INLET  Speed:</label>
-				<input type="number" id="Fan2_INLET" min="100" max="24500" ng-model="Fan2_INLET">
-			</div>
-			<div class="column small-12 large-3">
-				<label>Fan2_OUTLET Speed:</label>
-				<input type="number" id="Fan2_OUTLET" min="100" max="24500" ng-model="Fan2_OUTLET"/>
-			</div>
-			
-			<div class="column small-12 large-3">
-				<label>Fan3_INLET  Speed:</label>
-				<input type="number" id="Fan3_INLET" min="100" max="24500" ng-model="Fan3_INLET">
-			</div>
-			<div class="column small-12 large-3">
-				<label>Fan3_OUTLET Speed:</label>
-				<input type="number" id="Fan3_OUTLET" min="100" max="24500" ng-model="Fan3_OUTLET"/>
-			</div>
-			<div class="column small-12 large-3">
-				<label>Fan4_INLET  Speed:</label>
-				<input type="number" id="Fan4_INLET" min="100" max="24500" ng-model="Fan4_INLET">
-			</div>
-			<div class="column small-12 large-3">
-				<label>Fan4_OUTLET Speed:</label>
-				<input type="number" id="Fan4_OUTLET" min="100" max="24500" ng-model="Fan4_OUTLET"/>
-			</div>
-			
-			<div class="column small-12 large-3">
-				<label>Fan5_INLET  Speed:</label>
-				<input type="number" id="Fan5_INLET" min="100" max="24500" ng-model="Fan5_INLET">
-			</div>
-			<div class="column small-12 large-3">
-				<label>Fan5_OUTLET Speed:</label>
-				<input type="number" id="Fan5_OUTLET" min="100" max="24500" ng-model="Fan5_OUTLET"/>
-			</div>
-			<div class="column small-12 large-3">
-				<label>Fan6_INLET  Speed:</label>
-				<input type="number" id="Fan6_INLET" min="100" max="24500" ng-model="Fan6_INLET">
-			</div>
-			<div class="column small-12 large-3">
-				<label>Fan6_OUTLET Speed:</label>
-				<input type="number" id="Fan6_OUTLET" min="100" max="24500" ng-model="Fan6_OUTLET"/>
-			</div> -->
 			
 			</br>
 			<div class="row column">
@@ -93,7 +50,6 @@
 		
 		</form>
 	</div>
-
 </div>
 
 <div class="modal-overlay" tabindex="-1" ng-class="{'active': confirmSettings}"></div>
