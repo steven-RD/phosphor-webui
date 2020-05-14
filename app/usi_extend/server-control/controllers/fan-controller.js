@@ -39,8 +39,20 @@ window.angular && (function(angular) {
                 }); 
       }
 	  
+	  
 	  $scope.refresh = function() {
-		  
+		  var FanInfo=[];
+		  UsiAPIUtils.getFanSpeed($scope.fanId).then(
+              function(data) {
+				  console.log("getFanSpeed");
+				  console.log(JSON.stringify(data));
+				  FanInfo = data;
+				  $scope.speed = FanInfo["Target"];
+			  },
+              function(error) {
+                  console.log(JSON.stringify(error));
+                  return $q.reject();
+                }); 
 	  }
 
 

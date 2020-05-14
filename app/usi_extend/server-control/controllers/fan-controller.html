@@ -10,7 +10,6 @@
 	<div class="row column">
 		<h1>Fan speed control</h1>
     </div></br>
-	
 	<div>
 		<form class="fan-config__form" role="form" action="">
 			<div class="column small-12 large-3">
@@ -35,19 +34,17 @@
 			</div>
 			<div class="column small-12 large-3">
 				<label>Fan Speed:</label>
-				<input type="number" id="FanId_INLET" min="0" max="255" step="5" ng-model="speed">
+				<input type="number" id="FanId_INLET" min="0" max="255" step="5" ng-model="speed" />
 			</div>
-			
 			</br>
 			<div class="row column">
 				<div class="fan-config__submit-wrapper column">
 					<div class="float-right">
 						<button type="button" class="btn  btn-secondary" ng-click="refresh()">Cancel</button>
-						<button type="button" class="btn  btn-primary" ng-click="confirmSettings=true;">Save settings</button>
+						<button type="button" class="btn  btn-primary" ng-click="confirmSettings=true">Save settings</button>
 					</div>
 				</div>
 			</div>
-		
 		</form>
 	</div>
 </div>
@@ -64,7 +61,7 @@
 			<p>Change fan speed settings will cause the fan speed change.</p>
 		</div>
 		<div class="modal__button-wrapper">
-			<button class="btn btn-secondary" ng-click="confirmSettings=false;">Cancel</button>
+			<button class="btn btn-secondary" ng-click="confirmSettings=false">Cancel</button>
 			<button class="btn btn-primary" ng-click="setFanSpeed()">Continue</button>
 		</div>
     </div>

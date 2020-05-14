@@ -47,6 +47,22 @@ window.angular && (function(angular) {
                 return content;
               });
         },
+		getFanSpeed: function(fanId) {
+          return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/xyz/openbmc_project/sensors/fan_tach/' + fanId ,
+                   withCredentials: true,
+                   //data: JSON.stringify({'data': val})
+                 })
+              .then(function(response) {
+				   console.log(response);
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+				   console.log(content);
+                   return  content['data'];
+              });
+        },
         
         
         getSwitchActivatedStatus: function(callback) {
