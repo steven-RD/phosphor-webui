@@ -31,7 +31,7 @@
 					<option value="Fan6_INLET" >Fan6_INLET</option>
 					<option value="Fan6_OUTLET" >Fan6_OUTLET</option>
 				</select> -->
-				<select id="usi-Fan" ng-model="fanId" class="date-time__owner-dropdown">
+				<select id="usi-Fan" ng-model="fanId" onclick="refresh(fanId)" class="date-time__owner-dropdown">
                     <option class="courier-bold" ng-repeat="fanId in fans">{{fanId}}</option>
                 </select>
 			</div>

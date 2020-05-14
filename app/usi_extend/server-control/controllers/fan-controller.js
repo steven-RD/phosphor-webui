@@ -41,10 +41,10 @@ window.angular && (function(angular) {
                 }); 
       }
 	  
-	  $scope.refresh = function() {
+	  $scope.refresh = function(fanId) {
 		  var FanInfo=[];
 		  $scope.loading = true;
-		  UsiAPIUtils.getFanSpeed($scope.fanId).then(
+		  UsiAPIUtils.getFanSpeed(fanId).then(
               function(data) {
 				  console.log("getFanSpeed");
 				  console.log(JSON.stringify(data));
@@ -59,7 +59,7 @@ window.angular && (function(angular) {
                 }); 
 	  }
       
-	  $scope.refresh();
+	  $scope.refresh(fanId);
 
     }
   ]);
