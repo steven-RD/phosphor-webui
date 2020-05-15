@@ -17,19 +17,19 @@
 		<form class="fan-config__form" role="form" action="">
 			<div class="column small-12 large-3">
 				<label>Choose Fan to Set Speed:</label>
-				<select id="usi-Fan" ng-model="fanId" class="date-time__owner-dropdown">
-					<option value="Fan1_INLET" onclick="refresh()">Fan1_INLET</option>
-					<option value="Fan1_OUTLET" onclick="refresh()">Fan1_OUTLET</option>
-					<option value="Fan2_INLET" onclick="refresh()">Fan2_INLET</option>
-					<option value="Fan2_OUTLET" onclick="refresh()">Fan2_OUTLET</option>
-					<option value="Fan3_INLET" onclick="refresh()">Fan3_INLET</option>
-					<option value="Fan3_OUTLET" onclick="refresh()">Fan3_OUTLET</option>
-					<option value="Fan4_INLET" onclick="refresh()">Fan4_INLET</option>
-					<option value="Fan4_OUTLET" onclick="refresh()">Fan4_OUTLET</option>
-					<option value="Fan5_INLET" onclick="refresh()">Fan5_INLET</option>
-					<option value="Fan5_OUTLET" onclick="refresh()">Fan5_OUTLET</option>
-					<option value="Fan6_INLET" onclick="refresh()">Fan6_INLET</option>
-					<option value="Fan6_OUTLET" onclick="refresh()">Fan6_OUTLET</option>
+				<select id="usi-Fan" ng-model="fanId" onchange="refresh()" class="date-time__owner-dropdown">
+					<option value="Fan1_INLET" >Fan1_INLET</option>
+					<option value="Fan1_OUTLET" >Fan1_OUTLET</option>
+					<option value="Fan2_INLET" >Fan2_INLET</option>
+					<option value="Fan2_OUTLET" >Fan2_OUTLET</option>
+					<option value="Fan3_INLET" >Fan3_INLET</option>
+					<option value="Fan3_OUTLET" >Fan3_OUTLET</option>
+					<option value="Fan4_INLET" >Fan4_INLET</option>
+					<option value="Fan4_OUTLET" >Fan4_OUTLET</option>
+					<option value="Fan5_INLET" >Fan5_INLET</option>
+					<option value="Fan5_OUTLET" >Fan5_OUTLET</option>
+					<option value="Fan6_INLET" >Fan6_INLET</option>
+					<option value="Fan6_OUTLET" >Fan6_OUTLET</option>
 				</select> 
 				<!-- <select id="usi-Fan" ng-model="fanId" " class="date-time__owner-dropdown">
                     <option class="courier-bold" ng-repeat="fanId in fans">{{fanId}}</option>
