@@ -8,17 +8,22 @@
 <!-- <loader loading="loading"></loader> -->
 <div>
 	<div class="row column">
-        <h1>Catfish Fan</h1>
+        <h1>JBOF Fan</h1>
         <div class="page-header">
             <h2>Fan speed control</h2>
         </div>
     </div></br>
-	<div class="btm-border-grey">
+<!-- 	<div class="btm-border-grey">
+        <p>Click the select to choose the fan you want to set Duty cycle!</p>
+        <p>Fan default Duty cycle is 250. You can change is between 0 to 255.</p>
+    </div></br> -->
+	
+	<div class="btm-border-grey" width='1070px'>
 		<form class="fan-config__form" role="form" action="">
 			<div class="column small-12 large-3">
 				<label>Choose Fan to Set Speed:</label>
 				<select id="usi-Fan" ng-model="fanId" onchange="refresh()" class="date-time__owner-dropdown">
-					<option value="Fan1_INLET" >Fan1_INLET</option>
+					<option value="Fan1_INLET" selected="selected">Fan1_INLET</option>
 					<option value="Fan1_OUTLET" >Fan1_OUTLET</option>
 					<option value="Fan2_INLET" >Fan2_INLET</option>
 					<option value="Fan2_OUTLET" >Fan2_OUTLET</option>

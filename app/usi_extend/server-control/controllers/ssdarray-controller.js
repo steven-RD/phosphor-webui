@@ -97,7 +97,7 @@ window.angular && (function(angular) {
 			lab.style.height = '0px';
 			lab.style.width = '0px';
 		}else{
-			angular.forEach(PSInfo['Status'], function(psInfo, psName) {				
+			angular.forEach(PSInfo['Status'], function(psInfo, psName) {
 				if(angular.equals(psName, name)) {
 					changeStatus('psx');				
 					$scope.psname=psName;

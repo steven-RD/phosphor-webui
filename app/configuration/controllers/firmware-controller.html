@@ -1,8 +1,8 @@
 <loader loading="loading"></loader>
 <div class="row column">
-  <h1>BMC Firmware</h1>
+  <h1>JBOF Firmware</h1>
   <div class="column small-12 page-header">
-    <h2 class="inline">Manage BMC firmware</h2>
+    <h2 class="inline">Manage JBOF firmware</h2>
   </div>
 </div>
 <!-- <div class="row column">
@@ -15,10 +15,10 @@
     <h2 class="inline bold">Specify image file location</h2>
   </div>
   <form id="firmware__upload-form" role="form" class="firmware__upload-form">
-    <p>Specify an image file located on your workstation or a TFTP server. An image file may contain firmware images for the server, BMC, or other hardware devices. Each image that you upload will be unpacked from the image file and added to the appropriate list above.</p>
+    <p>Specify an image file located on your workstation or a TFTP server. An image file may contain firmware images for the server, JBOF, or other hardware devices. Each image that you upload will be unpacked from the image file and added to the appropriate list above.</p>
     <div class=" column firmware__upload-station">
       <h3>Upload image file from workstation</h3>
-      <p>Select the image file saved on the workstation storage medium to upload to the server BMC.</p>
+      <p>Select the image file saved on the workstation storage medium to upload to the server JBOF.</p>
       <label for="file-upload" class="inline firmware__upload-chooser">
         <input id="file-upload" type="file" file="file" class="hide"/>
         <span class="btn btn-secondary">Choose a file</span>
@@ -29,7 +29,7 @@
     </div>
     <div class="column firmware__upload-tftp">
       <h3>Download image file from TFTP server</h3>
-      <p>Specify both the TFTP server IP address and the image file name stored on it to download to the server BMC.</p>
+      <p>Specify both the TFTP server IP address and the image file name stored on it to download to the server JBOF.</p>
       <fieldset>
         <div class="row">
           <div class="column small-12 large-4">
@@ -98,19 +98,19 @@
     </div>
     <div class="modal__content">
       <div ng-switch on="activate_image_type">
-        <p ng-switch-when="BMC">When you activate the BMC firmware file, {{activate_image_version}}, the BMC must be rebooted before it will operate with the new firmware code. Note that when you reboot the BMC, the BMC will be unavailable for several minutes and you must log in again.</p>
+        <p ng-switch-when="BMC">When you activate the JBOF firmware file, {{activate_image_version}}, the JBOF must be rebooted before it will operate with the new firmware code. Note that when you reboot the BMC, the BMC will be unavailable for several minutes and you must log in again.</p>
         <p ng-switch-when="Host">When you activate the server firmware file, {{activate_image_version}}, the new firmware will not operate until the next time the server boots.</p>
       </div>
       <form ng-if="activate_image_type == 'BMC'">
         <fieldset>
           <div class="row column">
-            <label class="control-radio bold" for="activate-without-reboot">Activate firmware file without rebooting BMC
+            <label class="control-radio bold" for="activate-without-reboot">Activate firmware file without rebooting JBOF
               <input type="radio" name="activate-without-reboot" id="activate-without-reboot" ng-model="activate.reboot" ng-value="false"/>
               <span class="control__indicator control__indicator-on"></span>
             </label>
           </div>
           <div class="row column">
-            <label class="control-radio bold" for="activate-with-reboot">Activate firmware file and automatically reboot BMC
+            <label class="control-radio bold" for="activate-with-reboot">Activate firmware file and automatically reboot JBOF
               <input type="radio" name="activate-with-reboot" id="activate-with-reboot" ng-model="activate.reboot" ng-value="true"/>
               <span class="control__indicator control__indicator-on"></span>
             </label>

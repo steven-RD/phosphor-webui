@@ -45,7 +45,7 @@
       <!-- BMC Metadata -->
       <div class="row overview__server-metadata">
         <div class="column large-4">
-          <h2 class="h3">BMC information</h2>
+          <h2 class="h3">JBOF information</h2>
         </div>
         <div class="column large-8">
           <ul class="overview__metadata-wrapper">
@@ -79,23 +79,23 @@
 	
 	<div class="row column">
 		<div class="bmc-reboot-header">
-			<h2 class="inline">Current BMC boot status</h2>
-			<div class="float-right bmc-reboot__status-log inline">BMC last reboot at
-				<span class="courier-bold">{{reboot_time | localeDate}}</span>
-			</div>
+			<h2 class="inline">Current JBOF boot status</h2>
 		</div>
-    </div>
+		<div class="float-right bmc-reboot__status-log inline">JBOF last reboot at
+				<span class="courier-bold">{{reboot_time | localeDate}}</span>
+		</div>
+    </div><br>
     <div class="row column">
 		<div class="bmc-reboot-option" ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
-		<p>When reboot BMC, your web browser loses contact with the BMC for several minutes.</p>
-        <confirm title="Reboot the BMC"
+		<p>When reboot JBOF, your web browser loses contact with the JBOF for several minutes.</p>
+        <confirm title="Reboot the JBOF"
           confirm="confirm"
           ng-show="confirm"
           callback="reboot"></confirm>
         </div>
         <div class="row column">
 			<button id="bmc__reboot" class="btn  btn-secondary" ng-class="{disabled: confirm}" ng-click="rebootConfirm()" ng-disabled="dataService.server_unreachable">
-				<icon file="icon-restart.svg"></icon>Reboot BMC
+				<icon file="icon-restart.svg"></icon>Reboot JBOF
 			</button>
 		</div>
     </div>
@@ -136,7 +136,7 @@
           <p class="inline quick-links__event-copy">View {{logs.length}} high priority events</p>
         </a>
         <dl class="quick-links__item no-icon">
-          <dt class="inline quick-links__label">BMC time</dt>
+          <dt class="inline quick-links__label">JBOF time</dt>
           <dd class="courier-bold bmc-time">{{ bmc_time | localeDate }}</dd>
         </dl>
         <div class="quick-links__item no-icon">
@@ -178,6 +178,11 @@
         <a href="#/configuration/network" class="quick-links__item">
           <p class="inline quick-links__label">Edit network settings</p>
         </a>
+		<!-- Steven modified at 20200518 start -->
+        <a href="#/server-control/fan" class="quick-links__item">
+          <p class="inline quick-links__label">Set fan speed</p>
+        </a>
+		<!-- Steven modified at 20200518 end -->
       </div>
     </div>
   </section>

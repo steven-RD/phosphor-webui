@@ -69,6 +69,12 @@
         <div class="right_btn arrow_btn" ng-click="moveNext('right')"><p class="arrow">></p></div>
 	</div>
 	<div id="usi-ssd" class="usi-ssd-array" ng-show="ssdFlag == true" ng-mouseleave="leave('usi-ssd')">
+		 <thead class="ssd-body-header">
+            <tr>
+                <th>Item</th>
+                <th>Status</th>
+            </tr>
+        </thead>
         <table id='ssd-info-body' ng-show="ssdx != 'None'">
 			<tbody class="ssd-body-tbody">
 				<tr><td>SSD NO.</td><td>{{ssdNo}}</td></tr>
@@ -81,6 +87,30 @@
 				<tr><td>Inserted</td><td>{{ssdx.Inserted}}</td></tr>
 				<tr><td>Link status</td><td>{{ssdx.LinkStatus}}</td></tr>
 				<tr><td>Configure width</td><td>{{ssdx.ConfigureWidth}}</td></tr>
+				<!-- <tr>
+					<td>SSD NO.</td>
+					<td>Address</td>
+					<td>Type</td>
+					<td>Status</td>
+					<td>Link speed</td>
+					<td>Link width</td>
+					<td>Par Id</td>
+					<td>Inserted</td>
+					<td>Link status</td>
+					<td>Configure width</td>
+				</tr>
+				<tr>
+					<td>{{ssdNo}}</td>
+					<td>{{ssdx.SlotAddr}}</td>
+					<td>{{ssdx.Type}}</td>
+					<td>{{ssdx.Status}}</td>
+					<td>{{ssdx.LinkSpeed}}</td>
+					<td>{{ssdx.LinkWidth}}</td>
+					<td>{{ssdx.PartitionID}}</td>
+					<td>{{ssdx.Inserted}}</td>
+					<td>{{ssdx.LinkStatus}}</td>
+					<td>{{ssdx.ConfigureWidth}}</td>
+				</tr> -->
             </tbody>
         </table>
     </div>
@@ -123,7 +153,7 @@
             <thead class="ssd-body-header">
                 <tr>
                     <th>Item</th>
-                    <th>Value</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody class="ssd-body-tbody">
@@ -166,13 +196,12 @@
             </tbody>
         </table>
     </div>
-	
-<!-- 	<div id="usi-patopo" class="" ng-show="patopoFlag == true" ng-mouseleave="leave('usi-patopo')">
+
         <table id='ssd-info-body' ng-show="patopoinfo != 'None'">
             <thead class='ssd-body-header'>
                 <tr>
                     <th>Item</th>
-                    <th>Value</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody class="ssd-body-tbody">
@@ -183,7 +212,7 @@
             </tbody>
         </table>
     </div> 
-	<div id="usi-patopo" class="usi-ssd-array" ng-show="patopoFlag == true"  ng-mouseleave="leave('usi-patopo')">
+	<!-- <div id="usi-patopo" class="usi-ssd-array" ng-show="patopoFlag == true"  ng-mouseleave="leave('usi-patopo')">
         <table id='ssd-info-body' ng-show="patopoinfo != 'None'" ng-repeat="(k, v) in patopoinfo">
             <thead class="ssd-body-header">
 				<tr><td colspan='2'><b>{{k}} information</b></td></tr>
@@ -199,7 +228,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>-->
+    </div> -->
 	
 	<div id="usi-fan" class="usi-ssd-array" ng-show="fanFlag == true" ng-mouseleave="leave('usi-fan')">
         <table id='ssd-info-body'>
