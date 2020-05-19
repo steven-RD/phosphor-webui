@@ -288,6 +288,7 @@ window.angular && (function(angular) {
             function(error) {
                toastService.error('Error during getCableInfo');
             }
+        );
       };
 
       $scope.loadSWInfo = function(){
@@ -298,6 +299,7 @@ window.angular && (function(angular) {
             function(error) {
                toastService.error('Error during getSWInfo');
             }
+        );
       };
 
       $scope.loadBMCInfo = function(){
@@ -308,6 +310,7 @@ window.angular && (function(angular) {
             function(error) {
                toastService.error('Error during getBMCInfo');
             }
+        );
       };
       // Get power supply info
       $scope.loadPowerSupplyInfo = function(){
