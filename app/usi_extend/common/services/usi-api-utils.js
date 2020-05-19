@@ -40,14 +40,15 @@ window.angular && (function(angular) {
                    data: JSON.stringify({'data': val})
                  })
               .then(function(response) {
-				console.log(response);
+                console.log(response);
                 var json = JSON.stringify(response.data);
                 var content = JSON.parse(json);
-				console.log(content);
+                console.log(content);
                 return content;
               });
         },
-		getFanSpeed: function(fanId) {
+
+        getFanSpeed: function(fanId) {
           return $http({
                    method: 'GET',
                    url: DataService.getHost() +
@@ -56,15 +57,14 @@ window.angular && (function(angular) {
                    //data: JSON.stringify({'data': val})
                  })
               .then(function(response) {
-				   console.log(response);
+                   console.log(response);
                    var json = JSON.stringify(response.data);
                    var content = JSON.parse(json);
-				   console.log(content);
+                   console.log(content);
                    return  content['data'];
               });
         },
-        
-        
+
         getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
@@ -161,6 +161,7 @@ window.angular && (function(angular) {
                 return content;
               });
         },
+
         getDeleteSwitchImage: function() {
           return $http({
                    method: 'GET',
@@ -174,6 +175,7 @@ window.angular && (function(angular) {
                 return content.data;
               });
         },
+
         updateImage: function(val) {
           var deferred = $q.defer();
           $http({
@@ -237,6 +239,7 @@ window.angular && (function(angular) {
                    console.log(error);
                 });
         },
+
         getPowerSupplyInfo: function(){
             return $http({
                    method: 'GET',
@@ -291,6 +294,74 @@ window.angular && (function(angular) {
                 deferred.reject(error);
               });
           return deferred.promise;
+        },
+
+        getSsdInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/xyz/openbmc_project/ssdarray/ssdinfo',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content['data']['Info'];
+                },
+                function(error) {
+                   console.log(error);
+                });
+        },
+
+        getCableInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/xyz/openbmc_project/ssdarray/cableinfo',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content['data']['Info'];
+                },
+                function(error) {
+                   console.log(error);
+                });
+        },
+
+        getSWInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/xyz/openbmc_project/ssdarray/swinfo',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content['data']['Info'];
+                },
+                function(error) {
+                   console.log(error);
+                });
+        },
+
+        getBMCInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/xyz/openbmc_project/ssdarray/bmcinfo',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content['data']['Info'];
+                },
+                function(error) {
+                   console.log(error);
+                });
         },
       /* Modified by USISH Steven20190122/Judy20190521 end */
       // Restful way end
