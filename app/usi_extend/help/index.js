@@ -1,15 +1,15 @@
 /**
  * A module for the usi_extend
  *
- * @module app/usi_extend/server-control/index
- * @exports app/usi_extend/server-control/index
+ * @module app/usi_extend/help/index
+ * @exports app/usi_extend/help/index
  */
 
 window.angular && (function(angular) {
   'use strict';
 
   angular
-      .module('app.usiExtend.serverControl', ['ngRoute', 'app.common.services'])
+      .module('app.usiExtend.help', ['ngRoute', 'app.common.services'])
       // Route configuration
       .config([
         '$routeProvider',
@@ -27,10 +27,16 @@ window.angular && (function(angular) {
                 'controller': 'systemOverviewController',
                 authenticated: true
               }) */
-              .when('/usi_extend/server-control/ssdarray', {
+              .when('/usi_extend/help', {
                 'template':
-                    require('../../usi_extend/server-control/controllers/ssdarray-controller.html'),
-                'controller': 'ssdArrayController',
+                    require('../../usi_extend/help/controllers/help-controller.html'),
+                'controller': 'helpController',
+                authenticated: true
+              })
+              .when('/usi_extend/help/server', {
+                'template':
+                    require('../../usi_extend/help/controllers/help-controller.html'),
+                'controller': 'helpController',
                 authenticated: true
               });
         }
