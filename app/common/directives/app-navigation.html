@@ -1,6 +1,6 @@
 <nav class="nav__wrapper">
   <ul id="nav__top-level" ng-style="navStyle">
-	
+
 	<li>
       <a class="btn-ssdarray" ng-class="{opened: firstLevel == 'ssdarray'}" href="#/usi_extend/server-control/ssdarray" ng-click="change('ssdarray')">
         <icon class="nav-icon" file="icon-ssdarray.svg"></icon>
@@ -87,7 +87,6 @@
           <a href="#/server-control/remote-console" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">Serial over LAN console</a>
         </li>
-		
         <!-- <li ng-class="{'active': (path == '/server-control/kvm')}">
           <a href="#/server-control/kvm" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">KVM</a>
@@ -128,12 +127,12 @@
         </li>
       </ul>
     </li>
-    <li>
+<!--     <li>
       <a class="btn-help" ng-class="{opened: firstLevel == 'help'}" href="#/usi_extend/help/server" ng-click="change('help')">
         <icon class="nav-icon" file="icon-help.svg"></icon>
         Help
       </a>
-    </li>
+    </li> -->
     <!--<li>
       <button class="btn-users" ng-class="{opened: firstLevel == 'users'}" ng-click="change('users')">
         <icon class="nav-icon" file="icon-user.svg"></icon>
