@@ -101,8 +101,8 @@ import ssdarray_controller from './usi_extend/server-control/controllers/ssdarra
 import fan_controller from './usi_extend/server-control/controllers/fan-controller.js';
 import partition_controller from './usi_extend/server-control/controllers/partition-controller.js';
 import switch_firmware_controller from './usi_extend/configuration/controllers/switch-firmware-controller.js';
-import usi_extend_server_control_index from './usi_extend/server-control/index.js';
 import help_controller from './usi_extend/help/controllers/help-controller.js';
+import usi_extend_server_control_index from './usi_extend/server-control/index.js';
 
 import users_index from './users/index.js';
 import user_accounts_controller from './users/controllers/user-accounts-controller.js';
