@@ -223,7 +223,7 @@ window.angular && (function(angular) {
           return deferred.promise;
         },
 
-        getSsdArrayInfo: function(){
+/*         getSsdArrayInfo: function(){
             return $http({
                    method: 'GET',
                    url: DataService.getHost() +
@@ -238,7 +238,7 @@ window.angular && (function(angular) {
                 function(error) {
                    console.log(error);
                 });
-        },
+        }, */
 
         getPowerSupplyInfo: function(){
             return $http({
@@ -250,7 +250,7 @@ window.angular && (function(angular) {
                 .then(function(response) {
                    var json = JSON.stringify(response.data);
                    var content = JSON.parse(json);
-                   return content['data'];
+                   return content['data']['Info'];
                 },
                 function(error) {
                    console.log(error);

@@ -77,7 +77,7 @@ window.angular && (function(angular) {
             $scope.ssdNo=ssdNum;
             $scope.ssdx=ssdInfo;
             changeStatus('ssd');
-            console.log(ssdInfo);
+            //console.log(ssdInfo);
             var lab = document.getElementById('usi-ssd');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -94,7 +94,7 @@ window.angular && (function(angular) {
     $scope.PowerSupply = function(name) {
         if(angular.equals(name, 'PS')) {
             changeStatus('ps');
-            $scope.psinfo=PSInfo['Status'];	
+            $scope.psinfo=PSInfo;
             var lab = document.getElementById('usi-ps');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -104,7 +104,7 @@ window.angular && (function(angular) {
             lab.style.height = '0px';
             lab.style.width = '0px';
         }else{
-            angular.forEach(PSInfo['Status'], function(psInfo, psName) {
+            angular.forEach(PSInfo, function(psInfo, psName) {
                 if(angular.equals(psName, name)) {
                     changeStatus('psx');
                     $scope.psname=psName;
@@ -139,6 +139,8 @@ window.angular && (function(angular) {
             changeStatus('ioccx');
             $scope.ioccname = name;
             $scope.ioccxstatus = cableMessage[name];
+            console.log($scope.ioccname);
+            console.log($scope.ioccxstatus);
             var lab = document.getElementById('usi-ioccx');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -152,30 +154,62 @@ window.angular && (function(angular) {
 
     ///switch information
     $scope.Switch = function(name) {
-        changeStatus('sw');
-        $scope.swinfo = swMessage[name];
-        var lab = document.getElementById('usi-switch');
-        var mousePosition = getMousePos(window.event); ///Get mouse position
-        lab.style.position = "absolute";
-        lab.style.display = "block";
-        lab.style.height = '0px';
-        lab.style.width = '0px';
-        lab.style.left = mousePosition.x + 5 + 'px';
-        lab.style.top = mousePosition.y + 5 + 'px';
+        if(swMessage[name] != "Switchinfo Get Fail"){
+            changeStatus('sw');
+            $scope.swinfo = swMessage[name];
+            var lab = document.getElementById('usi-switch');
+            var mousePosition = getMousePos(window.event); ///Get mouse position
+            lab.style.position = "absolute";
+            lab.style.display = "block";
+            lab.style.height = '0px';
+            lab.style.width = '0px';
+            lab.style.left = mousePosition.x + 5 + 'px';
+            lab.style.top = mousePosition.y + 5 + 'px';
+        }else {
+            changeStatus('ioccx');
+            $scope.ioccname = name;
+            $scope.ioccxstatus = swMessage[name];
+            console.log($scope.ioccname);
+            console.log($scope.ioccxstatus);
+            var lab = document.getElementById('usi-ioccx');
+            var mousePosition = getMousePos(window.event); ///Get mouse position
+            lab.style.position = "absolute";
+            lab.style.display = "block";
+            lab.style.left = mousePosition.x + 5 + 'px';
+            lab.style.top = mousePosition.y + 5 + 'px';
+            lab.style.height = '0px';
+            lab.style.width = '0px';
+        }
     };
 
     ///BMC information
     $scope.BMC = function(name) {
-        changeStatus('bmc');
-        $scope.bmcinfo = BMCMessage[name];
-        var lab = document.getElementById('usi-bmc');
-        var mousePosition = getMousePos(window.event); ///Get mouse position
-        lab.style.position = "absolute";
-        lab.style.display = "block";
-        lab.style.height = '0px';
-        lab.style.width = '0px';
-        lab.style.left = mousePosition.x + 5 + 'px';
-        lab.style.top = mousePosition.y + 5 + 'px';
+        if(swMessage[name] != "Switchinfo Get Fail"){
+            changeStatus('bmc');
+            $scope.bmcinfo = BMCMessage[name];
+            var lab = document.getElementById('usi-bmc');
+            var mousePosition = getMousePos(window.event); ///Get mouse position
+            lab.style.position = "absolute";
+            lab.style.display = "block";
+            lab.style.height = '0px';
+            lab.style.width = '0px';
+            lab.style.left = mousePosition.x + 5 + 'px';
+            lab.style.top = mousePosition.y + 5 + 'px';
+        }else{
+            changeStatus('ioccx');
+            $scope.ioccname = name;
+            $scope.ioccxstatus = BMCMessage[name];
+            console.log($scope.ioccname);
+            console.log($scope.ioccxstatus);
+            var lab = document.getElementById('usi-ioccx');
+            var mousePosition = getMousePos(window.event); ///Get mouse position
+            lab.style.position = "absolute";
+            lab.style.display = "block";
+            lab.style.left = mousePosition.x + 5 + 'px';
+            lab.style.top = mousePosition.y + 5 + 'px';
+            lab.style.height = '0px';
+            lab.style.width = '0px';
+        }
     };
 
     ///IP information
@@ -189,8 +223,8 @@ window.angular && (function(angular) {
         lab.style.width = '0px';
         lab.style.left = mousePosition.x + 5 + 'px';
         lab.style.top = mousePosition.y + 5 + 'px';
-        console.log("ip"); 
-        console.log($scope.bmc_ip_addresses); 
+        //console.log("ip"); 
+        //console.log($scope.bmc_ip_addresses); 
     };
 
     ///fan sensor information
