@@ -82,12 +82,12 @@
 			<h2 class="h3">Current JBOF boot status</h2>
 		</div>
 		<div class="float-right bmc-reboot__status-log inline">JBOF last reboot at
-				<span class="courier-bold">{{reboot_time | localeDate}}</span>
+			<span class="courier-bold">{{reboot_time | localeDate}}</span>
 		</div>
     </div>
     <div class="row column">
         <div class="bmc-reboot-option" ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
-        <!-- <p>When reboot JBOF, your web browser loses contact with the JBOF for several minutes.</p> -->
+        <p>When reboot JBOF, your web browser loses contact with the JBOF for several minutes.</p>
         <confirm title="Reboot the JBOF"
           confirm="confirm"
           ng-show="confirm"
@@ -182,7 +182,10 @@
         <a href="#/server-control/fan" class="quick-links__item">
           <p class="inline quick-links__label">Set fan speed</p>
         </a>
-		<!-- Steven modified at 20200518 end -->
+        <a href="#/usi_extend/help" class="quick-links__item">
+          <p class="inline quick-links__label">Help</p>
+        </a>
+        <!-- Steven modified at 20200518 end -->
       </div>
     </div>
   </section>

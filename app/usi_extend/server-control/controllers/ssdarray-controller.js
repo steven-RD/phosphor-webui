@@ -95,6 +95,7 @@ window.angular && (function(angular) {
         if(angular.equals(name, 'PS')) {
             changeStatus('ps');
             $scope.psinfo=PSInfo;
+			console.log($scope.psinfo);
             var lab = document.getElementById('usi-ps');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -109,6 +110,7 @@ window.angular && (function(angular) {
                     changeStatus('psx');
                     $scope.psname=psName;
                     $scope.psinfo=psInfo;
+			        console.log($scope.psinfo);
                     var lab = document.getElementById('usi-psx');
                     var mousePosition = getMousePos(window.event); ///Get mouse position
                     lab.style.position = "absolute";
@@ -127,6 +129,7 @@ window.angular && (function(angular) {
         if(cableMessage[name] != "Cableinfo Get Fail"){
             changeStatus('cable');
             $scope.cableinfo = cableMessage[name];
+			console.log($scope.cableinfo);
             var lab = document.getElementById('usi-cable');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -157,6 +160,7 @@ window.angular && (function(angular) {
         if(swMessage[name] != "Switchinfo Get Fail"){
             changeStatus('sw');
             $scope.swinfo = swMessage[name];
+			console.log($scope.swinfo);
             var lab = document.getElementById('usi-switch');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -187,6 +191,7 @@ window.angular && (function(angular) {
         if(swMessage[name] != "Switchinfo Get Fail"){
             changeStatus('bmc');
             $scope.bmcinfo = BMCMessage[name];
+			console.log($scope.bmcinfo);
             var lab = document.getElementById('usi-bmc');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
