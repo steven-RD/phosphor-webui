@@ -4,7 +4,7 @@
   padding: .5em 1em;
   font-size: .9em;
   font-weight: 400;
-  margin: 1em 0;
+  //margin: 1em 0;
   @include mediaQuery(medium) {
     margin: 0 0 0 1em;
   }
@@ -22,7 +22,7 @@
 }
 
 .quick-links__item {
-  padding: 1em 0 1em 0;
+  padding: 0.5em 0 0.5em 0;
   border-bottom: 1px solid $border-color-01;
   position: relative;
   &:after {

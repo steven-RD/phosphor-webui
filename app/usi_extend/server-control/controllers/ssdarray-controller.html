@@ -90,16 +90,16 @@
             </tbody> -->
 			<thead class="ssd-body-header">
 				<tr>
-					<td>SSD NO.</td>
-					<td>Address</td>
-					<td>Type</td>
-					<td>Status</td>
-					<td>Link speed</td>
-					<td>Link width</td>
-					<td>Par Id</td>
-					<td>Inserted</td>
-					<td>Link status</td>
-					<td>Configure width</td>
+					<th>SSD NO.</th>
+					<th>Address</th>
+					<th>Type</th>
+					<th>Status</th>
+					<th>Link speed</th>
+					<th>Link width</th>
+					<th>Par Id</th>
+					<th>Inserted</th>
+					<th>Link status</th>
+					<th>Configure width</th>
 				</tr>
 			</thead>
 			<tbody class="ssd-body-tbody">
@@ -226,67 +226,49 @@
             </tbody>
         </table>
     </div>
-	<div id="usi-fan" class="usi-ssd-array" ng-show="fanFlag == true" ng-mouseleave="leave('usi-fan')">
+    <div id="usi-fan" class="usi-ssd-array" ng-show="fanFlag == true" ng-mouseleave="leave('usi-fan')">
         <table id='ssd-info-body'>
              <thead class='ssd-body-header'>
                 <tr>
                     <th>Name</th>
                     <th>Low critical</th>
-					<th>Low warning</th>
-                    <th>Status</th>
-					<th>Current value</th>
+                    <th>Low warning</th>
+                    <th>Current value</th>
                     <th>High warning</th>
+                    <th>High Critical</th>
                 </tr>
             </thead>
             <tbody class="ssd-body-tbody">
-				<tr>
+                <tr>
                     <td>{{faninfoIN.title}}</td>
-					<td>{{faninfoIN.CriticalLow}}<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></td>
-					<td>{{faninfoIN.WarningLow}}<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></td>
-					<td>{{faninfoIN.Value}}<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></td>
-					<td>{{faninfoIN.WarningHigh}}<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></td>
-					<td>{{faninfoIN.CriticalHigh}}<span class="sensors__tbody-unit">{{faninfoIN.unit}}</span></td>
+                    <td>{{faninfoIN.CriticalLow}}<span >{{faninfoIN.unit}}</span></td> <!-- class="sensors__tbody-unit" -->
+                    <td>{{faninfoIN.WarningLow}}<span >{{faninfoIN.unit}}</span></td>
+                    <td>{{faninfoIN.Value}}<span >{{faninfoIN.unit}}</span></td>
+                    <td>{{faninfoIN.WarningHigh}}<span >{{faninfoIN.unit}}</span></td>
+                    <td>{{faninfoIN.CriticalHigh}}<span >{{faninfoIN.unit}}</span></td>
                 </tr>
-				<tr>
+                <tr>
                     <td>{{faninfoOUT.title}}</td>
-					<td>{{faninfoOUT.CriticalLow}}<span class="sensors__tbody-unit">{{faninfoOUT.unit}}</span></td>
-					<td>{{faninfoOUT.WarningLow}}<span class="sensors__tbody-unit">{{faninfoOUT.unit}}</span></td>
-					<td>{{faninfoOUT.Value}}<span class="sensors__tbody-unit">{{faninfoOUT.unit}}</span></td>
-					<td>{{faninfoOUT.WarningHigh}}<span class="sensors__tbody-unit">{{faninfoOUT.unit}}</span></td>
-					<td>{{faninfoOUT.CriticalHigh}}<span class="sensors__tbody-unit">{{faninfoOUT.unit}}</span></td>
+                    <td>{{faninfoOUT.CriticalLow}}<span >{{faninfoOUT.unit}}</span></td> <!-- class="sensors__tbody-unit" -->
+                    <td>{{faninfoOUT.WarningLow}}<span >{{faninfoOUT.unit}}</span></td>
+                    <td>{{faninfoOUT.Value}}<span >{{faninfoOUT.unit}}</span></td>
+                    <td>{{faninfoOUT.WarningHigh}}<span >{{faninfoOUT.unit}}</span></td>
+                    <td>{{faninfoOUT.CriticalHigh}}<span >{{faninfoOUT.unit}}</span></td>
                 </tr>
             </tbody>
         </table>
     </div>
-	<div id="usi-ip" class="usi-ssd-array" ng-show="ipFlag == true" ng-mouseleave="leave('usi-ip')">
+    <div id="usi-ip" class="usi-ssd-array" ng-show="ipFlag == true" ng-mouseleave="leave('usi-ip')">
         <table id='ssd-info-body' ng-show="bmc_ip_addresses != 'None'">
             <thead class='ssd-body-header'>
                 <tr><th>IP Addresses</th></tr>
             </thead>
             <tbody class="ssd-body-tbody">
                 <tr><td>{{bmc_ip_addresses[0]}}</td></tr>
-				<tr><td>{{bmc_ip_addresses[1]}}</td></tr>
+                <tr><td>{{bmc_ip_addresses[1]}}</td></tr>
             </tbody>
         </table>
     </div>
-	<!-- <div id="usi-patopo" class="usi-ssd-array" ng-show="patopoFlag == true"  ng-mouseleave="leave('usi-patopo')">
-        <table id='ssd-info-body' ng-show="patopoinfo != 'None'" ng-repeat="(k, v) in patopoinfo">
-            <thead class="ssd-body-header">
-				<tr><td colspan='2'><b>{{k}} information</b></td></tr>
-                <tr>
-                    <th>Item</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(item, value) in v" ng-show="patopoinfo != 'None'">
-                    <td>{{item}}</td>
-                    <td>{{value}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div> -->
-	
-</div>	
+</div>
 
 
