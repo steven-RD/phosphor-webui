@@ -14,7 +14,7 @@
 .overview__metadata-block {
   list-style-type: none;
   min-width: 47%;
-  margin-bottom: 1em; //1em
+  margin-bottom: 0em; //1em
   margin-right: .7em;
   display: inline-block;
   white-space: normal;
@@ -24,7 +24,7 @@
   }
 }
 .overview__event-log {
-  padding-top: 2em;  //2em
+  padding-top: 0em;  //2em
   .event__description {
     color: $primary-dark;
     text-decoration: none;

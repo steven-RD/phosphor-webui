@@ -130,11 +130,10 @@
     </div>
     <div class="column large-4 no-padding">
       <div class="quick-links">
-        <a href="#/server-health/event-log/high" class="quick-links__item quick-links__events event-log__events"
+        <!-- <a href="#/server-health/event-log/high" class="quick-links__item quick-links__events event-log__events"
           ng-show="logs.length">
-          <!-- link to event log filtered to the high priority events -->
           <p class="inline quick-links__event-copy">View {{logs.length}} high priority events</p>
-        </a>
+        </a> -->
         <dl class="quick-links__item no-icon">
           <dt class="inline quick-links__label">JBOF time</dt>
           <dd class="courier-bold bmc-time">{{ bmc_time | localeDate }}</dd>
@@ -174,6 +173,10 @@
         <a href="#/server-control/remote-console" class="no-icon quick-links__item">
           <p class="inline quick-links__label">Serial over LAN console</p>
           <icon file="icon-launch.svg" class="float-right"></icon>
+        </a>
+		<a href="#/server-health/event-log/high" class="quick-links__item quick-links__events event-log__events"
+          ng-show="logs.length">
+          <p class="inline quick-links__event-copy">View {{logs.length}} high priority events</p>
         </a>
         <a href="#/configuration/network" class="quick-links__item">
           <p class="inline quick-links__label">Edit network settings</p>
