@@ -71,7 +71,7 @@ window.angular && (function(angular) {
       var PSInfo=[];
       ///ssd information
       $scope.SSD = function(num){
-          console.log(ssdMessage);
+          //console.log(ssdMessage);
       angular.forEach(ssdMessage, function(ssdInfo, ssdNum){
         if(angular.equals(ssdNum, num)){
             $scope.ssdNo=ssdNum;
@@ -139,8 +139,6 @@ window.angular && (function(angular) {
             changeStatus('ioccx');
             $scope.ioccname = name;
             $scope.ioccxstatus = cableMessage[name];
-            console.log($scope.ioccname);
-            console.log($scope.ioccxstatus);
             var lab = document.getElementById('usi-ioccx');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -169,8 +167,6 @@ window.angular && (function(angular) {
             changeStatus('ioccx');
             $scope.ioccname = name;
             $scope.ioccxstatus = swMessage[name];
-            console.log($scope.ioccname);
-            console.log($scope.ioccxstatus);
             var lab = document.getElementById('usi-ioccx');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -187,7 +183,7 @@ window.angular && (function(angular) {
         if(BMCMessage[name] != "Bmcinfo Get Fail"){
             changeStatus('bmc');
             $scope.bmcinfo = BMCMessage[name];
-			console.log($scope.bmcinfo);
+            console.log($scope.bmcinfo);
             var lab = document.getElementById('usi-bmc');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -237,20 +233,14 @@ window.angular && (function(angular) {
         lab.style.top = mousePosition.y + 5 + 'px'; 
         lab.style.height = '0px';
         lab.style.width = '0px';
-        //$scope.faninfoIN = 'None';
-		console.log('fan');
-		console.log(name);
+        $scope.faninfoIN = 'None';
         for(var i = 0; i < fanData.length; i++){
             if(fanData[i].title.indexOf(name+' INLET') != -1) {
                 $scope.fanInTitle = name+'_INLET';
                 $scope.faninfoIN = fanData[i];
-				console.log(i);
-				console.log(name);
             }else if(fanData[i].title.indexOf(name+' OUTLET') != -1){
                 $scope.fanOutTitle = name+'_OUTLET';
                 $scope.faninfoOUT = fanData[i];
-				console.log(i);
-				console.log(name);
             }
         }
     };
