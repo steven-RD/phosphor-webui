@@ -184,7 +184,7 @@ window.angular && (function(angular) {
 
     ///BMC information
     $scope.BMC = function(name) {
-        if(swMessage[name] != "Switchinfo Get Fail"){
+        if(BMCMessage[name] != "Bmcinfo Get Fail"){
             changeStatus('bmc');
             $scope.bmcinfo = BMCMessage[name];
 			console.log($scope.bmcinfo);
@@ -240,19 +240,18 @@ window.angular && (function(angular) {
         lab.style.width = '0px';
         //$scope.faninfoIN = 'None';
 		console.log('fan');
+		console.log(name);
         for(var i = 0; i < fanData.length; i++){
             if(fanData[i].title.indexOf(name+' INLET') != -1) {
+                $scope.fanInTitle = name+'_INLET';
                 $scope.faninfoIN = fanData[i];
-				/* console.log(i);
-				console.log(name);
-                $scope.faninfoIN.title = name+'_INLET';
-				console.log($scope.faninfoIN); */
-            }else if(fanData[i].title.indexOf(name+' OUTLET') != -1){
-                $scope.faninfoOUT = fanData[i];
-                /* $scope.faninfoOUT.title = name+'_OUTLET';
 				console.log(i);
 				console.log(name);
-				console.log($scope.faninfoOUT); */
+            }else if(fanData[i].title.indexOf(name+' OUTLET') != -1){
+                $scope.faninfoOUT.title = name+'_OUTLET';
+                $scope.fanOutTitle = fanData[i];
+				console.log(i);
+				console.log(name);
             }
         }
     };
