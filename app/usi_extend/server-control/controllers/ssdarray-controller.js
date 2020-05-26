@@ -242,10 +242,10 @@ window.angular && (function(angular) {
         for(var i = 0; i < fanData.length; i++){
             if(fanData[i].title.indexOf(name+' INLET') != -1) {
                 $scope.faninfoIN = fanData[i];
-                $scope.faninfoIN = name+'_INLET';
+                $scope.faninfoIN.title = name+'_INLET';
             }else if(fanData[i].title.indexOf(name+' OUTLET') != -1){
                 $scope.faninfoOUT = fanData[i];
-                $scope.faninfoOUT = name+'_OUTLET';
+                $scope.faninfoOUT.title = name+'_OUTLET';
             }
         }
     };
