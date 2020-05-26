@@ -243,16 +243,16 @@ window.angular && (function(angular) {
         for(var i = 0; i < fanData.length; i++){
             if(fanData[i].title.indexOf(name+' INLET') != -1) {
                 $scope.faninfoIN = fanData[i];
-				console.log(i);
+				/* console.log(i);
 				console.log(name);
                 $scope.faninfoIN.title = name+'_INLET';
-				console.log($scope.faninfoIN);
+				console.log($scope.faninfoIN); */
             }else if(fanData[i].title.indexOf(name+' OUTLET') != -1){
                 $scope.faninfoOUT = fanData[i];
-                $scope.faninfoOUT.title = name+'_OUTLET';
+                /* $scope.faninfoOUT.title = name+'_OUTLET';
 				console.log(i);
 				console.log(name);
-				console.log($scope.faninfoOUT);
+				console.log($scope.faninfoOUT); */
             }
         }
     };
