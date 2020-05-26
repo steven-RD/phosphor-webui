@@ -10,8 +10,8 @@
 
 	<div class="allImage" >
 		<ul class="ulimg" id="imgs">
-			<li ><div id="front-img">
-				<img id="frontImg" src="../../../assets/images/J2024-03-front.png" class="ssd-image" alt="ssd" usemap="#SSDmap"/>
+			<li ><div id="front-img"> <!-- src="../../../assets/images/J2024-03-front.png" -->
+				<img id="frontImg" src="../../images/J2024-03-front.png" class="ssd-image" alt="ssd" usemap="#SSDmap"/>
 				<map name="SSDmap" >
 					<area shape="rect" coords="61,130,84,248" alt="ssd1" id="ssdArrayStyle" ng-mouseover="SSD('SSD1')" />
 					<area shape="rect" coords="90,130,113,248" alt="ssd2" id="ssdArrayStyle" ng-mouseover="SSD('SSD2')" />
@@ -40,7 +40,7 @@
 				</map></div>
 			</li>
 			<li class="img_display"><div id="rear-img">
-				<img id="rearImg" src="../../../assets/images/J2024-03-rear.png" alt="cableImage" usemap="#cableMap"/>
+				<img id="rearImg" src="../../images/J2024-03-rear.png" alt="cableImage" usemap="#cableMap"/>
 				<map name="cableMap">
 					<area shape="rect" coords="40,120,110,190" alt="powerA" id="ssdArrayStyle" ng-mouseover="PowerSupply('PS1')"/>
 					<area shape="rect" coords="40,196,110,268" alt="powerB" id="ssdArrayStyle" ng-mouseover="PowerSupply('PS2')"/>
@@ -51,7 +51,7 @@
 				</map></div>
             </li>
             <li class="img_display"><div id="inside-img">
-				<img id="insideImg" src="../../../assets/images/J2024-03-internal-struct.png" alt="internal-struct" usemap="#insideMap"/>
+				<img id="insideImg" src="../../images/J2024-03-internal-struct.png" alt="internal-struct" usemap="#insideMap"/>
 				<map name="insideMap">
 					<area shape="rect" coords="220,35,280,95" id="ssdArrayStyle" ng-mouseover="Fan('Fan1')" /> 
 					<area shape="rect" coords="220,115,280,170" id="ssdArrayStyle" ng-mouseover="Fan('Fan2')" />
@@ -254,6 +254,7 @@
                     <td>{{faninfoOUT.CriticalLow}}<span >{{faninfoOUT.unit}}</span></td> <!-- class="sensors__tbody-unit" -->
                     <td>{{faninfoOUT.WarningLow}}<span >{{faninfoOUT.unit}}</span></td>
                     <td>{{faninfoOUT.Value}}<span >{{faninfoOUT.unit}}</span></td>
+                    <td>{{faninfoOUT.Target}}</td>
                     <td>{{faninfoOUT.WarningHigh}}<span >{{faninfoOUT.unit}}</span></td>
                     <td>{{faninfoOUT.CriticalHigh}}<span >{{faninfoOUT.unit}}</span></td>
                 </tr>
