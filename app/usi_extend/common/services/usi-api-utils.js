@@ -363,6 +363,23 @@ window.angular && (function(angular) {
                    console.log(error);
                 });
         },
+        
+        getParInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/xyz/openbmc_project/ssdarray/partop',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content['data']['Info'];
+                },
+                function(error) {
+                   console.log(error);
+                });
+        },
       /* Modified by USISH Steven20190122/Judy20190521 end */
       // Restful way end
       // Redfish way start

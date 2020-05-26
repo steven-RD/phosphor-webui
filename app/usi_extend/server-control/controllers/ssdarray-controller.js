@@ -95,7 +95,6 @@ window.angular && (function(angular) {
         if(angular.equals(name, 'PS')) {
             changeStatus('ps');
             $scope.psinfo=PSInfo;
-			console.log($scope.psinfo);
             var lab = document.getElementById('usi-ps');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -110,7 +109,6 @@ window.angular && (function(angular) {
                     changeStatus('psx');
                     $scope.psname=psName;
                     $scope.psinfo=psInfo;
-			        console.log($scope.psinfo);
                     var lab = document.getElementById('usi-psx');
                     var mousePosition = getMousePos(window.event); ///Get mouse position
                     lab.style.position = "absolute";
@@ -129,7 +127,6 @@ window.angular && (function(angular) {
         if(cableMessage[name] != "Cableinfo Get Fail"){
             changeStatus('cable');
             $scope.cableinfo = cableMessage[name];
-			console.log($scope.cableinfo);
             var lab = document.getElementById('usi-cable');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -160,7 +157,6 @@ window.angular && (function(angular) {
         if(swMessage[name] != "Switchinfo Get Fail"){
             changeStatus('sw');
             $scope.swinfo = swMessage[name];
-			console.log($scope.swinfo);
             var lab = document.getElementById('usi-switch');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -204,6 +200,7 @@ window.angular && (function(angular) {
             changeStatus('ioccx');
             $scope.ioccname = name;
             $scope.ioccxstatus = BMCMessage[name];
+            $scope.PFXThermal = 
             console.log($scope.ioccname);
             console.log($scope.ioccxstatus);
             var lab = document.getElementById('usi-ioccx');
@@ -228,8 +225,6 @@ window.angular && (function(angular) {
         lab.style.width = '0px';
         lab.style.left = mousePosition.x + 5 + 'px';
         lab.style.top = mousePosition.y + 5 + 'px';
-        //console.log("ip"); 
-        //console.log($scope.bmc_ip_addresses); 
     };
 
     ///fan sensor information
@@ -243,14 +238,14 @@ window.angular && (function(angular) {
         lab.style.top = mousePosition.y + 5 + 'px'; 
         lab.style.height = '0px';
         lab.style.width = '0px';
-		$scope.faninfoIN = 'None';
+        $scope.faninfoIN = 'None';
         for(var i = 0; i < fanData.length; i++){
             if(fanData[i].title.indexOf(name+' INLET') != -1) {
-                $scope.faninfoIN=fanData[i];
-                console.log($scope.faninfoIN);
+                $scope.faninfoIN = fanData[i];
+                $scope.faninfoIN = name+'_INLET';
             }else if(fanData[i].title.indexOf(name+' OUTLET') != -1){
-                $scope.faninfoOUT=fanData[i];
-                console.log($scope.faninfoOUT);
+                $scope.faninfoOUT = fanData[i];
+                $scope.faninfoOUT = name+'_OUTLET';
             }
         }
     };
@@ -299,16 +294,6 @@ window.angular && (function(angular) {
           return { 'x': x, 'y': y };
       }
 
-/*       $scope.loadSsdInfo = function(){
-        UsiAPIUtils.getSsdArrayInfo().then(
-            function(data){
-                arrayInfo = data;
-            },
-            function(error) {
-               toastService.error('Error during getSsdArrayInfo');
-            }
-        );
-      }; */
       $scope.loadSsdInfo = function(){
         UsiAPIUtils.getSsdInfo().then(
             function(data){

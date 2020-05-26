@@ -114,9 +114,9 @@ window.angular && (function(angular) {
 		}; 
 
 		
-		$scope.loadSsdInfo = function() {
+		$scope.loadParInfo = function() {
 			var arrayInfo=[];
-			UsiAPIUtils.getSsdArrayInfo().then(
+			UsiAPIUtils.getParInfo().then(
 				function(data){
 					arrayInfo = data;
 					
@@ -186,7 +186,7 @@ window.angular && (function(angular) {
 			
 		};
 		
-		$scope.loadSsdInfo();
+		$scope.loadParInfo();
 		
 		/* var patArray = ['ssd1', 'ssd2', 'ssd3', 'ssd4', 'ssd5', 'ssd6', 
 						'ssd7', 'ssd8', 'ssd9', 'ssd10', 'ssd11', 'ssd12'];
