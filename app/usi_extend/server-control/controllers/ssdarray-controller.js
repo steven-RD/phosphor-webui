@@ -200,7 +200,6 @@ window.angular && (function(angular) {
             changeStatus('ioccx');
             $scope.ioccname = name;
             $scope.ioccxstatus = BMCMessage[name];
-            $scope.PFXThermal = 
             console.log($scope.ioccname);
             console.log($scope.ioccxstatus);
             var lab = document.getElementById('usi-ioccx');
@@ -248,8 +247,8 @@ window.angular && (function(angular) {
 				console.log(i);
 				console.log(name);
             }else if(fanData[i].title.indexOf(name+' OUTLET') != -1){
-                $scope.faninfoOUT.title = name+'_OUTLET';
-                $scope.fanOutTitle = fanData[i];
+                $scope.fanOutTitle = name+'_OUTLET';
+                $scope.faninfoOUT = fanData[i];
 				console.log(i);
 				console.log(name);
             }
