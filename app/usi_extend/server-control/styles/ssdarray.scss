@@ -25,7 +25,7 @@
 #ssd-info-body {
   text-align: center;
   border: 2px solid;
-  border-color: #560fa2;
+  border-color: #56aaff;
   margin: auto;
 }
 
@@ -137,20 +137,20 @@
     width: 600px;
     height: 450px;
 }
-#front-image {
+#front-img {
     padding-right: 40px;
     padding-top: 30px;
 }
-#rare-image{
+#rare-img {
     padding-left: 6px;
     padding-top: 30px;
 }
-#inside-image{
+#inside-img {
     padding-left: 60px;
 }
 
 #ssdArrayStyle{
-	cursor:pointer;
+    cursor:pointer;
 }
 
 #usi-ssd #usi-cable #usi-switch #usi-ps #usi-psx #usi-fan #ssd-info-body{
@@ -164,46 +164,46 @@
 
 #usi-partition1_0{
   text-align: center;
-  border: 2px solid;
+  border: 4px solid;
   border-color: #e116e2;
   margin: auto;
 }
  #usi-partition2_0 {
   text-align: center;
-  border: 2px solid;
+  border: 4px solid;
   border-color: #e116e2;
   margin: auto;
 }
  #usi-partition4_0{
   text-align: center;
-  border: 2px solid;
+  border: 4px solid;
   border-color: #e116e2;
   margin: auto;
 }
 
 #usi-partition2_1 {
   text-align: center;
-  border: 2px solid;
+  border: 4px solid;
   border-color: #e2cb16;
   margin: auto;
 }
 #usi-partition4_1{
   text-align: center;
-  border: 2px solid;
+  border: 4px solid;
   border-color: #e2cb16;
   margin: auto;
 }
 
 #usi-partition4_2{
   text-align: center;
-  border: 2px solid;
+  border: 4px solid;
   border-color: #419641e0;
   margin: auto;
 }
 
 #usi-partition4_3{
   text-align: center;
-  border: 2px solid;
+  border: 4px solid;
   border-color: #351bf9e0;
   margin: auto;
 }
@@ -221,4 +221,19 @@
   border: 1px solid grey;
   border-collapse: collapse;
   padding: 3px;
+}
+
+table tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
+
+table tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
 }
