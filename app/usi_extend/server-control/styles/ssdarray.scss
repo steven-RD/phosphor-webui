@@ -223,6 +223,11 @@
   padding: 3px;
 }
 
+#ssd-info table {
+    border-collapse: separate;
+    border-spacing: 1px;
+}
+
 table tr:first-child th:first-child {
     border-top-left-radius: 12px;
 }
