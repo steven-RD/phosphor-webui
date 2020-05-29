@@ -15,7 +15,7 @@
   width: 140px;
   background: #B088FF;
   font-size: 12px;
-  //border: 2px solid #0000AE;
+  border: 2px solid #0000AE;
   text-align: center;
 }
 #ssd-info-header tr td:hover{
@@ -56,8 +56,8 @@
 .usi-ssd-array th , td {
   text-align: center;
   font-size: medium;
-  //border: 1px solid grey;
-  border-collapse: collapse;
+  border: 1px solid grey;
+  //border-collapse: collapse;
   padding: 3px;
 }
 .usi-ssd-array tr:nth-child(odd) {
