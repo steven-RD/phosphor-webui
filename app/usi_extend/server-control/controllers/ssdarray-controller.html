@@ -14,7 +14,7 @@
 				<img id="frontImg" src="../../images/J2024-03-front.png" class="ssd-image" alt="ssd" usemap="#SSDmap"/>
 				<map name="SSDmap" >
 					<area shape="rect" coords="61,130,84,248" alt="ssd1" id="ssdArrayStyle" ng-mouseover="SSD('SSD1')" >
-						<span ng-class="{'status-light__error': Status == 'Critical', 'status-light__warn': Status == 'Warning', 'status-light__good': Status == 'Good'}"></span>
+						<span ng-class="{'status-light__error': Status == 'Critical', 'status-light__warn': Status == 'Warning', 'status-light__good': Status == 'Good'}">{{Status}}</span>
 					</area>
 					<area shape="rect" coords="90,130,113,248" alt="ssd2" id="ssdArrayStyle" ng-mouseover="SSD('SSD2')" />
 					<area shape="rect" coords="119,130,142,248" alt="ssd3" id="ssdArrayStyle" ng-mouseover="SSD('SSD3')" />

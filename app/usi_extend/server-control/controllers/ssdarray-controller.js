@@ -76,7 +76,7 @@ window.angular && (function(angular) {
         if(angular.equals(ssdNum, num)){
             $scope.ssdNo=ssdNum;
             $scope.ssdx=ssdInfo;
-			$scope.Status="good";
+			$scope.Status="Good";
             changeStatus('ssd');
             //console.log(ssdInfo);
             var lab = document.getElementById('usi-ssd');
