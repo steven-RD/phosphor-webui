@@ -13,15 +13,17 @@
 			<li ><div id="front-img"> <!-- src="../../../assets/images/J2024-03-front.png" -->
 				<img id="frontImg" src="../../images/J2024-03-front.png" class="ssd-image" alt="ssd" usemap="#SSDmap"/>
 				<map name="SSDmap" >
-					<area shape="rect" coords="61,130,84,248" alt="ssd1" id="ssdArrayStyle" ng-mouseover="SSD('SSD1')" />
+					<area shape="rect" coords="61,130,84,248" alt="ssd1" id="ssdArrayStyle" ng-mouseover="SSD('SSD1')" >
+						<span ng-class="{'status-light__error': Status == 'Critical', 'status-light__warn': Status == 'Warning', 'status-light__good': Status == 'Good'}"></span>
+					</area>
 					<area shape="rect" coords="90,130,113,248" alt="ssd2" id="ssdArrayStyle" ng-mouseover="SSD('SSD2')" />
 					<area shape="rect" coords="119,130,142,248" alt="ssd3" id="ssdArrayStyle" ng-mouseover="SSD('SSD3')" />
-					<area shape="rect" coords="146,130,169,248" alt="ssd4" id="ssdArrayStyle" ng-mouseover="SSD('SSD4')" />					
+					<area shape="rect" coords="146,130,169,248" alt="ssd4" id="ssdArrayStyle" ng-mouseover="SSD('SSD4')" />
 					<area shape="rect" coords="175,130,198,248" alt="ssd5" id="ssdArrayStyle" ng-mouseover="SSD('SSD5')" />
 					<area shape="rect" coords="204,130,226,248" alt="ssd6" id="ssdArrayStyle" ng-mouseover="SSD('SSD6')" />
 					<area shape="rect" coords="232,130,254,248" alt="ssd7" id="ssdArrayStyle" ng-mouseover="SSD('SSD7')" />
-					<area shape="rect" coords="259,130,281,248" alt="ssd8" id="ssdArrayStyle" ng-mouseover="SSD('SSD8')" />	
-					<area shape="rect" coords="286,130,309,248" alt="ssd9" id="ssdArrayStyle" ng-mouseover="SSD('SSD9')" /> 
+					<area shape="rect" coords="259,130,281,248" alt="ssd8" id="ssdArrayStyle" ng-mouseover="SSD('SSD8')" />
+					<area shape="rect" coords="286,130,309,248" alt="ssd9" id="ssdArrayStyle" ng-mouseover="SSD('SSD9')" />
 					<area shape="rect" coords="315,130,337,248" alt="ssd10" id="ssdArrayStyle" ng-mouseover="SSD('SSD10')" />
 					<area shape="rect" coords="342,130,364,248" alt="ssd11" id="ssdArrayStyle" ng-mouseover="SSD('SSD11')" />
 					<area shape="rect" coords="370,130,392,248" alt="ssd12" id="ssdArrayStyle" ng-mouseover="SSD('SSD12')" />
@@ -36,7 +38,7 @@
 					<area shape="rect" coords="618,130,641,248" alt="ssd21" id="ssdArrayStyle" ng-mouseover="SSD('SSD21')" />
 					<area shape="rect" coords="645,130,669,248" alt="ssd22" id="ssdArrayStyle" ng-mouseover="SSD('SSD22')" />
 					<area shape="rect" coords="675,130,698,248" alt="ssd23" id="ssdArrayStyle" ng-mouseover="SSD('SSD23')" />
-					<area shape="rect" coords="703,130,726,248" alt="ssd24" id="ssdArrayStyle" ng-mouseover="SSD('SSD24')" /> 
+					<area shape="rect" coords="703,130,726,248" alt="ssd24" id="ssdArrayStyle" ng-mouseover="SSD('SSD24')" />
 				</map></div>
 			</li>
 			<li class="img_display"><div id="rear-img">
