@@ -19,7 +19,7 @@
 	<div align="center" ng-show="patopo4 == true">
 		<img id="ssd6" src="../../images/partition4.png"/>
 	</div>
-	<div class="usi-patopo" ng-show="partition_1 == true">
+	<div id="usi-patopo1" class="usi-patopo" ng-show="partition_1 == true">
 		<table id='usi-partition1_0' align="center" ng-show="partition1_0 != 'None'">
             <thead class='ssd-body-header'>
 				<tr><td align='center' valian='middle' colspan='2'><b>{{name1_0}}</b></td></tr>
@@ -33,8 +33,8 @@
         </table>
 	</div>
  	<div class="usi-patopo" ng-show="partition_2 == true">
-		<table align="center">
-			<tr><td>
+		<table id="usi-patopo2" align="center">
+			<tr><td id="usi-patopo2-0">
 				<table id='usi-partition2_0'  ng-show="partition2_0 != 'None'">
 					<thead class='ssd-body-header'>
 						<tr><td align='center' valian='middle' colspan='2'><b>{{name2_0}}</b></td></tr>
@@ -47,7 +47,7 @@
 					</tbody>
 				</table>
 			</td>
-			<td>
+			<td id="usi-patopo2-1">
 				<table id='usi-partition2_1' ng-show="partition2_1 != 'None'">
 					<thead class='ssd-body-header'>
 						<tr><td align='center' valian='middle' colspan='2'><b>{{name2_1}}</b></td></tr>
@@ -59,8 +59,8 @@
 						</tr>
 					</tbody>
 				</table>
-			</td></tr>	
-		</table>		
+			</td></tr>
+		</table>
     </div>
 	<div id="usi-partition_4" class="usi-patopo" ng-show="partition_4 == true"> 
 		<table id="usi-patopo4" align="center">
