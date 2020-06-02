@@ -72,6 +72,14 @@ window.angular && (function(angular) {
       ///ssd information
       $scope.SSD = function(num){
           //console.log(ssdMessage);
+		  
+			if(ssdNum == 'SSD1'){
+				$scope.ssd1url = "../../icons/icon-ssd-good.svg";
+				$scope.ssd1Flag = true;
+			}
+			$scope.ssd2url = "../../icons/icon-ssd-bad.svg";
+			$scope.ssd2Flag =true;
+			console.log($scope.ssd2url);
       angular.forEach(ssdMessage, function(ssdInfo, ssdNum){
         if(angular.equals(ssdNum, num)){
             $scope.ssdNo=ssdNum;
@@ -81,13 +89,6 @@ window.angular && (function(angular) {
 			/* var n = num.replace(/[^0-9]/ig,"");
 			var leftPos = 61+29*(n-1)+'px';
 			var topPos = 130+50+'px'; */
-			if(ssdNum == 'SSD1'){
-				$scope.ssd1url = "../../icons/icon-ssd-good.svg";
-				$scope.ssd1Flag = true;
-			}
-			$scope.ssd2url = "../../icons/icon-ssd-bad.svg";
-			$scope.ssd2Flag =true;
-			console.log($scope.ssd2url);
             var lab = document.getElementById('usi-ssd');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
