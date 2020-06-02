@@ -346,6 +346,246 @@ window.angular && (function(angular) {
 					"Status": "Absent",
 					"Type": "U.2",
 					"Value": "0x4300121"
+				  },
+				"SSD5": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "1",
+					"SlotAddr": "1",
+					"Status": "Good",
+					"Type": "U.2",
+					"Value": "0x4300109"
+				  },
+				"SSD6": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "0",
+					"SlotAddr": "2",
+					"Status": "Bad",
+					"Type": "U.2",
+					"Value": "0x300111"
+				  },
+				"SSD7": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "0",
+					"SlotAddr": "3",
+					"Status": "Absent",
+					"Type": "U.2",
+					"Value": "0x300119"
+				  },
+				"SSD8": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "1",
+					"SlotAddr": "4",
+					"Status": "Absent",
+					"Type": "U.2",
+					"Value": "0x4300121"
+				  },
+				"SSD9": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "1",
+					"SlotAddr": "1",
+					"Status": "Good",
+					"Type": "U.2",
+					"Value": "0x4300109"
+				  },
+				"SSD10": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "0",
+					"SlotAddr": "2",
+					"Status": "Bad",
+					"Type": "U.2",
+					"Value": "0x300111"
+				  },
+				"SSD11": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "0",
+					"SlotAddr": "3",
+					"Status": "Absent",
+					"Type": "U.2",
+					"Value": "0x300119"
+				  },
+				"SSD12": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "1",
+					"SlotAddr": "4",
+					"Status": "Absent",
+					"Type": "U.2",
+					"Value": "0x4300121"
+				  },
+				"SSD13": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "1",
+					"SlotAddr": "1",
+					"Status": "Good",
+					"Type": "U.2",
+					"Value": "0x4300109"
+				  },
+				"SSD14": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "0",
+					"SlotAddr": "2",
+					"Status": "Bad",
+					"Type": "U.2",
+					"Value": "0x300111"
+				  },
+				"SSD15": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "0",
+					"SlotAddr": "3",
+					"Status": "Absent",
+					"Type": "U.2",
+					"Value": "0x300119"
+				  },
+				"SSD16": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "1",
+					"SlotAddr": "4",
+					"Status": "Absent",
+					"Type": "U.2",
+					"Value": "0x4300121"
+				  },
+				"SSD17": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "1",
+					"SlotAddr": "1",
+					"Status": "Good",
+					"Type": "U.2",
+					"Value": "0x4300109"
+				  },
+				"SSD18": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "0",
+					"SlotAddr": "2",
+					"Status": "Bad",
+					"Type": "U.2",
+					"Value": "0x300111"
+				  },
+				"SSD19": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "0",
+					"SlotAddr": "3",
+					"Status": "Absent",
+					"Type": "U.2",
+					"Value": "0x300119"
+				  },
+				"SSD20": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "1",
+					"SlotAddr": "4",
+					"Status": "Absent",
+					"Type": "U.2",
+					"Value": "0x4300121"
+				  },
+				"SSD21": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "1",
+					"SlotAddr": "1",
+					"Status": "Good",
+					"Type": "U.2",
+					"Value": "0x4300109"
+				  },
+				"SSD22": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "0",
+					"SlotAddr": "2",
+					"Status": "Bad",
+					"Type": "U.2",
+					"Value": "0x300111"
+				  },
+				"SSD23": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "0",
+					"SlotAddr": "3",
+					"Status": "Absent",
+					"Type": "U.2",
+					"Value": "0x300119"
+				  },
+				"SSD24": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "1",
+					"SlotAddr": "4",
+					"Status": "Absent",
+					"Type": "U.2",
+					"Value": "0x4300121"
 				  }
 			};
 			
@@ -414,6 +654,315 @@ window.angular && (function(angular) {
 							$scope.ssd4good = false;
 							$scope.ssd4bad = false;
 							$scope.ssd4warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD5")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd5good = true;
+							$scope.ssd5bad = false;
+							$scope.ssd5warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd5good = false;
+							$scope.ssd5bad = true;
+							$scope.ssd5warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd5good = false;
+							$scope.ssd5bad = false;
+							$scope.ssd5warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD6")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd6good = true;
+							$scope.ssd6bad = false;
+							$scope.ssd6warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd6good = false;
+							$scope.ssd6bad = true;
+							$scope.ssd6warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd6good = false;
+							$scope.ssd6bad = false;
+							$scope.ssd6warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD7")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd7good = true;
+							$scope.ssd7bad = false;
+							$scope.ssd7warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd7good = false;
+							$scope.ssd7bad = true;
+							$scope.ssd7warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd7good = false;
+							$scope.ssd7bad = false;
+							$scope.ssd7warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD8")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd8good = true;
+							$scope.ssd8bad = false;
+							$scope.ssd8warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd8good = false;
+							$scope.ssd8bad = true;
+							$scope.ssd8warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd8good = false;
+							$scope.ssd8bad = false;
+							$scope.ssd8warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD9")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd9good = true;
+							$scope.ssd9bad = false;
+							$scope.ssd9warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd9good = false;
+							$scope.ssd9bad = true;
+							$scope.ssd9warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd9good = false;
+							$scope.ssd9bad = false;
+							$scope.ssd9warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD10")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd10good = true;
+							$scope.ssd10bad = false;
+							$scope.ssd10warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd10good = false;
+							$scope.ssd10bad = true;
+							$scope.ssd10warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd10good = false;
+							$scope.ssd10bad = false;
+							$scope.ssd10warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD11")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd11good = true;
+							$scope.ssd11bad = false;
+							$scope.ssd11warning =false;
+							console.log(ssdInfo.Status);
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd11good = false;
+							$scope.ssd11bad = true;
+							$scope.ssd11warning =false;
+							console.log(ssdInfo.Status);
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd11good = false;
+							$scope.ssd11bad = false;
+							$scope.ssd11warning =true;
+							console.log(ssdInfo.Status);
+						}
+					}
+					if(angular.equals(ssdNum, "SSD12")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd12good = true;
+							$scope.ssd12bad = false;
+							$scope.ssd12warning =false;
+							console.log(ssdInfo.Status);
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd12good = false;
+							$scope.ssd12bad = true;
+							$scope.ssd12warning =false;
+							console.log(ssdInfo.Status);
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd12good = false;
+							$scope.ssd12bad = false;
+							$scope.ssd12warning =true;
+							console.log(ssdInfo.Status);
+						}
+					}
+					if(angular.equals(ssdNum, "SSD13")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd13good = true;
+							$scope.ssd13bad = false;
+							$scope.ssd13warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd13good = false;
+							$scope.ssd13bad = true;
+							$scope.ssd13warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd13good = false;
+							$scope.ssd13bad = false;
+							$scope.ssd13warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD14")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd14good = true;
+							$scope.ssd14bad = false;
+							$scope.ssd14warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd14good = false;
+							$scope.ssd14bad = true;
+							$scope.ssd14warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd14good = false;
+							$scope.ssd14bad = false;
+							$scope.ssd14warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD15")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd15good = true;
+							$scope.ssd15bad = false;
+							$scope.ssd15warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd15good = false;
+							$scope.ssd15bad = true;
+							$scope.ssd15warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd15good = false;
+							$scope.ssd15bad = false;
+							$scope.ssd15warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD16")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd16good = true;
+							$scope.ssd16bad = false;
+							$scope.ssd16warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd16good = false;
+							$scope.ssd16bad = true;
+							$scope.ssd16warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd16good = false;
+							$scope.ssd16bad = false;
+							$scope.ssd16warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD17")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd17good = true;
+							$scope.ssd17bad = false;
+							$scope.ssd17warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd17good = false;
+							$scope.ssd17bad = true;
+							$scope.ssd17warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd17good = false;
+							$scope.ssd17bad = false;
+							$scope.ssd17warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD18")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd18good = true;
+							$scope.ssd18bad = false;
+							$scope.ssd18warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd18good = false;
+							$scope.ssd18bad = true;
+							$scope.ssd18warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd18good = false;
+							$scope.ssd18bad = false;
+							$scope.ssd18warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD19")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd19good = true;
+							$scope.ssd19bad = false;
+							$scope.ssd19warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd19good = false;
+							$scope.ssd19bad = true;
+							$scope.ssd19warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd19good = false;
+							$scope.ssd19bad = false;
+							$scope.ssd19warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD20")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd20good = true;
+							$scope.ssd20bad = false;
+							$scope.ssd20warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd20good = false;
+							$scope.ssd20bad = true;
+							$scope.ssd20warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd20good = false;
+							$scope.ssd20bad = false;
+							$scope.ssd20warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD21")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd21good = true;
+							$scope.ssd21bad = false;
+							$scope.ssd21warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd21good = false;
+							$scope.ssd21bad = true;
+							$scope.ssd21warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd21good = false;
+							$scope.ssd21bad = false;
+							$scope.ssd21warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD22")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd22good = true;
+							$scope.ssd22bad = false;
+							$scope.ssd22warning =false;
+							console.log(ssdInfo.Status);
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd22good = false;
+							$scope.ssd22bad = true;
+							$scope.ssd22warning =false;
+							console.log(ssdInfo.Status);
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd22good = false;
+							$scope.ssd22bad = false;
+							$scope.ssd22warning =true;
+							console.log(ssdInfo.Status);
+						}
+					}
+					if(angular.equals(ssdNum, "SSD23")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd23good = true;
+							$scope.ssd23bad = false;
+							$scope.ssd23warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd23good = false;
+							$scope.ssd23bad = true;
+							$scope.ssd23warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd23good = false;
+							$scope.ssd23bad = false;
+							$scope.ssd23warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD24")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd24good = true;
+							$scope.ssd24bad = false;
+							$scope.ssd24warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd24good = false;
+							$scope.ssd24bad = true;
+							$scope.ssd24warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd24good = false;
+							$scope.ssd24bad = false;
+							$scope.ssd24warning =true;
 						}
 					}
 
