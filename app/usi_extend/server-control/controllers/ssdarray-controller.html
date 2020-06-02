@@ -13,9 +13,7 @@
 			<li ><div id="front-img"> <!-- src="../../../assets/images/J2024-03-front.png" -->
 				<img id="frontImg" src="../../images/J2024-03-front.png" class="ssd-image" alt="ssd" usemap="#SSDmap"/>
 				<map name="SSDmap" >
-					<area shape="rect" coords="61,130,84,248" alt="ssd1" id="ssdArrayStyle" ng-mouseover="SSD('SSD1')" >
-						<span ng-class="{'status-light__error': Status == 'Critical', 'status-light__warn': Status == 'Warning', 'status-light__good': Status == 'Good'}">{{Status}}</span>
-					</area>
+					<area shape="rect" coords="61,130,84,248" alt="ssd1" id="usi-SSD1" ng-mouseover="SSD('SSD1')" />
 					<area shape="rect" coords="90,130,113,248" alt="ssd2" id="ssdArrayStyle" ng-mouseover="SSD('SSD2')" />
 					<area shape="rect" coords="119,130,142,248" alt="ssd3" id="ssdArrayStyle" ng-mouseover="SSD('SSD3')" />
 					<area shape="rect" coords="146,130,169,248" alt="ssd4" id="ssdArrayStyle" ng-mouseover="SSD('SSD4')" />
@@ -39,7 +37,10 @@
 					<area shape="rect" coords="645,130,669,248" alt="ssd22" id="ssdArrayStyle" ng-mouseover="SSD('SSD22')" />
 					<area shape="rect" coords="675,130,698,248" alt="ssd23" id="ssdArrayStyle" ng-mouseover="SSD('SSD23')" />
 					<area shape="rect" coords="703,130,726,248" alt="ssd24" id="ssdArrayStyle" ng-mouseover="SSD('SSD24')" />
-				</map></div>
+				</map>
+				<p id="usi-ssd1-status"><img src="ssd1url"></img></p>
+				<p id="usi-ssd2-status"><img src="ssd2url"></img></p>
+				</div>
 			</li>
 			<li class="img_display"><div id="rear-img">
 				<img id="rearImg" src="../../images/J2024-03-rear.png" alt="cableImage" usemap="#cableMap"/>
