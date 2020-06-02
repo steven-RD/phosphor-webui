@@ -72,11 +72,8 @@ window.angular && (function(angular) {
       ///ssd information
       $scope.SSD = function(num){
           //console.log(ssdMessage);
-		  
-			if(ssdNum == 'SSD1'){
-				$scope.ssd1url = "../../icons/icon-ssd-good.svg";
-				$scope.ssd1Flag = true;
-			}
+			$scope.ssd1url = "../../icons/icon-ssd-good.svg";
+			$scope.ssd1Flag = true;
 			$scope.ssd2url = "../../icons/icon-ssd-bad.svg";
 			$scope.ssd2Flag =true;
 			console.log($scope.ssd2url);
