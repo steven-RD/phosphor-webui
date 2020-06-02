@@ -298,7 +298,7 @@ window.angular && (function(angular) {
         UsiAPIUtils.getSsdInfo().then(
             function(data){
                 //ssdMessage = data;
-			ssdMessage = [
+			ssdMessage = {
 				"SSD1": {
 					"ConfigureWidth": "x4",
 					"Inserted": "Absent",
@@ -347,7 +347,8 @@ window.angular && (function(angular) {
 					"Type": "U.2",
 					"Value": "0x4300121"
 				  }
-				];
+			};
+			
 				angular.forEach(ssdMessage, function(ssdInfo, ssdNum){
 					if(angular.equals(ssdNum, "SSD1")){
 						if(ssdInfo.Status == "Good"){
