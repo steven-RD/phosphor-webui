@@ -71,23 +71,23 @@ window.angular && (function(angular) {
       var PSInfo=[];
       ///ssd information
       $scope.SSD = function(num){
-          //console.log(ssdMessage);
-			/* $scope.ssd4url = "../../images/icon-ssd-warning.svg";
-			$scope.ssd5url = "../../images/icon-ssd-good.svg"; */
       angular.forEach(ssdMessage, function(ssdInfo, ssdNum){
         if(angular.equals(ssdNum, num)){
             $scope.ssdNo=ssdNum;
             $scope.ssdx=ssdInfo;
             changeStatus('ssd');
-            //console.log(ssdInfo);
-			/* var n = num.replace(/[^0-9]/ig,"");
-			var leftPos = 61+29*(n-1)+'px';
-			var topPos = 130+50+'px'; */
+			var n = num.replace(/[^0-9]/ig,"");
+			console.log(n);
             var lab = document.getElementById('usi-ssd');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
             lab.style.display = "block";
-            lab.style.left = mousePosition.x + 5 + 'px';
+            //lab.style.left = mousePosition.x + 5 + 'px';
+			if(n > 12){
+				lab.style.left = mousePosition.x - 300 + 'px';
+			} else {
+				lab.style.left = mousePosition.x + 5 + 'px';
+			}
             lab.style.top = mousePosition.y  + 5 +  'px';
             lab.style.height = '0px';
             lab.style.width = '0px';
@@ -188,7 +188,7 @@ window.angular && (function(angular) {
         if(BMCMessage[name] != "Bmcinfo Get Fail"){
             changeStatus('bmc');
             $scope.bmcinfo = BMCMessage[name];
-            console.log($scope.bmcinfo);
+            //console.log($scope.bmcinfo);
             var lab = document.getElementById('usi-bmc');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -201,8 +201,8 @@ window.angular && (function(angular) {
             changeStatus('ioccx');
             $scope.ioccname = name;
             $scope.ioccxstatus = BMCMessage[name];
-            console.log($scope.ioccname);
-            console.log($scope.ioccxstatus);
+            //console.log($scope.ioccname);
+            //console.log($scope.ioccxstatus);
             var lab = document.getElementById('usi-ioccx');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -595,17 +595,14 @@ window.angular && (function(angular) {
 							$scope.ssd1good = true;
 							$scope.ssd1bad = false;
 							$scope.ssd1warning =false;
-							console.log(ssdInfo.Status);
 						}else if (ssdInfo.Status == "Bad"){
 							$scope.ssd1good = false;
 							$scope.ssd1bad = true;
 							$scope.ssd1warning =false;
-							console.log(ssdInfo.Status);
 						}else if (ssdInfo.Status == "Absent"){
 							$scope.ssd1good = false;
 							$scope.ssd1bad = false;
 							$scope.ssd1warning =true;
-							console.log(ssdInfo.Status);
 						}
 					}
 					if(angular.equals(ssdNum, "SSD2")){
@@ -613,17 +610,14 @@ window.angular && (function(angular) {
 							$scope.ssd2good = true;
 							$scope.ssd2bad = false;
 							$scope.ssd2warning =false;
-							console.log(ssdInfo.Status);
 						}else if (ssdInfo.Status == "Bad"){
 							$scope.ssd2good = false;
 							$scope.ssd2bad = true;
 							$scope.ssd2warning =false;
-							console.log(ssdInfo.Status);
 						}else if (ssdInfo.Status == "Absent"){
 							$scope.ssd2good = false;
 							$scope.ssd2bad = false;
 							$scope.ssd2warning =true;
-							console.log(ssdInfo.Status);
 						}
 					}
 					if(angular.equals(ssdNum, "SSD3")){
@@ -751,17 +745,14 @@ window.angular && (function(angular) {
 							$scope.ssd11good = true;
 							$scope.ssd11bad = false;
 							$scope.ssd11warning =false;
-							console.log(ssdInfo.Status);
 						}else if (ssdInfo.Status == "Bad"){
 							$scope.ssd11good = false;
 							$scope.ssd11bad = true;
 							$scope.ssd11warning =false;
-							console.log(ssdInfo.Status);
 						}else if (ssdInfo.Status == "Absent"){
 							$scope.ssd11good = false;
 							$scope.ssd11bad = false;
 							$scope.ssd11warning =true;
-							console.log(ssdInfo.Status);
 						}
 					}
 					if(angular.equals(ssdNum, "SSD12")){
@@ -769,17 +760,14 @@ window.angular && (function(angular) {
 							$scope.ssd12good = true;
 							$scope.ssd12bad = false;
 							$scope.ssd12warning =false;
-							console.log(ssdInfo.Status);
 						}else if (ssdInfo.Status == "Bad"){
 							$scope.ssd12good = false;
 							$scope.ssd12bad = true;
 							$scope.ssd12warning =false;
-							console.log(ssdInfo.Status);
 						}else if (ssdInfo.Status == "Absent"){
 							$scope.ssd12good = false;
 							$scope.ssd12bad = false;
 							$scope.ssd12warning =true;
-							console.log(ssdInfo.Status);
 						}
 					}
 					if(angular.equals(ssdNum, "SSD13")){
@@ -922,17 +910,14 @@ window.angular && (function(angular) {
 							$scope.ssd22good = true;
 							$scope.ssd22bad = false;
 							$scope.ssd22warning =false;
-							console.log(ssdInfo.Status);
 						}else if (ssdInfo.Status == "Bad"){
 							$scope.ssd22good = false;
 							$scope.ssd22bad = true;
 							$scope.ssd22warning =false;
-							console.log(ssdInfo.Status);
 						}else if (ssdInfo.Status == "Absent"){
 							$scope.ssd22good = false;
 							$scope.ssd22bad = false;
 							$scope.ssd22warning =true;
-							console.log(ssdInfo.Status);
 						}
 					}
 					if(angular.equals(ssdNum, "SSD23")){
