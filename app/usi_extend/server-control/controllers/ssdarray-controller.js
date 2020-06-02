@@ -72,10 +72,8 @@ window.angular && (function(angular) {
       ///ssd information
       $scope.SSD = function(num){
           //console.log(ssdMessage);
-			$scope.ssd1url = "../../icons/icon-help.svg";
-			$scope.ssd1Flag = true;
-			$scope.ssd2url = "../../icons/icon-health.svg";
-			$scope.ssd2Flag =true;
+			$scope.ssd4url = "../../images/icon-ssd-warning.svg";
+			$scope.ssd5url = "../../images/icon-ssd-good.svg";
 			console.log($scope.ssd2url);
       angular.forEach(ssdMessage, function(ssdInfo, ssdNum){
         if(angular.equals(ssdNum, num)){
