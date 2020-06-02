@@ -72,9 +72,8 @@ window.angular && (function(angular) {
       ///ssd information
       $scope.SSD = function(num){
           //console.log(ssdMessage);
-			$scope.ssd4url = "../../images/icon-ssd-warning.svg";
-			$scope.ssd5url = "../../images/icon-ssd-good.svg";
-			console.log($scope.ssd2url);
+			/* $scope.ssd4url = "../../images/icon-ssd-warning.svg";
+			$scope.ssd5url = "../../images/icon-ssd-good.svg"; */
       angular.forEach(ssdMessage, function(ssdInfo, ssdNum){
         if(angular.equals(ssdNum, num)){
             $scope.ssdNo=ssdNum;
@@ -298,7 +297,126 @@ window.angular && (function(angular) {
       $scope.loadSsdInfo = function(){
         UsiAPIUtils.getSsdInfo().then(
             function(data){
-                ssdMessage = data;
+                //ssdMessage = data;
+			ssdMessage = [
+				"SSD1": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "1",
+					"SlotAddr": "1",
+					"Status": "Good",
+					"Type": "U.2",
+					"Value": "0x4300109"
+				  },
+				"SSD2": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "0",
+					"SlotAddr": "2",
+					"Status": "Bad",
+					"Type": "U.2",
+					"Value": "0x300111"
+				  },
+				"SSD3": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "0",
+					"SlotAddr": "3",
+					"Status": "Absent",
+					"Type": "U.2",
+					"Value": "0x300119"
+				  },
+				"SSD4": {
+					"ConfigureWidth": "x4",
+					"Inserted": "Absent",
+					"LinkSpeed": "Not link",
+					"LinkStatus": "Fail",
+					"LinkWidth": "Not link",
+					"PartitionID": "1",
+					"SlotAddr": "4",
+					"Status": "Absent",
+					"Type": "U.2",
+					"Value": "0x4300121"
+				  }
+				];
+				angular.forEach(ssdMessage, function(ssdInfo, ssdNum){
+					if(angular.equals(ssdNum, "SSD1")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd1good = true;
+							$scope.ssd1bad = false;
+							$scope.ssd1warning =false;
+							console.log(ssdInfo.Status);
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd1good = false;
+							$scope.ssd1bad = true;
+							$scope.ssd1warning =false;
+							console.log(ssdInfo.Status);
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd1good = false;
+							$scope.ssd1bad = false;
+							$scope.ssd1warning =true;
+							console.log(ssdInfo.Status);
+						}
+					}
+					if(angular.equals(ssdNum, "SSD2")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd2good = true;
+							$scope.ssd2bad = false;
+							$scope.ssd2warning =false;
+							console.log(ssdInfo.Status);
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd2good = false;
+							$scope.ssd2bad = true;
+							$scope.ssd2warning =false;
+							console.log(ssdInfo.Status);
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd2good = false;
+							$scope.ssd2bad = false;
+							$scope.ssd2warning =true;
+							console.log(ssdInfo.Status);
+						}
+					}
+					if(angular.equals(ssdNum, "SSD3")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd3good = true;
+							$scope.ssd3bad = false;
+							$scope.ssd3warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd3good = false;
+							$scope.ssd3bad = true;
+							$scope.ssd3warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd3good = false;
+							$scope.ssd3bad = false;
+							$scope.ssd3warning =true;
+						}
+					}
+					if(angular.equals(ssdNum, "SSD4")){
+						if(ssdInfo.Status == "Good"){
+							$scope.ssd4good = true;
+							$scope.ssd4bad = false;
+							$scope.ssd4warning =false;
+						}else if (ssdInfo.Status == "Bad"){
+							$scope.ssd4good = false;
+							$scope.ssd4bad = true;
+							$scope.ssd4warning =false;
+						}else if (ssdInfo.Status == "Absent"){
+							$scope.ssd4good = false;
+							$scope.ssd4bad = false;
+							$scope.ssd4warning =true;
+						}
+					}
+
+			  });
             },
             function(error) {
                toastService.error('Error during getSsdInfo');

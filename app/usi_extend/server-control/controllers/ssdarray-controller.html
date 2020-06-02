@@ -13,7 +13,7 @@
 			<li ><div id="front-img"> <!-- src="../../../assets/images/J2024-03-front.png" -->
 				<img id="frontImg" src="../../images/J2024-03-front.png" class="ssd-image" alt="ssd" usemap="#SSDmap"/>
 				<map name="SSDmap" >
-					<area shape="rect" coords="61,130,84,248" alt="ssd1" id="usi-SSD1" ng-mouseover="SSD('SSD1')" />
+					<area shape="rect" coords="61,130,84,248" alt="ssd1" id="ssdArrayStyle" ng-mouseover="SSD('SSD1')" />
 					<area shape="rect" coords="90,130,113,248" alt="ssd2" id="ssdArrayStyle" ng-mouseover="SSD('SSD2')" />
 					<area shape="rect" coords="119,130,142,248" alt="ssd3" id="ssdArrayStyle" ng-mouseover="SSD('SSD3')" />
 					<area shape="rect" coords="146,130,169,248" alt="ssd4" id="ssdArrayStyle" ng-mouseover="SSD('SSD4')" />
@@ -38,11 +38,24 @@
 					<area shape="rect" coords="675,130,698,248" alt="ssd23" id="ssdArrayStyle" ng-mouseover="SSD('SSD23')" />
 					<area shape="rect" coords="703,130,726,248" alt="ssd24" id="ssdArrayStyle" ng-mouseover="SSD('SSD24')" />
 				</map>
-					<div id="usi-ssd1-status"><img src="../../images/icon-ssd-good.svg" /></div>
-					<div id="usi-ssd2-status"><img src="../../images/icon-ssd-good.svg" /></div>
+					<div ng-show="ssd1good == true" id="usi-ssd1-status"><img src="../../images/icon-ssd-good.svg" /></div>
+					<div ng-show="ssd1bad == true" id="usi-ssd1-status"><img src="../../images/icon-ssd-bad.svg" /></div>
+					<div ng-show="ssd1warning == true" id="usi-ssd1-status"><img src="../../images/icon-ssd-warning.svg" /></div>
+					<div ng-show="ssd2good == true" id="usi-ssd2-status"><img src="../../images/icon-ssd-good.svg" /></div>
+					<div ng-show="ssd2bad == true" id="usi-ssd2-status"><img src="../../images/icon-ssd-bad.svg" /></div>
+					<div ng-show="ssd2warning == true" id="usi-ssd2-status"><img src="../../images/icon-ssd-warning.svg" /></div>
+					<div ng-show="ssd3good == true" id="usi-ssd3-status"><img src="../../images/icon-ssd-good.svg" /></div>
+					<div ng-show="ssd3bad == true" id="usi-ssd3-status"><img src="../../images/icon-ssd-bad.svg" /></div>
+					<div ng-show="ssd3warning == true" id="usi-ssd3-status"><img src="../../images/icon-ssd-warning.svg" /></div>
+					<div ng-show="ssd4good == true" id="usi-ssd4-status"><img src="../../images/icon-ssd-good.svg" /></div>
+					<div ng-show="ssd4bad == true" id="usi-ssd4-status"><img src="../../images/icon-ssd-bad.svg" /></div>
+					<div ng-show="ssd4warning == true" id="usi-ssd4-status"><img src="../../images/icon-ssd-warning.svg" /></div>
+					
+					<!-- <div id="usi-ssd2-status"><img src="../../images/icon-ssd-bad.svg" /></div>
 					<div id="usi-ssd3-status"><img src="../../images/icon-ssd-good.svg" /></div>
-					<div id="usi-ssd4-status"><img src={{ssd4url}} /></div>
+					<div id="usi-ssd4-status"><img src="../../images/icon-ssd-warning.svg" /></div>
 					<div id="usi-ssd5-status"><img src={{ssd5url}} /></div>
+					 -->
 					<!-- <div id="usi-ssd2-status" ng-show="ssd2Flag == true"><img src={{ssd2url}}></img></div> -->
 					<!-- <div id="usi-ssd3-status" ><img src="../../icons/icon-ssd-good.svg" /></div> -->
 					<!-- <div id="usi-ssd4-status" ><icon class="nav-icon" file="icon-ssd-good.svg"></icon></div> -->
