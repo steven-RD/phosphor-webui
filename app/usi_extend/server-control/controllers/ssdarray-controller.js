@@ -82,7 +82,7 @@ window.angular && (function(angular) {
 			var leftPos = 61+29*(n-1)+'px';
 			var topPos = 130+50+'px'; */
 			if(ssdNum == 'SSD1')
-				$scope.ssd1url="../../icons/icon-ssd-good.svg";
+				$scope.ssd1url = "../../icons/icon-ssd-good.svg";
             var lab = document.getElementById('usi-ssd');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
