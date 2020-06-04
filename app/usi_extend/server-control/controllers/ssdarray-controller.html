@@ -138,9 +138,6 @@
 					<div id="usi-ssd4-status"><img src="../../images/icon-ssd-warning.svg" /></div>
 					<div id="usi-ssd5-status"><img src={{ssd5url}} /></div>
 					 -->
-					<!-- <div id="usi-ssd2-status" ng-show="ssd2Flag == true"><img src={{ssd2url}}></img></div> -->
-					<!-- <div id="usi-ssd3-status" ><img src="../../icons/icon-ssd-good.svg" /></div> -->
-					<!-- <div id="usi-ssd4-status" ><icon class="nav-icon" file="icon-ssd-good.svg"></icon></div> -->
 				</div>
 			</li>
 			<li class="img_display"><div id="rear-img">
@@ -151,7 +148,7 @@
 					<area shape="rect" coords="190,120,440,220" alt="cable1" id="ssdArrayStyle" ng-mouseover="Cable('iocca')"/>
 					<area shape="rect" coords="490,120,740,220" alt="cable2" id="ssdArrayStyle" ng-mouseover="Cable('ioccb')"/>
 					<area shape="rect" coords="206,240,234,264" alt="ip" id="ssdArrayStyle" ng-mouseover="Ip()"/>
-					<area shape="rect" coords="494,240,525,264" alt="ip" id="ssdArrayStyle" ng-mouseover="Ip()"/>
+					<!-- <area shape="rect" coords="494,240,525,264" alt="ip" id="ssdArrayStyle" ng-mouseover="Ip()"/> -->
 				</map></div>
             </li>
             <li class="img_display"><div id="inside-img">
@@ -338,7 +335,6 @@
                     <th>Low critical</th>
                     <th>Low warning</th>
                     <th>Current speed</th>
-                    <th>Duty cycle</th>
                     <th>High warning</th>
                     <th>High critical</th>
                 </tr>
@@ -349,7 +345,6 @@
                     <td>{{faninfoIN.CriticalLow}}<span >{{faninfoIN.unit}}</span></td> <!-- class="sensors__tbody-unit" -->
                     <td>{{faninfoIN.WarningLow}}<span >{{faninfoIN.unit}}</span></td>
                     <td>{{faninfoIN.Value}}<span >{{faninfoIN.unit}}</span></td>
-                    <td>{{faninfoIN.Target}}</td>
                     <td>{{faninfoIN.WarningHigh}}<span >{{faninfoIN.unit}}</span></td>
                     <td>{{faninfoIN.CriticalHigh}}<span >{{faninfoIN.unit}}</span></td>
                 </tr>
@@ -358,7 +353,6 @@
                     <td>{{faninfoOUT.CriticalLow}}<span >{{faninfoOUT.unit}}</span></td> <!-- class="sensors__tbody-unit" -->
                     <td>{{faninfoOUT.WarningLow}}<span >{{faninfoOUT.unit}}</span></td>
                     <td>{{faninfoOUT.Value}}<span >{{faninfoOUT.unit}}</span></td>
-                    <td>{{faninfoOUT.Target}}</td>
                     <td>{{faninfoOUT.WarningHigh}}<span >{{faninfoOUT.unit}}</span></td>
                     <td>{{faninfoOUT.CriticalHigh}}<span >{{faninfoOUT.unit}}</span></td>
                 </tr>

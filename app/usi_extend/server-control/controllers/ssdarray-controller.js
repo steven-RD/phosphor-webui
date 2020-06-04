@@ -77,7 +77,7 @@ window.angular && (function(angular) {
             $scope.ssdx=ssdInfo;
             changeStatus('ssd');
 			var n = num.replace(/[^0-9]/ig,"");
-			console.log(n);
+			//console.log(n);
             var lab = document.getElementById('usi-ssd');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -354,7 +354,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "1",
-					"SlotAddr": "1",
+					"SlotAddr": "5",
 					"Status": "Good",
 					"Type": "U.2",
 					"Value": "0x4300109"
@@ -366,7 +366,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "0",
-					"SlotAddr": "2",
+					"SlotAddr": "6",
 					"Status": "Bad",
 					"Type": "U.2",
 					"Value": "0x300111"
@@ -378,7 +378,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "0",
-					"SlotAddr": "3",
+					"SlotAddr": "7",
 					"Status": "Absent",
 					"Type": "U.2",
 					"Value": "0x300119"
@@ -390,7 +390,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "1",
-					"SlotAddr": "4",
+					"SlotAddr": "8",
 					"Status": "Absent",
 					"Type": "U.2",
 					"Value": "0x4300121"
@@ -402,7 +402,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "1",
-					"SlotAddr": "1",
+					"SlotAddr": "9",
 					"Status": "Good",
 					"Type": "U.2",
 					"Value": "0x4300109"
@@ -414,7 +414,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "0",
-					"SlotAddr": "2",
+					"SlotAddr": "10",
 					"Status": "Bad",
 					"Type": "U.2",
 					"Value": "0x300111"
@@ -426,7 +426,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "0",
-					"SlotAddr": "3",
+					"SlotAddr": "11",
 					"Status": "Absent",
 					"Type": "U.2",
 					"Value": "0x300119"
@@ -438,7 +438,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "1",
-					"SlotAddr": "4",
+					"SlotAddr": "12",
 					"Status": "Absent",
 					"Type": "U.2",
 					"Value": "0x4300121"
@@ -450,7 +450,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "1",
-					"SlotAddr": "1",
+					"SlotAddr": "13",
 					"Status": "Good",
 					"Type": "U.2",
 					"Value": "0x4300109"
@@ -462,7 +462,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "0",
-					"SlotAddr": "2",
+					"SlotAddr": "14",
 					"Status": "Bad",
 					"Type": "U.2",
 					"Value": "0x300111"
@@ -474,7 +474,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "0",
-					"SlotAddr": "3",
+					"SlotAddr": "15",
 					"Status": "Absent",
 					"Type": "U.2",
 					"Value": "0x300119"
@@ -486,7 +486,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "1",
-					"SlotAddr": "4",
+					"SlotAddr": "16",
 					"Status": "Absent",
 					"Type": "U.2",
 					"Value": "0x4300121"
@@ -498,7 +498,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "1",
-					"SlotAddr": "1",
+					"SlotAddr": "17",
 					"Status": "Good",
 					"Type": "U.2",
 					"Value": "0x4300109"
@@ -510,7 +510,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "0",
-					"SlotAddr": "2",
+					"SlotAddr": "18",
 					"Status": "Bad",
 					"Type": "U.2",
 					"Value": "0x300111"
@@ -522,7 +522,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "0",
-					"SlotAddr": "3",
+					"SlotAddr": "19",
 					"Status": "Absent",
 					"Type": "U.2",
 					"Value": "0x300119"
@@ -534,7 +534,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "1",
-					"SlotAddr": "4",
+					"SlotAddr": "20",
 					"Status": "Absent",
 					"Type": "U.2",
 					"Value": "0x4300121"
@@ -546,7 +546,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "1",
-					"SlotAddr": "1",
+					"SlotAddr": "21",
 					"Status": "Good",
 					"Type": "U.2",
 					"Value": "0x4300109"
@@ -558,7 +558,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "0",
-					"SlotAddr": "2",
+					"SlotAddr": "22",
 					"Status": "Bad",
 					"Type": "U.2",
 					"Value": "0x300111"
@@ -570,7 +570,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "0",
-					"SlotAddr": "3",
+					"SlotAddr": "23",
 					"Status": "Absent",
 					"Type": "U.2",
 					"Value": "0x300119"
@@ -582,7 +582,7 @@ window.angular && (function(angular) {
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
 					"PartitionID": "1",
-					"SlotAddr": "4",
+					"SlotAddr": "24",
 					"Status": "Absent",
 					"Type": "U.2",
 					"Value": "0x4300121"
