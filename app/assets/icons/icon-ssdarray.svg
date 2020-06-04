@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg">
  <g>
   <title>SSD array</title>
-  <rect id="svg_1" height="24" width="5" y="10" x="2" fill="#56aaff"/>
-  <rect id="svg_2" height="24" width="5" y="10" x="9" fill="#56aaff"/>
-  <rect id="svg_5" height="24" width="5" y="10" x="16" fill="#56aaff"/>
-  <rect id="svg_6" height="24" width="5" y="10" x="23" fill="#56aaff"/>
-  <rect id="svg_7" height="24" width="5" y="10" x="30" fill="#56aaff"/>
-  <rect id="svg_8" height="24" width="5" y="10" x="37" fill="#56aaff"/>
+  <rect id="svg_1" height="35" width="5" y="10" x="2" fill="#56aaff"/>
+  <rect id="svg_2" height="35" width="5" y="10" x="9" fill="#56aaff"/>
+  <rect id="svg_5" height="35" width="5" y="10" x="16" fill="#56aaff"/>
+  <rect id="svg_6" height="35" width="5" y="10" x="23" fill="#56aaff"/>
+  <rect id="svg_7" height="35" width="5" y="10" x="30" fill="#56aaff"/>
+  <rect id="svg_8" height="35" width="5" y="10" x="37" fill="#56aaff"/>
  </g>
 </svg>
