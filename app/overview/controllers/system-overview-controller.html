@@ -79,15 +79,15 @@
 	
 	<div class="row column">
 		<div class="bmc-reboot-header">
-			<h2 class="h3">Current JBOF boot status</h2>
+			<h2 class="h3">Current AFA boot status</h2>
 		</div>
-		<div class="float-right bmc-reboot__status-log inline">JBOF last reboot at
+		<div class="float-right bmc-reboot__status-log inline">AFA last reboot at
 			<span class="courier-bold">{{reboot_time | localeDate}}</span>
 		</div>
     </div>
     <div class="row column">
         <div class="bmc-reboot-option" ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
-        <p>When reboot JBOF, your web browser loses contact with the JBOF for several minutes.</p>
+        <p>When reboot AFA, your web browser loses contact with the AFA for several minutes.</p>
         <confirm title="Reboot the JBOF"
           confirm="confirm"
           ng-show="confirm"
@@ -95,7 +95,7 @@
         </div>
         <div class="row column">
 			<button id="bmc__reboot" class="btn  btn-secondary" ng-class="{disabled: confirm}" ng-click="rebootConfirm()" ng-disabled="dataService.server_unreachable">
-				<icon file="icon-restart.svg"></icon>Reboot JBOF
+				<icon file="icon-restart.svg"></icon>Reboot AFA
 			</button>
 		</div>
     </div>
@@ -135,7 +135,7 @@
           <p class="inline quick-links__event-copy">View {{logs.length}} high priority events</p>
         </a> -->
         <dl class="quick-links__item no-icon">
-          <dt class="inline quick-links__label">JBOF time</dt>
+          <dt class="inline quick-links__label">AFA time</dt>
           <dd class="courier-bold bmc-time">{{ bmc_time | localeDate }}</dd>
         </dl>
         <div class="quick-links__item no-icon">
