@@ -37,17 +37,13 @@ window.angular && (function(angular) {
     };
 	
 	$scope.toggleSwitchPower = function() {
-      /*
-        Set power switch state.
-        if success, get power switch status and update.
-      */
-     var toggleState =($scope.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
-     UsiAPIUtils.setPowerSwitchState(toggleState).then(
+        var toggleState =($scope.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
+        UsiAPIUtils.setPowerSwitchState(toggleState).then(
         function(data) {
            UsiAPIUtils.getPowerSwitchStatus().then(
               function(info){
                   $scope.switch_state = info.Status;
-                  console.log(switch_state);
+                  console.log(scope.switch_state);
               },
               function(error) {
                   console.log(JSON.stringify(error));
