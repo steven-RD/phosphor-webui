@@ -23,7 +23,8 @@
     </div>
     <div class="row column">
         <div class="bmc-reboot-option" ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
-        <p>When reboot AFA, your web browser loses contact with the AFA for several minutes.</p>
+        <p>When reboot AFA, your web browser loses contact with the AFA for several minutes.When the AFA is back online, you must log in again. 
+		   If the Log In button is not available when the AFA is brought back online, close your web browser. Then, reopen the web browser and enter your AFA IP address.</p>
         <confirm title="Reboot the JBOF"
           confirm="confirm"
           ng-show="confirm"
@@ -34,7 +35,7 @@
 				<icon file="icon-restart.svg"></icon>Reboot AFA
 			</button>
 		</div>
-    </div><br>
+    </div><br><br>
 
 
 	<div class="row column">
@@ -50,14 +51,14 @@
                        type="checkbox"
                        tabindex="0"
                        ng-click="toggleSwitchPower()"
-                       <!-- ng-checked="switch_state == 'Power On'"
-                       ng-disabled="dataService.server_unreachable" -->
+                       ng-checked="switch_state == 'Power On'"
+                       ng-disabled="dataService.server_unreachable"
                        >
                 <label for="toggle__switch-round" tabindex="0">Switch power is <span class="led-switch__status">{{switch_state}}</span></label>
             </div>
             <div class="led-switch__label inline">
-                <p>AFA LED light is <span class="led-switch__status">{{switch_state}}</span></p>
-                <p>Turn the switch power on or off. If the AFA has an LCD, use this control to display text (on) or not to display text (off) on the LCD.</p>
+                <p>AFA switch is <span class="led-switch__status">{{switch_state}}</span></p>
+                <p>Turn the switch power on or power off. When you operate the switch or get ssd information, please make sure that the switch is power on! </p>
             </div>
         </div>
     </div>
