@@ -83,6 +83,10 @@
           <a href="#/server-control/fan" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">Fan control</a>
         </li>
+        <li ng-class="{'active': (path == '/server-control/fan')}">
+          <a href="#/server-control/system" ng-click="closeSubnav()"
+            tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">System control</a>
+        </li>
         <li ng-class="{'active': (path == '/server-control/remote-console')}">
           <a href="#/server-control/remote-console" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">Serial over LAN console</a>

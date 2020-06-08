@@ -112,6 +112,8 @@ window.angular && (function(angular) {
             angular.forEach(PSInfo, function(psInfo, psName) {
                 if(angular.equals(psName, name)) {
                     changeStatus('psx');
+					if(psInfo.Status == 'OK')
+						psInfo.Status = 'Error';
                     $scope.psname=psName;
                     $scope.psinfo=psInfo;
                     var lab = document.getElementById('usi-psx');

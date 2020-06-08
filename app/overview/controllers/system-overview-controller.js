@@ -38,7 +38,7 @@ window.angular && (function(angular) {
           function(error) {
             console.log(JSON.stringify(error));
           });
-      $scope.rebootConfirm = function() {
+/*       $scope.rebootConfirm = function() {
           if ($scope.confirm) {
 			return;
 		  }
@@ -54,7 +54,7 @@ window.angular && (function(angular) {
 				toastService.error('Unable to reboot BMC.');
               });
       };
-	  
+	   */
 
       function loadOverviewData() {
         $scope.loading = true;

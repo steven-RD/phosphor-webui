@@ -48,6 +48,11 @@ window.angular && (function(angular) {
                 'controller': 'fanController',
                 authenticated: true
               })
+			  .when('/server-control/system', {
+                'template': require('../usi_extend/server-control/controllers/system-controller.html'),
+                'controller': 'systemController',
+                authenticated: true
+              })
               .when('/server-control/remote-console', {
                 'template':
                     require('./controllers/remote-console-controller.html'),
