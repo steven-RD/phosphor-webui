@@ -99,7 +99,20 @@ window.angular && (function(angular) {
     $scope.PowerSupply = function(name) {
         if(angular.equals(name, 'PS')) {
             changeStatus('ps');
-            $scope.psinfo=PSInfo;
+            //$scope.psinfo=PSInfo;
+			 angular.forEach(PSInfo, function(psInfo, psName) {
+                if(angular.equals(psName, 'PS1')) {
+					if(psInfo.Status != 'OK')
+                        psInfo.Status = 'Error';
+                    $scope.ps1name=psName;
+                    $scope.ps1info=psInfo;
+                } else if (angular.equals(psName, 'PS2')) {
+					if(psInfo.Status != 'OK')
+                        psInfo.Status = 'Error';
+                    $scope.ps2name=psName;
+                    $scope.ps2info=psInfo;
+				}
+            });
             var lab = document.getElementById('usi-ps');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -112,7 +125,7 @@ window.angular && (function(angular) {
             angular.forEach(PSInfo, function(psInfo, psName) {
                 if(angular.equals(psName, name)) {
                     changeStatus('psx');
-					if(psInfo.Status == 'OK')
+					if(psInfo.Status != 'OK')
 						psInfo.Status = 'Error';
                     $scope.psname=psName;
                     $scope.psinfo=psInfo;
@@ -185,48 +198,55 @@ window.angular && (function(angular) {
         }
     };
 
+    whichiocc = 'None';
     ///BMC information
     $scope.BMC = function(name) {
-        if(BMCMessage[name] != "Bmcinfo Get Fail"){
-            changeStatus('bmc');
-            $scope.bmcinfo = BMCMessage[name];
-            //console.log($scope.bmcinfo);
-            var lab = document.getElementById('usi-bmc');
-            var mousePosition = getMousePos(window.event); ///Get mouse position
-            lab.style.position = "absolute";
-            lab.style.display = "block";
-            lab.style.height = '0px';
-            lab.style.width = '0px';
-            lab.style.left = mousePosition.x + 5 + 'px';
-            lab.style.top = mousePosition.y + 5 + 'px';
-        }else{
-            changeStatus('ioccx');
-            $scope.ioccname = name;
-            $scope.ioccxstatus = BMCMessage[name];
-            //console.log($scope.ioccname);
-            //console.log($scope.ioccxstatus);
-            var lab = document.getElementById('usi-ioccx');
-            var mousePosition = getMousePos(window.event); ///Get mouse position
-            lab.style.position = "absolute";
-            lab.style.display = "block";
-            lab.style.left = mousePosition.x + 5 + 'px';
-            lab.style.top = mousePosition.y + 5 + 'px';
-            lab.style.height = '0px';
-            lab.style.width = '0px';
+        if(BMCMessage.hasOwnProperty(name)){
+            whichiocc = name;
+            if(BMCMessage[name] != "Bmcinfo Get Fail"){
+                changeStatus('bmc');
+                $scope.bmcinfo = 'None';
+                $scope.bmcinfo = BMCMessage[name];
+                //console.log($scope.bmcinfo);
+                var lab = document.getElementById('usi-bmc');
+                var mousePosition = getMousePos(window.event); ///Get mouse position
+                lab.style.position = "absolute";
+                lab.style.display = "block";
+                lab.style.height = '0px';
+                lab.style.width = '0px';
+                lab.style.left = mousePosition.x + 5 + 'px';
+                lab.style.top = mousePosition.y + 5 + 'px';
+            }else{
+                changeStatus('ioccx');
+                $scope.ioccname = name;
+                $scope.ioccxstatus = BMCMessage[name];
+                //console.log($scope.ioccname);
+                //console.log($scope.ioccxstatus);
+                var lab = document.getElementById('usi-ioccx');
+                var mousePosition = getMousePos(window.event); ///Get mouse position
+                lab.style.position = "absolute";
+                lab.style.display = "block";
+                lab.style.left = mousePosition.x + 5 + 'px';
+                lab.style.top = mousePosition.y + 5 + 'px';
+                lab.style.height = '0px';
+                lab.style.width = '0px';
+            }
         }
     };
 
     ///IP information
-    $scope.Ip = function() {
-        changeStatus('ip');
-        var lab = document.getElementById('usi-ip');
-        var mousePosition = getMousePos(window.event); ///Get mouse position
-        lab.style.position = "absolute";
-        lab.style.display = "block";
-        lab.style.height = '0px';
-        lab.style.width = '0px';
-        lab.style.left = mousePosition.x + 5 + 'px';
-        lab.style.top = mousePosition.y + 5 + 'px';
+    $scope.Ip = function(name) {
+        if (name != whichiocc) {
+            changeStatus('ip');
+            var lab = document.getElementById('usi-ip');
+            var mousePosition = getMousePos(window.event); ///Get mouse position
+            lab.style.position = "absolute";
+            lab.style.display = "block";
+            lab.style.height = '0px';
+            lab.style.width = '0px';
+            lab.style.left = mousePosition.x + 5 + 'px';
+            lab.style.top = mousePosition.y + 5 + 'px';
+        }
     };
 
     ///fan sensor information
