@@ -16,7 +16,7 @@ window.angular && (function(angular) {
 
     angular.module('app.serverControl').controller('systemController', [
     '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', '$q',
-    function($scope, $window, UsiAPIUtils, APIUtils, dataService, $q) 
+    function($scope, $window, UsiAPIUtils, APIUtils, dataService, $q) {
     
 	$scope.rebootConfirm = function() {
         if ($scope.confirm) {
