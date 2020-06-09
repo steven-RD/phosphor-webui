@@ -33,7 +33,6 @@ window.angular && (function(angular) {
 			  for(j = 0; j < fans.length; j++) {
 				  console.log(fans[j]);
 				  UsiAPIUtils.setFanSpeed(fans[j], $scope.speed).then(
-				  console.log(fans[j]);
 				  function(data) {
 					  console.log(JSON.stringify(data));
 					  $scope.loading = false;
