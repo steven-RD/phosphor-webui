@@ -287,10 +287,15 @@
                 </tr>
             </thead>
             <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(ps, detail) in psinfo">
-                    <td>{{ps}}</td>
-                    <td>{{detail.Power}}</td>
-                    <td>{{detail.Status}}</td>
+                <tr ><!-- ng-repeat="(ps, detail) in psinfo" -->
+                    <td>{{ps1name}}</td>
+                    <td>{{ps1info.Power}}</td>
+                    <td>{{ps1info.Status}}</td>
+                </tr>
+                <tr >
+                    <td>{{ps2name}}</td>
+                    <td>{{ps2info.Power}}</td>
+                    <td>{{ps2info.Status}}</td>
                 </tr>
             </tbody>
         </table>

@@ -102,12 +102,12 @@ window.angular && (function(angular) {
             //$scope.psinfo=PSInfo;
 			 angular.forEach(PSInfo, function(psInfo, psName) {
                 if(angular.equals(psName, 'PS1')) {
-					if(psInfo.Status != 'OK')
+					if(psInfo.Status != 'OK' && psInfo.Status != 'Get Fail')
                         psInfo.Status = 'Error';
                     $scope.ps1name=psName;
                     $scope.ps1info=psInfo;
                 } else if (angular.equals(psName, 'PS2')) {
-					if(psInfo.Status != 'OK')
+					if(psInfo.Status != 'OK' && psInfo.Status != 'Get Fail')
                         psInfo.Status = 'Error';
                     $scope.ps2name=psName;
                     $scope.ps2info=psInfo;
@@ -125,7 +125,7 @@ window.angular && (function(angular) {
             angular.forEach(PSInfo, function(psInfo, psName) {
                 if(angular.equals(psName, name)) {
                     changeStatus('psx');
-					if(psInfo.Status != 'OK')
+					if(psInfo.Status != 'OK' && psInfo.Status != 'Get Fail')
 						psInfo.Status = 'Error';
                     $scope.psname=psName;
                     $scope.psinfo=psInfo;
@@ -198,17 +198,14 @@ window.angular && (function(angular) {
         }
     };
 
-    var whichiocc = 'None';
+     var whichiocc = 'None';
     ///BMC information
     $scope.BMC = function(name) {
         if(BMCMessage.hasOwnProperty(name)){
-            whichiocc = name;
-			console.log(whichiocc);
             if(BMCMessage[name] != "Bmcinfo Get Fail"){
                 changeStatus('bmc');
                 $scope.bmcinfo = 'None';
                 $scope.bmcinfo = BMCMessage[name];
-                //console.log($scope.bmcinfo);
                 var lab = document.getElementById('usi-bmc');
                 var mousePosition = getMousePos(window.event); ///Get mouse position
                 lab.style.position = "absolute";
@@ -221,8 +218,6 @@ window.angular && (function(angular) {
                 changeStatus('ioccx');
                 $scope.ioccname = name;
                 $scope.ioccxstatus = BMCMessage[name];
-                //console.log($scope.ioccname);
-                //console.log($scope.ioccxstatus);
                 var lab = document.getElementById('usi-ioccx');
                 var mousePosition = getMousePos(window.event); ///Get mouse position
                 lab.style.position = "absolute";
@@ -240,8 +235,7 @@ window.angular && (function(angular) {
         if (name != whichiocc) {
 			console.log(whichiocc);
             changeStatus('ip');
-			$scope.bmc_ip = dataService.server_id;
-			console.log(dataService.server_id);
+            $scope.bmc_ip = dataService.server_id;
             var lab = document.getElementById('usi-ip');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
@@ -1007,16 +1001,22 @@ window.angular && (function(angular) {
         );
       };
 
-      $scope.loadBMCInfo = function(){
+       $scope.loadBMCInfo = function(){
         UsiAPIUtils.getBMCInfo().then(
             function(data){
                 BMCMessage = data;
+                if(BMCMessage.hasOwnProperty('iocca')){
+                    whichiocc = 'iocca';
+                } else if(BMCMessage.hasOwnProperty('ioccb')){
+                    whichiocc = 'ioccb';
+                }
+                console.log(whichiocc);
             },
             function(error) {
                toastService.error('Error during getBMCInfo');
             }
         );
-      };
+      }; 
       // Get power supply info
       $scope.loadPowerSupplyInfo = function(){
         UsiAPIUtils.getPowerSupplyInfo().then(
@@ -1040,7 +1040,7 @@ window.angular && (function(angular) {
          });
       };
 
-      $scope.bmc_ip_addresses = [];
+/*       $scope.bmc_ip_addresses = [];
       $scope.loadNetworkInfo = function(){
           APIUtils.getNetworkInfo().then(
             function(data) {
@@ -1052,7 +1052,7 @@ window.angular && (function(angular) {
             function(error) {
               console.log(JSON.stringify(error));
             }); 
-      };
+      }; */
 
       $scope.loadSsdInfo();
       $scope.loadCableInfo();
@@ -1060,7 +1060,7 @@ window.angular && (function(angular) {
       $scope.loadBMCInfo();
       $scope.loadPowerSupplyInfo();
       $scope.loadFanSensorData();
-      $scope.loadNetworkInfo ();
+      //$scope.loadNetworkInfo ();
     }
   ]);
 })(angular);
