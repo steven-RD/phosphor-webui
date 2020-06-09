@@ -198,11 +198,12 @@ window.angular && (function(angular) {
         }
     };
 
-    whichiocc = 'None';
+    var whichiocc = 'None';
     ///BMC information
     $scope.BMC = function(name) {
         if(BMCMessage.hasOwnProperty(name)){
             whichiocc = name;
+			console.log(whichiocc);
             if(BMCMessage[name] != "Bmcinfo Get Fail"){
                 changeStatus('bmc');
                 $scope.bmcinfo = 'None';
@@ -237,7 +238,10 @@ window.angular && (function(angular) {
     ///IP information
     $scope.Ip = function(name) {
         if (name != whichiocc) {
+			console.log(whichiocc);
             changeStatus('ip');
+			$scope.bmc_ip = dataService.server_id;
+			console.log(dataService.server_id);
             var lab = document.getElementById('usi-ip');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
