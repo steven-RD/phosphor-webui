@@ -20,11 +20,11 @@ window.angular && (function(angular) {
       $scope.loading = true;
 
       APIUtils.getHardwares(function(data, originalData) {
-		  var i = 0, j = 0;
-		  var harddata = [];
+		var i = 0, j = 0;
+		var harddata = [];
 		for(i = 0; i < data.length; i++){
 			if(data[i].title != 'system' && data[i].title != 'chassis'){
-				$scope.harddata[j] = data[i];
+				harddata[j] = data[i];
 				j++;
 			}
 		}
