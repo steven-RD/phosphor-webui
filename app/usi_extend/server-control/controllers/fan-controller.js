@@ -19,26 +19,47 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, $q) {
 		$scope.loading = false;
 		
-		$scope.fans = ['Fan1_INLET', 'Fan1_OUTLET', 'Fan2_INLET', 'Fan2_OUTLET', 
+		var fans = ['Fan1_INLET', 'Fan1_OUTLET', 'Fan2_INLET', 'Fan2_OUTLET', 
 					   'Fan3_INLET', 'Fan3_OUTLET', 'Fan4_INLET', 'Fan4_OUTLET',
-					   'Fan5_INLET', 'Fan5_OUTLET', 'Fan6_INLET', 'Fan6_OUTLET', 'ALL'];
-        $scope.fanId = 'Fan1_INLET';
+					   'Fan5_INLET', 'Fan5_OUTLET', 'ALL'];
+      $scope.fanId = 'Fan1_INLET';
       $scope.setFanSpeed = function() {
           $scope.loading = true;
 		  $scope.confirmSettings = false;
-		  console.log($scope.fanId)
-		  console.log($scope.speed)
-          UsiAPIUtils.setFanSpeed($scope.fanId, $scope.speed).then(
-              function(data) {
-				  console.log(JSON.stringify(data));
-				  console.log("setFanSpeed");
-				  $scope.loading = false;
-			  },
-              function(error) {
-                  console.log(JSON.stringify(error));
-				  $scope.loading = false;
-                  return $q.reject();
+		  console.log($scope.fanId);
+		  console.log($scope.speed);
+		  var fan = 'None';
+		  if($scope.fanId == 'ALL') {
+			  for(fan in fans) {
+				  UsiAPIUtils.setFanSpeed(fan, $scope.speed).then(
+				  function(data) {
+					  console.log(JSON.stringify(data));
+					  $scope.loading = false;
+					  toastService.success('Set'+ fan +'speed OK.');
+					
+				  },
+				  function(error) {
+					  console.log(JSON.stringify(error));
+					  $scope.loading = false;
+					  toastService.error('Set'+ fan +'speed error.');
+					  return $q.reject();
                 }); 
+			  }
+		  } else {
+			  UsiAPIUtils.setFanSpeed($scope.fanId, $scope.speed).then(
+				  function(data) {
+					  console.log(JSON.stringify(data));
+					  $scope.loading = false;
+					  toastService.success('Set'+ $scope.fanId +'speed OK.');
+					
+				  },
+				  function(error) {
+					  console.log(JSON.stringify(error));
+					  $scope.loading = false;
+					  toastService.error('Set'+ $scope.fanId +'speed error.');
+					  return $q.reject();
+                }); 
+		  }
       }
 	  
 	  $scope.refresh = function() {
