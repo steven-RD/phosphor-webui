@@ -15,33 +15,33 @@ window.angular && (function(angular) {
     'use strict';
 
     angular.module('app.serverControl').controller('fanController', [
-    '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', '$q',
-    function($scope, $window, UsiAPIUtils, APIUtils, dataService, $q) {
+    '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', 'toastService', '$q',
+    function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService, $q) {
 		$scope.loading = false;
 		
 		var fans = ['Fan1_INLET', 'Fan1_OUTLET', 'Fan2_INLET', 'Fan2_OUTLET', 
 					   'Fan3_INLET', 'Fan3_OUTLET', 'Fan4_INLET', 'Fan4_OUTLET',
-					   'Fan5_INLET', 'Fan5_OUTLET', 'ALL'];
+					   'Fan5_INLET', 'Fan5_OUTLET'];
       $scope.fanId = 'Fan1_INLET';
       $scope.setFanSpeed = function() {
           $scope.loading = true;
 		  $scope.confirmSettings = false;
 		  console.log($scope.fanId);
 		  console.log($scope.speed);
-		  var fan = 'None';
+		  //var j = 0;
 		  if($scope.fanId == 'ALL') {
-			  for(fan in fans) {
-				  UsiAPIUtils.setFanSpeed(fan, $scope.speed).then(
-				  function(data) {
+			  for(j = 0; j < fans.length; j++) {
+				  UsiAPIUtils.setFanSpeed(fans[j], $scope.speed).then(
+				  function(data) { 
 					  console.log(JSON.stringify(data));
 					  $scope.loading = false;
-					  toastService.success('Set'+ fan +'speed OK.');
+					  toastService.success('Set'+ fans[j] +'speed OK.');
 					
 				  },
 				  function(error) {
 					  console.log(JSON.stringify(error));
 					  $scope.loading = false;
-					  toastService.error('Set'+ fan +'speed error.');
+					  toastService.error('Set'+ fans[j] +'speed error.');
 					  return $q.reject();
                 }); 
 			  }
@@ -68,7 +68,7 @@ window.angular && (function(angular) {
 		  UsiAPIUtils.getFanSpeed($scope.fanId).then(
               function(data) {
 				  console.log("getFanSpeed");
-				  console.log(JSON.stringify(data));
+				  //console.log(JSON.stringify(data));
 				  FanInfo = data;
 				  $scope.speed = FanInfo["Target"];
 				  $scope.loading = false;

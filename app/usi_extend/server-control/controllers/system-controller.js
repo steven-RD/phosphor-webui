@@ -15,8 +15,8 @@ window.angular && (function(angular) {
     'use strict';
 
     angular.module('app.serverControl').controller('systemController', [
-    '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', '$q',
-    function($scope, $window, UsiAPIUtils, APIUtils, dataService, $q) {
+    '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', 'toastService', '$q',
+    function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService, $q) {
     
 	$scope.rebootConfirm = function() {
         if ($scope.confirm) {
