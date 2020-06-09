@@ -28,7 +28,7 @@ window.angular && (function(angular) {
 		  $scope.confirmSettings = false;
 		  console.log($scope.fanId);
 		  console.log($scope.speed);
-		  //var j = 0;
+		  var j = 0;
 		  if($scope.fanId == 'ALL') {
 			  for(j = 0; j < fans.length; j++) {
 				  UsiAPIUtils.setFanSpeed(fans[j], $scope.speed).then(

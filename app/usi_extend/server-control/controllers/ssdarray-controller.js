@@ -105,12 +105,20 @@ window.angular && (function(angular) {
 					if(psInfo.Status != 'OK' && psInfo.Status != 'Get Fail')
                         psInfo.Status = 'Error';
                     $scope.ps1name=psName;
-                    $scope.ps1info=psInfo;
+                    $scope.ps1power=psInfo.Power;
+                    $scope.ps1status=psInfo.Status;
+					console.log(psName);
+					console.log(psInfo.Power);
+					console.log(psInfo.Status);
                 } else if (angular.equals(psName, 'PS2')) {
 					if(psInfo.Status != 'OK' && psInfo.Status != 'Get Fail')
                         psInfo.Status = 'Error';
                     $scope.ps2name=psName;
-                    $scope.ps2info=psInfo;
+                    $scope.ps2power=psInfo.Power;
+                    $scope.ps2status=psInfo.Status;
+					console.log(psName);
+					console.log(psInfo.Power);
+					console.log(psInfo.Status);
 				}
             });
             var lab = document.getElementById('usi-ps');
@@ -128,7 +136,11 @@ window.angular && (function(angular) {
 					if(psInfo.Status != 'OK' && psInfo.Status != 'Get Fail')
 						psInfo.Status = 'Error';
                     $scope.psname=psName;
-                    $scope.psinfo=psInfo;
+                    $scope.pspower=psInfo.Power;
+                    $scope.psstatus=psInfo.Status;
+					console.log(psName);
+					console.log(psInfo.Power);
+					console.log(psInfo.Status);
                     var lab = document.getElementById('usi-psx');
                     var mousePosition = getMousePos(window.event); ///Get mouse position
                     lab.style.position = "absolute";
