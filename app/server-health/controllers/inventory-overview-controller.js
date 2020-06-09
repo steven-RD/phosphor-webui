@@ -21,6 +21,7 @@ window.angular && (function(angular) {
 
       APIUtils.getHardwares(function(data, originalData) {
         $scope.hardwares = data;
+		console.log(data);
         $scope.originalData = JSON.stringify(originalData);
         $scope.loading = false;
       });

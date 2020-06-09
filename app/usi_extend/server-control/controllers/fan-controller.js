@@ -28,21 +28,22 @@ window.angular && (function(angular) {
 		  $scope.confirmSettings = false;
 		  console.log($scope.fanId);
 		  console.log($scope.speed);
-		  var j = 0;
+		  var i = 0, j = 0;
 		  if($scope.fanId == 'ALL') {
-			  for(j = 0; j < fans.length; j++) {
-				  console.log(fans[j]);
-				  UsiAPIUtils.setFanSpeed(fans[j], $scope.speed).then(
+			  for(i = 0; i < fans.length; i++) {
+				  UsiAPIUtils.setFanSpeed(fans[i], $scope.speed).then(
 				  function(data) {
 					  console.log(JSON.stringify(data));
 					  $scope.loading = false;
 					  console.log(fans[j]);
 					  toastService.success('Set ' + fans[j] + ' speed OK!');
+					  j++;
 				  },
 				  function(error) {
 					  console.log(JSON.stringify(error));
 					  $scope.loading = false;
 					  toastService.error('Set ' + fans[j] + ' speed error!');
+					  j++;
 					  return $q.reject();
                 }); 
 			  }
