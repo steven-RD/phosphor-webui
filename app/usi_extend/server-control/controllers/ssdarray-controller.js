@@ -102,7 +102,7 @@ window.angular && (function(angular) {
             //$scope.psinfo=PSInfo;
 			 angular.forEach(PSInfo, function(psInfo, psName) {
                 if(angular.equals(psName, 'PS1')) {
-					if(psInfo.Status != 'OK' && psInfo.Status != 'Get Fail')
+					if(psInfo.Status != 'Ok' && psInfo.Status != 'Get Fail')
                         psInfo.Status = 'Error';
                     $scope.ps1name=psName;
                     $scope.ps1power=psInfo.Power;
@@ -111,7 +111,7 @@ window.angular && (function(angular) {
 					console.log(psInfo.Power);
 					console.log(psInfo.Status);
                 } else if (angular.equals(psName, 'PS2')) {
-					if(psInfo.Status != 'OK' && psInfo.Status != 'Get Fail')
+					if(psInfo.Status != 'Ok' && psInfo.Status != 'Get Fail')
                         psInfo.Status = 'Error';
                     $scope.ps2name=psName;
                     $scope.ps2power=psInfo.Power;
@@ -133,7 +133,7 @@ window.angular && (function(angular) {
             angular.forEach(PSInfo, function(psInfo, psName) {
                 if(angular.equals(psName, name)) {
                     changeStatus('psx');
-					if(psInfo.Status != 'OK' && psInfo.Status != 'Get Fail')
+					if(psInfo.Status != 'Ok' && psInfo.Status != 'Get Fail')
 						psInfo.Status = 'Error';
                     $scope.psname=psName;
                     $scope.pspower=psInfo.Power;

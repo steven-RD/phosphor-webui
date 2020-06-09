@@ -38,7 +38,7 @@
     overflow: auto;
     .bmc-time {
       text-align: right;
-      max-width: 17em;
+      //max-width: 17em;
       float: right;
       @include mediaQuery(medium) {
         display: block;

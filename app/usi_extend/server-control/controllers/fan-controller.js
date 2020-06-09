@@ -32,16 +32,16 @@ window.angular && (function(angular) {
 		  if($scope.fanId == 'ALL') {
 			  for(j = 0; j < fans.length; j++) {
 				  UsiAPIUtils.setFanSpeed(fans[j], $scope.speed).then(
-				  function(data) { 
+				  function(data) {
 					  console.log(JSON.stringify(data));
 					  $scope.loading = false;
-					  toastService.success('Set'+ fans[j] +'speed OK.');
+					  toastService.success('Set '+ fans[j] +' speed OK.');
 					
 				  },
 				  function(error) {
 					  console.log(JSON.stringify(error));
 					  $scope.loading = false;
-					  toastService.error('Set'+ fans[j] +'speed error.');
+					  toastService.error('Set '+ fans[j] +' speed error.');
 					  return $q.reject();
                 }); 
 			  }
@@ -50,13 +50,13 @@ window.angular && (function(angular) {
 				  function(data) {
 					  console.log(JSON.stringify(data));
 					  $scope.loading = false;
-					  toastService.success('Set'+ $scope.fanId +'speed OK.');
+					  toastService.success('Set '+ $scope.fanId +' speed OK.');
 					
 				  },
 				  function(error) {
 					  console.log(JSON.stringify(error));
 					  $scope.loading = false;
-					  toastService.error('Set'+ $scope.fanId +'speed error.');
+					  toastService.error('Set '+ $scope.fanId +' speed error.');
 					  return $q.reject();
                 }); 
 		  }
@@ -65,10 +65,10 @@ window.angular && (function(angular) {
 	  $scope.refresh = function() {
 		  var FanInfo=[];
 		  $scope.loading = true;
-		  UsiAPIUtils.getFanSpeed($scope.fanId).then(
+		  if($scope.fanId != 'ALL'){
+		    UsiAPIUtils.getFanSpeed($scope.fanId).then(
               function(data) {
-				  console.log("getFanSpeed");
-				  //console.log(JSON.stringify(data));
+				  console.log(JSON.stringify(data));
 				  FanInfo = data;
 				  $scope.speed = FanInfo["Target"];
 				  $scope.loading = false;
@@ -77,7 +77,8 @@ window.angular && (function(angular) {
                   console.log(JSON.stringify(error));
 				  $scope.loading = false;
                   return $q.reject();
-                }); 
+                })
+		  }; 
 	  }
       
 	  $scope.refresh();
