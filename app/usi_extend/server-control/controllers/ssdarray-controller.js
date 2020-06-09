@@ -170,6 +170,11 @@ window.angular && (function(angular) {
         }
     };
 
+    ///cable information
+    $scope.USP = function(name) { ///TBD
+        console.log(name);
+    };
+
     ///switch information
     $scope.Switch = function(name) {
         if(swMessage[name] != "Switchinfo Get Fail"){
