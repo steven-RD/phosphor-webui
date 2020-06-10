@@ -44,9 +44,13 @@
         display: block;
         text-align: left;
         float: none;
-        margin-top: 1em; //0.25
+        margin-top: 0.25em;
       }
     }
+	 dl {
+    margin-top: 1em;
+    margin-bottom: 1rem;
+}
     &:after {
       display: none;
     }

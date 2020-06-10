@@ -176,7 +176,7 @@ window.angular && (function(angular) {
                 function(result) {
 					console.log(result);
                     $scope.firmwares = result;
-                    $scope.loadSwitchBeingActiveVersion();
+                    //$scope.loadSwitchBeingActiveVersion();
                     $scope.loadSwitchActivedVersion();
                 },
                 function(error) {
@@ -200,10 +200,15 @@ window.angular && (function(angular) {
         $scope.loadSwitchActivedVersion = function() {
             UsiAPIUtils.getSwitchActivedVersion(
               function(firmwareVersion, configurationFile) {
+			  if(firmwareVersion == 'undefined' || configurationFile == 'undefined') {
+				$scope.switchActivedVersion = 'No PCIe switch FW work!';
+				$scope.configurationFile = 'None';
+			  }else {
                 $scope.switchActivedVersion = firmwareVersion;
-                $scope.configurationFile = configurationFile;
+                $scope.configurationFile = 'v' + configurationFile;
 				console.log(firmwareVersion);
 				console.log(configurationFile);
+			  }
               },
               function(error){
                 console.log(error)
