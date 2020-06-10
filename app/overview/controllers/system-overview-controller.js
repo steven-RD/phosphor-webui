@@ -138,7 +138,29 @@ window.angular && (function(angular) {
               console.log(JSON.stringify(error));
             });
 
+
         // Judy modified at 20190627 start
+      $scope.toggleSwitchPower = function() {
+          /*
+            Set power switch state.
+            if success, get power switch status and update.
+          */
+        var toggleState =
+          ($scope.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
+        UsiAPIUtils.setPowerSwitchState(toggleState).then(
+            function(data) {
+              UsiAPIUtils.getPowerSwitchStatus().then(
+                  function(info){
+                     $scope.switch_state = info.Status;
+                  },
+                  function(error) {
+                    console.log(JSON.stringify(error));
+                  });
+            },
+            function(error) {
+              console.log(JSON.stringify(error));
+            });
+      };
         // Get power switch state when loading overview page.
         var getSwitchPowerStatePromise = UsiAPIUtils.getPowerSwitchStatus().then(
             function(info){
@@ -219,30 +241,6 @@ window.angular && (function(angular) {
             APIUtils.LED_STATE_TEXT.on;
         APIUtils.setLEDState(toggleState, function(status) {});
       };
-
-      // Judy modified at 20190527 start
-      $scope.toggleSwitchPower = function() {
-          /*
-            Set power switch state.
-            if success, get power switch status and update.
-          */
-        var toggleState =
-          ($scope.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
-        UsiAPIUtils.setPowerSwitchState(toggleState).then(
-            function(data) {
-              UsiAPIUtils.getPowerSwitchStatus().then(
-                  function(info){
-                     $scope.switch_state = info.Status;
-                  },
-                  function(error) {
-                    console.log(JSON.stringify(error));
-                  });
-            },
-            function(error) {
-              console.log(JSON.stringify(error));
-            });
-      };
-      // Judy modified at 20190527 end
 
       $scope.saveHostname = function(hostname) {
         $scope.edit_hostname = false;

@@ -73,6 +73,7 @@
                 <dd class="courier-bold">{{dataService.mac_address}}</dd>
               </dl>
             </li>
+			<!-- Steven modified at 20200610 start -->
 			<li class="overview__metadata-block">
               <dl>
                 <dt class="content-label">PCIe firmware image</dt>
@@ -82,9 +83,10 @@
 			<li class="overview__metadata-block">
               <dl>
                 <dt class="content-label">PCIe firmware version</dt>
-                <dd class="courier-bold">{{configurationFile}}</dd>
+                <dd class="courier-bold" ng-if="configurationFile!='undefined'">v{{configurationFile}}</dd>
               </dl>
             </li>
+			<!-- Steven modified at 20200610 start -->
           </ul>
         </div>
       </div>
@@ -194,9 +196,9 @@
           <p class="inline quick-links__label">Edit network settings</p>
         </a>
 		<!-- Steven modified at 20200518 start -->
-        <a href="#/server-control/fan" class="quick-links__item">
+        <!-- <a href="#/server-control/fan" class="quick-links__item">
           <p class="inline quick-links__label">Set fan speed</p>
-        </a>
+        </a> -->
         <a href="#/usi_extend/help" class="quick-links__item">
           <p class="inline quick-links__label">Help</p>
         </a>
