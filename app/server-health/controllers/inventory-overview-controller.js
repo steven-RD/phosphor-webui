@@ -20,6 +20,7 @@ window.angular && (function(angular) {
       $scope.loading = true;
 
       APIUtils.getHardwares(function(data, originalData) {
+		/*Modify by USI steven 20200609 start*/
 		var i = 0, j = 0;
 		var harddata = [];
 		for(i = 0; i < data.length; i++){
@@ -31,6 +32,9 @@ window.angular && (function(angular) {
         $scope.hardwares = harddata;
 		console.log(harddata);
 		console.log($scope.hardwares);
+		/*Modify by USI steven 20200609 end*/
+		
+		$scope.hardwares = data;
         $scope.originalData = JSON.stringify(originalData);
         $scope.loading = false;
       });
