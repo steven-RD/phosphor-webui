@@ -200,10 +200,10 @@ window.angular && (function(angular) {
         $scope.loadSwitchActivedVersion = function() {
             UsiAPIUtils.getSwitchActivedVersion(
               function(firmwareVersion, configurationFile) {
-			  if(firmwareVersion == 'undefined' || configurationFile == 'undefined') {
+			  if(typeof(firmwareVersion) == 'undefined' || typeof(configurationFile) == 'undefined') {
 				$scope.switchActivedVersion = 'No PCIe switch FW work!';
 				$scope.configurationFile = 'None';
-			  }else {
+			  } else {
                 $scope.switchActivedVersion = firmwareVersion;
                 $scope.configurationFile = 'v' + configurationFile;
 				console.log(firmwareVersion);
