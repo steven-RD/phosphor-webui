@@ -188,6 +188,7 @@ window.angular && (function(angular) {
               }
             );
         };
+		$scope.loadSwitchFirmware();
         // Judy modified at 20190627 end
 
         var promises = [
@@ -195,9 +196,9 @@ window.angular && (function(angular) {
           getFirmwaresPromise,
           getLEDStatePromise,
           getBMCTimePromise,
-          getServerInfoPromise,
-          getPowerConsumptionPromise,
-          getPowerCapPromise,
+          //getServerInfoPromise,
+          //getPowerConsumptionPromise,
+          //getPowerCapPromise,
           getNetworkInfoPromise,
           getSwitchPowerStatePromise, // Judy add at 20190627
         ];
