@@ -23,22 +23,22 @@
 			  <div class="table__cell firmware__version">PCIe firmware image</div>
 			  <!-- <div class="table__cell firmware__version">Configure file</div> -->
 			  <div class="table__cell firmware__version">Functional</div>
-			  <div class="table__cell firmware__version">ToBe activated</div>
+			  <div class="table__cell firmware__action">ToBe activated</div>
           </div>
       </div>
   </div>
   <div class="table__body">
 	  <div class="table__row">
-		  <div class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
+		  <div ng-if="version.switchActivedVersion" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
 		      <span class="table__cell-label">version:</span> {{version.switchActivedVersion}}
           </div>
 		  <!-- <div class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
 		      <span class="table__cell-label">version:</span> v{{version.configurationFile}}
           </div> -->
-		  <div class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
+		  <div ng-if="version.configurationFile" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
 		      <span class="table__cell-label">version:</span> v{{version.configurationFile}}
           </div>
-	      <div class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
+	      <div ng-if="version.toBeActiveVersion" class="table__cell firmware__action" ng-class="{'active':firmware.isExtended}">
 		      <span class="table__cell-label">version:</span> v{{version.toBeActiveVersion}}
           </div>
 	  </div>

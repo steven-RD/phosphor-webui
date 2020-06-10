@@ -34,7 +34,7 @@ window.angular && (function(angular) {
 		console.log($scope.hardwares);
 		/*Modify by USI steven 20200609 end*/
 		
-		$scope.hardwares = data;
+		//$scope.hardwares = data;
         $scope.originalData = JSON.stringify(originalData);
         $scope.loading = false;
       });

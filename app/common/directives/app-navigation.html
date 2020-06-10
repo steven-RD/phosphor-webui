@@ -109,6 +109,14 @@
       <ul class="nav__second-level btn-firmware"
         ng-style="navStyle"
         ng-class="{opened: (showSubMenu && firstLevel == 'configuration')}">
+        <li ng-class="{'active': (path == '/configuration' || path == '/configuration/firmware')}">
+          <a href="#/configuration/firmware" ng-click="closeSubnav()"
+            tabindex="{{(showSubMenu && firstLevel == 'configuration') ? 0 : -1}}">BMC firmware</a>
+        </li>
+        <li ng-class="{'active': (path == '/configuration' || path == '/configuration/switch-firmware')}">
+            <a href="#/configuration/switch-firmware" ng-click="closeSubnav()"
+            tabindex="{{(showSubMenu && firstLevel == 'configuration') ? 0 : -1}}">PCIe switch firmware</a>
+        </li>
         <li ng-class="{'active': (path == '/configuration' || path == '/configuration/network')}">
           <a href="#/configuration/network" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'configuration') ? 0 : -1}}">Network settings</a>
@@ -117,14 +125,6 @@
           <a href="#/configuration/snmp" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'configuration') ? 0 : -1}}">SNMP settings</a>
         </li> -->
-        <li ng-class="{'active': (path == '/configuration' || path == '/configuration/switch-firmware')}">
-            <a href="#/configuration/switch-firmware" ng-click="closeSubnav()"
-            tabindex="{{(showSubMenu && firstLevel == 'configuration') ? 0 : -1}}">PCIe switch firmware</a>
-        </li>
-        <li ng-class="{'active': (path == '/configuration' || path == '/configuration/firmware')}">
-          <a href="#/configuration/firmware" ng-click="closeSubnav()"
-            tabindex="{{(showSubMenu && firstLevel == 'configuration') ? 0 : -1}}">BMC firmware</a>
-        </li>
         <li ng-class="{'active': (path == '/configuration' || path == '/configuration/date-time')}">
           <a href="#/configuration/date-time" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'configuration') ? 0 : -1}}">Date and time settings</a>

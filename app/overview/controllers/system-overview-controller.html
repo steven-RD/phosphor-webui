@@ -63,7 +63,7 @@
             </li>
             <li class="overview__metadata-block">
               <dl>
-                <dt class="content-label">Firmware Version</dt>
+                <dt class="content-label">BMC firmware version</dt>
                 <dd class="courier-bold">{{bmc_firmware}}</dd>
               </dl>
             </li>
@@ -71,6 +71,18 @@
               <dl>
                 <dt class="content-label">Mac address</dt>
                 <dd class="courier-bold">{{dataService.mac_address}}</dd>
+              </dl>
+            </li>
+			<li class="overview__metadata-block">
+              <dl>
+                <dt class="content-label">PCIe firmware image</dt>
+                <dd class="courier-bold">{{switchActivedVersion}}</dd>
+              </dl>
+            </li>
+			<li class="overview__metadata-block">
+              <dl>
+                <dt class="content-label">PCIe firmware version</dt>
+                <dd class="courier-bold">{{configurationFile}}</dd>
               </dl>
             </li>
           </ul>

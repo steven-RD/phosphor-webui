@@ -147,6 +147,47 @@ window.angular && (function(angular) {
             function(error) {
               console.log(JSON.stringify(error));
             });
+
+			$scope.loadSwitchFirmware = function() {
+            UsiAPIUtils.getSwitchFirmware()
+            .then(
+                function(result) {
+					console.log(result);
+                    $scope.firmwares = result;
+                    $scope.loadSwitchBeingActiveVersion();
+                    $scope.loadSwitchActivedVersion();
+                },
+                function(error) {
+                    console.log(error);
+                }
+            );
+        };
+
+        $scope.loadSwitchBeingActiveVersion = function() {
+            UsiAPIUtils.getSwitchBeingActiveVersion(function(version, type) {
+                $scope.switchVersion = version;
+                $scope.switchType = type;
+				console.log(version);
+				console.log(type);
+            },
+            function(error){
+                console.log(error)
+            });
+        };
+
+        $scope.loadSwitchActivedVersion = function() {
+            UsiAPIUtils.getSwitchActivedVersion(
+              function(firmwareVersion, configurationFile) {
+                $scope.switchActivedVersion = firmwareVersion;
+                $scope.configurationFile = configurationFile;
+				console.log(firmwareVersion);
+				console.log(configurationFile);
+              },
+              function(error){
+                console.log(error)
+              }
+            );
+        };
         // Judy modified at 20190627 end
 
         var promises = [
