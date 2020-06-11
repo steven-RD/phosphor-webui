@@ -77,13 +77,12 @@ window.angular && (function(angular) {
             $scope.ssdx=ssdInfo;
             changeStatus('ssd');
 			var n = num.replace(/[^0-9]/ig,"");
-			//console.log(n);
             var lab = document.getElementById('usi-ssd');
             var mousePosition = getMousePos(window.event); ///Get mouse position
             lab.style.position = "absolute";
             lab.style.display = "block";
             //lab.style.left = mousePosition.x + 5 + 'px';
-			if(n > 12){
+			if(n > 12){ // ssd13-ssd24 show in middle of the page
 				lab.style.left = mousePosition.x - 300 + 'px';
 			} else {
 				lab.style.left = mousePosition.x + 5 + 'px';
@@ -107,18 +106,12 @@ window.angular && (function(angular) {
                     $scope.ps1name=psName;
                     $scope.ps1power=psInfo.Power;
                     $scope.ps1status=psInfo.Status;
-					console.log(psName);
-					console.log(psInfo.Power);
-					console.log(psInfo.Status);
                 } else if (angular.equals(psName, 'PS2')) {
 					if(psInfo.Status != 'Ok' && psInfo.Status != 'Get Fail')
                         psInfo.Status = 'Error';
                     $scope.ps2name=psName;
                     $scope.ps2power=psInfo.Power;
                     $scope.ps2status=psInfo.Status;
-					console.log(psName);
-					console.log(psInfo.Power);
-					console.log(psInfo.Status);
 				}
             });
             var lab = document.getElementById('usi-ps');
@@ -138,9 +131,6 @@ window.angular && (function(angular) {
                     $scope.psname=psName;
                     $scope.pspower=psInfo.Power;
                     $scope.psstatus=psInfo.Status;
-					console.log(psName);
-					console.log(psInfo.Power);
-					console.log(psInfo.Status);
                     var lab = document.getElementById('usi-psx');
                     var mousePosition = getMousePos(window.event); ///Get mouse position
                     lab.style.position = "absolute";
@@ -182,7 +172,7 @@ window.angular && (function(angular) {
         }
     };
 
-    ///cable information
+    ///USP information
     $scope.USP = function(name) { ///TBD
         console.log(name);
     };
