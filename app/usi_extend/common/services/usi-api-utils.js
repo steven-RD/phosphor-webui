@@ -29,8 +29,7 @@ window.angular && (function(angular) {
                 return response.data;
               });
         },
-        // Restful way start
-        /* Modified by USISH Steven20190122/Judy20190521 start */
+
         setFanSpeed: function(fanId, val) {
           return $http({
                    method: 'PUT',
@@ -65,7 +64,9 @@ window.angular && (function(angular) {
               });
         },
 
-        getSwitchActivatedStatus: function(callback) {
+        // Restful way start
+        /* Modified by USISH Steven20190122/Judy20190521 start */
+        /* getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() +
@@ -223,23 +224,6 @@ window.angular && (function(angular) {
           return deferred.promise;
         },
 
-/*         getSsdArrayInfo: function(){
-            return $http({
-                   method: 'GET',
-                   url: DataService.getHost() +
-                       '/xyz/openbmc_project/ssdarray/info',
-                   withCredentials: true
-                 })
-                .then(function(response) {
-                   var json = JSON.stringify(response.data);
-                   var content = JSON.parse(json);
-                   return content['data']['Info'];
-                },
-                function(error) {
-                   console.log(error);
-                });
-        }, */
-
         getPowerSupplyInfo: function(){
             return $http({
                    method: 'GET',
@@ -379,15 +363,15 @@ window.angular && (function(angular) {
                 function(error) {
                    console.log(error);
                 });
-        },
+        }, */
       /* Modified by USISH Steven20190122/Judy20190521 end */
       // Restful way end
       // Redfish way start
       /* Modified by USISH Judy20190702 start */
-        /*getSwitchActivatedStatus: function(callback) {
+        getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
-            url: DataService.getHost() + '/redfish/v1/Switch/Activate',
+            url: DataService.getHost() + '/redfish/v1/USI_Switch/Activate',
             withCredentials: true
           })
           .then(
@@ -407,7 +391,7 @@ window.angular && (function(angular) {
         getSwitchBeingActiveVersion: function(callback) {
           $http({
             method: 'GET',
-            url: DataService.getHost() + '/redfish/v1/Switch/Ready',
+            url: DataService.getHost() + '/redfish/v1/USI_Switch/Ready',
             withCredentials: true
           })
               .then(
@@ -426,7 +410,7 @@ window.angular && (function(angular) {
         getSwitchActivedVersion: function(callback) {
           $http({
             method: 'GET',
-            url: DataService.getHost() + '/redfish/v1/Switch/Functional',
+            url: DataService.getHost() + '/redfish/v1/USI_Switch/Functional',
             withCredentials: true
           })
               .then(
@@ -446,7 +430,7 @@ window.angular && (function(angular) {
           var deferred = $q.defer();
           $http({
             method: 'GET',
-            url: DataService.getHost() + '/redfish/v1/Switch/ImageFile',
+            url: DataService.getHost() + '/redfish/v1/USI_Switch/ImageFile',
             withCredentials: true
           })
               .then(
@@ -465,7 +449,7 @@ window.angular && (function(angular) {
         deleteSwitchImage: function(val) {
           return $http({
                    method: 'PATCH',
-                   url: DataService.getHost() + '/redfish/v1/Switch/Delete',
+                   url: DataService.getHost() + '/redfish/v1/USI_Switch/Delete',
                    withCredentials: true,
                    data: JSON.stringify({'Value': val})
                  })
@@ -478,7 +462,7 @@ window.angular && (function(angular) {
         getDeleteSwitchImage: function() {
           return $http({
                    method: 'GET',
-                   url: DataService.getHost() + '/redfish/v1/Switch/Delete',
+                   url: DataService.getHost() + '/redfish/v1/USI_Switch/Delete',
                    withCredentials: true,
                  })
               .then(function(response) {
@@ -492,7 +476,7 @@ window.angular && (function(angular) {
           var deferred = $q.defer();
           $http({
             method: 'PATCH',
-            url: DataService.getHost() + '/redfish/v1/Switch/Update',
+            url: DataService.getHost() + '/redfish/v1/USI_Switch/Update',
             withCredentials: true,
             timeout: 5 * 60 * 1000, // 5min
             data: {'Value': val}
@@ -516,7 +500,7 @@ window.angular && (function(angular) {
           var deferred = $q.defer();
           $http({
             method: 'PATCH',
-            url: DataService.getHost() + '/redfish/v1/Switch/Activate',
+            url: DataService.getHost() + '/redfish/v1/USI_Switch/Activate',
             withCredentials: true,
             data: {'Value': val}
           })
@@ -533,44 +517,11 @@ window.angular && (function(angular) {
           return deferred.promise;
         },
 
-        getSsdArrayInfo: function(){
-            return $http({
-                   method: 'GET',
-                   url: DataService.getHost() +
-                       '/redfish/v1/Switch/AllInformations',
-                   withCredentials: true
-                 })
-                .then(function(response) {
-                   var json = JSON.stringify(response.data);
-                   var content = JSON.parse(json);
-                   return content['Info'];
-                },
-                function(error) {
-                   console.log(error);
-                });
-        },
-        getPowerSupplyInfo: function(){
-            return $http({
-                   method: 'GET',
-                   url: DataService.getHost() +
-                       '/redfish/v1/Switch/PowerSupply',
-                   withCredentials: true
-                 })
-                .then(function(response) {
-                   var json = JSON.stringify(response.data);
-                   var content = JSON.parse(json);
-                   return content;
-                },
-                function(error) {
-                   console.log(error);
-                });
-        },
-
         setPowerSwitchState: function(state) {
           var deferred = $q.defer();
           $http({
               method: 'PATCH',
-              url: DataService.getHost() + '/redfish/v1/Switch/Control',
+              url: DataService.getHost() + '/redfish/v1/USI_Switch/Control',
               withCredentials: true,
               data: {'Command': state}
           })
@@ -589,7 +540,7 @@ window.angular && (function(angular) {
           var deferred = $q.defer();
           $http({
               method: 'GET',
-              url: DataService.getHost() + '/redfish/v1/Switch/PowerSwitch',
+              url: DataService.getHost() + '/redfish/v1/USI_Switch/PowerSwitch',
               withCredentials: true
           })
           .then(
@@ -602,7 +553,110 @@ window.angular && (function(angular) {
                 deferred.reject(error);
               });
           return deferred.promise;
-        },*/
+        },
+
+        getSsdInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/redfish/v1/USI_Switch/SsdInfo',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content['Info'];
+                },
+                function(error) {
+                   console.log(error);
+                });
+        },
+
+        getCableInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/redfish/v1/USI_Switch/CableInfo',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content['Info'];
+                },
+                function(error) {
+                   console.log(error);
+                });
+        }, 
+
+        getSWInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/redfish/v1/USI_Switch/SwitchInfo',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content['Info'];
+                },
+                function(error) {
+                   console.log(error);
+                });
+        }, 
+
+        getBMCInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/redfish/v1/USI_Switch/BMCInfo',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content['Info'];
+                },
+                function(error) {
+                   console.log(error);
+                });
+        }, 
+
+        getParInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/redfish/v1/USI_Switch/PatopoInfo',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content['Info'];
+                },
+                function(error) {
+                   console.log(error);
+                });
+        }, 
+
+        getPowerSupplyInfo: function(){
+            return $http({
+                   method: 'GET',
+                   url: DataService.getHost() +
+                       '/redfish/v1/USI_Switch/PowerSupplyInfo',
+                   withCredentials: true
+                 })
+                .then(function(response) {
+                   var json = JSON.stringify(response.data);
+                   var content = JSON.parse(json);
+                   return content['Info'];
+                },
+                function(error) {
+                   console.log(error);
+                });
+        },
+
       /*  Modified by USISH Judy20190702 end */
       // Redfish way end
       };
