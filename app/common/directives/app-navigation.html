@@ -104,7 +104,7 @@
     <li>
       <button class="btn-config" ng-class="{opened: firstLevel == 'configuration'}" ng-click="change('configuration')">
         <icon class="nav-icon" file="icon-config.svg"></icon>
-        Settings
+        Setting
       </button>
       <ul class="nav__second-level btn-firmware"
         ng-style="navStyle"
@@ -127,7 +127,7 @@
         </li> -->
         <li ng-class="{'active': (path == '/configuration' || path == '/configuration/date-time')}">
           <a href="#/configuration/date-time" ng-click="closeSubnav()"
-            tabindex="{{(showSubMenu && firstLevel == 'configuration') ? 0 : -1}}">Date and time settings</a>
+            tabindex="{{(showSubMenu && firstLevel == 'configuration') ? 0 : -1}}">Date and time setting</a>
         </li>
       </ul>
     </li>

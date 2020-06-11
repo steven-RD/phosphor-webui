@@ -20,7 +20,9 @@ window.angular && (function(angular) {
       $scope.loading = true;
 
       APIUtils.getHardwares(function(data, originalData) {
-		/*Modify by USI steven 20200609 start*/
+		/*Modify by USI steven 20200609 start
+		 * remove 'system' and 'chassis' item
+		 */
 		var i = 0, j = 0;
 		var harddata = [];
 		for(i = 0; i < data.length; i++){
