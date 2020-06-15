@@ -25,7 +25,7 @@
         <div class="bmc-reboot-option" ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
         <p>When reboot AFA, your web browser loses contact with the AFA for several minutes.When the AFA is back online, you must log in again. 
 		   If the Log In button is not available when the AFA is brought back online, close your web browser. Then, reopen the web browser and enter your AFA IP address.</p>
-        <confirm title="Reboot the JBOF"
+        <confirm title="Reboot the AFA"
           confirm="confirm"
           ng-show="confirm"
           callback="reboot"></confirm>
@@ -38,12 +38,36 @@
     </div><br><br>
 
 
-	<div class="row column">
+    <div class="row column">
         <div class="page-header">
             <h2>Switch power control</h2>
         </div>
     </div>
-	<div class="row column" ng-class="{disabled: dataService.server_unreachable || dataService.loading}">
+    <div class="row column" ng-class="{disabled: dataService.server_unreachable || dataService.loading}">
+        <confirm title="{{State}}"
+          confirm="switchPowerConfirm"
+          ng-show="switchPowerConfirm"
+          callback="toggleSwitchPower"></confirm>
+        <div class="btm-border-grey">
+            <div class="toggle inline">
+                <input id="toggle__switch-round"
+                       class="toggle-switch toggle-switch__round-flat"
+                       type="checkbox"
+                       tabindex="0"
+                       ng-click="switchConfirm()"
+                       ng-checked="switch_state == 'Power On'"
+                       ng-disabled="dataService.server_unreachable"
+                       >
+                <label for="toggle__switch-round" tabindex="0">Switch power is <span class="led-switch__status">{{switch_state}}</span></label>
+            </div>
+            <div class="led-switch__label inline">
+                <p>AFA switch is <span class="led-switch__status">{{switch_state}}</span></p>
+                <p>Turn the switch power on or off. When you operate the switch or update switch firmware, please make sure that the switch is power on! </p>
+            </div>
+        </div>
+    </div>
+
+	<!-- <div class="row column" ng-class="{disabled: dataService.server_unreachable || dataService.loading}">
         <div class="btm-border-grey">
             <div class="toggle inline">
                 <input id="toggle__switch-round"
@@ -61,7 +85,7 @@
                 <p>Turn the switch power on or off. When you operate the switch or update switch firmware, please make sure that the switch is power on! </p>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </div>
 

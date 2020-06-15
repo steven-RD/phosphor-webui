@@ -1,5 +1,5 @@
 /**
-    * Controller for fan
+    * Controller for system control
     *
     * @module app/serverControl
     * @exports powerUsageController
@@ -8,7 +8,7 @@
     *
     * @author Steven
     * @date   20200417
-    * @brief  control fan speed
+    * @brief  control AFA and power switch
 */
 
 window.angular && (function(angular) {
@@ -28,17 +28,24 @@ window.angular && (function(angular) {
     $scope.reboot = function() {
         APIUtils.bmcReboot().then(
             function(response) {
-                toastService.success('BMC is rebooting.')
+                toastService.success('AFA is rebooting.')
             },
              function(error) {
-				console.log(JSON.stringify(error));
-				toastService.error('Unable to reboot BMC.');
+                 console.log(JSON.stringify(error));
+                 toastService.error('Unable to reboot AFA.');
           });
     };
 
 
-	$scope.toggleSwitchPower = function() {
-		/* UsiAPIUtils.getPowerSwitchStatus().then(
+        $scope.switchConfirm = function() {
+        if ($scope.switchPowerConfirm) {
+            return;
+        }
+        $scope.switchPowerConfirm = true;
+    };
+
+    $scope.toggleSwitchPower = function() {
+        /* UsiAPIUtils.getPowerSwitchStatus().then(
               function(info){
                   $scope.switch_state = info.Status;
                   console.log($scope.switch_state);
@@ -47,6 +54,7 @@ window.angular && (function(angular) {
                   console.log(JSON.stringify(error));
               }); */
         var toggleState =($scope.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
+		$scope.State = toggleState;
 		console.log(toggleState);
         UsiAPIUtils.setPowerSwitchState(toggleState).then(
         function(data) {
