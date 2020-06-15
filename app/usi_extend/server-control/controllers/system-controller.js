@@ -36,23 +36,7 @@ window.angular && (function(angular) {
           });
     };
 
-
-        $scope.switchConfirm = function() {
-        if ($scope.switchPowerConfirm) {
-            return;
-        }
-        $scope.switchPowerConfirm = true;
-    };
-
-    $scope.toggleSwitchPower = function() {
-        /* UsiAPIUtils.getPowerSwitchStatus().then(
-              function(info){
-                  $scope.switch_state = info.Status;
-                  console.log($scope.switch_state);
-              },
-              function(error) {
-                  console.log(JSON.stringify(error));
-              }); */
+/*     $scope.toggleSwitchPower = function() {
         var toggleState =($scope.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
 		$scope.State = toggleState;
 		$scope.confirmSettings = false;
@@ -71,7 +55,50 @@ window.angular && (function(angular) {
         function(error) {
             console.log(JSON.stringify(error));
         });
-      };
+      }; */
+
+    $scope.poweronConfirm = function() {
+        if ($scope.confirmPowerOn) {
+            return;
+        }
+        $scope.confirmPowerOn = true;
+    };
+    $scope.poweroffConfirm = function() {
+        if ($scope.confirmPowerOff) {
+            return;
+        }
+        $scope.confirmPowerOff = true;
+    };
+
+    $scope.toggleSwitchPower = function(cmd) {
+        UsiAPIUtils.setPowerSwitchState(cmd).then(
+        function(data) {
+           UsiAPIUtils.getPowerSwitchStatus().then(
+              function(info){
+                  $scope.switch_state = info.Status;
+                  console.log($scope.switch_state);
+              },
+              function(error) {
+                  console.log(JSON.stringify(error));
+              });
+        },
+        function(error) {
+            console.log(JSON.stringify(error));
+        });
+    };
+
+	$scope.PowerSwitchStatus = function() {
+	    UsiAPIUtils.getPowerSwitchStatus().then(
+              function(info){
+                  $scope.switch_state = info.Status;
+                  console.log($scope.switch_state);
+              },
+              function(error) {
+                  console.log(JSON.stringify(error));
+              }); 
+      }
+
+    $scope.PowerSwitchStatus();
 
     }
   ]);
