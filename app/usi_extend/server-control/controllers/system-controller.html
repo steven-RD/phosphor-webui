@@ -44,10 +44,12 @@
         </div>
     </div>
     <div class="row column" ng-class="{disabled: dataService.server_unreachable || dataService.loading}">
+        <!-- <div class="bmc-reboot-option transitionAll">
         <confirm title="{{State}}"
           confirm="switchPowerConfirm"
           ng-show="switchPowerConfirm"
           callback="toggleSwitchPower"></confirm>
+        </div> -->
         <div class="btm-border-grey">
             <div class="toggle inline">
                 <input id="toggle__switch-round"
@@ -66,6 +68,23 @@
             </div>
         </div>
     </div>
+	<div class="modal-overlay" tabindex="-1" ng-class="{'active': confirmSettings}"></div>
+	<section class="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog" ng-class="{'active': confirmSettings}">
+		<div class="modal__tftp-unreachable" role="document">
+			<div class="screen-reader-offscreen modal-description">Change power switch status</div>
+			<div class="page-header">
+				<span class="icon icon__warning inline"><span class="accessible-text" role="alert">Warning</span></span>
+				<h3 class="modal-title inline">Change power switch status</h3>
+			</div>
+			<div class="modal__content">
+				<p>Are you sure you want to {{State}}?</p>
+			</div>
+			<div class="modal__button-wrapper">
+				<button class="btn btn-secondary" ng-click="confirmSettings=false">Cancel</button>
+				<button class="btn btn-primary" ng-click="toggleSwitchPower()">Continue</button>
+			</div>
+		</div>
+	</section>
 
 	<!-- <div class="row column" ng-class="{disabled: dataService.server_unreachable || dataService.loading}">
         <div class="btm-border-grey">
