@@ -40,82 +40,24 @@
             <h2>Switch power control</h2>
         </div>
     </div>
-    <div class="row column" ng-class="{disabled: dataService.server_unreachable || dataService.loading}">
-        <!-- <div class="bmc-reboot-option transitionAll">
-        <confirm title="{{State}}"
-          confirm="switchPowerConfirm"
-          ng-show="switchPowerConfirm"
-          callback="toggleSwitchPower"></confirm>
-        </div> 
-        <div class="btm-border-grey">
-            <div class="toggle inline">
-                <input id="toggle__switch-round" class="toggle-switch toggle-switch__round-flat"
-                       type="checkbox" tabindex="0"
-                       ng-click="confirmSettings=true""
-                       ng-checked="switch_state == 'Power On'"
-                       ng-disabled="dataService.server_unreachable" >
-                <label for="toggle__switch-round" tabindex="0">Switch power is <span class="led-switch__status">{{switch_state}}</span></label>
-            </div>
-            <div class="led-switch__label inline">
-                <p>AFA switch is <span class="led-switch__status">{{switch_state}}</span></p>
-                <p>Turn the switch power on or off. When you operate the switch or update switch firmware, please make sure that the switch is power on! </p>
-            </div>
-        </div>-->
-	<div class="row column">
+    <div class="row column">
         <div class="bmc-reboot-option" ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
         <p>Turn the switch power on or off. When you operate the switch or update switch firmware, please make sure that the switch is power on! </p>
         
 		<div class="row column" ng-hide="switch_state == 'Power Off' " ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
-            <button id="power__hard-shutdown" class="btn btn-secondary" ng-click="poweronConfirm()" role="button" ng-disabled="dataService.server_unreachable">
-                <icon file="icon-power.svg"></icon>Power on switch</button>
+            <button id="bmc__reboot" class="btn btn-secondary" ng-class="{disabled: confirmPowerOn}" ng-click="poweronConfirm()" ng-disabled="dataService.server_unreachable">
+                <icon file="icon-power.svg"></icon>Power on switch
+			</button>
             <confirm title="power on switch" confirm="confirmPowerOn" ng-show="confirmPowerOn" callback="toggleSwitchPower('poweron switch')"></confirm>
         </div>
         <div class="row column" ng-hide="switch_state == 'Power On' ">
-			<button id="power__hard-shutdown" class="btn btn-secondary" ng-click="poweroffConfirm()" role="button" ng-disabled="dataService.server_unreachable">
-				<icon file="icon-power.svg"></icon>Power off switch</button>
+			<button id="bmc__reboot" class="btn btn-secondary" ng-class="{disabled: confirmPowerOff}" ng-click="poweroffConfirm()" ng-disabled="dataService.server_unreachable">
+				<icon file="icon-power.svg"></icon>Power off switch
+			</button>
             <confirm title="power off switch" confirm="confirmPowerOff" ng-show="confirmPowerOff" callback="toggleSwitchPower('poweroff switch')"></confirm>
 			</button>
 		</div>
         </div>
     </div>
 
-
-	<!-- <div class="row column" ng-class="{disabled: dataService.server_unreachable || dataService.loading}">
-        <div class="btm-border-grey">
-            <div class="toggle inline">
-                <input id="toggle__switch-round"
-                       class="toggle-switch toggle-switch__round-flat"
-                       type="checkbox"
-                       tabindex="0"
-                       ng-click="toggleSwitchPower()"
-                       ng-checked="switch_state == 'Power On'"
-                       ng-disabled="dataService.server_unreachable"
-                       >
-                <label for="toggle__switch-round" tabindex="0">Switch power is <span class="led-switch__status">{{switch_state}}</span></label>
-            </div>
-            <div class="led-switch__label inline">
-                <p>AFA switch is <span class="led-switch__status">{{switch_state}}</span></p>
-                <p>Turn the switch power on or off. When you operate the switch or update switch firmware, please make sure that the switch is power on! </p>
-            </div>
-        </div>
-    </div> -->
-
 </div>
-
-<div class="modal-overlay" tabindex="-1" ng-class="{'active': confirmSettings}"></div>
-<section class="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog" ng-class="{'active': confirmSettings}">
-	<div class="modal__tftp-unreachable" role="document">
-		<div class="screen-reader-offscreen modal-description">Change power switch status</div>
-		<div class="page-header">
-			<span class="icon icon__warning inline"><span class="accessible-text" role="alert">Warning</span></span>
-			<h3 class="modal-title inline">Change power switch status</h3>
-		</div>
-		<div class="modal__content">
-			<p>Are you sure you want to {{State}}?</p>
-		</div>
-		<div class="modal__button-wrapper">
-			<button class="btn btn-secondary" ng-click="confirmSettings=false">Cancel</button>
-			<button class="btn btn-primary" ng-click="toggleSwitchPower()">Continue</button>
-		</div>
-	</div>
-</section>
