@@ -44,7 +44,7 @@
         <div class="bmc-reboot-option" ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
             <p>Turn the switch power on or off. When you operate the switch or update switch firmware, please make sure that the switch is power on! </p>
             <confirm title="power on switch" confirm="confirmPowerOn" ng-show="confirmPowerOn" callback="toggleSwitchPower('poweron switch')"></confirm>
-            <confirm title="power off switch" confirm="confirmPowerOff" ng-show="confirmPowerOff" callback="toggleSwitchPower('poweroff switch')"></confirm>
+            <!-- <confirm title="power off switch" confirm="confirmPowerOff" ng-show="confirmPowerOff" callback="toggleSwitchPower('poweroff switch')"></confirm> -->
 		</div>
 		<div class="row column" ng-hide="switch_state == 'Power Off' ">
             <button id="bmc__reboot" class="btn btn-secondary" ng-class="{disabled: confirmPowerOn}" ng-click="poweronConfirm()" ng-disabled="dataService.server_unreachable">
