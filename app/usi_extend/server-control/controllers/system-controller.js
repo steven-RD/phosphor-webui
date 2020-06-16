@@ -20,10 +20,10 @@ window.angular && (function(angular) {
 
 
 	$scope.rebootConfirm = function() {
-        if ($scope.confirmReboot) {
+        if ($scope.confirm) {
 			return;
 	    }
-        $scope.confirmReboot = true;
+        $scope.confirm = true;
     };
 
     $scope.reboot = function() {
@@ -39,7 +39,6 @@ window.angular && (function(angular) {
 
      $scope.toggleSwitchPower = function() {
         var toggleState =($scope.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
-		$scope.State = toggleState;
 		$scope.confirmSettings = false;
 		console.log(toggleState);
         UsiAPIUtils.setPowerSwitchState(toggleState).then(

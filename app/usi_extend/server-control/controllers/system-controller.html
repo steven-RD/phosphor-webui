@@ -2,30 +2,30 @@
 <!--
  * @author Steven
  * @date   20200429
- * @brief  Fan speed control
+ * @brief  system control
 -->
 
 <!-- <loader loading="loading"></loader> -->
 <div>
-	<div class="row column">
+    <div class="row column">
         <h1>System control</h1>
         <div class="page-header">
             <h2>AFA reboot control</h2>
         </div>
     </div>
-	<div class="row column">
-		<div class="bmc-reboot-header">
-			<h2 class="h3">Current AFA boot status</h2>
-		</div>
-		<div class="float-right bmc-reboot__status-log inline">AFA last reboot at
-			<span class="courier-bold">{{reboot_time | localeDate}}</span>
-		</div>
+    <div class="row column">
+        <div class="bmc-reboot-header">
+            <h2 class="h3">Current AFA boot status</h2>
+        </div>
+        <div class="float-right bmc-reboot__status-log inline">AFA last reboot at
+            <span class="courier-bold">{{reboot_time | localeDate}}</span>
+        </div>
     </div>
     <div class="row column">
-        <div class="bmc-reboot-option" ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirmReboot}">
+        <div class="bmc-reboot-option" ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
             <p>When reboot AFA, your web browser loses contact with the AFA for several minutes.When the AFA is back online, you must log in again. 
 		    If the Log In button is not available when the AFA is brought back online, close your web browser. Then, reopen the web browser and enter your AFA IP address.</p>
-            <confirm title="Reboot the AFA" confirm="confirmReboot" ng-show="confirmReboot" callback="reboot"></confirm>
+            <confirm title="Reboot the AFA" confirm="confirm" ng-show="confirm" callback="reboot"></confirm>
         </div>
         <div class="row column">
 			<button id="bmc__reboot" class="btn  btn-secondary" ng-class="{disabled: confirm}" ng-click="rebootConfirm()" ng-disabled="dataService.server_unreachable">
@@ -40,7 +40,19 @@
             <h2>Switch power control</h2>
         </div>
     </div>
-    <div class="row column" ng-class="{disabled: dataService.server_unreachable || dataService.loading}">
+    <div class="row column" ng-hide="switch_state == 'Power Off' ">
+        <button id="bmc__reboot" class="btn btn-secondary" ng-click="confirmSettings=true" ng-disabled="dataService.server_unreachable">
+            <icon file="icon-power.svg"></icon>Power on switch
+		</button>
+		<!-- <button type="button" class="btn  btn-primary" ng-click="confirmSettings=true">Save settings</button> -->
+    </div>
+    <div class="row column" ng-hide="switch_state == 'Power On' ">
+		<button id="bmc__reboot" class="btn btn-secondary" ng-click="confirmSettings=true" ng-disabled="dataService.server_unreachable">
+			<icon file="icon-power.svg"></icon>Power off switch
+		</button>
+	</div>
+    
+    <!-- <div class="row column" ng-class="{disabled: dataService.server_unreachable || dataService.loading}">
         <div class="btm-border-grey">
             <div class="toggle inline">
                 <input id="toggle__switch-round"
@@ -58,6 +70,24 @@
                 <p>Turn the switch power on or off. When you operate the switch or update switch firmware, please make sure that the switch is power on! </p>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </div>
+
+<div class="modal-overlay" tabindex="-1" ng-class="{'active': confirmSettings}"></div>
+<section class="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription" role="dialog" ng-class="{'active': confirmSettings}">
+	<div class="modal__tftp-unreachable" role="document">
+		<div class="screen-reader-offscreen modal-description">Change power switch status</div>
+		<div class="page-header">
+			<span class="icon icon__warning inline"><span class="accessible-text" role="alert">Warning</span></span>
+			<h3 class="modal-title inline">Change power switch status</h3>
+		</div>
+		<div class="modal__content">
+			<p>Are you sure you want to {{State}}?</p>
+		</div>
+		<div class="modal__button-wrapper">
+			<button class="btn btn-secondary" ng-click="confirmSettings=false">Cancel</button>
+			<button class="btn btn-primary" ng-click="toggleSwitchPower()">Continue</button>
+		</div>
+	</div>
+</section>
