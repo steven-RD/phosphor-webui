@@ -17,11 +17,8 @@ window.angular && (function(angular) {
     angular.module('app.serverControl').controller('systemController', [
     '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', 'toastService', '$q',
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService, $q) {
-    
-	//$scope.confirm = false;
-	$scope.confirmPowerOn = false;
-	$scope.confirmPowerOff = false;
-	
+
+
 	$scope.rebootConfirm = function() {
         if ($scope.confirmReboot) {
 			return;
@@ -40,7 +37,7 @@ window.angular && (function(angular) {
           });
     };
 
-/*     $scope.toggleSwitchPower = function() {
+     $scope.toggleSwitchPower = function() {
         var toggleState =($scope.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
 		$scope.State = toggleState;
 		$scope.confirmSettings = false;
@@ -59,9 +56,9 @@ window.angular && (function(angular) {
         function(error) {
             console.log(JSON.stringify(error));
         });
-      }; */
+      }; 
 
-    $scope.poweronConfirm = function() {
+/*     $scope.poweronConfirm = function() {
         if ($scope.confirmPowerOn) {
             return;
         }
@@ -89,7 +86,7 @@ window.angular && (function(angular) {
         function(error) {
             console.log(JSON.stringify(error));
         });
-    };
+    };*/
 
 	$scope.PowerSwitchStatus = function() {
 	    UsiAPIUtils.getPowerSwitchStatus().then(
@@ -102,7 +99,7 @@ window.angular && (function(angular) {
               }); 
       }
 
-    $scope.PowerSwitchStatus();
+    $scope.PowerSwitchStatus(); 
 
     }
   ]);
