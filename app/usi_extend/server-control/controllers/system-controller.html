@@ -34,28 +34,24 @@
 		</div>
     </div><br><br>
 
-
     <div class="row column">
         <div class="page-header">
             <h2>Switch power control</h2>
         </div>
     </div>
     <div class="row column" ng-show="switch_state == 'Power Off' ">
-        <div class="led-switch__label inline">
-            <p>AFA switch is <span class="led-switch__status">{{switch_state}}</span></p>
-            <p>Turn the switch power on or off. When you operate the switch or update switch firmware, please make sure that the switch is power on! </p>
-        </div>
+        <p>AFA switch is <span class="led-switch__status">{{switch_state}}.</span>When update switch firmware, please make sure that the switch is power on!</p>
         <button id="bmc__reboot" class="btn btn-secondary" ng-click="confirmSettings=true" ng-disabled="dataService.server_unreachable">
             <icon file="icon-power.svg"></icon>Power on switch
-		</button>
-		<!-- <button type="button" class="btn  btn-primary" ng-click="confirmSettings=true">Save settings</button> -->
+        </button>
     </div>
     <div class="row column" ng-show="switch_state == 'Power On' ">
-		<button id="bmc__reboot" class="btn btn-secondary" ng-click="confirmSettings=true" ng-disabled="dataService.server_unreachable">
-			<icon file="icon-power.svg"></icon>Power off switch
-		</button>
-	</div>
-    
+        <p>AFA switch is <span class="led-switch__status">{{switch_state}}.</span>When update switch firmware, please make sure that the switch is power on!</p>
+        <button id="bmc__reboot" class="btn btn-secondary" ng-click="confirmSettings=true" ng-disabled="dataService.server_unreachable">
+            <icon file="icon-power.svg"></icon>Power off switch
+        </button>
+    </div>
+
     <!-- <div class="row column" ng-class="{disabled: dataService.server_unreachable || dataService.loading}">
         <div class="btm-border-grey">
             <div class="toggle inline">
