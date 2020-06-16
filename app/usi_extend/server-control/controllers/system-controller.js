@@ -18,11 +18,15 @@ window.angular && (function(angular) {
     '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', 'toastService', '$q',
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService, $q) {
     
+	//$scope.confirm = false;
+	$scope.confirmPowerOn = false;
+	$scope.confirmPowerOff = false;
+	
 	$scope.rebootConfirm = function() {
-        if ($scope.confirm) {
+        if ($scope.confirmReboot) {
 			return;
 	    }
-        $scope.confirm = true;
+        $scope.confirmReboot = true;
     };
 
     $scope.reboot = function() {
