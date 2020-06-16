@@ -9,7 +9,7 @@ window.angular && (function(angular) {
           'scope': {'path': '=', 'showNavigation': '='},
           'controller': [
             '$scope', '$location', 'dataService', 'userModel', 'APIUtils','$q',
-            function($scope, $location, dataService) {
+            function($scope, $location, dataService, userModel, APIUtils, $q) {
               $scope.dataService = dataService;
               $scope.showSubMenu = false;
               $scope.change = function(firstLevel) {

@@ -60,7 +60,7 @@ window.angular && (function(angular) {
       /*add by USI steven 20200416 start*/
       getUserName: function() {
           return userName;
-      }
+      },
       /*add by USI steven 20200416 start*/
 
       };
