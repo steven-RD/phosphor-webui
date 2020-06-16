@@ -39,6 +39,7 @@ window.angular && (function(angular) {
 
      $scope.toggleSwitchPower = function() {
         var toggleState =($scope.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
+		$scope.State = toggleState;
 		$scope.confirmSettings = false;
 		console.log(toggleState);
         UsiAPIUtils.setPowerSwitchState(toggleState).then(
@@ -50,10 +51,12 @@ window.angular && (function(angular) {
               },
               function(error) {
                   console.log(JSON.stringify(error));
+                  toastService.error('Get power switch status error!');
               });
         },
         function(error) {
             console.log(JSON.stringify(error));
+            toastService.error(toggleState + 'error!');
         });
       }; 
 
@@ -87,8 +90,8 @@ window.angular && (function(angular) {
         });
     };*/
 
-	$scope.PowerSwitchStatus = function() {
-	    UsiAPIUtils.getPowerSwitchStatus().then(
+    $scope.PowerSwitchStatus = function() {
+        UsiAPIUtils.getPowerSwitchStatus().then(
               function(info){
                   $scope.switch_state = info.Status;
                   console.log($scope.switch_state);
