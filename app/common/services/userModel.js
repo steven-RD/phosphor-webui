@@ -13,6 +13,7 @@ window.angular && (function(angular) {
   angular.module('app.common.services').service('userModel', [
     'APIUtils',
     function(APIUtils) {
+		var userName = '';
       return {
         login: function(username, password, callback) {
           APIUtils.login(username, password, function(response, error) {
@@ -57,7 +58,6 @@ window.angular && (function(angular) {
         },
 
       /*add by USI steven 20200416 start*/
-      var userName = '';
       getUserName: function() {
           return userName;
       }
