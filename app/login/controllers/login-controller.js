@@ -42,7 +42,7 @@ window.angular && (function(angular) {
               var next = $location.search().next;
               if (next === undefined || next == null) {
                 //$window.location.hash = '#/overview/server';
-				$window.location.hash = '#/usi_extend/server-control/ssdarray';
+				$window.location.hash = '#/usi_extend/server-control/ssdarray'; ///add by USI steven 20200416
               } else {
                 $window.location.href = next;
               }
@@ -56,6 +56,7 @@ window.angular && (function(angular) {
           });
         }
       };
+
     },
   ]);
 })(angular);

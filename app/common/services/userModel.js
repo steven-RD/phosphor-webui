@@ -16,6 +16,7 @@ window.angular && (function(angular) {
       return {
         login: function(username, password, callback) {
           APIUtils.login(username, password, function(response, error) {
+			userName = username;  ///add by USI steven 20200616
             if (response &&
                 (response.status == APIUtils.API_RESPONSE.SUCCESS_STATUS ||
                  response.status === undefined)) {
@@ -53,7 +54,15 @@ window.angular && (function(angular) {
               callback(false, error);
             }
           });
-        }
+        },
+
+      /*add by USI steven 20200416 start*/
+      var userName = '';
+      getUserName: function() {
+          return userName;
+      }
+      /*add by USI steven 20200416 start*/
+
       };
     }
   ]);

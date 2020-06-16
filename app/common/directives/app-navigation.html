@@ -137,7 +137,7 @@
         Help
       </a>
     </li>
-    <li>
+    <li ng-show="$scope.role=='Administrator' && $scope.userName=='root' ">
       <button class="btn-users" ng-class="{opened: firstLevel == 'users'}" ng-click="change('users')">
         <icon class="nav-icon" file="icon-user.svg"></icon>
         Users

@@ -8,7 +8,7 @@ window.angular && (function(angular) {
           'template': require('./app-navigation.html'),
           'scope': {'path': '=', 'showNavigation': '='},
           'controller': [
-            '$scope', '$location', 'dataService',
+            '$scope', '$location', 'dataService', 'userModel', 'APIUtils','$q',
             function($scope, $location, dataService) {
               $scope.dataService = dataService;
               $scope.showSubMenu = false;
@@ -49,6 +49,59 @@ window.angular && (function(angular) {
                 dataService.bodyStyle = {'padding-top': paddingTop + 'px', 'background-color': 'rgb(207, 221, 251)'}; //'#f0f8ff'
                 $scope.navStyle = {'top': paddingTop + 'px'};
               });
+
+			  /*add by USI steven 20200616 start*/
+			  $scope.userName = '';
+			  $scope.getLogInUserName = function() {
+                $scope.userName = userModel.getUserName();
+				console.log($scope.userName);
+              };
+			  $scope.loadUserInfo = function() {
+				var users = [];
+                $scope.loading = true;
+                $scope.submitted = false;
+                $scope.isUserSelected = false;
+                $scope.selectedUser = {};
+                $scope.togglePassword = false;
+                $scope.toggleVerify = false;
+                $q.all([
+                  APIUtils.getAllUserAccounts().then(
+                    function(res) {
+                      users = res;
+					  console.log(users);
+					  for(var i = 0; i < users.length; i++) {
+						  if($scope.userName = users[i].UserName){
+							  $scope.role = users[i].RoleId;
+							  console.log($scope.role);
+						  }
+					  }
+                    },
+                    function(error) {
+                      console.log(JSON.stringify(error));
+                    }),
+                  APIUtils.getAllUserAccountProperties().then(
+                    function(res) {
+					  console.log(res);
+                    },
+                    function(error) {
+                      console.log(JSON.stringify(error));
+                    }),
+                  APIUtils.getAccountServiceRoles().then(
+                    function(res) {
+                      console.log(res);
+                    },
+                    function(error) {
+                      console.log(JSON.stringify(error));
+                  })
+              ]).finally(function() {
+              $scope.loading = false;
+            });
+         };
+
+         $scope.getLogInUserName();
+         $scope.loadUserInfo();
+         /*add by USI steven 20200616 start*/
+
             }
           ],
           link: function(scope, element, attributes) {
