@@ -23,9 +23,9 @@
     </div>
     <div class="row column">
         <div class="bmc-reboot-option" ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
-        <p>When reboot AFA, your web browser loses contact with the AFA for several minutes.When the AFA is back online, you must log in again. 
-		   If the Log In button is not available when the AFA is brought back online, close your web browser. Then, reopen the web browser and enter your AFA IP address.</p>
-        <confirm title="Reboot the AFA" confirm="confirm" ng-show="confirm" callback="reboot"></confirm>
+            <p>When reboot AFA, your web browser loses contact with the AFA for several minutes.When the AFA is back online, you must log in again. 
+		    If the Log In button is not available when the AFA is brought back online, close your web browser. Then, reopen the web browser and enter your AFA IP address.</p>
+            <confirm title="Reboot the AFA" confirm="confirm" ng-show="confirm" callback="reboot"></confirm>
         </div>
         <div class="row column">
 			<button id="bmc__reboot" class="btn  btn-secondary" ng-class="{disabled: confirm}" ng-click="rebootConfirm()" ng-disabled="dataService.server_unreachable">
@@ -42,22 +42,20 @@
     </div>
     <div class="row column">
         <div class="bmc-reboot-option" ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
-        <p>Turn the switch power on or off. When you operate the switch or update switch firmware, please make sure that the switch is power on! </p>
-        
-		<div class="row column" ng-hide="switch_state == 'Power Off' " ng-class="{disabled: dataService.server_unreachable || dataService.loading, transitionAll: confirm}">
+            <p>Turn the switch power on or off. When you operate the switch or update switch firmware, please make sure that the switch is power on! </p>
+            <confirm title="power on switch" confirm="confirmPowerOn" ng-show="confirmPowerOn" callback="toggleSwitchPower('poweron switch')"></confirm>
+            <confirm title="power off switch" confirm="confirmPowerOff" ng-show="confirmPowerOff" callback="toggleSwitchPower('poweroff switch')"></confirm>
+		</div>
+		<div class="row column" ng-hide="switch_state == 'Power Off' ">
             <button id="bmc__reboot" class="btn btn-secondary" ng-class="{disabled: confirmPowerOn}" ng-click="poweronConfirm()" ng-disabled="dataService.server_unreachable">
                 <icon file="icon-power.svg"></icon>Power on switch
 			</button>
-            <confirm title="power on switch" confirm="confirmPowerOn" ng-show="confirmPowerOn" callback="toggleSwitchPower('poweron switch')"></confirm>
         </div>
         <div class="row column" ng-hide="switch_state == 'Power On' ">
 			<button id="bmc__reboot" class="btn btn-secondary" ng-class="{disabled: confirmPowerOff}" ng-click="poweroffConfirm()" ng-disabled="dataService.server_unreachable">
 				<icon file="icon-power.svg"></icon>Power off switch
 			</button>
-            <confirm title="power off switch" confirm="confirmPowerOff" ng-show="confirmPowerOff" callback="toggleSwitchPower('poweroff switch')"></confirm>
-			</button>
 		</div>
-        </div>
     </div>
 
 </div>
