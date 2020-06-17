@@ -125,7 +125,7 @@ window.angular && (function(angular) {
                     sensorData.push(data[i]);
                 }
             }
-            console.log(sensorData);
+            //console.log(sensorData);
             $scope.data = sensorData;
           /* Modified by USISH Steven 20181221  end*/
           //$scope.data = data;

@@ -99,20 +99,27 @@ window.angular && (function(angular) {
         if(angular.equals(name, 'PS')) {
             changeStatus('ps');
             //$scope.psinfo=PSInfo;
-			 angular.forEach(PSInfo, function(psInfo, psName) {
+            angular.forEach(PSInfo, function(psInfo, psName) {
                 if(angular.equals(psName, 'PS1')) {
-					if(psInfo.Status != 'Ok' && psInfo.Status != 'Get Fail')
+                    if(psInfo.Status != 'Ok' && psInfo.Status != 'Get Fail')
                         psInfo.Status = 'Error';
                     $scope.ps1name=psName;
-                    $scope.ps1power=psInfo.Power;
+                    if(psInfo.Power != 'Get Fail')
+                        $scope.ps1power=psInfo.Power+'watts';
+                    else
+                        $scope.ps1power=psInfo.Power;
                     $scope.ps1status=psInfo.Status;
                 } else if (angular.equals(psName, 'PS2')) {
-					if(psInfo.Status != 'Ok' && psInfo.Status != 'Get Fail')
+                        if(psInfo.Status != 'Ok' && psInfo.Status != 'Get Fail')
                         psInfo.Status = 'Error';
                     $scope.ps2name=psName;
-                    $scope.ps2power=psInfo.Power;
+                    //$scope.ps2power=psInfo.Power;
+                    if(psInfo.Power != 'Get Fail')
+                        $scope.ps2power=psInfo.Power+'watts';
+                    else
+                        $scope.ps2power=psInfo.Power;
                     $scope.ps2status=psInfo.Status;
-				}
+                }
             });
             var lab = document.getElementById('usi-ps');
             var mousePosition = getMousePos(window.event); ///Get mouse position
@@ -129,7 +136,11 @@ window.angular && (function(angular) {
 					if(psInfo.Status != 'Ok' && psInfo.Status != 'Get Fail')
 						psInfo.Status = 'Error';
                     $scope.psname=psName;
-                    $scope.pspower=psInfo.Power;
+                    //$scope.pspower=psInfo.Power;
+                    if(psInfo.Power != 'Get Fail')
+                        $scope.pspower=psInfo.Power+'watts';
+                    else
+                        $scope.pspower=psInfo.Power;
                     $scope.psstatus=psInfo.Status;
                     var lab = document.getElementById('usi-psx');
                     var mousePosition = getMousePos(window.event); ///Get mouse position
@@ -240,7 +251,6 @@ window.angular && (function(angular) {
     ///IP information
     $scope.Ip = function(name) {
         if (name != whichiocc) {
-			console.log(whichiocc);
             changeStatus('ip');
             $scope.bmc_ip = dataService.server_id;
             var lab = document.getElementById('usi-ip');
@@ -328,7 +338,7 @@ window.angular && (function(angular) {
 			ssdMessage = {
 				"SSD1": {
 					"ConfigureWidth": "x4",
-					"Inserted": "Absent",
+					"Inserted": "Inserted",
 					"LinkSpeed": "Not link",
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
@@ -340,7 +350,7 @@ window.angular && (function(angular) {
 				  },
 				"SSD2": {
 					"ConfigureWidth": "x4",
-					"Inserted": "Absent",
+					"Inserted": "Inserted",
 					"LinkSpeed": "Not link",
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
@@ -376,7 +386,7 @@ window.angular && (function(angular) {
 				  },
 				"SSD5": {
 					"ConfigureWidth": "x4",
-					"Inserted": "Absent",
+					"Inserted": "Inserted",
 					"LinkSpeed": "Not link",
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
@@ -388,7 +398,7 @@ window.angular && (function(angular) {
 				  },
 				"SSD6": {
 					"ConfigureWidth": "x4",
-					"Inserted": "Absent",
+					"Inserted": "Inserted",
 					"LinkSpeed": "Not link",
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
@@ -424,7 +434,7 @@ window.angular && (function(angular) {
 				  },
 				"SSD9": {
 					"ConfigureWidth": "x4",
-					"Inserted": "Absent",
+					"Inserted": "Inserted",
 					"LinkSpeed": "Not link",
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
@@ -436,7 +446,7 @@ window.angular && (function(angular) {
 				  },
 				"SSD10": {
 					"ConfigureWidth": "x4",
-					"Inserted": "Absent",
+					"Inserted": "Inserted",
 					"LinkSpeed": "Not link",
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
@@ -472,7 +482,7 @@ window.angular && (function(angular) {
 				  },
 				"SSD13": {
 					"ConfigureWidth": "x4",
-					"Inserted": "Absent",
+					"Inserted": "Inserted",
 					"LinkSpeed": "Not link",
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
@@ -484,7 +494,7 @@ window.angular && (function(angular) {
 				  },
 				"SSD14": {
 					"ConfigureWidth": "x4",
-					"Inserted": "Absent",
+					"Inserted": "Inserted",
 					"LinkSpeed": "Not link",
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
@@ -520,7 +530,7 @@ window.angular && (function(angular) {
 				  },
 				"SSD17": {
 					"ConfigureWidth": "x4",
-					"Inserted": "Absent",
+					"Inserted": "Inserted",
 					"LinkSpeed": "Not link",
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
@@ -532,7 +542,7 @@ window.angular && (function(angular) {
 				  },
 				"SSD18": {
 					"ConfigureWidth": "x4",
-					"Inserted": "Absent",
+					"Inserted": "Inserted",
 					"LinkSpeed": "Not link",
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
@@ -568,7 +578,7 @@ window.angular && (function(angular) {
 				  },
 				"SSD21": {
 					"ConfigureWidth": "x4",
-					"Inserted": "Absent",
+					"Inserted": "Inserted",
 					"LinkSpeed": "Not link",
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
@@ -580,7 +590,7 @@ window.angular && (function(angular) {
 				  },
 				"SSD22": {
 					"ConfigureWidth": "x4",
-					"Inserted": "Absent",
+					"Inserted": "Inserted",
 					"LinkSpeed": "Not link",
 					"LinkStatus": "Fail",
 					"LinkWidth": "Not link",
