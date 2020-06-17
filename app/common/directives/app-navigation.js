@@ -50,7 +50,7 @@ window.angular && (function(angular) {
                 $scope.navStyle = {'top': paddingTop + 'px'};
               });
 
-			  /*add by USI steven 20200616 start*/
+			  /** add by USI steven 20200616 start **/
 			  $scope.userName = '';
 			  $scope.getLogInUserName = function() {
                 $scope.userName = userModel.getUserName();
@@ -58,14 +58,7 @@ window.angular && (function(angular) {
               };
 			  $scope.loadUserInfo = function() {
 				var users = [];
-                $scope.loading = true;
-                $scope.submitted = false;
-                $scope.isUserSelected = false;
-                $scope.selectedUser = {};
-                $scope.togglePassword = false;
-                $scope.toggleVerify = false;
-                $q.all([
-                  APIUtils.getAllUserAccounts().then(
+                APIUtils.getAllUserAccounts().then(
                     function(res) {
                       users = res;
 					  console.log(users);
@@ -78,29 +71,12 @@ window.angular && (function(angular) {
                     },
                     function(error) {
                       console.log(JSON.stringify(error));
-                    }),
-                  APIUtils.getAllUserAccountProperties().then(
-                    function(res) {
-					  console.log(res);
-                    },
-                    function(error) {
-                      console.log(JSON.stringify(error));
-                    }),
-                  APIUtils.getAccountServiceRoles().then(
-                    function(res) {
-                      console.log(res);
-                    },
-                    function(error) {
-                      console.log(JSON.stringify(error));
-                  })
-              ]).finally(function() {
-              $scope.loading = false;
-            });
+                }),
          };
 
          $scope.getLogInUserName();
          $scope.loadUserInfo();
-         /*add by USI steven 20200616 start*/
+         /** add by USI steven 20200616 start **/
 
             }
           ],

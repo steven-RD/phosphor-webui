@@ -50,8 +50,7 @@
         </button>
     </div>
     <div class="row column" ng-show="switch_state == 'Power On' ">
-        <p>AFA switch is <span class="led-switch__status">{{switch_state}}.</span>When update switch firmware, please make sure that the switch is power on!</p>
-        <button id="bmc__reboot" class="btn btn-secondary" ng-click="confirmSettings=true" ng-disabled="dataService.server_unreachable">
+    <button id="bmc__reboot" class="btn btn-secondary" ng-click="confirmSettings=true" ng-disabled="dataService.server_unreachable">
             <icon file="icon-power.svg"></icon>Power off switch
         </button>
     </div>
