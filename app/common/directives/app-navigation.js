@@ -50,29 +50,30 @@ window.angular && (function(angular) {
                 $scope.navStyle = {'top': paddingTop + 'px'};
               });
 
-			  /** add by USI steven 20200616 start **/
-			  $scope.userName = '';
-			  $scope.getLogInUserName = function() {
+            /** add by USI steven 20200616 start **/
+            $scope.userName = '';
+            $scope.getLogInUserName = function() {
                 $scope.userName = userModel.getUserName();
-				console.log($scope.userName);
-              };
-			  $scope.loadUserInfo = function() {
-				var users = [];
+                console.log($scope.userName);
+            };
+            $scope.loadUserInfo = function() {
+                var users = [];
                 APIUtils.getAllUserAccounts().then(
                     function(res) {
-                      users = res;
-					  console.log(users);
-					  for(var i = 0; i < users.length; i++) {
-						  if($scope.userName = users[i].UserName){
-							  $scope.role = users[i].RoleId;
-							  console.log($scope.role);
-						  }
-					  }
+                        users = res;
+                        console.log(users);
+                        for(var i = 0; i < users.length; i++) {
+                            if($scope.userName = users[i].UserName){
+                                $scope.role = users[i].RoleId;
+                                console.log($scope.role);
+                            }
+                        }
                     },
                     function(error) {
                       console.log(JSON.stringify(error));
-                }),
-         };
+                    }
+               );
+           };
 
          $scope.getLogInUserName();
          $scope.loadUserInfo();
