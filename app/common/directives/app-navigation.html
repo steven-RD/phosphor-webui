@@ -79,7 +79,7 @@
           <a href="#/server-control/server-led" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">LED control</a>
         </li>
-        <li ng-class="{'active': (path == '/server-control/fan')}" ng-show="role=='Administrator' && userName=='root' ">
+        <li ng-class="{'active': (path == '/server-control/fan')}" ng-show="userName=='root' && role=='Administrator'">
           <a href="#/server-control/fan" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">Fan control</a>
         </li>
@@ -137,10 +137,10 @@
         Help
       </a>
     </li>
-    <li ng-show="role=='Administrator' && userName=='root' ">
+    <li ng-show=" userName=='root' && role=='Administrator' ">
       <button class="btn-users" ng-class="{opened: firstLevel == 'users'}" ng-click="change('users')">
         <icon class="nav-icon" file="icon-user.svg"></icon>
-        Users
+        User
       </button>
       <ul class="nav__second-level btn-users"
         ng-style="navStyle"

@@ -63,7 +63,7 @@ window.angular && (function(angular) {
                         users = res;
                         console.log(users);
                         for(var i = 0; i < users.length; i++) {
-                            if($scope.userName = users[i].UserName){
+                            if($scope.userName == users[i].UserName){
                                 $scope.role = users[i].RoleId;
                                 console.log($scope.role);
                             }
