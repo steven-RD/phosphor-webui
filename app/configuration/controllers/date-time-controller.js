@@ -19,7 +19,7 @@ window.angular && (function(angular) {
       $scope.time = {mode: '', owner: ''};
       // Possible time owners
       // https://github.com/openbmc/phosphor-dbus-interfaces/blob/master/xyz/openbmc_project/Time/Owner.interface.yaml#L13
-      $scope.timeOwners = ['AFA', 'Host', 'Both', 'Split'];
+      $scope.timeOwners = ['BMC', 'Host', 'Both', 'Split'];
       $scope.loading = true;
       var timePath = '/xyz/openbmc_project/time/';
 
@@ -164,16 +164,22 @@ window.angular && (function(angular) {
         if ($scope.ntp.servers.length == 0) {
           $scope.ntp.servers.push('');
         }
+		console.log('setNTPServers');
+		console.log($scope.ntp.servers);
         return APIUtils.setNTPServers($scope.ntp.servers);
       }
 
       function setTimeMode() {
+		console.log('setTimeMode');
+		console.log($scope.time.mode);
         return APIUtils.setTimeMode(
             'xyz.openbmc_project.Time.Synchronization.Method.' +
             $scope.time.mode);
       }
 
       function setTimeOwner() {
+		console.log('setTimeOwner');
+		console.log($scope.time.owner);
         return APIUtils.setTimeOwner(
             'xyz.openbmc_project.Time.Owner.Owners.' + $scope.time.owner);
       }

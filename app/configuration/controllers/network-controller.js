@@ -85,6 +85,8 @@ window.angular && (function(angular) {
         // user doesn't fill out the field, we don't want to add.
         $scope.interface.Nameservers =
             $scope.interface.Nameservers.filter(Boolean);
+		console.log('setNetworkSettings');
+		console.log($scope.interface.Nameservers);
         // toString() is a cheap way to compare 2 string arrays
         if ($scope.interface.Nameservers.toString() !=
             $scope.oldInterface.Nameservers.toString()) {
@@ -219,7 +221,7 @@ window.angular && (function(angular) {
             .setNameservers(
                 $scope.selectedInterface, $scope.interface.Nameservers)
             .then(
-                function(data) {},
+                function(data) {console.log('setNameservers');console.log(data);},
                 function(error) {
                   console.log(JSON.stringify(error));
                   return $q.reject();
