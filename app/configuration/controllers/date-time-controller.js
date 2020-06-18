@@ -19,7 +19,7 @@ window.angular && (function(angular) {
       $scope.time = {mode: '', owner: ''};
       // Possible time owners
       // https://github.com/openbmc/phosphor-dbus-interfaces/blob/master/xyz/openbmc_project/Time/Owner.interface.yaml#L13
-      $scope.timeOwners = ['BMC', 'Host', 'Both', 'Split'];
+      $scope.timeOwners = ['AFA', 'Host', 'Both', 'Split'];
       $scope.loading = true;
       var timePath = '/xyz/openbmc_project/time/';
 
@@ -68,6 +68,8 @@ window.angular && (function(angular) {
       var getNTPPromise = APIUtils.getNTPServers().then(
           function(data) {
             $scope.ntp.servers = data.data;
+			gconsole.log('getNTPPromise=');
+			console.log($scope.ntp.servers);
           },
           function(error) {
             console.log(JSON.stringify(error));
@@ -142,10 +144,14 @@ window.angular && (function(angular) {
 
       $scope.addNTPField = function() {
         $scope.ntp.servers.push('');
+		console.log('addNTPField=');
+		console.log($scope.ntp.servers);
       };
 
       $scope.removeNTPField = function(index) {
         $scope.ntp.servers.splice(index, 1);
+		console.log('removeNTPField=');
+		console.log($scope.ntp.servers);
       };
 
       function setNTPServers() {
