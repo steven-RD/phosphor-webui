@@ -66,13 +66,13 @@
                 <!--  Display button: Active, Update, Delete in different scene. -->
                 <div ng-if="version.toBeActiveVersion != 'None'">
                     <button class="firmware__action-link"
-                        ng-click="run(firmware.Name, firmware.Version, firmware.Type)">Active
+                        ng-click="run(firmware.Name, firmware.Version, firmware.Type)">Activate
                     </button>
                 </div>
                 <!-- After Upload, before Update -->
                 <div ng-if="firmware.Version != 'None' && version.toBeActiveVersion == 'None'">
                     <button class="firmware__action-link"
-                        ng-click="update(firmware.Name, firmware.Version, firmware.Type)">update
+                        ng-click="update(firmware.Name, firmware.Version, firmware.Type)">Update
                     </button>
                     <button class="firmware__action-link"
                         ng-click="delete(firmware.Name, firmware.Version)">Delete
