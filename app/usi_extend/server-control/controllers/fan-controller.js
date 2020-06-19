@@ -105,7 +105,7 @@ window.angular && (function(angular) {
             },
             function(error) {
                console.log(JSON.stringify(error));
-            }),
+            });
        };
 
       $scope.getLogInUserName();
