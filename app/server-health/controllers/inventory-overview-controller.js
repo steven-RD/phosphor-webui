@@ -32,8 +32,7 @@ window.angular && (function(angular) {
 			}
 		}
         $scope.hardwares = harddata;
-		console.log(harddata);
-		console.log($scope.hardwares);
+		///console.log($scope.hardwares);
 		/*Modify by USI steven 20200609 end*/
 		
 		//$scope.hardwares = data;

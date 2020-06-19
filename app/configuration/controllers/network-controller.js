@@ -86,7 +86,6 @@ window.angular && (function(angular) {
         $scope.interface.Nameservers =
             $scope.interface.Nameservers.filter(Boolean);
 		console.log('setNetworkSettings');
-		console.log($scope.interface.Nameservers);
         // toString() is a cheap way to compare 2 string arrays
         if ($scope.interface.Nameservers.toString() !=
             $scope.oldInterface.Nameservers.toString()) {
@@ -217,11 +216,14 @@ window.angular && (function(angular) {
         if ($scope.interface.Nameservers.length == 0) {
           $scope.interface.Nameservers.push('');
         }
+		console.log('setNameservers');
+		console.log($scope.selectedInterface);
+		console.log($scope.interface.Nameservers);
         return APIUtils
             .setNameservers(
                 $scope.selectedInterface, $scope.interface.Nameservers)
             .then(
-                function(data) {console.log('setNameservers');console.log(data);},
+                function(data) {},
                 function(error) {
                   console.log(JSON.stringify(error));
                   return $q.reject();

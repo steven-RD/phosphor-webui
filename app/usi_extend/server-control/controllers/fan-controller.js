@@ -26,8 +26,6 @@ window.angular && (function(angular) {
       $scope.setFanSpeed = function() {
           $scope.loading = true;
 		  $scope.confirmSettings = false;
-		  console.log($scope.fanId);
-		  console.log($scope.speed);
 		  var i = 0, j = 0;
 		  if($scope.fanId == 'ALL') {
 			  for(i = 0; i < fans.length; i++) {
@@ -35,7 +33,6 @@ window.angular && (function(angular) {
 				  function(data) {
 					  console.log(JSON.stringify(data));
 					  $scope.loading = false;
-					  console.log(fans[j]);
 					  toastService.success('Set ' + fans[j] + ' speed OK!');
 					  j++;
 				  },
@@ -70,7 +67,6 @@ window.angular && (function(angular) {
 		  if($scope.fanId != 'ALL'){
 		    UsiAPIUtils.getFanSpeed($scope.fanId).then(
               function(data) {
-				  console.log(JSON.stringify(data));
 				  FanInfo = data;
 				  $scope.speed = FanInfo["Target"];
 				  $scope.loading = false;
