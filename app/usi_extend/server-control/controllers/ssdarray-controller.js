@@ -29,6 +29,7 @@ window.angular && (function(angular) {
           $scope.bmcFlag = false;
           $scope.ipFlag = false;
           $scope.ioccxFlag = false;
+          $scope.uspFlag = false;
           if(flag == 'ssd'){
               $scope.ssdFlag = true;
           }else if(flag == 'cable'){
@@ -47,6 +48,8 @@ window.angular && (function(angular) {
               $scope.ipFlag = true;
           }else if(flag == 'ioccx'){
               $scope.ioccxFlag = true;
+          }else if(flag == 'usp'){
+              $scope.uspFlag = true;
           }
       };
 
@@ -60,6 +63,7 @@ window.angular && (function(angular) {
           $scope.bmcFlag = false;
           $scope.ipFlag = false;
           $scope.ioccxFlag = false;
+          $scope.uspFlag = false;
           var lab = document.getElementById(id);
           lab.style.display = "none";
       };
@@ -69,6 +73,7 @@ window.angular && (function(angular) {
       var swMessage=[];
       var BMCMessage=[];
       var PSInfo=[];
+      var uspMessage = [];
       ///ssd information
       $scope.SSD = function(num){
       angular.forEach(ssdMessage, function(ssdInfo, ssdNum){
@@ -185,7 +190,30 @@ window.angular && (function(angular) {
 
     ///USP information
     $scope.USP = function(name) { ///TBD
-        console.log(name);
+        if(uspMessage[name]="Fail" || uspMessage[name]="null"){
+			changeStatus('usp');
+			$scope.uspinfo = uspMessage[name];
+			var lab = document.getElementById('usi-usp');
+			var mousePosition= getMousePos(window.event);
+			lab.style.position = "absolute";
+			lab.style.display = "block";
+			lab.style.left = mousePosition.x + 5 + 'px';
+			lab.style.top = mousePosition.y + 5 + 'px';
+			lab.style.height = '0px';
+			lab.style.width = '0px';
+		}else{
+			changeStatus('ioccx');
+			$scope.ioccname = name;
+			$scope.ioccxstatus = uspMessage[name];
+			var lab = document.getElementById('usi-ioccx');
+			var mousePosition = getMousePos(window.event);
+			lab.style.position = 'absolute';
+			lab.style.display = "block";
+			lab.style.left = mousePosition.x + 5 + 'px';
+			lab.style.top = mousePosition.y + 5 + 'px';
+			lab.style.height = '0px';
+			lab.style.width = '0px';
+		}
     };
 
     ///switch information
@@ -299,6 +327,7 @@ window.angular && (function(angular) {
           $scope.bmcFlag = false;
           $scope.ipFlag = false;
           $scope.ioccxFlag = false;
+          $scope.uspFlag = false;
           var imgElement = document.getElementById("imgs").getElementsByTagName("li");
           var imgLen = imgElement.length;
           if(arrow == 'right'){
@@ -1006,6 +1035,19 @@ window.angular && (function(angular) {
             }
         );
       };
+
+      $scope.loadUspInfo = function() {
+		  UsiAPIUtils.getUspInfo().then(
+		      function(data){
+				  uspMessage = data;
+				  console.log(uspMessage);
+			  },
+			  function(error){
+               toastService.error('Error during getUspInfo');
+			  }
+		  );
+	  };
+      
 
       $scope.loadSWInfo = function(){
         UsiAPIUtils.getSWInfo().then(

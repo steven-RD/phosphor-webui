@@ -48,6 +48,7 @@ window.angular && (function(angular) {
             APIUtils.getAccountServiceRoles().then(
                 function(res) {
                   //$scope.roles = res;
+				/**Modify by USI steven 20200622 start*/
 				  var j=0, tmpRoles=[];
 				  for(var i=0; i<res.length; i++){
 					  if(res[i]=="Administrator" || res[i]=="User"){
@@ -55,6 +56,8 @@ window.angular && (function(angular) {
 						  j++;
 					  }
 				  }
+				  $scope.roles = tmpRoles;
+				/**Modify by USI steven 20200622 end*/
                 },
                 function(error) {
                   console.log(JSON.stringify(error));

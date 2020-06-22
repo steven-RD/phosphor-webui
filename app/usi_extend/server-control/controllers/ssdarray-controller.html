@@ -133,11 +133,6 @@
 					<div ng-show="ssd24good == true" id="usi-ssd24-status"><img src="../../images/icon-ssd-good.svg" /></div>
 					<div ng-show="ssd24bad == true" id="usi-ssd24-status"><img src="../../images/icon-ssd-bad.svg" /></div>
 					<div ng-show="ssd24warning == true" id="usi-ssd24-warning"><img src="../../images/icon-ssd-warning.svg" ng-mouseover="SSD('SSD24')"/></div>
-					<!-- <div id="usi-ssd2-status"><img src="../../images/icon-ssd-bad.svg" /></div>
-					<div id="usi-ssd3-status"><img src="../../images/icon-ssd-good.svg" /></div>
-					<div id="usi-ssd4-status"><img src="../../images/icon-ssd-warning.svg" /></div>
-					<div id="usi-ssd5-status"><img src={{ssd5url}} /></div>
-					 -->
 				</div>
 			</li>
 			<li class="img_display"><div id="rear-img">
@@ -145,8 +140,8 @@
 				<map name="cableMap">
 					<area shape="rect" coords="40,120,110,190" alt="powerA" id="ssdArrayStyle" ng-mouseover="PowerSupply('PS1')"/>
 					<area shape="rect" coords="40,196,110,268" alt="powerB" id="ssdArrayStyle" ng-mouseover="PowerSupply('PS2')"/>
-					<area shape="rect" coords="190,120,440,220" alt="cable1" id="ssdArrayStyle" ng-mouseover="USP('iocca')"/>
-					<area shape="rect" coords="490,120,740,220" alt="cable2" id="ssdArrayStyle" ng-mouseover="USP('ioccb')"/>
+					<area shape="rect" coords="190,120,440,220" alt="usp1" id="ssdArrayStyle" ng-mouseover="USP('iocca')"/>
+					<area shape="rect" coords="490,120,740,220" alt="usp2" id="ssdArrayStyle" ng-mouseover="USP('ioccb')"/>
 					<area shape="rect" coords="206,240,234,264" alt="ip" id="ssdArrayStyle" ng-mouseover="Ip('iocca')"/>
 					<area shape="rect" coords="494,240,525,264" alt="ip" id="ssdArrayStyle" ng-mouseover="Ip('ioccb')"/>
 				</map></div>
@@ -380,6 +375,26 @@
                <!--  <tr><td>{{bmc_ip_addresses[1]}}</td></tr> -->
             </tbody>
         </table>
+    </div>
+    <div id="usi-usp" class="usi-ssd-array" ng-show="uspFlag == true"  ng-mouseleave="leave('usi-usp')"> 
+      <table id='ssd-info-body' ng-show="uspinfo != 'None'">
+        <thead class="ssd-body-header">
+            <tr>
+                <th>USP NO.</th>
+                <th>Configure width</th>
+                <th>Link speed</th>
+                <th>Link width</th>
+            </tr>
+        </thead>
+        <tbody class="ssd-body-tbody">
+            <tr ng-repeat="(usp, detail) in uspinfo">
+                <td>{{usp}}</td>
+                <td>{{detail.ConfigureWidth }}</td>
+                <td>{{detail.LinkSpeed }}</td>
+                <td>{{detail.LinkWidth}}</td>
+            </tr>
+        </tbody>
+      </table>
     </div>
 </div>
 

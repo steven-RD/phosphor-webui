@@ -66,7 +66,7 @@ window.angular && (function(angular) {
 
         // Restful way start
         /* Modified by USISH Steven20190122/Judy20190521 start */
-        /* getSwitchActivatedStatus: function(callback) {
+        getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() +
@@ -314,6 +314,23 @@ window.angular && (function(angular) {
                 });
         },
 
+        getUspInfo: function(){
+            return $http({
+                method: 'GET',
+                url: DataService.getHost() + 
+                    '/xyz/openbmc_project/ssdarray/uspinfo',
+                withCredentials: true
+            })
+            .then(function(response){
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                return content['data']['Info'];
+            },
+            function(errorr){
+                console.log(error);
+            });
+        },
+
         getSWInfo: function(){
             return $http({
                    method: 'GET',
@@ -363,12 +380,12 @@ window.angular && (function(angular) {
                 function(error) {
                    console.log(error);
                 });
-        }, */
+        },
       /* Modified by USISH Steven20190122/Judy20190521 end */
       // Restful way end
       // Redfish way start
       /* Modified by USISH Judy20190702 start */
-        getSwitchActivatedStatus: function(callback) {
+        /* getSwitchActivatedStatus: function(callback) {
           $http({
             method: 'GET',
             url: DataService.getHost() + '/redfish/v1/USI_Switch/Activate',
@@ -655,7 +672,7 @@ window.angular && (function(angular) {
                 function(error) {
                    console.log(error);
                 });
-        },
+        }, */
 
       /*  Modified by USISH Judy20190702 end */
       // Redfish way end
