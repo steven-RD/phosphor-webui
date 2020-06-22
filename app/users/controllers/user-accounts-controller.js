@@ -47,7 +47,14 @@ window.angular && (function(angular) {
 
             APIUtils.getAccountServiceRoles().then(
                 function(res) {
-                  $scope.roles = res;
+                  //$scope.roles = res;
+				  var j=0, tmpRoles=[];
+				  for(var i=0; i<res.length; i++){
+					  if(res[i]=="Administrator" || res[i]=="User"){
+						  tmpRoles[j]=res[i];
+						  j++;
+					  }
+				  }
                 },
                 function(error) {
                   console.log(JSON.stringify(error));

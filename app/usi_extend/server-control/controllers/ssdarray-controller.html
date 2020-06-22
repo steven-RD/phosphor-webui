@@ -10,7 +10,7 @@
 
 	<div class="allImage" >
 		<ul class="ulimg" id="imgs">
-			<li ><div id="front-img"> <!-- src="../../../assets/images/J2024-03-front.png" -->
+			<li ><div id="front-img">
 				<img id="frontImg" src="../../images/J2024-03-front.png" class="ssd-image" alt="ssd" usemap="#SSDmap"/>
 				<map name="SSDmap" >
 					<area shape="rect" coords="61,130,84,248" alt="ssd1" id="ssdArrayStyle" ng-mouseover="SSD('SSD1')" />
@@ -230,6 +230,8 @@
                 <th>Link status</th>
                 <th>Link active</th>
                 <th>Link width</th>
+                <th>Link speed</th>
+                <th>Configure width</th>
                 <th>Physical port</th>
                 <th>Present</th>
             </tr>
@@ -241,6 +243,8 @@
                 <td>{{detail.LinkStatus}}</td>
                 <td>{{detail.LinkActive}}</td>
                 <td>{{detail.LinkWidth}}</td>
+                <td>{{detail.LinkSpeed }}</td>
+                <td>{{detail.ConfigureWidth }}</td>
                 <td>{{detail.PhysicalPort}}</td>
                 <td>{{detail.Present}}</td>
             </tr>

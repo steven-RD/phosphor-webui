@@ -27,41 +27,37 @@ window.angular && (function(angular) {
           $scope.loading = true;
 		  $scope.confirmSettings = false;
 		  var i = 0, j = 0;
-		  if (userName=='root' && role=='Administrator'){
-			  if($scope.fanId == 'ALL') {
-				  for(i = 0; i < fans.length; i++) {
-					  UsiAPIUtils.setFanSpeed(fans[i], $scope.speed).then(
-					  function(data) {
-						  console.log(JSON.stringify(data));
-						  $scope.loading = false;
-						  toastService.success('Set ' + fans[j] + ' speed OK!');
-						  j++;
-					  },
-					  function(error) {
-						  console.log(JSON.stringify(error));
-						  $scope.loading = false;
-						  toastService.error('Set ' + fans[j] + ' speed error!');
-						  j++;
-						  return $q.reject();
-					}); 
-				  }
-			  } else {
-				  UsiAPIUtils.setFanSpeed($scope.fanId, $scope.speed).then(
-					  function(data) {
-						  console.log(JSON.stringify(data));
-						  $scope.loading = false;
-						  toastService.success('Set ' + $scope.fanId + ' speed OK!');
-						
-					  },
-					  function(error) {
-						  console.log(JSON.stringify(error));
-						  $scope.loading = false;
-						  toastService.error('Set '+ $scope.fanId +' speed error!');
-						  return $q.reject();
-					}); 
+		  if($scope.fanId == 'ALL') {
+			  for(i = 0; i < fans.length; i++) {
+				  UsiAPIUtils.setFanSpeed(fans[i], $scope.speed).then(
+				  function(data) {
+					  console.log(JSON.stringify(data));
+					  $scope.loading = false;
+					  toastService.success('Set ' + fans[j] + ' speed OK!');
+					  j++;
+				  },
+				  function(error) {
+					  console.log(JSON.stringify(error));
+					  $scope.loading = false;
+					  toastService.error('Set ' + fans[j] + ' speed error!');
+					  j++;
+					  return $q.reject();
+				}); 
 			  }
 		  } else {
-			  toastService.error('Permissions deny!');
+			  UsiAPIUtils.setFanSpeed($scope.fanId, $scope.speed).then(
+				  function(data) {
+					  console.log(JSON.stringify(data));
+					  $scope.loading = false;
+					  toastService.success('Set ' + $scope.fanId + ' speed OK!');
+					
+				  },
+				  function(error) {
+					  console.log(JSON.stringify(error));
+					  $scope.loading = false;
+					  toastService.error('Set '+ $scope.fanId +' speed error!');
+					  return $q.reject();
+				}); 
 		  }
       }
 	  
@@ -84,7 +80,7 @@ window.angular && (function(angular) {
 	  }
       
 	  /** add by USI steven 20200616 start **/
-		var userName = '';
+		/* var userName = '';
 		var role = '';
 		$scope.getLogInUserName = function() {
         userName = userModel.getUserName();
@@ -109,7 +105,7 @@ window.angular && (function(angular) {
        };
 
       $scope.getLogInUserName();
-      $scope.loadUserInfo();
+      $scope.loadUserInfo(); */
       /** add by USI steven 20200616 start **/
 	  $scope.refresh();
 

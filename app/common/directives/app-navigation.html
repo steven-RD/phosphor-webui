@@ -79,7 +79,7 @@
           <a href="#/server-control/server-led" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">LED control</a>
         </li>
-        <li ng-class="{'active': (path == '/server-control/fan')}" > <!-- ng-show="userName=='root' && role=='Administrator'" -->
+        <li ng-class="{'active': (path == '/server-control/fan')}" ng-show="userName=='root' && role=='Administrator'"> 
           <a href="#/server-control/fan" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">Fan control</a>
         </li>
