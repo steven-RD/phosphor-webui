@@ -190,7 +190,8 @@ window.angular && (function(angular) {
 
     ///USP information
     $scope.USP = function(name) { ///TBD
-        if(uspMessage[name] != "Fail" || uspMessage[name] != "null"){
+        //if(uspMessage[name] != "Fail" || uspMessage[name] != "null"){ //Uspinfo Get Fail
+		if(uspMessage[name] != "Uspinfo Get Fail"){
 			changeStatus('usp');
 			$scope.uspinfo = uspMessage[name];
 			var lab = document.getElementById('usi-usp');
