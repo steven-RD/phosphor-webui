@@ -190,10 +190,11 @@ window.angular && (function(angular) {
 
     ///USP information
     $scope.USP = function(name) { ///TBD
-        $scope.uspinfo = 'None'
-        if(uspMessage[name] != "Fail" || uspMessage[name] != "null"){ 
+        if(uspMessage[name] != "Fail" && uspMessage[name] != "null"){ 
 		//if(uspMessage[name] != "Uspinfo Get Fail"){
+			console.log(uspMessage[name]);
 			changeStatus('usp');
+            $scope.uspinfo = 'None'
 			$scope.uspinfo = uspMessage[name];
 			var lab = document.getElementById('usi-usp');
 			var mousePosition= getMousePos(window.event);
@@ -204,18 +205,19 @@ window.angular && (function(angular) {
 			lab.style.height = '0px';
 			lab.style.width = '0px';
 		}else{
+			$scope.ioccxstatus='None';
 			changeStatus('ioccx');
 			$scope.ioccname = name;
 			$scope.ioccxstatus = uspMessage[name];
 			var lab = document.getElementById('usi-ioccx');
-			var mousePosition = getMousePos(window.event);
-			lab.style.position = 'absolute';
-			lab.style.display = "block";
-			lab.style.left = mousePosition.x + 5 + 'px';
-			lab.style.top = mousePosition.y + 5 + 'px';
-			lab.style.height = '0px';
-			lab.style.width = '0px';
-		}
+            var mousePosition = getMousePos(window.event); ///Get mouse position
+            lab.style.position = "absolute";
+            lab.style.display = "block";
+            lab.style.left = mousePosition.x + 5 + 'px';
+            lab.style.top = mousePosition.y + 5 + 'px';
+            lab.style.height = '0px';
+            lab.style.width = '0px';
+        }
     };
 
     ///switch information
