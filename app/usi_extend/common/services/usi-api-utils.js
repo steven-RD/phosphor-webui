@@ -553,6 +553,7 @@ window.angular && (function(angular) {
               });
           return deferred.promise;
         },
+
         getPowerSwitchStatus: function() {
           var deferred = $q.defer();
           $http({
@@ -604,7 +605,24 @@ window.angular && (function(angular) {
                 function(error) {
                    console.log(error);
                 });
-        }, 
+        },
+
+        getUspInfo: function(){
+            return $http({
+                method: 'GET',
+                url: DataService.getHost() + 
+                    '/redfish/v1/USI_Switch/UspInfo',
+                withCredentials: true
+            })
+            .then(function(response){
+                var json = JSON.stringify(response.data);
+                var content = JSON.parse(json);
+                return content['Info'];
+            },
+            function(errorr){
+                console.log(error);
+            });
+        },
 
         getSWInfo: function(){
             return $http({

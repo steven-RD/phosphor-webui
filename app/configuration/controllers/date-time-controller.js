@@ -68,8 +68,8 @@ window.angular && (function(angular) {
       var getNTPPromise = APIUtils.getNTPServers().then(
           function(data) {
             $scope.ntp.servers = data.data;
-			gconsole.log('getNTPPromise=');
-			console.log($scope.ntp.servers);
+			//console.log('getNTPPromise=');
+			//console.log($scope.ntp.servers);
           },
           function(error) {
             console.log(JSON.stringify(error));
@@ -144,14 +144,14 @@ window.angular && (function(angular) {
 
       $scope.addNTPField = function() {
         $scope.ntp.servers.push('');
-		console.log('addNTPField=');
-		console.log($scope.ntp.servers);
+		//console.log('addNTPField=');
+		//console.log($scope.ntp.servers);
       };
 
       $scope.removeNTPField = function(index) {
         $scope.ntp.servers.splice(index, 1);
-		console.log('removeNTPField=');
-		console.log($scope.ntp.servers);
+		//console.log('removeNTPField=');
+		//console.log($scope.ntp.servers);
       };
 
       function setNTPServers() {
@@ -164,22 +164,22 @@ window.angular && (function(angular) {
         if ($scope.ntp.servers.length == 0) {
           $scope.ntp.servers.push('');
         }
-		console.log('setNTPServers');
-		console.log($scope.ntp.servers);
+		//console.log('setNTPServers');
+		//console.log($scope.ntp.servers);
         return APIUtils.setNTPServers($scope.ntp.servers);
       }
 
       function setTimeMode() {
-		console.log('setTimeMode');
-		console.log($scope.time.mode);
+		//console.log('setTimeMode');
+		//console.log($scope.time.mode);
         return APIUtils.setTimeMode(
             'xyz.openbmc_project.Time.Synchronization.Method.' +
             $scope.time.mode);
       }
 
       function setTimeOwner() {
-		console.log('setTimeOwner');
-		console.log($scope.time.owner);
+		//console.log('setTimeOwner');
+		//console.log($scope.time.owner);
         return APIUtils.setTimeOwner(
             'xyz.openbmc_project.Time.Owner.Owners.' + $scope.time.owner);
       }

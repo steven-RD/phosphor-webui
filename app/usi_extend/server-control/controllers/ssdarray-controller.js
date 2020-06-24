@@ -190,9 +190,8 @@ window.angular && (function(angular) {
 
     ///USP information
     $scope.USP = function(name) { ///TBD
-        if(uspMessage[name] != "Fail" && uspMessage[name] != "null"){ 
+        if(uspMessage[name] != "Fail" && uspMessage[name] != "Null"){
 		//if(uspMessage[name] != "Uspinfo Get Fail"){
-			console.log(uspMessage[name]);
 			changeStatus('usp');
             $scope.uspinfo = 'None'
 			$scope.uspinfo = uspMessage[name];
