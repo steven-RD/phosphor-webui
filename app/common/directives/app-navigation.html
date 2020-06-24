@@ -129,6 +129,10 @@
           <a href="#/configuration/date-time" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'configuration') ? 0 : -1}}">Date and time setting</a>
         </li>
+        <li ng-class="{'active': (path == '/configuration' || path == '/users/manage-accounts')}" ng-show="userName=='root' && role=='Administrator' ">
+          <a href="#/users/manage-accounts" ng-click="closeSubnav()"
+            tabindex="{{(showSubMenu && firstLevel == 'configuration') ? 0 : -1}}">Manage user account</a>
+        </li>
       </ul>
     </li>
     <li>
@@ -137,7 +141,7 @@
         Help
       </a>
     </li>
-    <li ng-show=" userName=='root' && role=='Administrator' ">
+<!--     <li ng-show=" userName=='root' && role=='Administrator' ">
       <button class="btn-users" ng-class="{opened: firstLevel == 'users'}" ng-click="change('users')">
         <icon class="nav-icon" file="icon-user.svg"></icon>
         User
@@ -150,6 +154,6 @@
             tabindex="{{ (showSubMenu && firstLevel == 'users') ? 0 : -1}}">Manage user account</a>
         </li>
       </ul>
-    </li>
+    </li> -->
   </ul>
 </nav>
