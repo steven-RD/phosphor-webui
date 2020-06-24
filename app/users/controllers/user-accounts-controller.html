@@ -34,7 +34,7 @@
         <div class="table__cell"> Username </div>
         <div class="table__cell"> Enabled </div>
         <div class="table__cell"> Role </div>
-        <div class="table__cell"> Locked </div>
+       <!--  <div class="table__cell"> Locked </div> -->
         <div class="table__cell"> Action </div>
       </div>
     </div>
@@ -43,8 +43,8 @@
         <div class="table__cell"> {{user.UserName}} </div>
         <div class="table__cell"> {{user.Enabled}} </div>
         <div class="table__cell"> {{user.RoleId}} </div>
-        <div class="table__cell"> {{user.Locked}} </div>
-        <div class="table__cell">
+       <!--  <div class="table__cell"> {{user.Locked}} </div> -->
+        <div class="table__cell" ng-hide=" user.UserName=='root' " >
           <button type="button" class="btn  btn-primary" ng-disabled="isUserSelected" ng-click="setSelectedUser(user)">Edit</button>
           <button type="button" class="btn btn-primary" ng-disabled="isUserSelected" ng-click="deleteUser(user.UserName)">Delete</button>
         </div>

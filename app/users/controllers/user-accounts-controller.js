@@ -78,11 +78,13 @@ window.angular && (function(angular) {
             $scope.origProp.AccountLockoutDuration) {
           data['AccountLockoutDuration'] =
               $scope.properties.AccountLockoutDuration;
+			  console.log($scope.properties.AccountLockoutDuration);
         }
         if ($scope.properties.AccountLockoutThreshold !=
             $scope.origProp.AccountLockoutThreshold) {
           data['AccountLockoutThreshold'] =
               $scope.properties.AccountLockoutThreshold;
+			  console.log($scope.properties.AccountLockoutThreshold);
         }
 
         if ($scope.properties.AccountLockoutDuration ==
