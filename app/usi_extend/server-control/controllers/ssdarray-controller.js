@@ -255,19 +255,13 @@ window.angular && (function(angular) {
                 changeStatus('bmc');
                 $scope.bmcinfo = 'None';
                 //$scope.bmcinfo = BMCMessage[name];
-				var bmcInfo = [];
-				bmcInfo["BMCStatus"] = BMCMessage[name].BMCStatus;
-				if(BMCMessage[name].IOCCThermal == 'Fail'){
-					bmcInfo["IOCCThermal"] = BMCMessage[name].IOCCThermal;
-				}else{
-					bmcInfo["IOCCThermal"] = BMCMessage[name].IOCCThermal + '℃';
+				if(BMCMessage[name].IOCCThermal != 'Fail'){
+					BMCMessage[name].IOCCThermal = BMCMessage[name].IOCCThermal + '℃';
 				}
-				if(BMCMessage[name].PFXThermal == 'Fail'){
-					bmcInfo["PFXThermal"] = BMCMessage[name].PFXThermal;
-				}else{
-					bmcInfo["PFXThermal"] = BMCMessage[name].PFXThermal + '℃';
+				if(BMCMessage[name].PFXThermal != 'Fail'){
+					BMCMessage[name].PFXThermal = BMCMessage[name].PFXThermal + '℃';
 				}
-                $scope.bmcinfo = bmcInfo;
+                $scope.bmcinfo = BMCMessage[name];
 				console.log($scope.bmcinfo);
                 var lab = document.getElementById('usi-bmc');
                 var mousePosition = getMousePos(window.event); ///Get mouse position
