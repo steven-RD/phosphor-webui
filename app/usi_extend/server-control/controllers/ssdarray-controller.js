@@ -254,7 +254,19 @@ window.angular && (function(angular) {
             if(BMCMessage[name] != "Bmcinfo Get Fail"){
                 changeStatus('bmc');
                 $scope.bmcinfo = 'None';
-                $scope.bmcinfo = BMCMessage[name];
+                //$scope.bmcinfo = BMCMessage[name];
+				bmcInfo["BMCStatus"] = BMCMessage[name].BMCStatus;
+				if(BMCMessage[name].IOCCThermal == 'Fail'){
+					bmcInfo["IOCCThermal"] = BMCMessage[name].IOCCThermal;
+				}else{
+					bmcInfo["IOCCThermal"] = BMCMessage[name].IOCCThermal + '℃';
+				}
+				if(BMCMessage[name].PFXThermal == 'Fail'){
+					bmcInfo["PFXThermal"] = BMCMessage[name].PFXThermal;
+				}else{
+					bmcInfo["PFXThermal"] = BMCMessage[name].PFXThermal + '℃';
+				}
+
                 var lab = document.getElementById('usi-bmc');
                 var mousePosition = getMousePos(window.event); ///Get mouse position
                 lab.style.position = "absolute";
