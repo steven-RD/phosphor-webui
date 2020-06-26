@@ -268,6 +268,7 @@ window.angular && (function(angular) {
 					bmcInfo["PFXThermal"] = BMCMessage[name].PFXThermal + '℃';
 				}
                 $scope.bmcinfo = bmcInfo;
+				console.log($scope.bmcinfo);
                 var lab = document.getElementById('usi-bmc');
                 var mousePosition = getMousePos(window.event); ///Get mouse position
                 lab.style.position = "absolute";
