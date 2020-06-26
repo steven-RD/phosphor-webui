@@ -255,6 +255,7 @@ window.angular && (function(angular) {
                 changeStatus('bmc');
                 $scope.bmcinfo = 'None';
                 //$scope.bmcinfo = BMCMessage[name];
+				var bmcInfo = [];
 				bmcInfo["BMCStatus"] = BMCMessage[name].BMCStatus;
 				if(BMCMessage[name].IOCCThermal == 'Fail'){
 					bmcInfo["IOCCThermal"] = BMCMessage[name].IOCCThermal;
@@ -266,7 +267,7 @@ window.angular && (function(angular) {
 				}else{
 					bmcInfo["PFXThermal"] = BMCMessage[name].PFXThermal + '℃';
 				}
-
+                $scope.bmcinfo = bmcInfo;
                 var lab = document.getElementById('usi-bmc');
                 var mousePosition = getMousePos(window.event); ///Get mouse position
                 lab.style.position = "absolute";
