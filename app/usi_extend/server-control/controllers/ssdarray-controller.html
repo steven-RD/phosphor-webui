@@ -318,7 +318,7 @@
         </table>
     </div>
     <div id="usi-bmc" class="usi-ssd-array" ng-show="bmcFlag == true" ng-mouseleave="leave('usi-bmc')">
-        <table id='ssd-info-body' ng-show="bmcinfo != 'None'">
+        <table id='ssd-info-body' ng-show="BMCStatus != 'None'">
             <thead class='ssd-body-header'>
                 <tr>
                     <th>Item</th>
@@ -326,9 +326,14 @@
                 </tr>
             </thead>
             <tbody class="ssd-body-tbody">
-                <tr ng-repeat="(bmc, detail) in bmcinfo">
-                    <td>{{bmc}}</td>
-                    <td>{{detail}}</td>
+                <tr><!-- ng-repeat="(bmc, detail) in bmcinfo" -->
+                    <td>BMCStatus</td><td>{{BMCStatus}}</td>
+                </tr>
+                <tr>
+                    <td>IOCCThermal</td><td>{{IOCCThermal}}</td>
+                </tr>
+                <tr>
+                    <td>PFXThermal</td><td>{{PFXThermal}}</td>
                 </tr>
             </tbody>
         </table>

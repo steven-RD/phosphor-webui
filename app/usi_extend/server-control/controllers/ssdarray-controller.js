@@ -115,10 +115,9 @@ window.angular && (function(angular) {
                         $scope.ps1power=psInfo.Power;
                     $scope.ps1status=psInfo.Status;
                 } else if (angular.equals(psName, 'PS2')) {
-                        if(psInfo.Status != 'Ok' && psInfo.Status != 'Get Fail')
+                    if(psInfo.Status != 'Ok' && psInfo.Status != 'Get Fail')
                         psInfo.Status = 'Error';
                     $scope.ps2name=psName;
-                    //$scope.ps2power=psInfo.Power;
                     if(psInfo.Power != 'Get Fail')
                         $scope.ps2power=psInfo.Power+'watts';
                     else
@@ -141,7 +140,6 @@ window.angular && (function(angular) {
 					if(psInfo.Status != 'Ok' && psInfo.Status != 'Get Fail')
 						psInfo.Status = 'Error';
                     $scope.psname=psName;
-                    //$scope.pspower=psInfo.Power;
                     if(psInfo.Power != 'Get Fail')
                         $scope.pspower=psInfo.Power+'watts';
                     else
@@ -253,16 +251,19 @@ window.angular && (function(angular) {
         if(BMCMessage.hasOwnProperty(name)){
             if(BMCMessage[name] != "Bmcinfo Get Fail"){
                 changeStatus('bmc');
-                $scope.bmcinfo = 'None';
+                $scope.BMCStatus = 'None';
+                $scope.BMCStatus = BMCMessage[name].BMCStatus;
+                if(BMCMessage[name].IOCCThermal != 'Fail'){
+                    $scope.IOCCThermal = BMCMessage[name].IOCCThermal + '℃';
+                }else{
+                    $scope.IOCCThermal = BMCMessage[name].IOCCThermal;
+                }
+                if(BMCMessage[name].PFXThermal != 'Fail'){
+                    $scope.PFXThermal = BMCMessage[name].PFXThermal + '℃';
+                }else{
+                    $scope.PFXThermal = BMCMessage[name].PFXThermal;
+                }
                 //$scope.bmcinfo = BMCMessage[name];
-				if(BMCMessage[name].IOCCThermal != 'Fail'){
-					BMCMessage[name].IOCCThermal = BMCMessage[name].IOCCThermal + '℃';
-				}
-				if(BMCMessage[name].PFXThermal != 'Fail'){
-					BMCMessage[name].PFXThermal = BMCMessage[name].PFXThermal + '℃';
-				}
-                $scope.bmcinfo = BMCMessage[name];
-				console.log($scope.bmcinfo);
                 var lab = document.getElementById('usi-bmc');
                 var mousePosition = getMousePos(window.event); ///Get mouse position
                 lab.style.position = "absolute";
