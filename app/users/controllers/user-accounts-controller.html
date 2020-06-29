@@ -43,7 +43,7 @@
         <div class="table__cell"> {{user.UserName}} </div>
         <div class="table__cell"> {{user.Enabled}} </div>
         <div ng-show=" user.UserName !='root' " class="table__cell"> {{user.RoleId}} </div>
-        <div ng-show=" user.UserName =='root' " class="table__cell firmware__version ng-binding"> {{user.RoleId}} </div>
+        <div ng-show=" user.UserName =='root' " class="table__cell user__role ng-binding"> {{user.RoleId}} </div>
        <!--  <div class="table__cell"> {{user.Locked}} </div> -->
         <div class="table__cell" ng-show=" user.UserName !='root' " >
           <button type="button" class="btn  btn-primary" ng-disabled="isUserSelected" ng-click="setSelectedUser(user)">Edit</button>
