@@ -951,7 +951,7 @@ window.angular && (function(angular) {
                           content.data[key].WarningHigh = '--';
                         }
 
-                        tempKeyParts = key.split('/');
+                        /* tempKeyParts = key.split('/');
                         title = tempKeyParts.pop();
                         title = tempKeyParts.pop() + '_' + title;
                         title = title.split('_')
@@ -963,7 +963,10 @@ window.angular && (function(angular) {
                                     })
                                     .reduce(function(prev, el) {
                                       return prev + ' ' + el;
-                                    });
+                                    }); */
+						tempKeyParts = key.split('/');
+						title = tempKeyParts.pop();
+						title = tempKeyParts.pop().toLowerCase().charAt(0).toUpperCase() + '/' + title;
 
                         content.data[key].Value = getScaledValue(
                             content.data[key].Value, content.data[key].Scale);

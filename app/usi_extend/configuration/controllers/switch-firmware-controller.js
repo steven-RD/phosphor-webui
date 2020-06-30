@@ -11,7 +11,7 @@ window.angular && (function(angular) {
 
   angular.module('app.configuration').controller('switchFirmwareController', [
     '$scope', 'APIUtils', 'UsiAPIUtils', 'dataService', '$route', 'Constants',
-    '$interval', '$timeout', 'toastService', '$location', '$anchorScroll','$q'
+    '$interval', '$timeout', 'toastService', '$location', '$anchorScroll','$q',
     function(
         $scope, APIUtils, UsiAPIUtils, dataService, $route, Constants,
         $interval, $timeout, toastService, $location, $anchorScroll, $q) {
