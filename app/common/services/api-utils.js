@@ -965,8 +965,10 @@ window.angular && (function(angular) {
                                       return prev + ' ' + el;
                                     }); */
 						tempKeyParts = key.split('/');
-						title = tempKeyParts.pop();
-						title = tempKeyParts.pop().toLowerCase().charAt(0).toUpperCase() + '/' + title;
+						title1 = tempKeyParts.pop();
+						title2 = tempKeyParts.pop();
+						title = title2.toLowerCase().charAt(0).toUpperCase() + title2.slice(1) + '/' + title;
+						//title = tempKeyParts.pop().toLowerCase().charAt(0).toUpperCase() + '/' + title;
 
                         content.data[key].Value = getScaledValue(
                             content.data[key].Value, content.data[key].Scale);

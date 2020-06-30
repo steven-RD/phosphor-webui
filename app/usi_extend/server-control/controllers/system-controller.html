@@ -59,17 +59,16 @@
             <p>AFA switch is <span class="led-switch__status">{{switch_state}}.</span></p>
 		</div>
     </div>
-    <div class="column power-option" ng-hide="switch_state == 'Power On' ">
-        <button id="power__warm-boot" class="btn btn-secondary" ng-click="warmRebootConfirm()" ng-disabled="dataService.server_unreachable">
+    <div class="column power-option" ng-show="switch_state == 'Power Off' ">
+        <button id="power__warm-boot" class="btn btn-secondary" ng-click="poweronConfirm()" ng-disabled="dataService.server_unreachable">
             <icon file="icon-power.svg"></icon>Power on</button>
-        <p class="inline">When update switch firmware, please make sure that the switch is power on!</p>
-            <confirm title="Power on switch" confirm="confirmPowerOn" ng-show="confirmPowerOn" callback="toggleSwitchPower("poweron switch")"></confirm>
+        <!-- <p class="inline">When update switch firmware, please make sure that the switch is power on!</p> -->
+            <confirm title="Power on switch" confirm="confirmPowerOn" ng-show="confirmPowerOn" callback="toggleSwitchPower('poweron switch')"></confirm>
     </div>
-    <div class="column power-option" ng-hide="switch_state == 'Power Off' ">
-        <button id="power__warm-boot" class="btn btn-secondary" ng-click="warmRebootConfirm()" ng-disabled="dataService.server_unreachable">
+    <div class="column power-option" ng-show="switch_state == 'Power On' ">
+        <button id="power__warm-boot" class="btn btn-secondary" ng-click="poweroffConfirm()" ng-disabled="dataService.server_unreachable">
             <icon file="icon-power.svg"></icon>Power off</button>
-        <p class="inline">When update switch firmware, please make sure that the switch is power on!</p>
-            <confirm title="Power off switch" confirm="confirmPowerOff" ng-show="confirmPowerOff" callback="toggleSwitchPower("poweroff switch")"></confirm>
+            <confirm title="Power off switch" confirm="confirmPowerOff" ng-show="confirmPowerOff" callback="toggleSwitchPower('poweroff switch')"></confirm>
     </div>
 
     <!-- <div class="row column" ng-class="{disabled: dataService.server_unreachable || dataService.loading}">

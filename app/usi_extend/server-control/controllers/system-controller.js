@@ -22,7 +22,7 @@ window.angular && (function(angular) {
 	$scope.rebootConfirm = function() {
         if ($scope.confirmreboot) {
 			return;
-	    }
+        }
         $scope.confirmreboot = true;
     };
 
