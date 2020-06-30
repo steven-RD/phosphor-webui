@@ -964,10 +964,12 @@ window.angular && (function(angular) {
                                     .reduce(function(prev, el) {
                                       return prev + ' ' + el;
                                     }); */
+						var title1 = '';
+						var title2 = '';
 						tempKeyParts = key.split('/');
 						title1 = tempKeyParts.pop();
 						title2 = tempKeyParts.pop();
-						title = title2.toLowerCase().charAt(0).toUpperCase() + title2.slice(1) + '/' + title;
+						title = title2.toLowerCase().charAt(0).toUpperCase() + title2.slice(1) + '/' + title1;
 						//title = tempKeyParts.pop().toLowerCase().charAt(0).toUpperCase() + '/' + title;
 
                         content.data[key].Value = getScaledValue(
