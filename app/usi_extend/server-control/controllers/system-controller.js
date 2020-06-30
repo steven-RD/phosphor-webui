@@ -18,13 +18,13 @@ window.angular && (function(angular) {
     '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', 'toastService', '$q',
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, toastService, $q) {
 
-
-	$scope.rebootConfirm = function() {
-        if ($scope.confirm) {
-			return;
-        }
-        $scope.confirm = true;
-    };
+    APIUtils.getLastRebootTime().then(
+        function(data) {
+            $scope.reboot_time = data.data;
+        },
+        function(error) {
+            console.log(JSON.stringify(error));
+        });
 
     $scope.reboot = function() {
 		$scope.rebootSetting = false;
@@ -61,7 +61,27 @@ window.angular && (function(angular) {
         });
       };
 
-     $scope.poweronConfirm = function() {
+    $scope.PowerSwitchStatus = function() {
+        UsiAPIUtils.getPowerSwitchStatus().then(
+              function(info){
+                  $scope.switch_state = info.Status;
+                  console.log($scope.switch_state);
+              },
+              function(error) {
+                  console.log(JSON.stringify(error));
+              }); 
+      }
+
+
+/*  $scope.confirm = false;
+    $scope.rebootConfirm = function() {
+        if ($scope.confirm) {
+			return;
+        }
+        $scope.confirm = true;
+    };
+
+	$scope.poweronConfirm = function() {
         if ($scope.confirmPowerOn) {
             return;
         }
@@ -74,7 +94,7 @@ window.angular && (function(angular) {
         $scope.confirmPowerOff = true;
     };
 
-    /* $scope.toggleSwitchPower = function(cmd) {
+     $scope.toggleSwitchPower = function(cmd) {
         UsiAPIUtils.setPowerSwitchState(cmd).then(
         function(data) {
            UsiAPIUtils.getPowerSwitchStatus().then(
@@ -91,16 +111,6 @@ window.angular && (function(angular) {
         });
     }; */
 
-    $scope.PowerSwitchStatus = function() {
-        UsiAPIUtils.getPowerSwitchStatus().then(
-              function(info){
-                  $scope.switch_state = info.Status;
-                  console.log($scope.switch_state);
-              },
-              function(error) {
-                  console.log(JSON.stringify(error));
-              }); 
-      }
 
     $scope.PowerSwitchStatus(); 
 
