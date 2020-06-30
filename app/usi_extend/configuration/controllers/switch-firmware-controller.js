@@ -134,7 +134,7 @@ window.angular && (function(angular) {
                 return false;
             }
             $scope.downloading = true;
-            APIUtils.getSwitchFirmware()
+            UsiAPIUtils.getSwitchFirmware()
             .then(function(response) {
                 $scope.firmwares = response.data;
 				console.log($scope.firmwares);
