@@ -63,21 +63,6 @@
             <icon file="icon-power.svg"></icon>Power off switch
         </button>
     </div>
-	<!-- <div class="row column">
-		<div class="bmc-reboot-option" >
-            <p>AFA switch is <span class="led-switch__status">{{switch_state}}.</span></p>
-		</div>
-    </div>
-    <div class="column power-option" ng-show="switch_state == 'Power Off' ">
-        <button id="power__warm-boot" class="btn btn-secondary" ng-click="poweronConfirm()" ng-disabled="dataService.server_unreachable">
-            <icon file="icon-power.svg"></icon>Power on</button>
-            <confirm title="Power on switch" confirm="confirmPowerOn" ng-show="confirmPowerOn" callback="toggleSwitchPower('poweron switch')"></confirm>
-    </div>
-    <div class="column power-option" ng-show="switch_state == 'Power On' ">
-        <button id="power__warm-boot" class="btn btn-secondary" ng-click="poweroffConfirm()" ng-disabled="dataService.server_unreachable">
-            <icon file="icon-power.svg"></icon>Power off</button>
-            <confirm title="Power off switch" confirm="confirmPowerOff" ng-show="confirmPowerOff" callback="toggleSwitchPower('poweroff switch')"></confirm>
-    </div> -->
 
     <!-- <div class="row column" ng-class="{disabled: dataService.server_unreachable || dataService.loading}">
         <div class="btm-border-grey">
@@ -113,8 +98,8 @@
 			<p>Are you sure you want to continue?</p>
 		</div>
 		<div class="modal__button-wrapper">
-			<button class="btn btn-secondary" ng-click="confirmSettings=false">No</button>
-			<button class="btn btn-primary" ng-click="toggleSwitchPower()">Yes</button>
+			<button class="btn btn-secondary" ng-click="confirmSettings=false">Cancel</button>
+			<button class="btn btn-primary" ng-click="toggleSwitchPower()">Continue</button>
 		</div>
 	</div>
 </section>
@@ -132,8 +117,8 @@
 			<p>Are you sure you want to continue?</p>
 		</div>
 		<div class="modal__button-wrapper">
-			<button class="btn btn-secondary" ng-click="rebootSetting=false">No</button>
-			<button class="btn btn-primary" ng-click="reboot()">Yes</button>
+			<button class="btn btn-secondary" ng-click="rebootSetting=false">Cancel</button>
+			<button class="btn btn-primary" ng-click="reboot()">Continue</button>
 		</div>
 	</div>
 </section>

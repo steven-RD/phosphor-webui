@@ -247,11 +247,13 @@ window.angular && (function(angular) {
         APIUtils.getFirmwares()
             .then(function(response) {
               $scope.firmwares = response.data;
+			  console.log($scope.firmwares);
             })
             .then(function() {
               return APIUtils
                   .downloadImage($scope.download_host, $scope.download_filename)
                   .then(function(downloadStatus) {
+					console.log(downloadStatus);
                     return downloadStatus;
                   });
             })

@@ -134,14 +134,16 @@ window.angular && (function(angular) {
                 return false;
             }
             $scope.downloading = true;
-            APIUtils.getFirmwares()
+            APIUtils.getSwitchFirmware()
             .then(function(response) {
                 $scope.firmwares = response.data;
+				console.log($scope.firmwares);
             })
             .then(function() {
                 return APIUtils
                     .downloadImage($scope.download_host, $scope.download_filename)
                     .then(function(downloadStatus) {
+						console.log(downloadStatus);
                     return downloadStatus;
                 });
             })

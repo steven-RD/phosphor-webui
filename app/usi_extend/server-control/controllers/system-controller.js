@@ -76,12 +76,12 @@ window.angular && (function(angular) {
 /*  $scope.confirm = false;
     $scope.rebootConfirm = function() {
         if ($scope.confirm) {
-			return;
+            return;
         }
         $scope.confirm = true;
     };
 
-	$scope.poweronConfirm = function() {
+    $scope.poweronConfirm = function() {
         if ($scope.confirmPowerOn) {
             return;
         }
