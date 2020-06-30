@@ -11,10 +11,10 @@ window.angular && (function(angular) {
 
   angular.module('app.configuration').controller('switchFirmwareController', [
     '$scope', 'APIUtils', 'UsiAPIUtils', 'dataService', '$route', 'Constants',
-    '$interval', '$timeout', 'toastService', '$location', '$anchorScroll',
+    '$interval', '$timeout', 'toastService', '$location', '$anchorScroll','$q'
     function(
         $scope, APIUtils, UsiAPIUtils, dataService, $route, Constants,
-        $interval, $timeout, toastService, $location, $anchorScroll) {
+        $interval, $timeout, toastService, $location, $anchorScroll, $q) {
         $scope.dataService = dataService;
 		
 		 // Scroll to target anchor

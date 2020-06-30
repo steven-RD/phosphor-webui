@@ -20,10 +20,10 @@ window.angular && (function(angular) {
 
 
 	$scope.rebootConfirm = function() {
-        if ($scope.confirm) {
+        if ($scope.confirmreboot) {
 			return;
 	    }
-        $scope.confirm = true;
+        $scope.confirmreboot = true;
     };
 
     $scope.reboot = function() {
@@ -37,7 +37,7 @@ window.angular && (function(angular) {
           });
     };
 
-     $scope.toggleSwitchPower = function() {
+/*      $scope.toggleSwitchPower = function() {
         var toggleState =($scope.switch_state == 'Power On') ? 'poweroff switch' : 'poweron switch';
 		$scope.State = toggleState;
 		$scope.confirmSettings = false;
@@ -58,9 +58,9 @@ window.angular && (function(angular) {
             console.log(JSON.stringify(error));
             toastService.error(toggleState + 'error!');
         });
-      }; 
+      };  */
 
-/*     $scope.poweronConfirm = function() {
+     $scope.poweronConfirm = function() {
         if ($scope.confirmPowerOn) {
             return;
         }
@@ -88,7 +88,7 @@ window.angular && (function(angular) {
         function(error) {
             console.log(JSON.stringify(error));
         });
-    };*/
+    };
 
     $scope.PowerSwitchStatus = function() {
         UsiAPIUtils.getPowerSwitchStatus().then(
