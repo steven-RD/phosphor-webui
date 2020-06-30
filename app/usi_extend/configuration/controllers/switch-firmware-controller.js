@@ -108,13 +108,15 @@ window.angular && (function(angular) {
                     new Error(Constants.MESSAGES.POLL.DOWNLOAD_IMAGE_TIMEOUT));
                 }
 
-                APIUtils.getFirmwares().then(
+                UsiAPIUtils.getSwitchFirmware().then(
                     function(response) {
-                        if (response.data.length === $scope.firmwares.length + 1) {
+                        /* if (response.data.length === $scope.firmwares.length + 1) {
                             $interval.cancel(pollDownloadTimer);
                             pollDownloadTimer = undefined;
                             deferred.resolve(response.data);
-                        }
+                        } */
+						console.log(waitForDownload);
+						console.log(response);
                     },
                     function(error) {
                         $interval.cancel(pollDownloadTimer);
