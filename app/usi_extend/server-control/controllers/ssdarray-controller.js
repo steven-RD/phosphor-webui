@@ -1055,6 +1055,7 @@ window.angular && (function(angular) {
 				  console.log(uspMessage);
 			  },
 			  function(error){
+               console.log(error);
                toastService.error('Error during getUspInfo');
 			  }
 		  );

@@ -113,7 +113,7 @@ window.angular && (function(angular) {
 						console.log("waitForDownload");
 						console.log(response);
 						console.log(response.Status);
-                        if (response.Status != '') {
+                        if (response.Status.Name != 'None') {
                             $interval.cancel(pollDownloadTimer);
                             pollDownloadTimer = undefined;
                             deferred.resolve(response.Status);
