@@ -112,11 +112,11 @@ window.angular && (function(angular) {
                     function(response) {
 						console.log("waitForDownload");
 						console.log(response);
-						console.log(response.data);
-                        if (response.data.length === $scope.firmwares.length + 1) {
+						console.log(response.Status);
+                        if (response.Status != '') {
                             $interval.cancel(pollDownloadTimer);
                             pollDownloadTimer = undefined;
-                            deferred.resolve(response.data);
+                            deferred.resolve(response.Status);
                         }
                     },
                     function(error) {
@@ -139,7 +139,8 @@ window.angular && (function(angular) {
             $scope.downloading = true;
             UsiAPIUtils.getSwitchFirmware()
             .then(function(response) {
-                $scope.firmwares = response.data;
+                $scope.firmwares = response.Status;
+				console.log("downloading");
 				console.log($scope.firmwares);
             })
             .then(function() {

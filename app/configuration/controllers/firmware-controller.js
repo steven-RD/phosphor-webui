@@ -219,6 +219,9 @@ window.angular && (function(angular) {
           }
 
           APIUtils.getFirmwares().then(
+				console.log("waitForDownload");
+				console.log(response);
+				console.log(response.Status);
               function(response) {
                 if (response.data.length === $scope.firmwares.length + 1) {
                   $interval.cancel(pollDownloadTimer);
