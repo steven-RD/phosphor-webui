@@ -426,6 +426,9 @@ window.angular && (function(angular) {
               });
         },
         deleteIPV4: function(interfaceName, networkID) {
+			console.log("deleteIPV4");
+			console.log(interfaceName);
+			console.log(networkID);
           return $http({
                    method: 'POST',
                    url: DataService.getHost() +
