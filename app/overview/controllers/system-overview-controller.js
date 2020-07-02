@@ -171,31 +171,17 @@ window.angular && (function(angular) {
               console.log(JSON.stringify(error));
             });
 
-			$scope.loadSwitchFirmware = function() {
+            $scope.loadSwitchFirmware = function() {
             UsiAPIUtils.getSwitchFirmware()
             .then(
                 function(result) {
-					console.log(result);
                     $scope.firmwares = result;
-                    //$scope.loadSwitchBeingActiveVersion();
                     $scope.loadSwitchActivedVersion();
                 },
                 function(error) {
                     console.log(error);
                 }
             );
-        };
-
-        $scope.loadSwitchBeingActiveVersion = function() {
-            UsiAPIUtils.getSwitchBeingActiveVersion(function(version, type) {
-                $scope.switchVersion = version;
-                $scope.switchType = type;
-				console.log(version);
-				console.log(type);
-            },
-            function(error){
-                console.log(error)
-            });
         };
 
         $scope.loadSwitchActivedVersion = function() {
@@ -205,10 +191,8 @@ window.angular && (function(angular) {
 					$scope.switchActivedVersion = 'No PCIe switch FW work';
 					$scope.configurationFile = 'None';
 				  } else {
-					$scope.switchActivedVersion = firmwareVersion;
+					$scope.switchActivedVersion = 'v' + firmwareVersion;
 					$scope.configurationFile = 'v' + configurationFile;
-					console.log(firmwareVersion);
-					console.log(configurationFile);
 				  }
               },
               function(error){
@@ -216,7 +200,7 @@ window.angular && (function(angular) {
               }
             );
         };
-		$scope.loadSwitchFirmware();
+        $scope.loadSwitchFirmware();
         // Judy modified at 20190627 end
 
         var promises = [

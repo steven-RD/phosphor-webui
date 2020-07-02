@@ -21,7 +21,6 @@
 	  <div class="table__head">
 		  <div class="table__row">
 			  <div class="table__cell firmware__version">Firmware version</div>
-			  <!-- <div class="table__cell firmware__version">Configure file</div> -->
 			  <div class="table__cell firmware__version">Configure file version</div>
 			  <div class="table__cell firmware__action">ToBe activated</div>
           </div>
@@ -32,9 +31,6 @@
 		  <div  class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
 		      <span class="table__cell-label">version:</span> {{version.switchActivedVersion}}
           </div><!-- ng-if="version.switchActivedVersion!='None'" -->
-		  <!-- <div class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
-		      <span class="table__cell-label">version:</span> v{{version.configurationFile}}
-          </div> -->
 		  <div  class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
 		      <span class="table__cell-label">version:</span> {{version.configurationFile}}
           </div><!-- ng-if="version.configurationFile!='None' -->
