@@ -253,7 +253,16 @@ window.angular && (function(angular) {
             });
         };
 
-        $scope.updateImage = function(imageId, imageVersion, imageType) {
+		
+        $scope.updateImage = function(Name, Version, Type) {
+            $scope.activate_image_id = Name;
+            $scope.activate_image_version = Version;
+            $scope.activate_image_type = Type;
+            $scope.switchInfo.updating = true;
+            $scope.confirm_updating = true;
+        };
+		
+        $scope.confirmUpdateImage = function(imageId, imageVersion, imageType) {
             // Realize
             $scope.updateImageDetail(imageId, imageVersion, imageType);
             // reload page
@@ -270,11 +279,11 @@ window.angular && (function(angular) {
             /*
                 First update switch firmware, then get switch BeingActiveVersion
             */
-            $scope.activate_image_id = Name;
+            /* $scope.activate_image_id = Name;
             $scope.activate_image_version = Version;
             $scope.activate_image_type = Type;
             $scope.switchInfo.updating = true;
-            $scope.confirm_updating = true;
+            $scope.confirm_updating = true; */
 
             // Check whether image has already been actived.
             UsiAPIUtils.getSwitchActivedVersion(

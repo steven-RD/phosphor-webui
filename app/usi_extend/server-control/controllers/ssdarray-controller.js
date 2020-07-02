@@ -1056,7 +1056,7 @@ window.angular && (function(angular) {
 			  },
 			  function(error){
                console.log(error);
-               toastService.error('Error during getUspInfo');
+               //toastService.error('Error during getUspInfo');
 			  }
 		  );
 	  };
@@ -1104,7 +1104,7 @@ window.angular && (function(angular) {
       var fanData = [];
       $scope.loadFanSensorData = function(){
           APIUtils.getAllSensorStatus(function(data, originalData) {
-			  console.log(data[i]);
+			  console.log(data);
               for(var i = 0; i < data.length; i++){
                   if(data[i].title.indexOf('Fan_tach') != -1) { //&& data[i].title.indexOf('Tach') != -1)
                       fanData.push(data[i]);
