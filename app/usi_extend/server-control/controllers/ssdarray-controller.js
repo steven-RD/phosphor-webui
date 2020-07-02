@@ -317,10 +317,10 @@ window.angular && (function(angular) {
         lab.style.width = '0px';
         $scope.faninfoIN = 'None';
         for(var i = 0; i < fanData.length; i++){
-            if(fanData[i].title.indexOf(name+' INLET') != -1) {
+            if(fanData[i].title.indexOf(name+'_INLET') != -1) {
                 $scope.fanInTitle = name+'_INLET';
                 $scope.faninfoIN = fanData[i];
-            }else if(fanData[i].title.indexOf(name+' OUTLET') != -1){
+            }else if(fanData[i].title.indexOf(name+'_OUTLET') != -1){
                 $scope.fanOutTitle = name+'_OUTLET';
                 $scope.faninfoOUT = fanData[i];
             }
@@ -1107,6 +1107,7 @@ window.angular && (function(angular) {
 			  console.log(data);
               for(var i = 0; i < data.length; i++){
                   if(data[i].title.indexOf('Fan_tach') != -1) { //&& data[i].title.indexOf('Tach') != -1)
+					  console.log(data[i]);
                       fanData.push(data[i]);
                   }
               }

@@ -253,15 +253,15 @@ window.angular && (function(angular) {
             });
         };
 
-		
+
         $scope.updateImage = function(Name, Version, Type) {
             $scope.activate_image_id = Name;
             $scope.activate_image_version = Version;
             $scope.activate_image_type = Type;
-            $scope.switchInfo.updating = true;
             $scope.confirm_updating = true;
+            $scope.update_continue = true;
         };
-		
+
         $scope.confirmUpdateImage = function(imageId, imageVersion, imageType) {
             // Realize
             $scope.updateImageDetail(imageId, imageVersion, imageType);
@@ -284,6 +284,8 @@ window.angular && (function(angular) {
             $scope.activate_image_type = Type;
             $scope.switchInfo.updating = true;
             $scope.confirm_updating = true; */
+            $scope.switchInfo.updating = true;
+            $scope.update_continue = false;
 
             // Check whether image has already been actived.
             UsiAPIUtils.getSwitchActivedVersion(
