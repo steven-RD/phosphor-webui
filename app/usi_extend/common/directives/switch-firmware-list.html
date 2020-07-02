@@ -29,18 +29,18 @@
   </div>
   <div class="table__body">
 	  <div class="table__row">
-		  <div ng-if="version.switchActivedVersion!='None'" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
+		  <div  class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
 		      <span class="table__cell-label">version:</span> {{version.switchActivedVersion}}
-          </div>
+          </div><!-- ng-if="version.switchActivedVersion!='None'" -->
 		  <!-- <div class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
 		      <span class="table__cell-label">version:</span> v{{version.configurationFile}}
           </div> -->
-		  <div ng-if="version.configurationFile!='None'" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
-		      <span class="table__cell-label">version:</span> v{{version.configurationFile}}
-          </div>
-	      <div ng-if="version.toBeActiveVersion!='None'" class="table__cell firmware__action" ng-class="{'active':firmware.isExtended}">
-		      <span class="table__cell-label">version:</span> v{{version.toBeActiveVersion}}
-          </div>
+		  <div  class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
+		      <span class="table__cell-label">version:</span> {{version.configurationFile}}
+          </div><!-- ng-if="version.configurationFile!='None' -->
+	      <div  class="table__cell firmware__action" ng-class="{'active':firmware.isExtended}">
+		      <span class="table__cell-label">version:</span> {{version.toBeActiveVersion}}
+          </div><!-- ng-if="version.toBeActiveVersion!='None'" -->
 	  </div>
   </div>
   

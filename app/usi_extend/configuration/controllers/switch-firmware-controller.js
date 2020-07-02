@@ -223,7 +223,14 @@ window.angular && (function(angular) {
 
         $scope.loadSwitchBeingActiveVersion = function() {
             UsiAPIUtils.getSwitchBeingActiveVersion(function(version, type) {
-                $scope.switchInfo.toBeActiveVersion = version;
+				console.log("version=");
+				console.log(version);
+				if(version != 'None'){
+					$scope.switchInfo.toBeActiveVersion = 'v' + version;
+				}else{
+					$scope.switchInfo.toBeActiveVersion = version;
+				}
+                //$scope.switchInfo.toBeActiveVersion = version;
                 $scope.switchInfo.type = type;
             },
             function(error){
@@ -234,8 +241,22 @@ window.angular && (function(angular) {
         $scope.loadSwitchActivedVersion = function() {
             UsiAPIUtils.getSwitchActivedVersion(
               function(firmwareVersion, configurationFile) {
-                $scope.switchInfo.switchActivedVersion = firmwareVersion;
-                $scope.switchInfo.configurationFile = configurationFile;
+				console.log("firmwareVersion=");
+				console.log(firmwareVersion);
+				if(firmwareVersion != 'None'){
+					$scope.switchInfo.switchActivedVersion = 'v' + firmwareVersion;
+				} else {
+					$scope.switchInfo.switchActivedVersion = firmwareVersion;
+				}
+				console.log("configurationFile=");
+				console.log(configurationFile);
+				if(configurationFile != 'None'){
+					$scope.switchInfo.configurationFile = 'v' + configurationFile;
+				} else {
+					$scope.switchInfo.configurationFile = configurationFile;
+				}
+                //$scope.switchInfo.switchActivedVersion = firmwareVersion;
+                //$scope.switchInfo.configurationFile = configurationFile;
               },
               function(error){
                 console.log(error)

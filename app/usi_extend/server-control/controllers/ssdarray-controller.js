@@ -1104,10 +1104,8 @@ window.angular && (function(angular) {
       var fanData = [];
       $scope.loadFanSensorData = function(){
           APIUtils.getAllSensorStatus(function(data, originalData) {
-			  console.log(data);
               for(var i = 0; i < data.length; i++){
-                  if(data[i].title.indexOf('Fan_tach') != -1) { //&& data[i].title.indexOf('Tach') != -1)
-					  console.log(data[i]);
+                  if(data[i].title.indexOf('Fan_tach') != -1) {
                       fanData.push(data[i]);
                   }
               }
