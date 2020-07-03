@@ -43,7 +43,7 @@
   <div class="table row column">
     <div class="table__head">
       <div class="table__row">
-        <div class="table__cell firmware__version">Version</div>
+        <div class="table__cell firmware__version">ToBe operate version</div>
         <div class="table__cell firmware__version">Type</div>
         <div class="table__cell firmware__action">Action</div>
       </div>
@@ -51,7 +51,7 @@
     <div class="table__body firmware__primary">
       <div class="table__row" ng-repeat="firmware in firmwares">
         <div ng-if="firmware.Version!='None'" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
-          <span class="table__cell-label">ToBe operate version:</span> v{{firmware.Version}}
+          <span class="table__cell-label">Version:</span> v{{firmware.Version}}
         </div>
         <div ng-if="firmware.Type!='None'" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
           <span class="table__cell-label">Type:</span>{{firmware.Type}}
