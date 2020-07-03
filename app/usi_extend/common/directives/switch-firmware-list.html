@@ -25,8 +25,8 @@
 			  <div class="table__cell firmware__action">ToBe activated</div>
           </div>
       </div>
-  </div>
-  <div class="table__body">
+ <!--  </div> -->
+  <div class="table__body firmware__primary">
 	  <div class="table__row">
 		  <div  class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
 		      <span class="table__cell-label">version:</span> {{version.switchActivedVersion}}
@@ -39,7 +39,8 @@
           </div><!-- ng-if="version.toBeActiveVersion!='None'" -->
 	  </div>
   </div>
-  
+  </div>
+
   <div class="table row column">
     <div class="table__head">
       <div class="table__row">
@@ -48,7 +49,7 @@
         <div class="table__cell firmware__action">Action</div>
       </div>
     </div>
-    <div class="table__body">
+    <div class="table__body firmware__primary">
       <div class="table__row" ng-repeat="firmware in firmwares">
         <div ng-if="firmware.Version!='None'" class="table__cell firmware__version" ng-class="{'active':firmware.isExtended}">
           <span class="table__cell-label">Version:</span> v{{firmware.Version}}
