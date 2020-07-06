@@ -247,10 +247,11 @@ window.angular && (function(angular) {
 		console.log($scope.interface.ipv4.values[index].Gateway);
 		console.log($scope.defaultGateway);
 		console.log(data.defaultgateway);
-		if($scope.interface.ipv4.values[index].Gateway != data.defaultgateway){
+		if($scope.interface.ipv4.values[index].Gateway != $scope.defaultgateway){
 			toastService.error('Gateway error, plesase input correct gateway!!');
 			return;
-		}
+		} else {
+			console.log('addIPV4!');
         return APIUtils
             .addIPV4(
                 $scope.selectedInterface,
@@ -263,6 +264,7 @@ window.angular && (function(angular) {
                   console.log(JSON.stringify(error));
                   return $q.reject();
                 })
+		}
       }
 
       function updateIPV4(index) {
