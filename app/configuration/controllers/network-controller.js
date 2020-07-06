@@ -246,7 +246,6 @@ window.angular && (function(angular) {
 		console.log($scope.interface.ipv4.values[index].PrefixLength);
 		console.log($scope.interface.ipv4.values[index].Gateway);
 		console.log($scope.defaultGateway);
-		console.log(data.defaultgateway);
 		if($scope.interface.ipv4.values[index].Gateway != $scope.defaultgateway){
 			toastService.error('Gateway error, plesase input correct gateway!!');
 			return;
@@ -270,6 +269,10 @@ window.angular && (function(angular) {
       function updateIPV4(index) {
         // The correct way to edit an IPV4 interface is to remove it and then
         // add a new one
+		if($scope.interface.ipv4.values[index].Gateway != $scope.defaultgateway){
+			toastService.error('Gateway error, plesase input correct gateway!!');
+			return;
+		} else {
         return APIUtils
             .deleteIPV4(
                 $scope.selectedInterface,
@@ -293,6 +296,7 @@ window.angular && (function(angular) {
                   console.log(JSON.stringify(error));
                   return $q.reject();
                 });
+		}
       }
 
       $scope.refresh = function() {
