@@ -129,8 +129,10 @@ window.angular && (function(angular) {
               // address and add new one. See openbmc/openbmc/issues/2163.
               // TODO: update to use PUT once issue 2163 is resolved.
               if ($scope.interface.ipv4.values[i].id) {
+				  console.log("updateIPV4");
                 promises.push(updateIPV4(i));
               } else {
+				  console.log("addIPV4");
                 promises.push(addIPV4(i));
               }
             }
@@ -247,8 +249,8 @@ window.angular && (function(angular) {
 		console.log($scope.interface.ipv4.values[index].Gateway);
 		console.log($scope.defaultGateway);
 		if($scope.interface.ipv4.values[index].Gateway != $scope.defaultgateway){
-			toastService.error('Gateway error, plesase input correct gateway!!');
-			return;
+			toastService.error('addIPV4: Gateway error, plesase input correct gateway!');
+			return $q.reject();
 		} else {
 			console.log('addIPV4!');
         return APIUtils
@@ -269,9 +271,11 @@ window.angular && (function(angular) {
       function updateIPV4(index) {
         // The correct way to edit an IPV4 interface is to remove it and then
         // add a new one
+		console.log($scope.interface.ipv4.values[index].Gateway);
+		console.log($scope.defaultgateway);
 		if($scope.interface.ipv4.values[index].Gateway != $scope.defaultgateway){
-			toastService.error('Gateway error, plesase input correct gateway!!');
-			return;
+			toastService.error('updateIPV4: Gateway error, plesase input correct gateway!');
+			return $q.reject();
 		} else {
         return APIUtils
             .deleteIPV4(
