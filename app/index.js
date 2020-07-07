@@ -105,7 +105,7 @@ import partition_controller from './usi_extend/server-control/controllers/partit
 import switch_firmware_controller from './usi_extend/configuration/controllers/switch-firmware-controller.js';
 import usi_extend_help_index from './usi_extend/help/index.js';
 import help_controller from './usi_extend/help/controllers/help-controller.js';//
-import help_controller from './usi_extend/help/controllers/inventory-help-controller.js';//
+import inventory-help_controller from './usi_extend/help/controllers/inventory-help-controller.js';//
 
 import users_index from './users/index.js';
 import user_accounts_controller from './users/controllers/user-accounts-controller.js';
