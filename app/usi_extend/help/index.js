@@ -38,6 +38,12 @@ window.angular && (function(angular) {
                     require('../../usi_extend/help/controllers/help-controller.html'),
                 'controller': 'helpController',
                 authenticated: true
+              })
+			  .when('/usi_extend/inventory-help', {
+                'template':
+                    require('../../usi_extend/help/controllers/inventory-help-controller.html'),
+                'controller': 'inventoryHelpController',
+                authenticated: true
               });
         }
       ]);
