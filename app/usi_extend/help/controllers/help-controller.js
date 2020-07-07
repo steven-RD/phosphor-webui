@@ -14,7 +14,7 @@
 window.angular && (function(angular) {
     'use strict';
 
-    angular.module('app.usiExtend.help').controller('helpController','inventoryHelpController', [
+    angular.module('app.usiExtend.help').controller('helpController', [
     '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', '$q',
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, $q) {
 		$scope.loading = false;
