@@ -21,9 +21,11 @@
 			<div class="column large-5 small-6 no-padding"><a href="#usioverview">Overview information</a></div><br>
 		</div><br>
 		<div>
-			<h2>Health</h2>
-			<div class="column large-5 small-6 no-padding"><a href="#usisensors">Sensors</a></div><br>
-			<div class="column large-5 small-6 no-padding"><a href="#usihardwarestatus">Hardware status</a></div><br>
+			<h2>Health</h2> <!-- <a ng-click="gotoAnchor()">Scroll down to upload an image file</a> -->
+			<div class="column large-5 small-6 no-padding"><a ng-click="sensorAnchor()">Sensors</a></div><br>
+			<!-- <div class="column large-5 small-6 no-padding"><a href="#usisensors">Sensors</a></div><br> -->
+			<div class="column large-5 small-6 no-padding"><a ng-click="hardwareAnchor()">Hardware status</a></div><br>
+			<!-- <div class="column large-5 small-6 no-padding"><a href="#usihardwarestatus">Hardware status</a></div><br> -->
 			<div class="column large-5 small-6 no-padding"><a href="#usipartitiontopology">Partition topology</a></div><br>
 			<div class="column large-5 small-6 no-padding"><a href="#usieventlog">Event log</a></div><br>
 			<div class="column large-5 small-6 no-padding"><a href="#usisystemlog">System log</a></div><br>
@@ -58,80 +60,66 @@
         <h1>Detail information</h1>
     </div>
 	<div class="columns large-6">
-		<!-- <h2 id="usi-inventory">Inventory</h2> -->  
-		<a name="usi-inventory"><h2>Inventory</h2></a>
+		<h2 id="usi-inventory">Inventory</h2>
+		<!-- <a name="usi-inventory"><h2 id="usi-inventory">Inventory</h2> -->
 		<p>Your can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
 		   when mouse move on the corresponding location. 
 		</p><br>
-		<!-- <h2 id="usioverview">Overview</h2> -->
-		<a name="usioverview"><h2>Overview</h2></a>
+		<h2 id="usioverview">Overview</h2>
 		<p>Your can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
 		   when mouse move on the corresponding location. 
 		</p><br>
-		<!-- <h2 id="usisensors">Sensors</h2> -->
-		<a name="usisensors"><h2>Sensors</h2></a>
+		<h2 id="usisensors">Sensors</h2>
 		<p>Your can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
 		   when mouse move on the corresponding location. 
 		</p><br>
-		<!-- <h2 id="usihardwarestatus">Hardware status</h2> -->
-		<a name="usihardwarestatus"><h2>Hardware status</h2></a>
+		<h2 id="usihardwarestatus">Hardware status</h2>
 		<p>Your can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
 		   when mouse move on the corresponding location. 
 		</p><br>
-		<!-- <h2 id="usipartitiontopology">Partition topology</h2> -->
-		<a name="usipartitiontopology"><h2>Partition topology</h2></a>
+		<h2 id="usipartitiontopology">Partition topology</h2>
 		<p>Your can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
 		   when mouse move on the corresponding location. 
 		</p><br>
-		<!-- <h2 id="usieventlog">Event log</h2> -->
-		<a name="usieventlog"><h2>Event log</h2></a>
+		<h2 id="usieventlog">Event log</h2>
 		<p>Your can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
 		   when mouse move on the corresponding location. 
 		</p><br>
-		<!-- <h2 id="usisystemlog">System log</h2> -->
-		<a name="usisystemlog"><h2>System log</h2></a>
+		<h2 id="usisystemlog">System log</h2>
 		<p>Your can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
 		   when mouse move on the corresponding location. 
 		</p><br>
 	</div>
 	
 	<div class="columns large-6">
-		<!-- <h2 id="usiLEDcontrol">LED control</h2> -->
-		<a name="usiLEDcontrol"><h2>LED control</h2></a>
+		<h2 id="usiLEDcontrol">LED control</h2>
 		<p>Only root user can set fan speed. When perform this operation the fan will rotate according to 
 		   the set value instead of the BMC temperature.
 		</p><br>
-		<!-- <h2 id="usifancontrol">Fan control</h2> -->
-		<a name="usifancontrol"><h2>Fan control</h2></a>
+		<h2 id="usifancontrol">Fan control</h2>
 		<p>Only root user can set fan speed. When perform this operation the fan will rotate according to 
 		   the set value instead of the BMC temperature.
 		</p><br>
-		<!-- <h2 id="usisystemcontrol">System control</h2> -->
-		<a name="usisystemcontrol"><h2>System control</h2></a>
+		<h2 id="usisystemcontrol">System control</h2>
 		<p>Only root user can set fan speed. When perform this operation the fan will rotate according to 
 		   the set value instead of the BMC temperature.
 		</p><br>
-		<!-- <h2 id="usiLAN">Serial over LAN console</h2> -->
-		<a name="usiLAN"><h2>Serial over LAN console</h2></a>
+		<h2 id="usiLAN">Serial over LAN console</h2>
 		<p>Only root user can set fan speed. When perform this operation the fan will rotate according to 
 		   the set value instead of the BMC temperature.
 		</p><br>
-		<!-- <h2 id="usiBMCfirmware">BMC firmware</h2> -->
-		<a name="usiBMCfirmware"><h2>BMC firmware</h2></a>
+		<h2 id="usiBMCfirmware">BMC firmware</h2>
 		<p>When BMC firmware Upload, click activate button to activate image. This operation will take a few minutes.
 		</p><br>
 		<h2 id="usiPCIeswitch">PCIe switch firmware</h2>
-		<a name="usiPCIeswitch"><h2>PCIe switch firmware</h2></a>
 		<p>When switch firmware Upload, first click update button to update image. This operation will take two minutes.
 		   Then, click activate button to activate image to work.
 		</p><br>
-		<!-- <h2 id="usinetworksetting">Network setting</h2> -->
-		<a name="usinetworksetting"><h2>Network setting</h2></a>
+		<h2 id="usinetworksetting">Network setting</h2>
 		<p>When switch firmware Upload, first click update button to update image. This operation will take two minutes.
 		   Then, click activate button to activate image to work.
 		</p><br>
-		<!-- <h2 id="usidatatime">Date and time setting</h2> -->
-		<a name="usidatatime"><h2>Date and time setting</h2></a>
+		<h2 id="usidatatime">Date and time setting</h2>
 		<p>When switch firmware Upload, first click update button to update image. This operation will take two minutes.
 		   Then, click activate button to activate image to work.
 		</p><br>

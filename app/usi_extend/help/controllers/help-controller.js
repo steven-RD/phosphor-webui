@@ -15,9 +15,21 @@ window.angular && (function(angular) {
     'use strict';
 
     angular.module('app.usiExtend.help').controller('helpController', [
-    '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', '$q',
-    function($scope, $window, UsiAPIUtils, APIUtils, dataService, $q) {
+    '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', '$q','anchorScroll',
+    function($scope, $window, UsiAPIUtils, APIUtils, dataService, $q, anchorScroll) {
 		$scope.loading = false;
+		
+	   // Scroll to target anchor
+      $scope.sensorAnchor = function() {
+        $location.hash('usisensors');
+        $anchorScroll();
+      };
+	  
+	  // Scroll to target anchor
+      $scope.hardwareAnchor = function() {
+        $location.hash('usihardwarestatus');
+        $anchorScroll();
+      };
 
     }
   ]);
