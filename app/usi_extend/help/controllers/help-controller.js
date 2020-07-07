@@ -30,6 +30,12 @@ window.angular && (function(angular) {
         $location.hash('usihardwarestatus');
         $anchorScroll();
       };
+	  
+	   // Scroll to target anchor
+      $scope.gotoAnchor = function(id) {
+        $location.hash(id);
+        $anchorScroll();
+      };
 
     }
   ]);

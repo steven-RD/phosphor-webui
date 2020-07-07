@@ -21,35 +21,35 @@
 			<div class="column large-5 small-6 no-padding"><a href="#usioverview">Overview information</a></div><br>
 		</div><br>
 		<div>
-			<h2>Health</h2> <!-- <a ng-click="gotoAnchor()">Scroll down to upload an image file</a> -->
-			<div class="column large-5 small-6 no-padding"><a ng-click="sensorAnchor()">Sensors</a></div><br>
-			<!-- <div class="column large-5 small-6 no-padding"><a href="#usisensors">Sensors</a></div><br> -->
-			<div class="column large-5 small-6 no-padding"><a ng-click="hardwareAnchor()">Hardware status</a></div><br>
-			<!-- <div class="column large-5 small-6 no-padding"><a href="#usihardwarestatus">Hardware status</a></div><br> -->
-			<div class="column large-5 small-6 no-padding"><a href="#usipartitiontopology">Partition topology</a></div><br>
-			<div class="column large-5 small-6 no-padding"><a href="#usieventlog">Event log</a></div><br>
-			<div class="column large-5 small-6 no-padding"><a href="#usisystemlog">System log</a></div><br>
+			<h2>Health</h2>
+			<!-- <div class="column large-5 small-6 no-padding"><a ng-click="gotoAnchor('usisensors')">Sensors</a></div><br> -->
+			<!-- <div class="column large-5 small-6 no-padding"><a ng-click="gotoAnchor('usihardwarestatus')">Hardware status</a></div><br> -->
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#usisensors">Sensors</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#usihardwarestatus">Hardware status</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#usipartitiontopology">Partition topology</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#usieventlog">Event log</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#usisystemlog">System log</a></div><br>
 		</div><br>
 	</div>
 	<div class="columns large-6">
 		<div>
 			<h2>Control</h2>
 			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#usiLEDcontrol">LED control</a></div><br>
-			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help/usifancontrol">Fan control</a></div><br>
-			<div class="column large-5 small-6 no-padding"><a href="/usi_extend/help#usisystemcontrol">System control</a></div><br>
-			<div class="column large-5 small-6 no-padding"><a href="#usiLAN">Serial over LAN console</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#/usifancontrol">Fan control</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help/usi_extend/help#usisystemcontrol">System control</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#usiLAN">Serial over LAN console</a></div><br>
 		</div><br>
 		<div>
 			<h2>Setting</h2>
-			<div class="column large-5 small-6 no-padding"><a href="#usiBMCfirmware">BMC firmware</a></div><br>
-			<div class="column large-5 small-6 no-padding"><a href="#usiPCIeswitch">PCIe switch firmware</a></div><br>
-			<div class="column large-5 small-6 no-padding"><a href="#usinetworksetting">Network setting</a></div><br>
-			<div class="column large-5 small-6 no-padding"><a href="#usidatatime">Data and time setting</a></div><br>
-			<div class="column large-5 small-6 no-padding"><a href="#usiaccountmanage">Account manage</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#usiBMCfirmware">BMC firmware</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#usiPCIeswitch">PCIe switch firmware</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#usinetworksetting">Network setting</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#usidatatime">Data and time setting</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#usiaccountmanage">Account manage</a></div><br>
 		</div><br>
 		<div>
 			<h2>Help</h2>
-			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help">Help doc</a></div><br>
+			<div class="column large-5 small-6 no-padding"><a href="#/usi_extend/help#/usi_extend/help">Help doc</a></div><br>
 		</div><br>
 	</div>
   </section>
@@ -60,19 +60,25 @@
         <h1>Detail information</h1>
     </div>
 	<div class="columns large-6">
-		<h2 id="usi-inventory">Inventory</h2>
+	  <div id="usi-inventory">
+		<h2>Inventory</h2>
 		<!-- <a name="usi-inventory"><h2 id="usi-inventory">Inventory</h2> -->
 		<p>Your can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
 		   when mouse move on the corresponding location. 
-		</p><br>
+		</p>
+	  </div><br>
+	  <div>
 		<h2 id="usioverview">Overview</h2>
 		<p>Your can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
 		   when mouse move on the corresponding location. 
-		</p><br>
+		</p>
+	  </div><br>
+	  <div>
 		<h2 id="usisensors">Sensors</h2>
 		<p>Your can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
 		   when mouse move on the corresponding location. 
-		</p><br>
+		</p>
+	  </div><br>
 		<h2 id="usihardwarestatus">Hardware status</h2>
 		<p>Your can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
 		   when mouse move on the corresponding location. 
