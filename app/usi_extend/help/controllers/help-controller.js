@@ -14,7 +14,7 @@
 window.angular && (function(angular) {
     'use strict';
 
-    angular.module('app.help').controller('helpController', [
+    angular.module('app.usiExtend.help').controller('helpController', [
     '$scope', '$window', 'UsiAPIUtils', 'APIUtils', 'dataService', '$q','$location','$anchorScroll',
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, $q, $location, $anchorScroll) {
 		$scope.loading = false;
