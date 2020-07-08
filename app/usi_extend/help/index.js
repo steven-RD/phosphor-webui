@@ -44,6 +44,12 @@ window.angular && (function(angular) {
                     require('../../usi_extend/help/controllers/inventory-help-controller.html'),
                 'controller': 'inventoryHelpController',
                 authenticated: true
+              })
+			  .when('/usi_extend/control-help', {
+                'template':
+                    require('../../usi_extend/help/controllers/control-help-controller.html'),
+                'controller': 'controlHelpController',
+                authenticated: true
               });
         }
       ]);

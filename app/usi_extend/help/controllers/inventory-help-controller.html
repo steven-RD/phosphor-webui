@@ -7,7 +7,6 @@
 
 <!-- <loader loading="loading"></loader> -->
 <div>
-  <section class="row">
     <div class="page-header">
         <h1>Detail information</h1>
     </div>
@@ -29,10 +28,13 @@
 	  </div><br>
 	  <div id="usisensors">
 		<h2>Sensors</h2>
-		<p>The page displays all sensors information. Click Export button can download the sensors data named sensors.json.
+		<p>The page displays all sensors information. Click export button can download the sensors data named sensors.json.
 		   Privide filter function, user can though key value to serach sensors information. 
 		</p>
 	  </div><br>
+	</div>
+	
+	<div class="columns large-6">
 	  <div id="usihardwarestatus">
 		<h2>Hardware status</h2>
 		<p>The page displays all hardware information. Click export button can download the hardware data named hardware_inventory.json.
@@ -59,86 +61,4 @@
 		</p>
 	  </div><br>
 	</div>
-	
-	<div class="columns large-6">
-	  <div id="usiLEDcontrol">
-		<h2>LED control</h2>
-		<p>Click Control LED control menu, user can control LED on or off though switch button.
-		</p>
-	  </div><br>
-	  <div id="usifancontrol">
-		<h2>Fan control</h2>
-		<p>Only root user can set fan speed. User can set one fan speed also can set all fan speed one time.
-		   When perform this operation the fan will rotate according to the set value instead of the BMC temperature.
-		</p>
-	  </div><br>
-	  <div id="usisystemcontrol">
-		<h2>System control</h2>
-		<p>When reboot AFA, Web browser loses contact with the AFA for several minutes. When the AFA is back online, you must log in again. 
-		   When SSD and switch firmware update work, make sure switch is power on.
-	  </div><br>
-	  <div id="usiLAN">
-		<h2>Serial over LAN console</h2>
-		<p>Click Control Serial over LAN console menu,
-		</p>
-	  </div><br>
-	  <div id="usiBMCfirmware">
-		<h2>BMC firmware</h2>
-		<p>User can upload BMC image though location also can download image though TFTP server.
-		   When BMC image upload, user can delete image and also can activate it. When click activate button to activate image. This operation will take a few minutes. 
-		</p>
-	  </div><br>
-	  <div id="usiPCIeswitch">
-		<h2>PCIe switch firmware</h2>
-		<p>User can upload PCIe switch image though location.
-		   When PCIe switch image upload, user can delete it and can update it. When click update button, it will take a few minutes. 
-		   Update finish then can activate the image, it will also take a few minutes.
-		</p>
-	  </div><br>
-	  <div id="usinetworksetting">
-		<h2>Network setting</h2>
-		<p>User can modify hostname, network interface, MAC address and default gateway. AFA use DHCP IP defaultly, but user can set
-		   static IP though choosing radio button. Carefully, when set static IP, gateway is consistent with default gateway.
-		</p>
-	  </div><br>
-	  <div id="usidatatime">
-		<h2>Date and time setting</h2>
-		<p>User can set AFA time, host time separately. Also can set both or split at one time.
-		</p>
-	  </div><br>
-	  <div id="usiaccountmanage">
-		<h2>Account manage</h2>
-		<p>Only root user can create, edit and delete account. Failed lockin times is unlimited and lockout times is none defaultly.
-		   Root user can set the failed lockin times between 3 to 10, and failed lockin times between 30s to 600s.
-		</p>
-	  </div><br>
-	</div>
-  </section>
 </div>
-
-	<!-- <div class="columns large-6">
-		<h2>Inventory</h2>
-		<p>Your can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
-		   when mouse move on the corresponding location. 
-		</p><br>
-		<h2>Switch power control</h2>
-		<p>When power off switch, SSD will not work and PCIe switch firmware will not update.
-		</p><br>
-		<h2>PCIe switch firmware manage</h2>
-		<p>When switch firmware Upload, first click update button to update image. This operation will take two minutes.
-		   Then, click activate button to activate image to work.
-		</p><br>
-		
-	</div>
-	<div class="columns large-6">
-		<h2>BMC firmware manage</h2>
-		<p>When BMC firmware Upload, click activate button to activate image. This operation will take a few minutes.
-		</p><br>
-		<h2>Fan control</h2>
-		<p>Only root user can set fan speed. When perform this operation the fan will rotate according to 
-		   the set value instead of the BMC temperature.
-		</p><br>
-		<h2>Account manage</h2>
-		<p>Only root user can create, edit and delete account.
-		</p><br> -->
-

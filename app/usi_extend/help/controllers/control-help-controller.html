@@ -1,0 +1,116 @@
+
+<!--
+ * @author Steven
+ * @date   202000708
+ * @brief  help doc
+-->
+
+<!-- <loader loading="loading"></loader> -->
+<div>
+    <div class="page-header">
+        <h1>Detail information</h1>
+    </div>
+<!-- 	<div class="columns large-6">
+	  <div id="usiinventory">
+		<h2>Inventory</h2>
+		<p>User can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
+		   when mouse move on the corresponding location of pictures. 
+		</p>
+	  </div><br>
+	  <div id="usioverview">
+		<h2>Overview</h2>
+		<p>Click overview menu, the page displays network, time information, BMC firmware version ,
+		   PCIe switch firmware version information and lastest 5 high logs. Click edit button, user can edit hostname.
+		   Click the LED switch can control LED on or off. click the serial over LAN console link, event log link, 
+		   edit network settings link or help link, it can jump to responding page.
+		</p>
+	  </div><br>
+	  <div id="usisensors">
+		<h2>Sensors</h2>
+		<p>The page displays all sensors information. Click Export button can download the sensors data named sensors.json.
+		   Privide filter function, user can though key value to serach sensors information. 
+		</p>
+	  </div><br>
+	  <div id="usihardwarestatus">
+		<h2>Hardware status</h2>
+		<p>The page displays all hardware information. Click export button can download the hardware data named hardware_inventory.json.
+		   Privide filter function, user can though key value to serach hardware information. 
+		</p>
+	  </div><br>
+	  <div id="usipartitiontopology">
+		<h2>Partition topology</h2>
+		<p>The page displays partition information.
+		</p>
+	  </div><br>
+	  <div id="usieventlog">
+		<h2>Event log</h2>
+		<p>The page displays all event logs information. User can select one or more logs to copy, delete,
+		    mark as resolve and export. Privide filter function by key value, severity, data range and event status, 
+			user can though these functions to search logs.
+		</p>
+	  </div><br>
+	  <div id="usisystemlog">
+		<h2>System log</h2>
+		<p>The page displays all system logs information. User can select one or more logs to copy, delete,
+		    mark as resolve and export. Privide filter function by key value, severity, data range and event status, 
+			user can though these functions to search logs.
+		</p>
+	  </div><br>
+	</div> -->
+	<div class="columns large-6">
+	  <div id="usiLEDcontrol">
+		<h2>LED control</h2>
+		<p>Click Control LED control menu, user can control LED on or off though switch button.
+		</p>
+	  </div><br>
+	  <div id="usifancontrol">
+		<h2>Fan control</h2>
+		<p>Only root user can set fan speed. User can set one fan speed also can set all fan speed one time.
+		   When perform this operation the fan will rotate according to the set value instead of the BMC temperature.
+		</p>
+	  </div><br>
+	  <div id="usisystemcontrol">
+		<h2>System control</h2>
+		<p>When reboot AFA, Web browser loses contact with the AFA for several minutes. When the AFA is back online, you must log in again. 
+		   When SSD and switch firmware update work, make sure switch is power on.
+		 </p>
+	  </div><br>
+	  <div id="usiLAN">
+		<h2>Serial over LAN console</h2>
+		<p>Click Control Serial over LAN console menu,
+		</p>
+	  </div><br>
+	  <div id="usiBMCfirmware">
+		<h2>BMC firmware</h2>
+		<p>User can upload BMC image though location also can download image though TFTP server.
+		   When BMC image upload, user can delete image and also can activate it. When click activate button to activate image. This operation will take a few minutes. 
+		</p>
+	  </div><br>
+	</div>
+	<div class="columns large-6">
+	  <div id="usiPCIeswitch">
+		<h2>PCIe switch firmware</h2>
+		<p>User can upload PCIe switch image though location.
+		   When PCIe switch image upload, user can delete it and can update it. When click update button, it will take a few minutes. 
+		   Update finish then can activate the image, it will also take a few minutes.
+		</p>
+	  </div><br>
+	  <div id="usinetworksetting">
+		<h2>Network setting</h2>
+		<p>User can modify hostname, network interface, MAC address and default gateway. AFA use DHCP IP defaultly, but user can set
+		   static IP though choosing radio button. Carefully, when set static IP, gateway is consistent with default gateway.
+		</p>
+	  </div><br>
+	  <div id="usidatatime">
+		<h2>Date and time setting</h2>
+		<p>User can set AFA time, host time separately. Also can set both or split at one time.
+		</p>
+	  </div><br>
+	  <div id="usiaccountmanage">
+		<h2>Account manage</h2>
+		<p>Only root user can create, edit and delete account. Failed lockin times is unlimited and lockout times is none defaultly.
+		   Root user can set the failed lockin times between 3 to 10, and failed lockin times between 30s to 600s.
+		</p>
+	  </div><br>
+	</div>
+</div>
