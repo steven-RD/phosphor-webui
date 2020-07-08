@@ -19,24 +19,6 @@ window.angular && (function(angular) {
     function($scope, $window, UsiAPIUtils, APIUtils, dataService, $q, $location, $anchorScroll) {
 		$scope.loading = false;
 		
-	   // Scroll to target anchor
-      $scope.sensorAnchor = function() {
-        $location.hash('usisensors');
-        $anchorScroll();
-      };
-	  
-	  // Scroll to target anchor
-      $scope.hardwareAnchor = function() {
-        $location.hash('usihardwarestatus');
-        $anchorScroll();
-      };
-	  
-	   // Scroll to target anchor
-      $scope.gotoAnchor = function(id) {
-        $location.hash(id);
-        $anchorScroll();
-      };
-
     }
   ]);
 })(angular);
