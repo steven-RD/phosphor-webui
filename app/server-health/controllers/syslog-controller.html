@@ -86,12 +86,12 @@
         </div>
         <div class="table__body">
           <div class="table__row" dir-paginate="log in (sysLogs | filter:filterBySearchTerms | filter:filterBySeverity | filter:filterByDate | filter:filterByType | orderBy:sortKey:reverse) | itemsPerPage:itemsPerPage">
-            <div class="table__cell sys-log__col-wrapper sys-log__col-id">{{log.Id}}</div>
-            <div class="table__cell sys-log__col-wrapper">{{log.Created | localeDate}}</div>
-            <div class="table__cell sys-log__col-wrapper">{{log.Name}}</div>
-            <div class="table__cell sys-log__col-wrapper">{{log.SensorType}}</div>
-            <div class="table__cell sys-log__col-wrapper sys-log__col-sev">{{log.Severity}}</div>
-            <div class="table__cell sys-log__col-wrapper sys-log__col-desc">{{log.Message}}</div>
+            <div class="usi_table__cell sys-log__col-wrapper sys-log__col-id">{{log.Id}}</div>
+            <div class="usi_table__cell sys-log__col-wrapper">{{log.Created | localeDate}}</div>
+            <div class="usi_table__cell sys-log__col-wrapper">{{log.Name}}</div>
+            <div class="usi_table__cell sys-log__col-wrapper">{{log.SensorType}}</div>
+            <div class="usi_table__cell sys-log__col-wrapper sys-log__col-sev">{{log.Severity}}</div>
+            <div class="usi_table__cell sys-log__col-wrapper sys-log__col-desc">{{log.Message}}</div>
           </div>
         </div>
       </div>

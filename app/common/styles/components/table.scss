@@ -80,6 +80,23 @@
   //}
 }
 
+.usi_table__cell {
+  flex: 0 0 100%;
+  line-height: 2.3em;
+  padding: .5em .5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-bottom: 1px solid $border-color-01;
+  @include mediaQuery(small) {
+    flex: 1;
+  }
+  //
+  //@include mediaQuery(large) {
+  //  padding: 15px 30px;
+  //}
+}
+
 .table__cell-label {
   display: inline-block;
   font-weight: 700;
