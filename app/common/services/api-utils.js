@@ -1309,7 +1309,6 @@ window.angular && (function(angular) {
               });
         },
         setTimeOwner: function(timeOwner) {
-			console.log(timeOwner);
           return $http({
                    method: 'PUT',
                    url: DataService.getHost() +
@@ -1318,12 +1317,10 @@ window.angular && (function(angular) {
                    data: JSON.stringify({'data': timeOwner})
                  })
               .then(function(response) {
-			console.log(response.data);
                 return response.data;
               });
         },
         setBMCTime: function(time) {
-			console.log(time);
           return $http({
                    method: 'PUT',
                    url: DataService.getHost() +
@@ -1332,12 +1329,10 @@ window.angular && (function(angular) {
                    data: JSON.stringify({'data': time})
                  })
               .then(function(response) {
-				  console.log(response.data);
                 return response.data;
               });
         },
         setHostTime: function(time) {
-			console.log(time);
           return $http({
                    method: 'PUT',
                    url: DataService.getHost() +
@@ -1346,7 +1341,6 @@ window.angular && (function(angular) {
                    data: JSON.stringify({'data': time})
                  })
               .then(function(response) {
-				  console.log(response.data);
                 return response.data;
               });
         },

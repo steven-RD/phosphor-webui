@@ -253,12 +253,12 @@ window.angular && (function(angular) {
                 changeStatus('bmc');
                 $scope.BMCStatus = 'None';
                 $scope.BMCStatus = BMCMessage[name].BMCStatus;
-                if(BMCMessage[name].IOCCThermal != 'Fail'){
+                if(BMCMessage[name].IOCCThermal != 'Fail' && BMCMessage[name].IOCCThermal != 'Absent'){
                     $scope.IOCCThermal = BMCMessage[name].IOCCThermal + '℃';
                 }else{
                     $scope.IOCCThermal = BMCMessage[name].IOCCThermal;
                 }
-                if(BMCMessage[name].PFXThermal != 'Fail'){
+                if(BMCMessage[name].PFXThermal != 'Fail' && BMCMessage[name].PFXThermal != 'Absent'){
                     $scope.PFXThermal = BMCMessage[name].PFXThermal + '℃';
                 }else{
                     $scope.PFXThermal = BMCMessage[name].PFXThermal;
