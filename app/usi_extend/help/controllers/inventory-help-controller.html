@@ -13,28 +13,52 @@
 	<div class="columns large-6">
 	  <div id="usiinventory">
 		<h2>Inventory</h2>
-		<!-- <a name="usi-inventory"><h2 id="usi-inventory">Inventory</h2> -->
-		<p>User can get SSD, Cable, PowerSupply, USP, localhost IP, Fan, Switch and peer BMC information 
-		   when mouse move on the corresponding location of pictures. 
+		<p>Inventory page is the AFA WEB home page. This page shows the main AFA information, 
+			when mouse move to different position of the images, can get more info of hardware devices, 
+			move off from the table, information disappears. For example, when mouse move on SSD3, 
+			it indicates current position SSD not inserted. The table shows its information and move off from the table, 
+			information disappears. 
 		</p>
-	  </div><br>
-	  <div id="usioverview">
+		<img id="frontImg" src="../../images/SSD-not-inserted.png" />
+		<p>When mouse moves on SSD4, it indicates current position SSD inserted and status ok. The table shows its information</p>
+		<img id="frontImg" src="../../images/SSD-inserted-ok.png" />
+		<p>When mouse move on SSD5, it indicates current position SSD inserted but status bad. The table shows its information.</p>
+		<img id="frontImg" src="../../images/SSD-inserted-bad.png" />
+		<img id="frontImg" src="../../images/rear.png" />
+		<img id="frontImg" src="../../images/internal-struct.png" />
+		<p>when mouse moves to different position of picture, corresponding information will pop up. 
+		   Attention, when iocca BMC is local, ioccb BMC is peer. On the contrary, ioccb BMC is local, iocca BMC is peer. 
+		   Only peer BMC has information, local BMC has nothing.</p>
+	  </div>
+	<!--    <div id="usioverview">
 		<h2>Overview</h2>
-		<p>Click overview menu, the page displays network, time information, BMC firmware version ,
-		   PCIe switch firmware version information and lastest 5 high logs. Click edit button, user can edit hostname.
-		   Click the LED switch can control LED on or off. click the serial over LAN console link, event log link, 
-		   edit network settings link or help link, it can jump to responding page.
+		<p>this page display AFA overview information, some links and latest five high critical logs. 
+		   Click the “Edit” button can modify AFA name, click LED switch can control LED on or off, 
+		   click SOL link can link to SOL page, click log link can link to log page, 
+		   click network link can link to network page and click help can link to help page.
 		</p>
-	  </div><br>
-	  <div id="usisensors">
+		<img id="frontImg" src="../../images/overview.png" />
+	  </div>
+	 <div id="usisensors">
 		<h2>Sensors</h2>
 		<p>The page displays all sensors information. Click export button can download the sensors data named sensors.json.
 		   Privide filter function, user can though key value to serach sensors information. 
 		</p>
-	  </div><br>
+	  </div><br> -->
 	</div>
 	
 	<div class="columns large-6">
+	  <div id="usioverview">
+		<h2>Overview</h2>
+		<p>this page display AFA overview information, some links and latest five high critical logs. 
+		   Click the “Edit” button can modify AFA name, click LED switch can control LED on or off, 
+		   click SOL link can link to SOL page, click log link can link to log page, 
+		   click network link can link to network page and click help can link to help page.
+		</p>
+		<img id="frontImg" src="../../images/overview.png" />
+	  </div>
+	</div>
+	<!-- <div class="columns large-6">
 	  <div id="usihardwarestatus">
 		<h2>Hardware status</h2>
 		<p>The page displays all hardware information. Click export button can download the hardware data named hardware_inventory.json.
@@ -60,5 +84,5 @@
 			user can though these functions to search logs.
 		</p>
 	  </div><br>
-	</div>
+	</div> -->
 </div>

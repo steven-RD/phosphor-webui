@@ -107,6 +107,7 @@ import usi_extend_help_index from './usi_extend/help/index.js';
 import help_controller from './usi_extend/help/controllers/help-controller.js';//
 import inventory_help_controller from './usi_extend/help/controllers/inventory-help-controller.js';//
 import control_help_controller from './usi_extend/help/controllers/control-help-controller.js';//
+import health_help_controller from './usi_extend/help/controllers/health-help-controller.js';//
 
 import users_index from './users/index.js';
 import user_accounts_controller from './users/controllers/user-accounts-controller.js';
