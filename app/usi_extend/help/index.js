@@ -50,6 +50,24 @@ window.angular && (function(angular) {
                     require('../../usi_extend/help/controllers/control-help-controller.html'),
                 'controller': 'controlHelpController',
                 authenticated: true
+              })
+			  .when('/usi_extend/overview-help', {
+                'template':
+                    require('../../usi_extend/help/controllers/overview-help-controller.html'),
+                'controller': 'controlHelpController',
+                authenticated: true
+              })
+			  .when('/usi_extend/health-help', {
+                'template':
+                    require('../../usi_extend/help/controllers/health-help-controller.html'),
+                'controller': 'controlHelpController',
+                authenticated: true
+              })
+			  .when('/usi_extend/setting-help', {
+                'template':
+                    require('../../usi_extend/help/controllers/setting-help-controller.html'),
+                'controller': 'controlHelpController',
+                authenticated: true
               });
         }
       ]);
