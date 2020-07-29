@@ -45,7 +45,7 @@ window.angular && (function(angular) {
                 'controller': 'inventoryHelpController',
                 authenticated: true
               })
-			  .when('/usi_extend/control-help', {
+			  /* .when('/usi_extend/control-help', {
                 'template':
                     require('../../usi_extend/help/controllers/control-help-controller.html'),
                 'controller': 'controlHelpController',
@@ -62,7 +62,7 @@ window.angular && (function(angular) {
                     require('../../usi_extend/help/controllers/health-help-controller.html'),
                 'controller': 'controlHelpController',
                 authenticated: true
-              })
+              }) */
 			  .when('/usi_extend/setting-help', {
                 'template':
                     require('../../usi_extend/help/controllers/setting-help-controller.html'),
