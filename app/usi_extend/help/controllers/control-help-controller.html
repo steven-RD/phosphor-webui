@@ -11,37 +11,45 @@
         <h1>Detail information</h1>
     </div>
 
-	<div class="columns large-6">
+	<!-- <div class="columns large-6"> -->
 	  <div id="usiLEDcontrol">
 		<h2>LED control</h2>
-		<p>Click Control LED control menu, user can control LED on or off though switch button.
+		<p>Click the LED switch to control LED is on or off.
 		</p>
+		<img id="frontImg" src="../../images/led.png" />
 	  </div><br>
 	  <div id="usifancontrol">
 		<h2>Fan control</h2>
-		<p>Only root user can set fan speed. User can set one fan speed also can set all fan speed one time.
-		   When perform this operation the fan will rotate according to the set value instead of the BMC temperature.
+		<p>Only root and administrator privilege can access this page. Firstly, click choose fan drop-down menu box to choose 
+		  which fan to set. Then, input fan speed. Finally, click save settings button to set its value, 
+		  also can click cancel button to cancel setting.
 		</p>
+		<img id="frontImg" src="../../images/fan.png" />
 	  </div><br>
 	  <div id="usisystemcontrol">
 		<h2>System control</h2>
-		<p>When reboot AFA, Web browser loses contact with the AFA for several minutes. When the AFA is back online, you must log in again. 
-		   When SSD and switch firmware update work, make sure switch is power on.
+		<p>This page provides two functions, one is AFA reboot control, and another is switch power control. 
+		   Click “reboot AFA” button, confirm dialog appears. Click “continue” button will reboot AFA. 
+		   User will lose the web browser window several minutes. Then need to re-login. 
+		   Click “cancel” button will cancel reboot AFA operation.
 		 </p>
+		<img id="frontImg" src="../../images/system-control.png" />
+		<p>Click power off switch button will pop-up confirm dialogue box. Click “continue” button will power off switch, 
+		   and the button becomes to power on switch. Click cancel button will cancel power switch operation.</p>
 	  </div><br>
 	  <div id="usiLAN">
 		<h2>Serial over LAN console</h2>
 		<p>Click Control Serial over LAN console menu,
 		</p>
 	  </div><br>
-	  <div id="usiBMCfirmware">
+<!-- 	  <div id="usiBMCfirmware">
 		<h2>BMC firmware</h2>
 		<p>User can upload BMC image though location also can download image though TFTP server.
 		   When BMC image upload, user can delete image and also can activate it. When click activate button to activate image. This operation will take a few minutes. 
 		</p>
-	  </div><br>
-	</div>
-	<div class="columns large-6">
+	  </div><br> -->
+	<!-- </div> -->
+	<!-- <div class="columns large-6">
 	  <div id="usiPCIeswitch">
 		<h2>PCIe switch firmware</h2>
 		<p>User can upload PCIe switch image though location.
@@ -66,5 +74,5 @@
 		   Root user can set the failed lockin times between 3 to 10, and failed lockin times between 30s to 600s.
 		</p>
 	  </div><br>
-	</div>
+	</div> -->
 </div>
