@@ -106,7 +106,7 @@ import switch_firmware_controller from './usi_extend/configuration/controllers/s
 import usi_extend_help_index from './usi_extend/help/index.js';
 import help_controller from './usi_extend/help/controllers/help-controller.js';//
 import inventory_help_controller from './usi_extend/help/controllers/inventory-help-controller.js';//
-import inventory_help_controller from './usi_extend/help/controllers/overview-help-controller.js';//
+import overview_help_controller from './usi_extend/help/controllers/overview-help-controller.js';//
 import control_help_controller from './usi_extend/help/controllers/control-help-controller.js';//
 import health_help_controller from './usi_extend/help/controllers/health-help-controller.js';//
 import setting_help_controller from './usi_extend/help/controllers/setting-help-controller.js';//
