@@ -1,0 +1,63 @@
+
+<!--
+ * @author Steven
+ * @date   202000708
+ * @brief  help doc
+-->
+
+<!-- <loader loading="loading"></loader> -->
+<div>
+    <div class="page-header">
+        <h1>Detail information</h1>
+    </div>
+	<div class="columns large-6">
+	  <div id="usisensors">
+		<h2>Sensors</h2> 
+		<img id="frontImg" src="../../images/sensors.png" />
+		<p>Monitor all sensors status. If the sensor is abnormal, the current value background in the dashboard will become red, 
+		 and if it is normal status, the current value background is green. Click export button will download sensors data in json format.
+		Provide two methods to search sensors:
+		1) filter by key word: input key word user wants to search and click filter button, it will list search result.
+		2) filter by severity: choose All, Critical, Warning or Normal button to search.
+		Monitor all sensors status. If the sensor is abnormal, the current value background in the dashboard will become red, 
+		and if it is normal status, the current value background is green. Click export button will download sensors data in json format.
+		</p>
+	  </div><br> 
+	  <div id="usihardwarestatus">
+		<h2>Hardware status</h2> 
+		<img id="frontImg" src="../../images/hardware-status.png" />
+		<p>Click export button will download hardware status data in json format. 
+		Input key value, user wants to search and click filter button will list search result. 
+		Click the arrow button will show or hide the detail information.
+		</p>
+	  </div><br>
+	</div>
+	
+	<div class="columns large-6">
+	  <div id="usipartitiontopology">
+		<h2>Partition topology</h2>
+		<p>The page displays partition information.
+		</p>
+	  </div><br>
+	  <div id="usieventlog">
+		<h2>Event log</h2>
+		<p>Monitor and display event logs. User can choose time zone to get time. It provides four functions to filter logs.
+		1) filter by key word: input key word and click filter button will list result.
+		2) filter by date: input start time and end time will list logs generated during the date.
+		3) filter by severity: choose All, High, Medium or Low button to search. 
+		4) filter by event status: click the event drop-down menu to select.
+		</p>
+		<img id="frontImg" src="../../images/event-log.png" />
+	  </div><br>
+	  <div id="usisystemlog">
+		<h2>System log</h2>
+		<p>Monitor and display system logs. Click select system log type menu to choose system log type. It provides four functions to filter logs.
+		1) filter by key word: input key word and click filter button will list result.
+		2) filter by date: input start time and end time will list logs generated during the date.
+		3) filter by severity: choose All, Critical, Warning or Ok button to search. 
+		4) filter by type status: click the type drop-down menu to select.
+		</p>
+		<img id="frontImg" src="../../images/system-log.png" />
+	  </div><br>
+	</div>
+</div>
