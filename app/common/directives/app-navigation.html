@@ -75,10 +75,10 @@
             tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">Reboot BMC</a>
         </li> -->
 
-        <li ng-class="{'active': (path == '/server-control/server-led')}">
+        <!-- <li ng-class="{'active': (path == '/server-control/server-led')}">
           <a href="#/server-control/server-led" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">LED control</a>
-        </li>
+        </li> -->
         <li ng-class="{'active': (path == '/server-control/fan')}" ng-show="userName=='root' && role=='Administrator'"> 
           <a href="#/server-control/fan" ng-click="closeSubnav()"
             tabindex="{{(showSubMenu && firstLevel == 'server-control') ? 0 : -1}}">Fan control</a>
